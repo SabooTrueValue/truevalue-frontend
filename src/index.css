@@ -25,7 +25,7 @@ body {
 
 *::-webkit-scrollbar {
   background-color: transparent ;
-  width: 10px;
+  width: 8px;
   overflow: overlay;
 }
 
@@ -38,7 +38,8 @@ body {
 *::-webkit-scrollbar-thumb {
   border-radius: 8px;
   border: 1px solid transparent;
-  background-color: rgba(0, 46, 254);
+  background-color: rgba(43, 51, 149);
   background-clip: content-box;
+  margin-right: 10px;
 }
 
