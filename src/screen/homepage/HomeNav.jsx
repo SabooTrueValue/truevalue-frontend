@@ -7,7 +7,7 @@ import { IoLogoYoutube, IoMdArrowDropdown, IoMdMail ,} from "react-icons/io";
 const HomeNav = () => {
   return (
     <div className="">
-      <div className="bg-[#2B3395] text-white ">
+      <div className="text-white bg-truevalue ">
         <div className="container mx-auto"></div>
         <div className="container flex gap-16 py-2 mx-auto md:py-4 ">
           <div className="flex items-center gap-10 lg:w-1/2">
