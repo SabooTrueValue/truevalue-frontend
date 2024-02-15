@@ -13,7 +13,7 @@ import HeroSection from "./HeroSection";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="relative">
       <HomeNav />
       <HeroSection />
       <Benefits />

@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <div>
-      <div className="flex gap-[2px] ">
+      <div className="flex gap-[2px] overflow-x-hidden flex-col md:flex-row">
         <div
-          className="w-1/2 bg-right bg-cover h-[60vh]  relative  "
+          className="w-full md:w-1/2 bg-right bg-cover h-[50vh] md:h-[60vh]  relative  "
           style={{ backgroundImage: `url(${img1})` }}
         >
           <div className="absolute inset-0  bg-gradient-to-t from-[#2b3495ee] via-[#2b349593] "></div>
@@ -24,7 +24,7 @@ const HeroSection = () => {
           </div>
         </div>
         <div
-          className="w-1/2 bg-right bg-cover h-[60vh]  relative  "
+          className="w-full md:w-1/2 bg-left bg-cover md:h-[60vh] h-[50vh] relative  "
           style={{ backgroundImage: `url(${img2})` }}
         >
           <div className="absolute inset-0  bg-gradient-to-t from-[#2b3495ee] via-[#2b349593]"></div>
