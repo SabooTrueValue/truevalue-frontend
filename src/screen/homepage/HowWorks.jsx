@@ -1,91 +1,100 @@
 import React from "react";
 
 const HowWorks = () => {
+  // Define arrays of objects containing image source, alt text, and description for both buying and selling sections
+  const buyingSteps = [
+    {
+      src: require("../../assets/homepage/carserch.jpg"),
+      alt: "Choose from the best pre-owned cars",
+      text: "Choose from the best pre-owned cars",
+      description: "1,000+ fully inspected cars online",
+    },
+    {
+      src: require("../../assets/homepage/formfill.jpg"),
+      alt: "Fill the form for selected car",
+      text: "Fill the form for selected car",
+      description: "Fill in a few details about you",
+    },
+    {
+      src: require("../../assets/homepage/carhandover.jpg"),
+      alt: "Get your own car",
+      text: "Get your own car",
+      description: "Doorstep Delivery.",
+    },
+  ];
+
+  const sellingSteps = [
+    {
+      src: require("../../assets/homepage/form.jpg"),
+      alt: "Instant online application",
+      text: "Instant online application",
+      description: "Fill in a few details about your car",
+    },
+    {
+      src: require("../../assets/homepage/inspection.jpg"),
+      alt: "Free doorstep evaluation",
+      text: "Free doorstep evaluation",
+      description:
+        "Schedule the evaluation at your convenience, from the comfort of your home or workplace",
+    },
+    {
+      src: require("../../assets/homepage/finalpayment.jpg"),
+      alt: "Same day payment",
+      text: "Same day payment",
+      description: "Complete payment and paperwork on the spot",
+    },
+  ];
+
   return (
-    <div>
-      {" "}
-      <div className="container px-1 py-10 mx-auto ">
-        <div className="pb-10">
-          <h2 className="text-4xl font-bold text-center text-truevalue">
+    <div className="container px-1 py-10 mx-auto">
+      <div className="pb-10">
+        <div className="flex items-center justify-center ">
+          <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
+          <h2 className="w-full text-3xl font-bold text-center text-truevalue lg:whitespace-nowrap">
             How Saboo TrueValue Works
           </h2>
-          <p className="mb-4 text-center">You won't just love our cars, you'll love the way you buy them.</p>
-          <h4 className="pb-4 text-2xl font-bold text-center text-truevalue">
-            Owning your car made simple
-          </h4>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3">
-            <div className="flex flex-col items-center ">
-              <img
-                src={require("../../assets/homepage/carserch.jpg")}
-                alt=""
-                srcset=""
-              />
-               <div className="text-xl font-semibold">Choose from the best pre-owned cars</div>
-               <p>1,000+ fully inspected cars online</p>
-            </div>
-            <div className="flex flex-col items-center ">
-              <img
-                src={require("../../assets/homepage/formfill.jpg")}
-                alt=""
-                srcset=""
-                className="h-[17.8rem]"
-              />
-               <div className="text-xl font-semibold">Fill the form for selected car</div><p className="">Fill in a few details about you</p>
-            </div>
-            <div className="flex flex-col items-center ">
-              <img
-                src={require("../../assets/homepage/carhandover.jpg")}
-                alt=""
-                srcset=""
-              />
-               <div className="text-xl font-semibold">Get your own car</div>
-               <p>Doorstep Delivery.</p>
-            </div>
-          </div>
+          <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
         </div>
-        <div className="">
-          <h4 className="pb-4 text-2xl font-bold text-center text-truevalue">
-            Selling your car made simple
-          </h4>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3">
-            <div className="flex flex-col items-center text-center">
-              <img
-                src={require("../../assets/homepage/form.jpg")}
-                alt=""
-                srcset=""
-                className="h-[16.2rem] rounded-xl mb-4"
-              />
-              <div className="text-xl font-semibold">
-                Instant online application
-              </div>
-              <p className="">Fill in a few details about your car</p>
+        <p className="mb-4 text-center">
+          You won't just love our cars, you'll love the way you buy them.
+        </p>
+        <h4 className="pb-4 text-xl font-bold text-center text-truevalue">
+          Owning your car made simple
+        </h4>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* Loop through the buyingSteps array and render each step */}
+          {buyingSteps.map((step, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center text-center hover:text-truevalue"
+            >
+              <img src={step.src} alt={step.alt} className="mb-2 max-h-64" />
+              <div className="text-lg font-semibold">{step.text}</div>
+              <p>{step.description}</p>
             </div>
-            <div className="flex flex-col items-center text-center">
+          ))}
+        </div>
+      </div>
+      <div>
+        <h4 className="pb-4 text-xl font-bold text-center text-truevalue">
+          Selling your car made simple
+        </h4>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* Loop through the sellingSteps array and render each step */}
+          {sellingSteps.map((step, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center text-center duration-300 hover:text-truevalue"
+            >
               <img
-                src={require("../../assets/homepage/inspection.jpg")}
-                alt=""
-                srcset=""
-                className=" rounded-xl"
+                src={step.src}
+                alt={step.alt}
+                className="mb-2 rounded-lg max-h-64 "
               />
-              <div className="text-xl font-semibold">
-                Free doorstep evaluation
-              </div>
-              <p className="">
-                Schedule the evaluation at your convenience, from the comfort of
-                your home or workplace
-              </p>
+              <div className="text-lg font-semibold">{step.text}</div>
+              <p>{step.description}</p>
             </div>
-            <div className="flex flex-col items-center">
-              <img
-                src={require("../../assets/homepage/finalpayment.jpg")}
-                alt=""
-                srcset=""
-                className=" rounded-xl"
-              />
-               <div className="text-xl font-semibold">Same day payment</div>
-               <p>Complete payment and paper work on the spot</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
