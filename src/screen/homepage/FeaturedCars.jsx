@@ -1,16 +1,11 @@
 import React from "react";
+import HeadingComponent from "../../components/Other/HeadingComponent";
 
 const FeaturedCars = () => {
   return (
     <div>
       <div className="container px-1 py-10 mx-auto">
-        <div className="flex items-center justify-center ">
-          <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
-          <h2 className="w-full text-3xl font-bold text-center text-truevalue lg:whitespace-nowrap">
-            Featured TrueValue Cars
-          </h2>
-          <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
-        </div>
+        <HeadingComponent title="Featured Truevalue Car" />
       </div>
     </div>
   );

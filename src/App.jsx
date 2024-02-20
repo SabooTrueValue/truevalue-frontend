@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Homepage from "./screen/homepage/Homepage";
 import { AboutUs } from "./screen/about-us/AboutUs";
-import { Finance } from "./screen/finance/Finance";
 import { PreOwnedCars } from "./screen/pre-owned-cars/PreOwnedCars";
 import { SellYourCar } from "./screen/sell-your-car/SellYourCar";
 import FAQs from "./screen/more-links/FAQs";
@@ -11,6 +10,8 @@ import { Outlets } from "./screen/more-links/Outlets";
 import { ContactUs } from "./screen/more-links/ContactUs";
 import { TermsAndConditions } from "./screen/more-links/TermsAndConditions";
 import { PageNotFound } from "./screen/page-not-found/PageNotFound";
+import { Footer } from "./components/Footer/Footer";
+import Finance from "./screen/finance/Finance";
 
 function App() {
   const { pathname } = useLocation();
@@ -19,6 +20,7 @@ function App() {
   }, [pathname]);
 
   return (
+    <>
     <Routes>
       <Route exact path="/" element={<Homepage />} />
       <Route exact path="/about-us" element={<AboutUs />} />
@@ -40,6 +42,8 @@ function App() {
       />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
+    <Footer />
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import HeadingComponent from "../../components/Other/HeadingComponent";
 // import { Link } from "react-router-dom";
 
 const HomepageFAQ = () => {
@@ -58,13 +59,7 @@ const HomepageFAQ = () => {
 
   return (
     <div className="container py-20 mx-auto">
-      <div className="flex items-center justify-center pb-5">
-        <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
-        <h2 className="w-full text-3xl font-bold text-center text-truevalue lg:whitespace-nowrap">
-          Frequently Asked Questions
-        </h2>
-        <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
-      </div>
+      <HeadingComponent title="Frequently Asked Questions" />
 
       {data.map((x, i) => {
         return (

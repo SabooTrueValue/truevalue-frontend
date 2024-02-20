@@ -1,4 +1,5 @@
 import React from "react";
+import HeadingComponent from "../../components/Other/HeadingComponent";
 
 const HowWorks = () => {
   // Define arrays of objects containing image source, alt text, and description for both buying and selling sections
@@ -48,17 +49,12 @@ const HowWorks = () => {
   return (
     <div className="container px-1 py-10 mx-auto">
       <div className="pb-10">
-        <div className="flex items-center justify-center ">
-          <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
-          <h2 className="w-full text-3xl font-bold text-center text-truevalue lg:whitespace-nowrap">
-            How Saboo TrueValue Works
-          </h2>
-          <div className="w-[70%] border-b border-[#2b349579] hidden lg:block "></div>
-        </div>
+        <HeadingComponent title="How Saboo TrueValue Works" />
+
         <p className="mb-4 text-center">
           You won't just love our cars, you'll love the way you buy them.
         </p>
-        <h4 className="pb-4 text-xl font-bold text-center text-truevalue">
+        <h4 className="pb-4 text-xl font-bold text-center uppercase text-truevalue">
           Owning your car made simple
         </h4>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -68,7 +64,11 @@ const HowWorks = () => {
               key={index}
               className="flex flex-col items-center text-center hover:text-truevalue"
             >
-              <img src={step.src} alt={step.alt} className="mb-2 max-h-64" />
+              <img
+                src={step.src}
+                alt={step.alt}
+                className="mb-2 md:max-h-64 max-h-40"
+              />
               <div className="text-lg font-semibold">{step.text}</div>
               <p>{step.description}</p>
             </div>
@@ -76,7 +76,7 @@ const HowWorks = () => {
         </div>
       </div>
       <div>
-        <h4 className="pb-4 text-xl font-bold text-center text-truevalue">
+        <h4 className="pb-4 text-xl font-bold text-center uppercase text-truevalue">
           Selling your car made simple
         </h4>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -89,7 +89,7 @@ const HowWorks = () => {
               <img
                 src={step.src}
                 alt={step.alt}
-                className="mb-2 rounded-lg max-h-64 "
+                className="mb-2 rounded-lg md:max-h-64 max-h-40 "
               />
               <div className="text-lg font-semibold">{step.text}</div>
               <p>{step.description}</p>
