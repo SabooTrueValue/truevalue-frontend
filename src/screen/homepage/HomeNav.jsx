@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { FaInstagram, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
@@ -7,17 +7,41 @@ import { IoLogoYoutube, IoMdArrowDropdown, IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const HomeNav = () => {
+  const [scrollTop, setScrollTop] = useState(0);
+  const onScroll = () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+
+    setScrollTop(scrolled);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="">
-      <div className="text-white bg-truevalue ">
-        <div className="flex flex-wrap px-1 py-4 lg:mx-auto lg:container">
+    <div
+      className={`${
+        scrollTop > 6
+          ? "fixed top-0 w-full transition-transform translate-y-0 duration-500 "
+          : scrollTop > 0 && scrollTop < 6
+          ? " w-full transition-transform -translate-y-full duration-500"
+          : " w-full transition-transform translate-y-0 duration-500"
+      } z-40`}
+    >
+      <div className="bg-white">
+        <div className="flex flex-wrap px-1 py-3 lg:mx-auto lg:container">
           <div className="flex items-center w-full gap-4 xl:gap-10 lg:w-1/2">
-            <Link to="/">
+            <Link to="/" className="p-2 px-4 rounded-xl bg-truevalue">
               <img
                 src={require("../../assets/homepage/logo-white.png")}
                 alt=""
                 srcSet=""
-                className="h-10"
+                className="h-10 "
               />
             </Link>
             <div className="relative w-full ">
@@ -44,27 +68,27 @@ const HomeNav = () => {
               className="flex flex-col items-center group"
             >
               <button>Buy Car</button>
-              <div className="h-0.5 bg-white w-0 group-hover:w-full duration-500 "></div>
+              <div className="h-0.5 bg-truevalue w-0 group-hover:w-full duration-500 "></div>
             </Link>
             <Link to="/sell-used-cars" className="group">
               <button>Sell Car</button>
-              <div className="h-0.5 bg-white w-0 group-hover:w-full duration-500 "></div>
+              <div className="h-0.5 bg-truevalue w-0 group-hover:w-full duration-500 "></div>
             </Link>
             <Link to="/finance" className="group">
               <button>Finance</button>
-              <div className="h-0.5 bg-white w-0 group-hover:w-full duration-500 "></div>
+              <div className="h-0.5 bg-truevalue w-0 group-hover:w-full duration-500 "></div>
             </Link>
             <Link to="/about-us" className="group">
               <button>About Us</button>
-              <div className="h-0.5 bg-white w-0 group-hover:w-full duration-500 "></div>
+              <div className="h-0.5 bg-truevalue w-0 group-hover:w-full duration-500 "></div>
             </Link>
 
-            <div className="relative py-2 cursor-pointer group hover:text-white ">
+            <div className="relative py-2 cursor-pointer group ">
               <div className="flex items-center ">
                 More
                 <IoMdArrowDropdown className="text-lg duration-200 group-hover:rotate-180" />
               </div>
-              <div className="absolute z-40 hidden  rounded-xl -left-8 top-[34px] group-hover:block">
+              <div className="absolute z-40 hidden  rounded-xl -left-8 top-[34px] group-hover:block text-white">
                 <div className="p-8 bg-[#2b3495] h-min rounded-b-xl whitespace-nowrap gap-4 flex flex-col ">
                   <Link to="/used-car-blog">
                     <div className="">Blog</div>
@@ -91,7 +115,7 @@ const HomeNav = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#2b3495ee] w-full select-none hidden md:block">
+      <div className="hidden w-full py-2 select-none bg-truevalue md:block">
         <div className="flex flex-wrap items-center justify-between px-1 text-white duration-300 lg:mx-auto lg:container hover:text-gray-400">
           <div className="flex items-center md:gap-3 lg:gap-5 xl:gap-10 ">
             <div className="hidden font-medium text-gray-300 cursor-default select-none lg:block">
