@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { FaInstagram, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
@@ -7,36 +7,12 @@ import { IoLogoYoutube, IoMdArrowDropdown, IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const HomeNav = () => {
-  const [scrollTop, setScrollTop] = useState(0);
-  const onScroll = () => {
-    const winScroll = document.documentElement.scrollTop;
-    const height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-
-    setScrollTop(scrolled);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <div
-      className={`${
-        scrollTop > 6
-          ? "fixed top-0 w-full transition-transform translate-y-0 duration-500 "
-          : scrollTop > 0 && scrollTop < 6
-          ? " w-full transition-transform -translate-y-full duration-500"
-          : " w-full transition-transform translate-y-0 duration-500"
-      } z-40`}
-    >
-      <div className="bg-white">
-        <div className="flex flex-wrap px-1 py-3 lg:mx-auto lg:container">
-          <div className="flex items-center w-full gap-4 xl:gap-10 lg:w-1/2">
-            <Link to="/" className="p-2 px-4 rounded-xl bg-truevalue">
+    <div className={`sticky top-0 z-40`}>
+      <div className="bg-white shadow-2xl">
+        <div className="flex justify-between px-1 py-3 lg:mx-auto lg:container">
+          <div className="flex items-center w-full gap-4 xl:gap-10 xl:w-1/2 ">
+            <Link to="/" className="p-2 px-10 rounded-full bg-truevalue">
               <img
                 src={require("../../assets/homepage/logo-white.png")}
                 alt=""
@@ -44,10 +20,10 @@ const HomeNav = () => {
                 className="h-10 "
               />
             </Link>
-            <div className="relative w-full ">
+            <div className="relative mr-4 min-w-10 xl:w-full">
               <form>
                 <input
-                  className="w-full h-10 px-5 text-sm bg-transparent border border-gray-400 rounded-full focus:outline-none focus:border-white"
+                  className="w-full h-10 px-5 text-sm bg-transparent border border-gray-400 rounded-full focus:outline-none focus:border-[#2B3395]"
                   type="search"
                   name="search"
                   required
@@ -57,12 +33,12 @@ const HomeNav = () => {
                   type="submit"
                   className="absolute top-[12px] right-0  mr-3"
                 >
-                  <FiSearch className="text-lg font-bold" />
+                  <FiSearch className="text-lg font-bold text-truevalue" />
                 </button>
               </form>
             </div>
           </div>
-          <div className="items-center justify-end hidden gap-10 lg:flex lg:w-1/2">
+          <div className="items-center justify-end hidden gap-10 lg:flex whitespace-nowrap">
             <Link
               to="/buy-used-cars"
               className="flex flex-col items-center group"
@@ -115,7 +91,7 @@ const HomeNav = () => {
           </div>
         </div>
       </div>
-      <div className="hidden w-full py-2 select-none bg-truevalue md:block">
+      <div className={` w-full py-2 select-none bg-truevalue  hidden md:block`}>
         <div className="flex flex-wrap items-center justify-between px-1 text-white duration-300 lg:mx-auto lg:container hover:text-gray-400">
           <div className="flex items-center md:gap-3 lg:gap-5 xl:gap-10 ">
             <div className="hidden font-medium text-gray-300 cursor-default select-none lg:block">

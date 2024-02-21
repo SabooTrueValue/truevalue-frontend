@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <div>
-      <div className="flex flex-col gap-1 overflow-x-hidden md:flex-row bg-[#ebedff]">
-        <div
-          className="w-full md:w-1/2 bg-left bg-cover h-[50vh] md:-[60vh] lg:h-[75vh] rounded-br-3xl overflow-hidden relative lg:hover:w-full duration-500   bg-[url(https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/Home-Page-Banner-Image11.webp)]  cursor-default "
+      <div className="flex flex-col gap-1 overflow-x-hidden lg:flex-row bg-[#ebedff]">
+        <div          className="w-full lg:w-1/2 bg-left bg-cover h-[50vh] md:-[60vh] lg:h-[75vh] rounded-br-3xl overflow-hidden relative lg:hover:w-full duration-500   bg-[url(https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/Home-Page-Banner-Image11.webp)]  cursor-default "
           // style={{ backgroundImage: `url(${img1})` }}
         >
           <div className="absolute inset-0  bg-gradient-to-t from-[#2b3495ee] via-[#2b349593] group-hover:hidden "></div>
@@ -27,7 +26,7 @@ const HeroSection = () => {
             </Link>
           </div>
         </div>
-        <div className="w-full md:w-1/2 bg-right  md:h-[60vh] lg:h-[75vh] h-[50vh] relative lg:hover:w-full duration-500 bg-cover  bg-[url(https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/Home-Page-Banner-Image22.webp)] group rounded-bl-3xl overflow-hidden cursor-default">
+        <div className="w-full lg:w-1/2 bg-right  md:h-[60vh] lg:h-[75vh] h-[50vh] relative lg:hover:w-full duration-500 bg-cover  bg-[url(https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/Home-Page-Banner-Image22.webp)] group rounded-bl-3xl overflow-hidden cursor-default">
           <div className="absolute inset-0  bg-gradient-to-t from-[#2b3495ee] via-[#2b349593]"></div>
           {/* <img
             src={img2}
@@ -46,14 +45,7 @@ const HeroSection = () => {
             </Link>
           </div>
         </div>
-        {/* <div className="w-1/2">
-        <img
-          src={require("../../assets/homepage/Home-Page-Banner-Image22.jpg")}
-          alt=""
-          srcSet=""
-          className=""
-        />
-      </div> */}
+       
       </div>
     
     </div>
