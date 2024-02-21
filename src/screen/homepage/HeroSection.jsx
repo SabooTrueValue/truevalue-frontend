@@ -43,7 +43,7 @@ const HeroSection = () => {
         <img
           src={require("../../assets/homepage/Home-Page-Banner-Image22.jpg")}
           alt=""
-          srcset=""
+          srcSet=""
           className=""
         />
       </div> */}

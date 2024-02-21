@@ -47,11 +47,10 @@ const HowWorks = () => {
   ];
 
   return (
-    <div className="container px-1 py-10 mx-auto">
+    <div className="container px-1 py-10 mx-auto lg:py-16">
       <div className="pb-10">
         <HeadingComponent title="How Saboo TrueValue Works" />
-
-        <p className="mb-4 text-center">
+        <p className="mb-6 text-center">
           You won't just love our cars, you'll love the way you buy them.
         </p>
         <h4 className="pb-4 text-xl font-bold text-center uppercase text-truevalue">

@@ -5,26 +5,26 @@ import FeaturedCars from "./FeaturedCars";
 import HowWorks from "./HowWorks";
 import HomepageBlogs from "./HomepageBlogs";
 import HomepageFAQ from "./HomepageFAQ";
-import Insights from "./Insights";
 import ExploreByBrand from "./ExploreByBrand";
 import ExploreByBodyType from "./ExploreByBodyType";
 import HeroSection from "./HeroSection";
 import Outlets from "./Outlets";
+import HomepageContactUs from "./HomepageContactUs";
 
 const Homepage = () => {
   return (
     <div className="relative">
       <HomeNav />
       <HeroSection />
-      <Benefits />
+      <HomepageContactUs />
       <HowWorks />
       <FeaturedCars />
-      <Insights />
       <ExploreByBodyType />
       <ExploreByBrand />
+      <Benefits />
       <HomepageBlogs />
-      <HomepageFAQ />
       <Outlets />
+      <HomepageFAQ />
     </div>
   );
 };

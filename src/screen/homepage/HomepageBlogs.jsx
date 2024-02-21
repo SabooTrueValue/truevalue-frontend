@@ -52,13 +52,13 @@ const HomepageBlogs = () => {
   return (
     <div className="container pt-10 mx-auto ">
       <HeadingComponent title="Our Blog Articles" />
-      <p className="mb-6 text-center">
+      <p className="mb-10 text-center">
         Stay up to date with all of the latest vehicles and offers with Saboo
         RKS TrueValue
       </p>
       {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div className="shadow-xl rounded-xl ">
-          <img src="" alt="" srcset="" />
+          <img src="" alt="" srcSet="" />
           <h4 className="mb-2">f</h4>
           <p></p>
         </div>
@@ -127,17 +127,17 @@ const HomepageBlogs = () => {
             return (
               <SwiperSlide
                 key={i}
-                className="relative overflow-hidden border rounded-xl group"
+                className="overflow-hidden "
               >
-                <div className="flex flex-col justify-between overflow-hidden bg-[#FCFCFE] duration-200 group-hover:shadow-2xl hover:shadow h-full">
+                <div className="flex flex-col justify-between overflow-hidden bg-[#FCFCFE] duration-200 h-full  rounded-xl group border hover:border-[#2B3395]  ">
                   <div className="">
                     <img src={x.img} alt={x.title} />
                   </div>
 
                   <div className="p-4 my-auto space-y-3 text-left lg:p-6">
-                    <div className="mb-3 font-medium">{x.title}</div>
-                    <div className="text-sm">{x.body}</div>
-                    <button className="py-2 hover:bg-truevalue hover:text-white border border-[#2B3395] hover:border-white rounded-full text-sm px-8">
+                    <div className="mb-4 font-bold text-justify lg:h-20">{x.title}</div>
+                    <div className="pb-6 text-justify lg:h-20 xl:h-24">{x.body}</div>
+                    <button className="py-2 group-hover:bg-truevalue group-hover:text-white border border-[#2B3395] hover:border-white rounded-full text-sm px-8 duration-200 group-hover:shadow-lg w-full">
                       Explore
                     </button>
                   </div>

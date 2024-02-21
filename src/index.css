@@ -40,3 +40,39 @@ body {
   background-color: rgba(43, 51, 149); /* Color of the thumb */
 }
 
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary); /* Adjust background color */
+  border-radius: 1px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 4px;
+  border: 2px solid var(--primary);
+}
+
+:root {
+  --primary: rgba(255, 255, 255, 0.8); /* Adjust alpha channel to control transparency */
+  --secondary: rgba(43, 51, 149);
+}
+
+*::-webkit-scrollbar:hover {
+  background-color: rgba(43, 51, 149);
+  width: 8px;
+}
+
+/* Change secondary color to gray on hover */
+*::-webkit-scrollbar-thumb:hover {
+  width: 8px;
+}

@@ -12,12 +12,14 @@ const HomeNav = () => {
       <div className="text-white bg-truevalue ">
         <div className="flex flex-wrap px-1 py-4 lg:mx-auto lg:container">
           <div className="flex items-center w-full gap-4 xl:gap-10 lg:w-1/2">
-            <img
-              src={require("../../assets/homepage/logo-white.png")}
-              alt=""
-              srcSet=""
-              className="h-9"
-            />
+            <Link to="/">
+              <img
+                src={require("../../assets/homepage/logo-white.png")}
+                alt=""
+                srcSet=""
+                className="h-10"
+              />
+            </Link>
             <div className="relative w-full ">
               <form>
                 <input
@@ -37,8 +39,11 @@ const HomeNav = () => {
             </div>
           </div>
           <div className="items-center justify-end hidden gap-10 lg:flex lg:w-1/2">
-            <Link to="/buy-used-cars" className="flex flex-col items-center group">
-              <button >Buy Car</button>
+            <Link
+              to="/buy-used-cars"
+              className="flex flex-col items-center group"
+            >
+              <button>Buy Car</button>
               <div className="h-0.5 bg-white w-0 group-hover:w-full duration-500 "></div>
             </Link>
             <Link to="/sell-used-cars" className="group">
@@ -53,20 +58,29 @@ const HomeNav = () => {
               <button>About Us</button>
               <div className="h-0.5 bg-white w-0 group-hover:w-full duration-500 "></div>
             </Link>
-            
+
             <div className="relative py-2 cursor-pointer group hover:text-white ">
               <div className="flex items-center ">
-              More
+                More
                 <IoMdArrowDropdown className="text-lg duration-200 group-hover:rotate-180" />
               </div>
               <div className="absolute z-40 hidden  rounded-xl -left-8 top-[34px] group-hover:block">
                 <div className="p-8 bg-[#2b3495] h-min rounded-b-xl whitespace-nowrap gap-4 flex flex-col ">
-                  <Link to='/used-car-blog'><div className="">Blog</div></Link>
-                  <Link to='/used-car-outlets'><div className="">Outlets</div></Link>
-                  <Link to='/used-car-faqs'><div className="">FAQs</div></Link>
-                  <Link to='/contact-preowned-car-dealer'><div className="">Contact Us</div></Link>
-                  <Link to='/used-cars-terms-conditions'><div className="">Terms & Conditio s</div></Link>
-                 
+                  <Link to="/used-car-blog">
+                    <div className="">Blog</div>
+                  </Link>
+                  <Link to="/used-car-outlets">
+                    <div className="">Outlets</div>
+                  </Link>
+                  <Link to="/used-car-faqs">
+                    <div className="">FAQs</div>
+                  </Link>
+                  <Link to="/contact-preowned-car-dealer">
+                    <div className="">Contact Us</div>
+                  </Link>
+                  <Link to="/used-cars-terms-conditions">
+                    <div className="">Terms & Conditio s</div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -102,7 +116,7 @@ const HomeNav = () => {
             </div>
             <div className="relative py-2 cursor-pointer group hover:text-white">
               <div className="flex items-center text-sm ">
-               <span className="hidden lg:bloc">Make and </span>Model 
+                <span className="hidden lg:bloc">Make and </span>Model
                 <IoMdArrowDropdown className="text-lg duration-200 group-hover:rotate-180" />
               </div>
               <div className="absolute z-40 hidden  rounded-xl -left-8 top-[34px] group-hover:flex ">
