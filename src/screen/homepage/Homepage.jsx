@@ -5,8 +5,8 @@ import FeaturedCars from "./FeaturedCars";
 import HowWorks from "./HowWorks";
 import HomepageBlogs from "./HomepageBlogs";
 import HomepageFAQ from "./HomepageFAQ";
-import ExploreByBrand from "./ExploreByBrand";
-import ExploreByBodyType from "./ExploreByBodyType";
+// import ExploreByBrand from "./ExploreByBrand";
+// import ExploreByBodyType from "./ExploreByBodyType";
 import HeroSection from "./HeroSection";
 import Outlets from "./Outlets";
 import HomepageContactUs from "./HomepageContactUs";
@@ -18,8 +18,8 @@ const Homepage = () => {
       <HeroSection />
       <HomepageContactUs />
       <FeaturedCars />
-      <ExploreByBodyType />
-      <ExploreByBrand />
+      {/* <ExploreByBodyType />
+      <ExploreByBrand /> */}
       <HowWorks />
       <Benefits />
       <HomepageBlogs />
