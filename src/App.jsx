@@ -12,6 +12,8 @@ import { TermsAndConditions } from "./screen/more-links/TermsAndConditions";
 import { PageNotFound } from "./screen/page-not-found/PageNotFound";
 import { Footer } from "./components/Footer/Footer";
 import Finance from "./screen/finance/Finance";
+import FindACar from "./screen/pre-owned-cars/FindACar";
+import CarDetails from "./screen/details/CarDetails";
 
 function App() {
   const { pathname } = useLocation();
@@ -25,9 +27,10 @@ function App() {
       <Route exact path="/" element={<Homepage />} />
       <Route exact path="/about-us" element={<AboutUs />} />
       <Route exact path="/finance" element={<Finance />} />
-      <Route exact path="/buy-used-cars" element={<PreOwnedCars />} />
+      <Route exact path="/buy-used-cars" element={<FindACar />} />
       <Route exact path="/sell-your-car" element={<SellYourCar />} />
       <Route exact path="/used-car-blog" element={<Blogs />} />
+      <Route exact path="/car-details" element={<CarDetails />} />
       <Route exact path="/used-car-outlets" element={<Outlets />} />
       <Route exact path="/used-car-faqs" element={<FAQs />} />
       <Route

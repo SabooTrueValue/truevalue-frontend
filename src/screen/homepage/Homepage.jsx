@@ -14,7 +14,7 @@ import HomepageContactUs from "./HomepageContactUs";
 const Homepage = () => {
   return (
     <div className="relative">
-      <HomeNav />
+      <HomeNav option={true} />
       <HeroSection />
       <HomepageContactUs />
       <FeaturedCars />

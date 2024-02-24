@@ -6,13 +6,13 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { IoLogoYoutube, IoMdArrowDropdown, IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const HomeNav = () => {
+const HomeNav = ({option}) => {
   return (
     <div className={`sticky top-0 z-40`}>
-      <div className="bg-white shadow-2xl">
+      <div className={`bg-white shadow-2xl `}>
         <div className="flex justify-between px-1 py-3 lg:mx-auto lg:container">
           <div className="flex items-center w-full gap-4 xl:gap-10 xl:w-1/2 ">
-            <Link to="/" className="p-2 px-10 rounded-full bg-truevalue">
+            <Link to="/" className="px-4 py-2 rounded bg-truevalue">
               <img
                 src={require("../../assets/homepage/logo-white.png")}
                 alt=""
@@ -46,7 +46,7 @@ const HomeNav = () => {
               <button>Buy Car</button>
               <div className="h-0.5 bg-truevalue w-0 group-hover:w-full duration-500 "></div>
             </Link>
-            <Link to="/sell-used-cars" className="group">
+            <Link to="/sell-your-car" className="group">
               <button>Sell Car</button>
               <div className="h-0.5 bg-truevalue w-0 group-hover:w-full duration-500 "></div>
             </Link>
@@ -91,7 +91,7 @@ const HomeNav = () => {
           </div>
         </div>
       </div>
-      <div className={` w-full py-2 select-none bg-truevalue  hidden md:block`}>
+     {option && <div className={` w-full py-2 select-none bg-truevalue  hidden md:block`}>
         <div className="flex flex-wrap items-center justify-between px-1 text-white duration-300 lg:mx-auto lg:container hover:text-gray-400">
           <div className="flex items-center md:gap-3 lg:gap-5 xl:gap-10 ">
             <div className="hidden font-medium text-gray-300 cursor-default select-none lg:block">
@@ -228,9 +228,13 @@ const HomeNav = () => {
             <IoMdMail />
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
+};
+
+HomeNav.defaultProps = {
+  option: true,
 };
 
 export default HomeNav;

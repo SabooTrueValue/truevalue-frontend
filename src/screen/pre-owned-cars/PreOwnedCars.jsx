@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import HomeNav from "../homepage/HomeNav";
 
 export const PreOwnedCars = () => {
   return (
-    <div>PreOwnedCars</div>
-  )
-}
+    <>
+      <HomeNav option={false} />
+    </>
+  );
+};

@@ -7,7 +7,7 @@ const Finance = () => {
   const [selected, setSelected] = useState(1);
   return (
     <div className="scroll-smooth">
-      <HomeNav />
+      <HomeNav option={true} />
       <section className="overflow-hidden">
         <div className="relative">
           <img src={HeroImage} alt="" srcSet="" className="w-full" />

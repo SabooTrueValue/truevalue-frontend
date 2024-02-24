@@ -47,7 +47,7 @@ const HowWorks = () => {
   ];
 
   return (
-    <div className="container px-1 py-10 mx-auto lg:py-16">
+    <div className="container px-1 pt-10 mx-auto lg:pt-16">
       <div className="pb-10">
         <HeadingComponent title="How Saboo TrueValue Works" />
         <p className="mb-6 text-center">
