@@ -6,7 +6,7 @@ import HomeNav from "../homepage/HomeNav";
 const FindACar = () => {
   return (
     <>
-      <HomeNav />
+      <HomeNav option={false} />
       <div className="mx-auto xl:container">
         <SearchPanel />
         <div className="flex gap-4 mb-10">
