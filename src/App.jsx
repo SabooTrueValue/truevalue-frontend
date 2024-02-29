@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Homepage from "./screen/homepage/Homepage";
 import { AboutUs } from "./screen/about-us/AboutUs";
-import { PreOwnedCars } from "./screen/pre-owned-cars/PreOwnedCars";
 import { SellYourCar } from "./screen/sell-your-car/SellYourCar";
 import FAQs from "./screen/more-links/FAQs";
 import { Blogs } from "./screen/more-links/Blogs";

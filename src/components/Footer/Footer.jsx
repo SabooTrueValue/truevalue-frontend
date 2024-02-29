@@ -9,7 +9,7 @@ import cityLineDesktop from "../../assets/homepage/city-line-desktop.svg";
 
 export const Footer = () => {
   return (
-    <div className="relative">
+    <div className="relative -mt-4">
       {/* Background SVG */}
 
       <div className="absolute inset-0 -z-10 top-4 bg-truevalue"></div>
@@ -27,13 +27,13 @@ export const Footer = () => {
         <footer className="z-10 grid grid-cols-2 gap-6 px-1 text-white md:grid-cols-3 xl:grid-cols-5">
           <div className="col-span-2 md:col-span-3 xl:col-span-2">
             <img
-              src={require("../../assets/homepage/logo-white.png")}
+              src={require("../../assets/logo/logo-white.png")}
               alt=""
               srcSet=""
               className="h-12 pb-4 mx-auto lg:h-14 lg:mx-0"
             />
             <p className="pr-4 text-justify">
-              Saboo Truevalue is the most trusted way of buying and selling used
+              Saboo True Value is the most trusted way of buying and selling used
               cars. Choose from over 1000 fully inspected second-hand car
               models. Select online and delivered to your home or visit nearest
               Saboo Truevalue outlet. Get a no-questions-asked 5-day money back

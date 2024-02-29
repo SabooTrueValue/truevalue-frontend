@@ -86,7 +86,7 @@ const Benefits = () => {
 
   return (
     <div className="container pt-10 mx-auto lg:pt-20">
-      <HeadingComponent title="Saboo TrueValue Assured® Benefits" />
+      <HeadingComponent title="Saboo True Value Assured® Benefits" />
       <p className="mb-10 text-center">
         Stay up to date with all of the latest vehicles and offers with Saboo
         RKS TrueValue

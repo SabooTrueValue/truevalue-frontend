@@ -9,15 +9,15 @@ import { Link } from "react-router-dom";
 const HomeNav = ({option}) => {
   return (
     <div className={`sticky top-0 z-40`}>
-      <div className={`bg-white shadow-2xl `}>
+      <div className={`bg-white border-b`}>
         <div className="flex justify-between px-1 py-3 lg:mx-auto lg:container">
           <div className="flex items-center w-full gap-4 xl:gap-10 xl:w-1/2 ">
-            <Link to="/" className="px-4 py-2 rounded bg-truevalue">
+            <Link to="/" className="px-4 py-2 rounded ">
               <img
-                src={require("../../assets/homepage/logo-white.png")}
+                src={require("../../assets/logo/saboo rks truevalue.png")}
                 alt=""
                 srcSet=""
-                className="h-10 "
+                className="h-10 w-44 "
               />
             </Link>
             <div className="relative mr-4 min-w-10 xl:w-full">
@@ -79,7 +79,7 @@ const HomeNav = ({option}) => {
                     <div className="">Contact Us</div>
                   </Link>
                   <Link to="/used-cars-terms-conditions">
-                    <div className="">Terms & Conditio s</div>
+                    <div className="">Terms & Conditions</div>
                   </Link>
                 </div>
               </div>
