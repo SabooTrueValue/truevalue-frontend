@@ -93,7 +93,7 @@ const Benefits = () => {
       </p>
       {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div className="shadow-xl rounded-xl ">
-          <img src="" alt="" srcSet="" />
+          <img src="" alt=""  />
           <h4 className="mb-2">f</h4>
           <p></p>
         </div>

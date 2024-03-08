@@ -8,14 +8,14 @@ export const AboutUs = () => {
       <img
         src={require("../../assets/about-us/Maruti-Suzuki-TrueValue-Showrrom.jpg")}
         alt=""
-        srcSet=""
+        
       />
       <div className="container pb-10 mx-auto space-y-4">
         {" "}
         <img
           src={require("../../assets/about-us/Truevalue-About-us-Banner.jpg")}
           alt=""
-          srcSet=""
+          
           className="mb-10 -mt-10 rounded-2xl drop-shadow-2xl"
         />
         <p>

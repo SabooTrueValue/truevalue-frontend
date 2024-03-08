@@ -8,7 +8,7 @@ export const SellYourCar = () => {
   const [open, setOpen] = useState(true);
   return (
     <div className="bg-blue-100">
-      <div className="flex h-screen gap-2 p-2 overflow-hidden duration-200 ">
+      <div className="flex min-h-screen gap-2 p-2 overflow-hidden duration-200 ">
         <div className={`${!open ? "hidden " : "block"} w-[300px]`}>
           <DashboardSidePanel setSelected={setSelected} open={open} />
         </div>

@@ -641,7 +641,7 @@ const FuelTypeFilter = () => {
 //             onClick={() => handleSelect(x.title)}
 //           >
 //             <div className="flex items-end justify-center mb-2 h-14 ">
-//               <img src={x.img2} alt="" srcSet="" className="px-1" />
+//               <img src={x.img2} alt=""  className="px-1" />
 //             </div>
 //             <div className="text-sm">{x.title}</div>
 //             {isSelected && (
@@ -649,7 +649,7 @@ const FuelTypeFilter = () => {
 //                 <img
 //                   src={require("../../assets/Find Car/ionic-ios-checkmark-circle-outline.png")}
 //                   alt=""
-//                   srcSet=""
+//                   
 //                 />
 //               </div>
 //             )}
@@ -728,7 +728,7 @@ const ColourFilter = () => {
                 <img
                   src={require("../../assets/Home/ionic-ios-checkmark-circle-outline.png")}
                   alt=""
-                  srcSet=""
+                  
                 />
               </div>
             )} 
@@ -887,7 +887,7 @@ const ColourFilter = () => {
           <img
             src={require("../../assets/pre-owned-car/otherColor.png")}
             alt=""
-            srcSet=""
+            
             className="w-full h-full"
           />
         </div>

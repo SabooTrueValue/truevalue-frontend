@@ -16,35 +16,40 @@ import CarDetails from "./screen/details/CarDetails";
 
 function App() {
   const { pathname } = useLocation();
+
+  const isAdminRoute = pathname === "/sell-your-car";
+  // || pathname === "/dashboard";
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   return (
     <>
-    <Routes>
-      <Route exact path="/" element={<Homepage />} />
-      <Route exact path="/about-us" element={<AboutUs />} />
-      <Route exact path="/finance" element={<Finance />} />
-      <Route exact path="/buy-used-cars" element={<FindACar />} />
-      <Route exact path="/sell-your-car" element={<SellYourCar />} />
-      <Route exact path="/used-car-blog" element={<Blogs />} />
-      <Route exact path="/car-details" element={<CarDetails />} />
-      <Route exact path="/used-car-outlets" element={<Outlets />} />
-      <Route exact path="/used-car-faqs" element={<FAQs />} />
-      <Route
-        exact
-        path="/contact-preowned-car-dealer"
-        element={<ContactUs />}
-      />
-      <Route
-        exact
-        path="/used-cars-terms-conditions"
-        element={<TermsAndConditions />}
-      />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
-    <Footer />
+      <Routes>
+        <Route exact path="/" element={<Homepage />} />
+        <Route exact path="/about-us" element={<AboutUs />} />
+        <Route exact path="/finance" element={<Finance />} />
+        <Route exact path="/buy-used-cars" element={<FindACar />} />
+        <Route exact path="/sell-your-car" element={<SellYourCar />} />
+        <Route exact path="/used-car-blog" element={<Blogs />} />
+        <Route exact path="/car-details" element={<CarDetails />} />
+        <Route exact path="/used-car-outlets" element={<Outlets />} />
+        <Route exact path="/used-car-faqs" element={<FAQs />} />
+        <Route
+          exact
+          path="/contact-preowned-car-dealer"
+          element={<ContactUs />}
+        />
+        <Route
+          exact
+          path="/used-cars-terms-conditions"
+          element={<TermsAndConditions />}
+        />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+
+      {!isAdminRoute && <Footer />}
     </>
   );
 }

@@ -68,7 +68,7 @@ const HomepageContactUs = () => {
           <img
             src={require("../../assets/homepage/rkr-img.webp")}
             alt=""
-            srcSet=""
+            
             className="h-40 mx-auto w-min lg:mx-0"
           />
         </div>

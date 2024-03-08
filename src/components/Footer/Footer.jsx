@@ -29,7 +29,7 @@ export const Footer = () => {
             <img
               src={require("../../assets/logo/logo-white.png")}
               alt=""
-              srcSet=""
+              
               className="h-12 pb-4 mx-auto lg:h-14 lg:mx-0"
             />
             <p className="pr-4 text-justify">

@@ -16,7 +16,7 @@ const HomeNav = ({option}) => {
               <img
                 src={require("../../assets/logo/saboo rks truevalue.png")}
                 alt=""
-                srcSet=""
+                
                 className="h-10 w-44 "
               />
             </Link>

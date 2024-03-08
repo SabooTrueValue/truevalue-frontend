@@ -20,7 +20,7 @@ const HeroSection = () => {
           {/* <img
             src={img1}
             alt=""
-            srcset=""
+            
             className="w-full h-full group-hover:hidden"
           /> */}
           <Link to="/buy-used-cars">
@@ -48,7 +48,7 @@ const HeroSection = () => {
           {/* <img
             src={img2}
             alt=""
-            srcset=""
+            
             className="w-full h-full group-hover:hidden hover:bg-[url(https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/Home-Page-Banner-Image.webp)]"
           /> */}
           <Link to="/sell-your-car"> <div className={`container absolute p-10 mx-auto bottom-3 left-6  `}>

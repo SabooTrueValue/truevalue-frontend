@@ -10,7 +10,7 @@ const Finance = () => {
       <HomeNav option={true} />
       <section className="overflow-hidden">
         <div className="relative">
-          <img src={HeroImage} alt="" srcSet="" className="w-full" />
+          <img src={HeroImage} alt=""  className="w-full" />
           <div className="container absolute mx-auto text-white top-1/3 left-32">
             <div className="mb-4 text-5xl">
               Financing <br /> made easy
