@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import PostAVehicleDash from "./dashboard/PostAVehicleDash";
-import ImageUpload from "./dashboard/ImageUpload";
+import PostAVehicleDash from "./dashboard compoents/PostAVehicleDash";
+import ImageUpload from "./dashboard compoents/ImageUpload";
+import ContactUs from "./dashboard compoents/ContactUsEnq";
+import FinanceEnq from "./dashboard compoents/FinanceEnq";
+import PopupEnq from "./dashboard compoents/PopupEnq";
+import SellVehicleEnq from "./dashboard compoents/SellVehicleEnq";
+import BuyVehicleEnq from "./dashboard compoents/BuyVehicleEnq";
 
 const MainPanel = ({ selected }) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -25,18 +30,17 @@ const MainPanel = ({ selected }) => {
                   Upload Images
                 </h4>
                 <ImageUpload setCurrentTab={setCurrentTab} />
-                
               </div>
             )}
           </div>
         </div>
       )}
       {selected === 2 && manageVehicles()}
-      {selected === 3 && buyVehicle()}
-      {selected === 4 && sellVehicle()}
-      {selected === 5 && popup()}
-      {selected === 6 && contactUs()}
-      {selected === 7 && finance()}
+      {selected === 3 && <BuyVehicleEnq />}
+      {selected === 4 && <SellVehicleEnq />}
+      {selected === 5 && <PopupEnq />}
+      {selected === 6 && <ContactUs />}
+      {selected === 7 && <FinanceEnq />}
     </div>
   );
 };
@@ -67,62 +71,3 @@ const manageVehicles = () => {
   );
 };
 
-const buyVehicle = () => {
-  return (
-    <div>
-      <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-truevalue">
-          Buy Vehicle
-        </h4>
-      </div>
-    </div>
-  );
-};
-
-const sellVehicle = () => {
-  return (
-    <div>
-      <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-truevalue">
-          Sell Vehicle
-        </h4>
-      </div>
-    </div>
-  );
-};
-
-const popup = () => {
-  return (
-    <div>
-      <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-truevalue">
-          Popup
-        </h4>
-      </div>
-    </div>
-  );
-};
-
-const contactUs = () => {
-  return (
-    <div>
-      <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-truevalue">
-          Contact us
-        </h4>
-      </div>
-    </div>
-  );
-};
-
-const finance = () => {
-  return (
-    <div>
-      <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-truevalue">
-          Finance
-        </h4>
-      </div>
-    </div>
-  );
-};

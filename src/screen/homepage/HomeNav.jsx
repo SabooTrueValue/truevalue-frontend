@@ -234,7 +234,7 @@ const HomeNav = ({option}) => {
 };
 
 HomeNav.defaultProps = {
-  option: true,
+  option: false,
 };
 
 export default HomeNav;

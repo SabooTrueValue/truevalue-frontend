@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import HomeNav from "../homepage/HomeNav";
 
 const FAQs = () => {
   return (
-    <div>FAQs</div>
-  )
-}
+    <div>
+      <HomeNav />
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="text-4xl">FAQ</h1>
+      </div>
+    </div>
+  );
+};
 
-export default FAQs
+export default FAQs;

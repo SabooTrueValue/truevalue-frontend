@@ -4,7 +4,7 @@ import HomeNav from "../homepage/HomeNav";
 export const AboutUs = () => {
   return (
     <div>
-      <HomeNav option={true} />
+      <HomeNav  />
       <img
         src={require("../../assets/about-us/Maruti-Suzuki-TrueValue-Showrrom.jpg")}
         alt=""

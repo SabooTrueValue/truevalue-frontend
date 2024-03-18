@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Homepage from "./screen/homepage/Homepage";
 import { AboutUs } from "./screen/about-us/AboutUs";
-import { SellYourCar } from "./screen/sell-your-car/SellYourCar";
 import FAQs from "./screen/more-links/FAQs";
 import { Blogs } from "./screen/more-links/Blogs";
 import { Outlets } from "./screen/more-links/Outlets";
@@ -13,11 +12,13 @@ import { Footer } from "./components/Footer/Footer";
 import Finance from "./screen/finance/Finance";
 import FindACar from "./screen/pre-owned-cars/FindACar";
 import CarDetails from "./screen/details/CarDetails";
+import SellYourCar from "./screen/sell-your-car/SellYourCar";
+import { DashboardHomepag } from "./screen/dashboard/DashboardHomepag";
 
 function App() {
   const { pathname } = useLocation();
 
-  const isAdminRoute = pathname === "/sell-your-car";
+  const isAdminRoute = pathname === "/dashboard";
   // || pathname === "/dashboard";
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/car-details" element={<CarDetails />} />
         <Route exact path="/used-car-outlets" element={<Outlets />} />
         <Route exact path="/used-car-faqs" element={<FAQs />} />
+        <Route exact path="/dashboard" element={<DashboardHomepag />} />
         <Route
           exact
           path="/contact-preowned-car-dealer"
