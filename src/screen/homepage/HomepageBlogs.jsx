@@ -65,9 +65,9 @@ const HomepageBlogs = () => {
       </div> */}
       <div className="container mx-auto mb-10 overflow-visible select-none">
         <Swiper
-          // pagination={{
-          //   type: "fraction",
-          // }}
+          pagination={{
+            dynamicBullets: true,
+          }}
           // loop={true}
           navigation={{
             nextEl: navigationNextRef.current,
@@ -104,11 +104,11 @@ const HomepageBlogs = () => {
           {" "}
           <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe] "
+              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#2B3395] border-dashed hover:border-[#002efe] "
               // onClick={() => setIsTrue(!isTrue)}
               ref={navigationPrevRef}
             >
-              <BsArrowLeft className="text-2xl duration-500 translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />
+              <BsArrowLeft className="text-2xl duration-500 translate-x-4 group-hover:translate-x-0 text-[#2B3395] xl:text-3xl hover:text-white" />
             </div>
             {/* <div
           ref={navigationPrevRef}
@@ -117,26 +117,27 @@ const HomepageBlogs = () => {
           <AiOutlineArrowLeft />
         </div> */}
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe]"
+              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#2B3395] border-dashed hover:border-[#002efe]"
               ref={navigationNextRef}
             >
-              <BsArrowLeft className="text-2xl duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />
+              <BsArrowLeft className="text-2xl duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 text-[#2B3395] xl:text-3xl hover:text-white" />
             </div>
           </div>
           {blogsData.map((x, i) => {
             return (
-              <SwiperSlide
-                key={i}
-                className="overflow-hidden "
-              >
+              <SwiperSlide key={i} className="overflow-hidden ">
                 <div className="flex flex-col justify-between overflow-hidden bg-[#FCFCFE] duration-200 h-full  rounded-xl group border hover:border-[#2B3395]  ">
                   <div className="">
                     <img src={x.img} alt={x.title} />
                   </div>
 
                   <div className="p-4 my-auto space-y-3 text-left lg:p-6">
-                    <div className="mb-4 font-bold text-justify lg:h-20">{x.title}</div>
-                    <div className="pb-6 text-justify lg:h-20 xl:h-24">{x.body}</div>
+                    <div className="mb-4 font-bold text-justify lg:h-20">
+                      {x.title}
+                    </div>
+                    <div className="pb-6 text-justify lg:h-28 ">
+                      {x.body}
+                    </div>
                     <button className="py-2 group-hover:bg-truevalue group-hover:text-white border border-[#2B3395] hover:border-white rounded-full text-sm px-8 duration-200 group-hover:shadow-lg w-full">
                       Explore
                     </button>

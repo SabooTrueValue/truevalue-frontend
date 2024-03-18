@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import HomeNav from "../homepage/HomeNav";
 
 const CarDetails = () => {
   return (
-    <div>CarDetails</div>
-  )
-}
+    <div>
+      <HomeNav option={false} />
+      <div>
+        <h4 className="container h-screen pb-4 mx-auto text-xl font-bold uppercase text-truevalue ">
+          Car Details
+        </h4>
+      </div>
+    </div>
+  );
+};
 
-export default CarDetails
+export default CarDetails;

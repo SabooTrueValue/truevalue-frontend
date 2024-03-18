@@ -1,8 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeadingComponent from "../../components/Other/HeadingComponent";
-
-import { BsArrowLeft } from "react-icons/bs";
 
 // Import Swiper styles
 import "swiper/css";
@@ -10,7 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 const Benefits = () => {
   const benefitsData = [
@@ -33,6 +31,15 @@ const Benefits = () => {
         img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Service-Warranty.jpg"),
         title: "We Stand Behind Every Car We Sell.",
       },
+      {
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Testimonials.jpg"),
+        title: "Hassle Free Documentation To Ensure Peace Of Mind",
+      },
+
+      {
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Warranty-Cars.jpg"),
+        title: "Enusring A Trusted Buying Experience At Every Step",
+      },
     ],
     [
       {
@@ -54,18 +61,6 @@ const Benefits = () => {
         title:
           "Embrace The Feeling Of Trust By Sharing Your Journey Of Trust With Us",
       },
-    ],
-    [
-      {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Testimonials.jpg"),
-        title: "Hassle Free Documentation To Ensure Peace Of Mind",
-      },
-
-      {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Warranty-Cars.jpg"),
-        title: "Enusring A Trusted Buying Experience At Every Step",
-      },
-
       {
         img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Happy-Clients.jpg"),
         title: "Stay Tuned To Meet The New Face Of Trust",
@@ -77,15 +72,12 @@ const Benefits = () => {
       },
     ],
   ];
-  const navigationPrevRef1 = useRef(null);
-  const navigationNextRef1 = useRef(null);
-  const navigationPrevRef2 = useRef(null);
-  const navigationNextRef2 = useRef(null);
-  const navigationPrevRef3 = useRef(null);
-  const navigationNextRef3 = useRef(null);
+
+  // const navigationPrevRef3 = useRef(null);
+  // const navigationNextRef3 = useRef(null);
 
   return (
-    <div className="container pt-10 mx-auto lg:pt-20">
+    <div className="pt-10 lg:pt-20">
       <HeadingComponent title="Saboo True Value Assured® Benefits" />
       <p className="mb-10 text-center">
         Stay up to date with all of the latest vehicles and offers with Saboo
@@ -98,24 +90,26 @@ const Benefits = () => {
           <p></p>
         </div>
       </div> */}
-      <div className="container mx-auto mb-10 overflow-visible select-none">
+      <div className="mb-2 overflow-visible select-none">
         <Swiper
           // pagination={{
           //   type: "fraction",
           // }}
           loop={true}
-          navigation={{
-            nextEl: navigationNextRef1.current,
-            prevEl: navigationPrevRef1.current,
-          }}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = navigationPrevRef1.current;
-            swiper.params.navigation.nextEl = navigationNextRef1.current;
-          }}
+          // navigation={{
+          //   nextEl: navigationNextRef1.current,
+          //   prevEl: navigationPrevRef1.current,
+          // }}
+          // onBeforeInit={(swiper) => {
+          //   swiper.params.navigation.prevEl = navigationPrevRef1.current;
+          //   swiper.params.navigation.nextEl = navigationNextRef1.current;
+          // }}
           autoplay={{
-            delay: 3600,
+            delay: 0,
             disableOnInteraction: false,
           }}
+          draggable={false}
+          speed={8000}
           breakpoints={{
             640: {
               slidesPerView: 1,
@@ -133,11 +127,10 @@ const Benefits = () => {
               spaceBetween: 20,
             },
           }}
-          modules={[Pagination, Navigation, Autoplay]}
+          modules={[Autoplay]}
           className="relative overflow-visible mySwiper"
         >
-          {" "}
-          <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
+          {/* <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
             <div
               className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe] "
               // onClick={() => setIsTrue(!isTrue)}
@@ -145,49 +138,43 @@ const Benefits = () => {
             >
               <BsArrowLeft className="text-2xl duration-500 translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />
             </div>
-            {/* <div
-          ref={navigationPrevRef}
-          className=" p-1.5 sm:p-2 cursor-pointer font-bold text-2xl hover:text-[#0cf2b4] hover:scale-125"
-        >
-          <AiOutlineArrowLeft />
-        </div> */}
+           
             <div
               className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe]"
               ref={navigationNextRef1}
             >
               <BsArrowLeft className="text-2xl duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />
             </div>
-          </div>
+          </div> */}
           {benefitsData[0].map((x, i) => {
             return (
               <SwiperSlide key={i} className="">
                 <img
                   src={x.img}
                   alt={x.title}
-                  className="duration-200 shadow cursor-pointer hover:scale-95"
+                  className="shadow max-h-96"
                 />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
-      <div className="container mx-auto mb-10 overflow-visible select-none">
+      <div className="mb-10 overflow-visible select-none ">
         <Swiper
-          // pagination={{
-          //   type: "fraction",
-          // }}
           loop={true}
-          navigation={{
-            nextEl: navigationNextRef2.current,
-            prevEl: navigationPrevRef2.current,
-          }}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = navigationPrevRef2.current;
-            swiper.params.navigation.nextEl = navigationNextRef2.current;
-          }}
+          // navigation={{
+          //   nextEl: navigationNextRef2.current,
+          //   prevEl: navigationPrevRef2.current,
+          // }}
+          // onBeforeInit={(swiper) => {
+          //   swiper.params.navigation.prevEl = navigationPrevRef2.current;
+          //   swiper.params.navigation.nextEl = navigationNextRef2.current;
+          // }}
+          speed={8000}
           autoplay={{
-            delay: 3800,
+            delay: 0,
             disableOnInteraction: false,
+            reverseDirection: true,
           }}
           breakpoints={{
             640: {
@@ -206,49 +193,25 @@ const Benefits = () => {
               spaceBetween: 20,
             },
           }}
-          modules={[Pagination, Navigation, Autoplay]}
+          modules={[Autoplay]}
           className="relative overflow-visible mySwiper"
         >
-          {" "}
-          <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
-            <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe] "
-              // onClick={() => setIsTrue(!isTrue)}
-              ref={navigationPrevRef2}
-            >
-              <BsArrowLeft className="text-2xl duration-500 translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />
-            </div>
-            {/* <div
-          ref={navigationPrevRef}
-          className=" p-1.5 sm:p-2 cursor-pointer font-bold text-2xl hover:text-[#0cf2b4] hover:scale-125"
-        >
-          <AiOutlineArrowLeft />
-        </div> */}
-            <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe]"
-              ref={navigationNextRef2}
-            >
-              <BsArrowLeft className="text-2xl duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />
-            </div>
-          </div>
           {benefitsData[1].map((x, i) => {
             return (
               <SwiperSlide key={i} className="">
                 <img
                   src={x.img}
                   alt={x.title}
-                  className="duration-200 shadow cursor-pointer hover:scale-95"
+                  className="shadow max-h-96 "
                 />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
-      <div className="container mx-auto mb-10 overflow-visible select-none">
+      {/* <div className="container mx-auto mb-10 overflow-visible select-none">
         <Swiper
-          // pagination={{
-          //   type: "fraction",
-          // }}
+         
           loop={true}
           navigation={{
             nextEl: navigationNextRef3.current,
@@ -296,7 +259,7 @@ const Benefits = () => {
           className=" p-1.5 sm:p-2 cursor-pointer font-bold text-2xl hover:text-[#0cf2b4] hover:scale-125"
         >
           <AiOutlineArrowLeft />
-        </div> */}
+        </div>
             <div
               className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe]"
               ref={navigationNextRef3}
@@ -316,7 +279,7 @@ const Benefits = () => {
             );
           })}
         </Swiper>
-      </div>
+      </div> */}
     </div>
   );
 };

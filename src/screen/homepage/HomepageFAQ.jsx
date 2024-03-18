@@ -5,42 +5,41 @@ import HeadingComponent from "../../components/Other/HeadingComponent";
 
 const HomepageFAQ = () => {
   const [clickedIndices, setClickedIndices] = useState([]); // Initialize clicked indices state to an empty array
+
   const data = [
     {
       no: "01",
-      question: "How do I go about consuming the supplements?",
+      question: " Where can I get my car evaluated? ",
       answer:
-        " It’s easy-peasy. Our supplements come in an easy-to-consume powder formula which you can directly have from the stick. A pack of 30 sticks is made for a one month supply. Take one per day for a period  of 90 days. ",
+        " After you submit your details to ‘Request for Evaluation’, you can either go for a doorstep evaluation or get your car evaluated at the nearest True Value outlet.        ",
       answer2: "",
     },
     {
       no: "02",
-      question: "What kind of testing do you do?",
+      question: " What all do you check during a Pre-Owned car evaluation? ",
       answer:
-        "Giving you only the best is at the core of our intentions. To ensure we’re only putting out the highest quality products, each product undergoes stringent checks for ingredients, dosage and precision at our facility. To ensure impartiality, we also conduct third-party testing to ensure our products meet regulatory standards and guidelines.      ",
-      answer2:
-        "Your trust and well-being are of utmost importance to us. That's why we hold ourselves to the highest standards and make testing an integral part of our process. With Nuform, you can have confidence in the quality and consistency of our products.      ",
+        "Maruti Suzuki True Value has an exhaustive check list of 376 quality checkpoints, including thorough inspection of exteriors, interiors, structural damage, and engine for mechanical wear and tear.",
+      answer2: " ",
     },
     {
       no: "03",
-      question: "How long until I see results?",
+      question:
+        " Do I need to pay any additional charges or commissions when getting my car evaluated, or selling to Maruti Suzuki True Value? ",
       answer:
-        "It takes 21 days for any good habit to be formed. But you’ll see the difference in just 10 days with Skin101 but to see its magic in full power, we recommend taking it for 4 weeks.      ",
-      answer2:
-        "You can see “second product” in full-blown action within 4-6 weeks, we recommend you take it for 90 days for everlasting effects.      ",
+        "No, there are no additional charges or commissions when you get your car evaluated or sell it to Maruti Suzuki True Value.        ",
+      answer2: "",
     },
     {
       no: "04",
-      question: "How and when should I take the skin supplement?",
-      answer:
-        "You can gulp the powder before or after food. This hassle free format also helps you take it on the go because we know life is H-E-C-T-I-C!      ",
+      question: "How will you ensure that I am getting the best price? ",
+      answer: " How will you ensure that I am getting the best price?      ",
       answer2: "",
     },
     {
       no: "05",
-      question: " Are your supplements suitable for vegetarians/vegans?    ",
+      question: " How will you ensure that the process is hassle-free? ",
       answer:
-        "Yes! We offer products suitable for vegetarians. You can find this information clearly labeled on our product packaging and website      ",
+        "Once you decide to sell your car to Maruti Suzuki True Value, our professionals evaluate your car as per the defined process. Thereafter, we make the payment in full.        ",
       answer2: "",
     },
   ];
@@ -87,8 +86,8 @@ const HomepageFAQ = () => {
             </div>
 
             {clickedIndices.includes(i) && (
-              <div className="text-[#777777] md:pl-[50px] pb-2 md:pb-4">
-                <p className="pb-2">{x.answer}</p>
+              <div className="text-[#777777] md:pl-[50px] pb-2 md:pb-4 lg:pb-6">
+                <p className="">{x.answer}</p>
                 <p>{x.answer2}</p>
               </div>
             )}
