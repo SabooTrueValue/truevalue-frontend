@@ -198,7 +198,7 @@ export const HomePageEnq = ({ title }) => {
                     required
                     maxLength={35}
                     placeholder="Name"
-                    className="w-full h-10 text-lg  font-sans border-b-2 border-[#2B3395] outline-none  px-0.5 text-center lg:text-left "
+                    className="w-full h-10 text-lg  font-sans border-b-2 border-primary outline-none  px-0.5 text-center lg:text-left "
                   />
                 </div>
 
@@ -223,7 +223,7 @@ export const HomePageEnq = ({ title }) => {
                     autoComplete="off"
                     maxLength={10}
                     placeholder="Mobile Number"
-                    className="w-full text-lg text-center h-10 font-sans border-b-2 border-[#2B3395] outline-none placeholder:text-lg   px-0.5 lg:text-left"
+                    className="w-full text-lg text-center h-10 font-sans border-b-2 border-primary outline-none placeholder:text-lg   px-0.5 lg:text-left"
                   />
                 </div>
                 <div className="relative flex flex-col justify-end ">
@@ -245,7 +245,7 @@ export const HomePageEnq = ({ title }) => {
                     name="email"
                     autoComplete="off"
                     placeholder="Email"
-                    className="w-full text-lg h-10 font-sans border-b-2 border-[#2b3395] outline-none placeholder:text-lg px-0.5 "
+                    className="w-full text-lg h-10 font-sans border-b-2 border-primary outline-none placeholder:text-lg px-0.5 "
                   />
                 </div>
 
@@ -263,7 +263,7 @@ export const HomePageEnq = ({ title }) => {
                   />
                   <Field
                     as="select"
-                    className="w-full h-10 px-0.5 font-sans text-center border-b-2 border-[#2B3395] outline-none placeholder:text-lg placeholder:text-gray-400 lg:text-left"
+                    className="w-full h-10 px-0.5 font-sans text-center border-b-2 border-primary outline-none placeholder:text-lg placeholder:text-gray-400 lg:text-left"
                     name="model"
                     id="model"
                     required
@@ -301,7 +301,7 @@ export const HomePageEnq = ({ title }) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={` px-6 py-2  hover:scale-95 text-white duration-200 mt-4  text-lg rounded-full bg-truevalue `}
+                  className={` px-6 py-2  hover:scale-95 text-white duration-200 mt-4  text-lg rounded-full bg-primary `}
                 >
                   {loading ? (
                     <div className="flex items-center justify-center">

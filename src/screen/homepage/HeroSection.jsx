@@ -25,11 +25,11 @@ const HeroSection = () => {
           /> */}
           <Link to="/buy-used-cars">
             <div className="container absolute p-10 mx-auto bottom-3 left-6 ">
-            <p className="mb-8 text-2xl font-extrabold text-white lg:text-5xl font-anton md:text-3xl">
+              <p className="mb-8 text-2xl font-extrabold text-white lg:text-5xl font-anton md:text-3xl">
                 New Beginnings in a car of your own
               </p>
 
-              <button className="px-10 py-2.5 text-truevalue font-bold rounded bg-white  hover:bg-truevalue hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
+              <button className="px-10 py-2.5 text-primary font-bold rounded bg-white  hover:bg-primary hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
                 BUY CAR
               </button>
             </div>{" "}
@@ -42,7 +42,9 @@ const HeroSection = () => {
         >
           <div
             className={`absolute inset-0  ${
-              isHoverd === 1 ? "lg:backdrop-blur-2xl  bg-gradient-to-t from-[#2b349540] via-[#2b349593]" :" bg-gradient-to-t from-[#2b3495ee] via-[#2b349593]"
+              isHoverd === 1
+                ? "lg:backdrop-blur-2xl  bg-gradient-to-t from-[#2b349540] via-[#2b349593]"
+                : " bg-gradient-to-t from-[#2b3495ee] via-[#2b349593]"
             }`}
           ></div>
           {/* <img
@@ -51,17 +53,21 @@ const HeroSection = () => {
             
             className="w-full h-full group-hover:hidden hover:bg-[url(https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/Home-Page-Banner-Image.webp)]"
           /> */}
-          <Link to="/sell-your-car"> <div className={`container absolute p-10 mx-auto bottom-3 left-6  `}>
-            {/* <div className={`container absolute p-10 mx-auto bottom-3 left-6 ${isHoverd===1 && "blur-2xl" } `}> */}
-            <p className="mb-8 text-2xl font-extrabold text-white lg:text-5xl font-anton md:text-3xl">
-              Sell your car for the best price
-            </p>
-           
-              <button className="px-10 py-2.5 text-truevalue font-bold rounded bg-white hover:bg-truevalue hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
+          <Link to="/sell-your-car">
+            {" "}
+            <div
+              className={`container absolute p-10 mx-auto bottom-3 left-6  `}
+            >
+              {/* <div className={`container absolute p-10 mx-auto bottom-3 left-6 ${isHoverd===1 && "blur-2xl" } `}> */}
+              <p className="mb-8 text-2xl font-extrabold text-white lg:text-5xl font-anton md:text-3xl">
+                Sell your car for the best price
+              </p>
+
+              <button className="px-10 py-2.5 text-primary font-bold rounded bg-white hover:bg-primary hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
                 SELL CAR
               </button>
-           
-          </div> </Link>
+            </div>{" "}
+          </Link>
         </div>
       </div>
     </div>

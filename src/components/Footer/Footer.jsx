@@ -12,7 +12,7 @@ export const Footer = () => {
     <div className="relative -mt-4">
       {/* Background SVG */}
 
-      <div className="absolute inset-0 -z-10 top-4 bg-truevalue"></div>
+      <div className="absolute inset-0 -z-10 top-4 bg-primary"></div>
       <div
         className="absolute inset-0 -z-10 top-10"
         style={{
@@ -29,12 +29,11 @@ export const Footer = () => {
             <img
               src={require("../../assets/logo/logo-white.png")}
               alt=""
-              
               className="h-12 pb-4 mx-auto lg:h-14 lg:mx-0"
             />
             <p className="pr-4 text-justify">
-              Saboo True Value is the most trusted way of buying and selling used
-              cars. Choose from over 1000 fully inspected second-hand car
+              Saboo True Value is the most trusted way of buying and selling
+              used cars. Choose from over 1000 fully inspected second-hand car
               models. Select online and delivered to your home or visit nearest
               Saboo Truevalue outlet. Get a no-questions-asked 5-day money back
               guarantee and a free one-year comprehensive service warranty with

@@ -18,7 +18,7 @@ const MainPanel = ({ selected }) => {
           <div className="">
             {currentTab === 0 && (
               <div>
-                <h4 className="px-4 mt-3 text-xl font-bold uppercase text-truevalue">
+                <h4 className="px-4 mt-3 text-xl font-bold uppercase text-primary">
                   Basic Information
                 </h4>
                 <PostAVehicleDash setCurrentTab={setCurrentTab} />
@@ -26,7 +26,7 @@ const MainPanel = ({ selected }) => {
             )}
             {currentTab === 1 && (
               <div>
-                <h4 className="px-4 mt-3 mb-4 text-xl font-bold uppercase text-truevalue">
+                <h4 className="px-4 mt-3 mb-4 text-xl font-bold uppercase text-primary">
                   Upload Images
                 </h4>
                 <ImageUpload setCurrentTab={setCurrentTab} />
@@ -51,7 +51,7 @@ const dashboard = () => {
   return (
     <div>
       <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-truevalue">
+        <h4 className="pb-4 text-xl font-bold uppercase text-primary">
           Dashboard
         </h4>
       </div>
@@ -63,11 +63,10 @@ const manageVehicles = () => {
   return (
     <div>
       <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-truevalue">
+        <h4 className="pb-4 text-xl font-bold uppercase text-primary">
           Manage Vehicles
         </h4>
       </div>
     </div>
   );
 };
-

@@ -14,6 +14,7 @@ import FindACar from "./screen/pre-owned-cars/FindACar";
 import CarDetails from "./screen/details/CarDetails";
 import SellYourCar from "./screen/sell-your-car/SellYourCar";
 import { DashboardHomepag } from "./screen/dashboard/DashboardHomepag";
+import Popup from "./components/Other/Popup";
 
 function App() {
   const { pathname } = useLocation();
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <>
+    <Popup />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/about-us" element={<AboutUs />} />

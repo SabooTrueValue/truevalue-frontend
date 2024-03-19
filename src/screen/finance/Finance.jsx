@@ -7,10 +7,10 @@ const Finance = () => {
   const [selected, setSelected] = useState(1);
   return (
     <div className="scroll-smooth">
-      <HomeNav  />
+      <HomeNav />
       <section className="overflow-hidden">
         <div className="relative">
-          <img src={HeroImage} alt=""  className="w-full" />
+          <img src={HeroImage} alt="" className="w-full" />
           <div className="container absolute mx-auto text-white top-1/3 left-32">
             <div className="mb-4 text-5xl">
               Financing <br /> made easy
@@ -35,9 +35,7 @@ const Finance = () => {
               window.scrollTo(0, 500);
             }}
             className={`px-6 py-3 mb-6 ${
-              selected === 1
-                ? "bg-truevalue text-white shadow-xl"
-                : "border-2 "
+              selected === 1 ? "bg-primary text-white shadow-xl" : "border-2 "
             }  cursor-pointer   rounded-r-full rounded-bl-full whitespace-nowrap hover:shadow-xl`}
           >
             <span className="text-lg font-semibold ">Loan Eligibility</span>
@@ -49,9 +47,7 @@ const Finance = () => {
               window.scrollTo(0, 500);
             }}
             className={`px-6 py-3 mb-6 ${
-              selected === 2
-                ? "bg-truevalue text-white shadow-xl"
-                : " border-2"
+              selected === 2 ? "bg-primary text-white shadow-xl" : " border-2"
             }  cursor-pointer   rounded-r-full rounded-bl-full whitespace-nowrap   hover:shadow-xl`}
           >
             <span className="text-lg font-semibold ">EMI Calculator</span>
@@ -63,9 +59,7 @@ const Finance = () => {
               window.scrollTo(0, 500);
             }}
             className={`px-6 py-3 mb-6 ${
-              selected === 3
-                ? "bg-truevalue text-white shadow-xl"
-                : "border-2"
+              selected === 3 ? "bg-primary text-white shadow-xl" : "border-2"
             }  cursor-pointer   rounded-r-full rounded-bl-full whitespace-nowrap   hover:shadow-xl`}
           >
             <span className="text-lg font-semibold ">Apply for Loan</span>
@@ -95,7 +89,7 @@ const TabOne = () => {
         <div className="">
           <div className="mb-2 text-xl font-semibold">Car Loan Required</div>
           <div className="flex">
-            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-truevalue">
+            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-primary">
               ₹
             </div>
             <input
@@ -111,7 +105,7 @@ const TabOne = () => {
             Net Income Per Month
           </div>
           <div className="flex">
-            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-truevalue">
+            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-primary">
               ₹
             </div>
             <input
@@ -126,7 +120,7 @@ const TabOne = () => {
             Existing Loan Commitments
           </div>
           <div className="flex">
-            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-truevalue">
+            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-primary">
               ₹
             </div>
             <input
@@ -139,7 +133,7 @@ const TabOne = () => {
         <div>
           <div className="mb-2 text-xl font-semibold ">Rate Of Interest</div>
           <div className="flex">
-            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-truevalue">
+            <div className="flex items-center justify-center w-12 h-12 text-white rounded-l-lg bg-primary">
               %
             </div>
             <input
@@ -158,7 +152,7 @@ const TabOne = () => {
           />
         </div>
         <div className="flex items-end">
-          <div className="w-full px-3 py-3 mt-2 text-xl font-semibold text-center text-white rounded-r-full rounded-bl-full cursor-pointer bg-truevalue">
+          <div className="w-full px-3 py-3 mt-2 text-xl font-semibold text-center text-white rounded-r-full rounded-bl-full cursor-pointer bg-primary">
             Check Eligibility
           </div>
           {/* <input
@@ -245,7 +239,7 @@ const TabTwo = () => {
           <div className="mb-10">
             <div className="flex items-end justify-between mb-2 ">
               <div className="text-xl font-semibold ">Loan Amount</div>
-              <div className="py-1 pr-3 text-right text-white bg-truevalue w-36">
+              <div className="py-1 pr-3 text-right text-white bg-primary w-36">
                 <span className="pr-2 text-sm font-ligh6">₹</span>{" "}
                 <span className="font-bold"> {value1}</span>
                 <span className="pl-2 text-sm font-normal ">Lakhs</span>
@@ -263,7 +257,7 @@ const TabTwo = () => {
           <div className="mb-10">
             <div className="flex items-end justify-between mb-2 ">
               <div className="text-xl font-medium ">Rate of interest (p.a)</div>
-              <div className="py-1 pr-3 font-bold text-right text-white bg-truevalue w-36">
+              <div className="py-1 pr-3 font-bold text-right text-white bg-primary w-36">
                 {value2}
                 <span className="pl-2 text-sm font-normal">%</span>
               </div>
@@ -280,7 +274,7 @@ const TabTwo = () => {
           <div className="mb-6">
             <div className="flex items-end justify-between mb-2 ">
               <div className="text-xl font-semibold ">Loan tenure</div>
-              <div className="py-1 pr-3 font-bold text-right text-white bg-truevalue w-36">
+              <div className="py-1 pr-3 font-bold text-right text-white bg-primary w-36">
                 {value3}
                 <span className="pl-2 text-sm font-normal">Years</span>
               </div>
@@ -299,7 +293,7 @@ const TabTwo = () => {
           </div>
 
           <div
-            className="mb-10 text-right underline cursor-pointer text-truevalue underline-offset-2"
+            className="mb-10 text-right underline cursor-pointer text-primary underline-offset-2"
             onClick={resetValue}
           >
             Refresh
@@ -376,7 +370,7 @@ const TabTwo = () => {
           </div>
           <div className="flex gap-4 mt-10">
             <div className="flex items-center justify-center gap-2 ">
-              <div className="w-8 h-4 rounded-full bg-truevalue"></div>
+              <div className="w-8 h-4 rounded-full bg-primary"></div>
               <div>Principal amount</div>
             </div>
             <div className="flex items-center justify-center gap-2">
@@ -486,7 +480,7 @@ const TabThree = () => {
         <div className="flex items-end mt-4">
           <button
             type="submit"
-            className="w-full px-3 py-3 mt-2 text-xl font-semibold text-center text-white rounded-r-full rounded-bl-full cursor-pointer bg-truevalue"
+            className="w-full px-3 py-3 mt-2 text-xl font-semibold text-center text-white rounded-r-full rounded-bl-full cursor-pointer bg-primary"
           >
             Submit
           </button>

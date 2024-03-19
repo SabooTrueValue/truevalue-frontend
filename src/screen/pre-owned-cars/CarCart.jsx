@@ -173,7 +173,7 @@ const CarCart = () => {
             <Link to="/car-details">
               <div className="relative">
                 <img src={x.img} alt={x.carName} className="w-full" />
-                <div className="bg-truevalue px-4 py-2.5 bg-opacity-50 text-white rounded-tl-xl absolute bottom-0 right-0">
+                <div className="bg-primary px-4 py-2.5 bg-opacity-50 text-white rounded-tl-xl absolute bottom-0 right-0">
                   ₹ {x.price}
                 </div>
                 <AiFillHeart

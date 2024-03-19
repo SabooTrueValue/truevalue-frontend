@@ -13,7 +13,7 @@ const DashboardSidePanel = ({ setSelected }) => {
 
   return (
     <div
-      className={`w-[300px] bg-truevalue h-full  px-4 text-white py-4 md:block hidden  rounded-xl font-sans text-lg `}
+      className={`w-[300px] bg-primary h-full  px-4 text-white py-4 md:block hidden  rounded-xl font-sans text-lg `}
     >
       <div className="pb-8 ">
         <Link to="/">
@@ -31,7 +31,7 @@ const DashboardSidePanel = ({ setSelected }) => {
             key={i}
             onClick={() => setSelected(i)}
             aria-label={x}
-            className="w-full px-2 py-3 mb-2 font-semibold text-center bg-white border-b text-truevalue rounded-xl"
+            className="w-full px-2 py-3 mb-2 font-semibold text-center bg-white border-b text-primary rounded-xl"
           >
             {x}
           </button>
@@ -44,7 +44,7 @@ const DashboardSidePanel = ({ setSelected }) => {
             key={i}
             aria-label={x}
             onClick={() => setSelected(i + 3)}
-            className="w-full px-2 py-3 mb-2 font-semibold text-center bg-white border-b text-truevalue rounded-xl"
+            className="w-full px-2 py-3 mb-2 font-semibold text-center bg-white border-b text-primary rounded-xl"
           >
             {x}
           </button>

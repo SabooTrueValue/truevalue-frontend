@@ -68,12 +68,12 @@ const HomepageFAQ = () => {
             className={`p-6 duration-200 cursor-pointer  ${
               clickedIndices.includes(i)
                 ? "bg-white  shadow-md  "
-                : " border-b border-[#2b3495ee] "
+                : " border-b border-primary "
             } my-2 `}
           >
             <div className="flex justify-between ">
               <h5 className="text-lg ">
-                <span className="text-[#002efe] pr-6 ">{x.no}. </span>{" "}
+                <span className="pr-6 text-primary ">{x.no}. </span>{" "}
                 {x.question}
               </h5>
               <IoIosArrowDown

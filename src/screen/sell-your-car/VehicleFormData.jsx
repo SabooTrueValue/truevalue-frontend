@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FirebaseStore } from "../../components/context/Firebase";
+// import { FirebaseStore } from "../../components/context/Firebase";
 
 const options = [
   { value: "option-1", label: "Option 1" },
@@ -43,7 +43,7 @@ function VehicleFormData({ setCurrentTab }) {
       // Store the form data in Firestore
       console.log("Submitting form:", values);
       //   console.log("Submitting form:", db)
-    //   await FirebaseStore.collection("form-data").add(values);
+      //   await FirebaseStore.collection("form-data").add(values);
       //   await db.collection("form-data").add(values);
 
       // Reset the form after successful submission
@@ -456,9 +456,8 @@ function VehicleFormData({ setCurrentTab }) {
             </div>
             <div className="flex justify-center">
               <button
-                
                 type="submit"
-                className="text-white bg-truevalue  focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 text-center mr-2 mb-2  "
+                className="text-white bg-primary  focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 text-center mr-2 mb-2  "
               >
                 Next
               </button>

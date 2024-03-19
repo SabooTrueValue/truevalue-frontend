@@ -15,7 +15,9 @@ function PostAVehicleDash({ setCurrentTab }) {
     vehicleStatus: Yup.string().required("Vehicle Status is required"),
     vehicleTitle: Yup.string().required("Vehicle Title is required"),
     vehicleBrand: Yup.string().required("Vehicle Brand is required"),
-    vehicleOverview: Yup.string().required("Vehicle Overview is required").max(500),
+    vehicleOverview: Yup.string()
+      .required("Vehicle Overview is required")
+      .max(500),
     userType: Yup.string().required("User Type is required"),
     vehicleCategory: Yup.string().required("Vehicle Category is required"),
     transmission: Yup.string().required("Transmission is required"),
@@ -456,7 +458,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               <button
                 onClick={() => setCurrentTab(1)}
                 type="submit"
-                className="text-white bg-truevalue  focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 text-center mr-2 mb-2  "
+                className="text-white bg-primary  focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 text-center mr-2 mb-2  "
               >
                 Next
               </button>

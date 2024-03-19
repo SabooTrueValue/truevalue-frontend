@@ -113,18 +113,18 @@ const Benefits = () => {
           breakpoints={{
             640: {
               slidesPerView: 1,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 2,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             1280: {
               slidesPerView: 4,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
           }}
           modules={[Autoplay]}
@@ -132,7 +132,7 @@ const Benefits = () => {
         >
           {/* <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe] "
+              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-primary group border-2 border-[#FF8041] border-dashed hover:border-primary "
               // onClick={() => setIsTrue(!isTrue)}
               ref={navigationPrevRef1}
             >
@@ -140,7 +140,7 @@ const Benefits = () => {
             </div>
            
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe]"
+              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-primary group border-2 border-[#FF8041] border-dashed hover:border-primary"
               ref={navigationNextRef1}
             >
               <BsArrowLeft className="text-2xl duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />
@@ -152,7 +152,7 @@ const Benefits = () => {
                 <img
                   src={x.img}
                   alt={x.title}
-                  className="shadow max-h-96"
+                  className="shadow max-h-[350px]"
                 />
               </SwiperSlide>
             );
@@ -179,18 +179,18 @@ const Benefits = () => {
           breakpoints={{
             640: {
               slidesPerView: 1,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 2,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             1280: {
               slidesPerView: 4,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
           }}
           modules={[Autoplay]}
@@ -202,7 +202,7 @@ const Benefits = () => {
                 <img
                   src={x.img}
                   alt={x.title}
-                  className="shadow max-h-96 "
+                  className="shadow max-h-[350px]"
                 />
               </SwiperSlide>
             );
@@ -248,7 +248,7 @@ const Benefits = () => {
           {" "}
           <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe] "
+              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-primary group border-2 border-[#FF8041] border-dashed hover:border-primary "
               // onClick={() => setIsTrue(!isTrue)}
               ref={navigationPrevRef3}
             >
@@ -261,7 +261,7 @@ const Benefits = () => {
           <AiOutlineArrowLeft />
         </div>
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-[#002efe] group border-2 border-[#FF8041] border-dashed hover:border-[#002efe]"
+              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-primary group border-2 border-[#FF8041] border-dashed hover:border-primary"
               ref={navigationNextRef3}
             >
               <BsArrowLeft className="text-2xl duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 text-[#FF8041] xl:text-3xl hover:text-white" />

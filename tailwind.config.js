@@ -4,20 +4,23 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'oswald': ['Oswald', 'sans-serif'],
-        'protest-riot':['Protest Riot', 'sans-serif'],
-        'anton':['Anton', 'sans-serif']
+        oswald: ["Oswald", "sans-serif"],
+        "protest-riot": ["Protest Riot", "sans-serif"],
+        anton: ["Anton", "sans-serif"],
       },
       textColor: {
-        'truevalue': '#2B3395',
+       
+        primary: "#2B3395",
+
       },
-      backgroundColor: {
-        'truevalue': '#2B3395',
+      colors: {
+        
+        primary: "#2B3395",
       },
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    require("@tailwindcss/typography"),
     // other plugins...
   ],
 };

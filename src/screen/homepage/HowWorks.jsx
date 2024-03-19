@@ -53,7 +53,7 @@ const HowWorks = () => {
         <p className="mb-6 text-center">
           You won't just love our cars, you'll love the way you buy them.
         </p>
-        <h4 className="pb-4 text-xl font-bold text-center uppercase text-truevalue">
+        <h4 className="pb-4 text-xl font-bold text-center uppercase text-primary">
           Owning your car made simple
         </h4>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -61,7 +61,7 @@ const HowWorks = () => {
           {buyingSteps.map((step, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center hover:text-truevalue"
+              className="flex flex-col items-center text-center hover:text-primary"
             >
               <img
                 src={step.src}
@@ -75,7 +75,7 @@ const HowWorks = () => {
         </div>
       </div>
       <div>
-        <h4 className="pb-4 text-xl font-bold text-center uppercase text-truevalue">
+        <h4 className="pb-4 text-xl font-bold text-center uppercase text-primary">
           Selling your car made simple
         </h4>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -83,7 +83,7 @@ const HowWorks = () => {
           {sellingSteps.map((step, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center duration-300 hover:text-truevalue"
+              className="flex flex-col items-center text-center duration-300 hover:text-primary"
             >
               <img
                 src={step.src}

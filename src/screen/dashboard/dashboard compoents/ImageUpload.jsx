@@ -88,7 +88,7 @@ const ImageUpload = ({ setCurrentTab }) => {
                   >
                     Upload Image {index + 1}
                   </label>
-                 
+
                   <input
                     id={`image-${index}`}
                     name={`images.${index}`}
@@ -120,13 +120,13 @@ const ImageUpload = ({ setCurrentTab }) => {
             <div className="flex justify-center gap-4 px-4">
               <button
                 onClick={() => setCurrentTab(0)}
-                className="px-4 py-2 text-white rounded-md bg-truevalue hover:bg-indigo-700"
+                className="px-4 py-2 text-white rounded-md bg-primary hover:bg-indigo-700"
               >
                 Previous
               </button>
               <button
                 onClick={() => setCurrentTab(2)}
-                className="px-4 py-2 text-white rounded-md bg-tr hover:bg-indigo-700 bg-truevalue "
+                className="px-4 py-2 text-white rounded-md bg-tr hover:bg-indigo-700 bg-primary "
               >
                 Next
               </button>

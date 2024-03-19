@@ -6,7 +6,7 @@ const CarDetails = () => {
     <div>
       <HomeNav option={false} />
       <div>
-        <h4 className="container h-screen pb-4 mx-auto text-xl font-bold uppercase text-truevalue ">
+        <h4 className="container h-screen pb-4 mx-auto text-xl font-bold uppercase text-primary ">
           Car Details
         </h4>
       </div>

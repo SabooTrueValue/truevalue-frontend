@@ -23,7 +23,7 @@ const FilteringPanel = () => {
             <PiSlidersLight className="text-2xl" />
             <div className="text-xl uppercase">Filter</div>
           </div>
-          <div className="underline cursor-pointer text-truevalue underline-offset-2 ">
+          <div className="underline cursor-pointer text-primary underline-offset-2 ">
             Clear All
           </div>
         </div>
@@ -206,7 +206,7 @@ const BudgetFilter = () => {
         </div>
         <div
           onClick={resetValues}
-          className="mt-2 underline cursor-pointer text-end underline-offset-2 text-truevalue"
+          className="mt-2 underline cursor-pointer text-end underline-offset-2 text-primary"
         >
           Clear filter
         </div>
@@ -433,7 +433,7 @@ const ModelYearFilter = () => {
         </div>
         <div
           onClick={resetValues}
-          className="mt-2 underline cursor-pointer text-end underline-offset-2 text-truevalue"
+          className="mt-2 underline cursor-pointer text-end underline-offset-2 text-primary"
         >
           Clear filter
         </div>
@@ -481,7 +481,7 @@ const KilometersDrivenFilter = () => {
         </div>
         <div
           onClick={resetValues}
-          className="mt-2 underline cursor-pointer text-end underline-offset-2 text-truevalue"
+          className="mt-2 underline cursor-pointer text-end underline-offset-2 text-primary"
         >
           Clear filter
         </div>
@@ -496,7 +496,7 @@ const KilometersDrivenFilter = () => {
     //     setMaxKM(1000000);
     //     setMinKM(5000);
     //   }}
-    //   className="mt-2 underline cursor-pointer text-end underline-offset-2 text-truevalue"
+    //   className="mt-2 underline cursor-pointer text-end underline-offset-2 text-primary"
     // >
     //   Clear filter
     // </div>
@@ -649,7 +649,7 @@ const FuelTypeFilter = () => {
 //                 <img
 //                   src={require("../../assets/Find Car/ionic-ios-checkmark-circle-outline.png")}
 //                   alt=""
-//                   
+//
 //                 />
 //               </div>
 //             )}
@@ -887,7 +887,6 @@ const ColourFilter = () => {
           <img
             src={require("../../assets/pre-owned-car/otherColor.png")}
             alt=""
-            
             className="w-full h-full"
           />
         </div>

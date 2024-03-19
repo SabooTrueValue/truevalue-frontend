@@ -24,7 +24,7 @@ const Outlets = () => {
             data-aos-duration="500"
             className=" w-full  px-4 text-left py-6 hover:text-white shadow-xl shadow-[#b0b0b0] group duration-500 border-t rounded-3xl relative overflow-hidden"
           >
-            <div className="bg-[#2B3395] h-32 w-36 duration-500 group-hover:h-[200%] group-hover:w-[200%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
+            <div className="bg-primary h-32 w-36 duration-500 group-hover:h-[250%] group-hover:w-[250%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
             <div className="mb-4 text-xl font-medium uppercase ">
               Somajiguda
             </div>
@@ -52,10 +52,8 @@ const Outlets = () => {
             data-aos-duration="500"
             className=" w-full  px-4 text-left py-6 hover:text-white shadow-xl shadow-[#b0b0b0] group duration-500 border-t rounded-3xl relative overflow-hidden"
           >
-            <div className="bg-[#2B3395] h-32 w-36 duration-500 group-hover:h-[200%] group-hover:w-[200%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
-            <div className="mb-4 text-xl font-medium uppercase ">
-              Malakpet
-            </div>
+            <div className="bg-primary h-32 w-36 duration-500 group-hover:h-[250%] group-hover:w-[250%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
+            <div className="mb-4 text-xl font-medium uppercase ">Malakpet</div>
             {/* <div className="mb-2">Jubilee Hills, Hyderabad - 500033</div> */}
             <a
               href="https://www.google.com/maps/place/NEXA/@17.439431,78.398485,14z/data=!4m5!3m4!1s0x0:0x1cb759ff5f828d3!8m2!3d17.4394309!4d78.398485?hl=en"
@@ -80,10 +78,8 @@ const Outlets = () => {
             data-aos-duration="500"
             className=" w-full  px-4 text-left py-6 hover:text-white shadow-xl shadow-[#b0b0b0] group duration-500 border-t rounded-3xl relative overflow-hidden"
           >
-            <div className="bg-[#2B3395] h-32 w-36 duration-500 group-hover:h-[200%] group-hover:w-[200%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
-            <div className="mb-4 text-xl font-medium uppercase ">
-              Kompally
-            </div>
+            <div className="bg-primary h-32 w-36 duration-500 group-hover:h-[250%] group-hover:w-[250%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
+            <div className="mb-4 text-xl font-medium uppercase ">Kompally</div>
             {/* <div className="mb-2">Hafeezpet, Hyderabad - 500049</div> */}
             <a
               href="https://goo.gl/maps/rgoP8TXGQ9b3WvYu8"
@@ -108,9 +104,9 @@ const Outlets = () => {
             data-aos-duration="500"
             className=" w-full  px-4 text-left py-6 hover:text-white shadow-xl shadow-[#b0b0b0] group duration-500 border-t rounded-3xl relative overflow-hidden"
           >
-            <div className="bg-[#2B3395] h-32 w-36 duration-500 group-hover:h-[200%] group-hover:w-[200%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
+            <div className="bg-primary h-32 w-36 duration-500 group-hover:h-[250%] group-hover:w-[250%] group-hover:-top-56 group-hover:-right-56 rounded-full absolute -top-20 -right-20 -z-10"></div>
             <div className="mb-4 text-xl font-medium uppercase ">
-            Kushaiguda
+              Kushaiguda
             </div>
             {/* <div className="mb-2">Hafeezpet, Hyderabad - 500049</div> */}
             <a

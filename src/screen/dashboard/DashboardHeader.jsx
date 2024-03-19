@@ -17,7 +17,7 @@ const DashboardHeader = ({ open, setOpen, selected }) => {
 
   return (
     <div className="">
-      <div className="grid grid-cols-3 p-4 text-white bg-truevalue rounded-xl">
+      <div className="grid grid-cols-3 p-4 text-white bg-primary rounded-xl">
         <div
           className="flex flex-col justify-center text-2xl cursor-pointer"
           onClick={() => setOpen(!open)}
