@@ -1,5 +1,4 @@
 import React from "react";
-import HomeNav from "./Header";
 import Benefits from "./Benefits";
 import FeaturedCars from "./FeaturedCars";
 import HowWorks from "./HowWorks";
@@ -14,7 +13,7 @@ import HomepageContactUs from "./HomepageContactUs";
 const Homepage = () => {
   return (
     <div className="relative" data-scroll-section>
-      <HomeNav option={true} />
+
       <HeroSection />
 
       <HomepageContactUs />

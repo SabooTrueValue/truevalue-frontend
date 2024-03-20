@@ -1,12 +1,11 @@
 import React from "react";
 import FilteringPanel from "./FilteringPanel";
 import CarsSection from "./CarsSection";
-import HomeNav from "../homepage/Header";
 
 const FindACar = () => {
   return (
     <>
-      <HomeNav option={false} />
+
       <div className="mx-auto xl:container">
         <SearchPanel />
         <div className="flex gap-4 mb-10">

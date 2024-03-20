@@ -1,5 +1,4 @@
 import React from "react";
-import HomeNav from "../homepage/Header";
 import VehicleOwnerForm from "./VehicleOwnerForm";
 
 const SellYourCar = () => {
@@ -9,7 +8,7 @@ const SellYourCar = () => {
 
   return (
     <div>
-      <HomeNav />
+  
       {/* {currentTab === 1 && <VehicleFormData setCurrentTab={setCurrentTab} />} */}
       <div
         style={backgroundStyle}

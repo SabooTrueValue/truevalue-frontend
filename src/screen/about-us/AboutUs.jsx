@@ -1,10 +1,7 @@
 import React from "react";
-import HomeNav from "../homepage/Header";
-
 export const AboutUs = () => {
   return (
     <div>
-      <HomeNav />
       <img
         src={require("../../assets/about-us/Maruti-Suzuki-TrueValue-Showrrom.jpg")}
         alt=""

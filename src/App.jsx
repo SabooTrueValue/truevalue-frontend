@@ -15,6 +15,7 @@ import CarDetails from "./screen/details/CarDetails";
 import SellYourCar from "./screen/sell-your-car/SellYourCar";
 import { DashboardHomepag } from "./screen/dashboard/DashboardHomepag";
 import Popup from "./components/Other/Popup";
+import Header from "./screen/homepage/Header";
 
 function App() {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <>
+      {!isAdminRoute && <Header option={pathname === "/" && true} />}
       {!isAdminRoute && <Popup />}
 
       <Routes>

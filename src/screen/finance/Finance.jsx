@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import HeroImage from "../../assets/other/loan-banner.webp";
 import EMISlider from "./EMISlider";
-import HomeNav from "../homepage/Header";
 
 const Finance = () => {
   const [selected, setSelected] = useState(1);
   return (
-    <div className="scroll-smooth">
-      <HomeNav />
+    <div >
       <section className="overflow-hidden">
         <div className="relative">
           <img src={HeroImage} alt="" className="w-full" />
