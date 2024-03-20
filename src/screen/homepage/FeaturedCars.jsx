@@ -132,6 +132,9 @@ function LimitedEditonCarSlider() {
             delay: 4000,
             disableOnInteraction: false,
           }}
+          pagination={{
+            dynamicBullets: true,
+          }}
           loop={true}
           breakpoints={{
             100: {
@@ -156,7 +159,7 @@ function LimitedEditonCarSlider() {
             },
           }}
           modules={[Pagination, Navigation, Autoplay]}
-          className="container pt-10 pl-10 pr-2 mx-auto overflow-hidden bg-transparent mySwiper"
+          className="container pt-10 pl-10 pr-2 mx-auto overflow-hidden bg-transparent mySwiper "
         >
           {/* <div className="h-10"></div> */}
           <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
@@ -184,6 +187,7 @@ function LimitedEditonCarSlider() {
               );
             })}
           </div>
+          <div className="h-4"></div>
         </Swiper>
       </div>
     </>

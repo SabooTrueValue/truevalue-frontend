@@ -1,7 +1,7 @@
 import React from "react";
 import FilteringPanel from "./FilteringPanel";
 import CarsSection from "./CarsSection";
-import HomeNav from "../homepage/HomeNav";
+import HomeNav from "../homepage/Header";
 
 const FindACar = () => {
   return (

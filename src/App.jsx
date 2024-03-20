@@ -28,7 +28,8 @@ function App() {
 
   return (
     <>
-    <Popup />
+      {!isAdminRoute && <Popup />}
+
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/about-us" element={<AboutUs />} />

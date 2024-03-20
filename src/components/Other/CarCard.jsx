@@ -23,14 +23,14 @@ const CarCard = ({ carData }) => {
 
   return (
     <div className="group">
-      <div className="flex flex-col justify-center w-full text-white border group bg-primary rounded-xl">
+      <div className="flex flex-col justify-center w-full duration-200 border group rounded-xl text-primary border-primary ">
         <div className="relative overflow-hidden rounded-t-xl">
           <Link to="/car-details" className="overflow-hidden">
             <img
               src={carData.img}
               alt=""
               srcSet=""
-              className="w-full mx-auto transition-transform duration-500 rounded-t-xl group-hover:scale-105 transform-gpu"
+              className="w-full mx-auto transition-transform duration-500 rounded-t-xl lg:group-hover:scale-105 transform-gpu"
             />
           </Link>
         </div>
@@ -40,7 +40,7 @@ const CarCard = ({ carData }) => {
             {carData.title} - {carData.year}
           </div>
 
-          <div className="mb-2 text-[#cbcbcb] text-sm">
+          <div className="mb-2 text-sm">
             <span>{carData.killometerDriven} Km</span> |{" "}
             <span>
               {carData.type} | {carData.detail}
@@ -50,16 +50,17 @@ const CarCard = ({ carData }) => {
             <p>
               ₹ <span className="text-xl font-bold ">{carData.price} Lakh</span>
             </p>
-            <p className="text-[#cbcbcb] text-sm">From ₹{calculateEMI()}/m</p>
+            <p className="text-sm ">From ₹{calculateEMI()}/m</p>
           </div>
-          <div className="flex justify-between border-t border-[#797979] py-2">
-            <Link to="/car-details" className="flex gap-2 text-lg group ">
+
+          <div className="flex justify-between border-t border-[#797979] py-2 ">
+            <Link to="/car-details" className="flex items-center gap-2 text-lg group">
               Buy Now{" "}
-              <p className="font-bold transition duration-500 group-hover:translate-x-2">
-                &rarr;
+              <p className="invisible text-sm font-bold transition duration-500 rounded-full group-hover:translate-x-2 group-hover:visible ">
+                &#12297;
               </p>
             </Link>{" "}
-            <div className="flex items-center gap-2 text-sm font-bold bottom-2 right-3 text-[#cbcbcb]">
+            <div className="flex items-center gap-2 text-sm font-bold bottom-2 right-3 ">
               <FaLocationDot />
               <p className="">{carData.location}</p>
             </div>

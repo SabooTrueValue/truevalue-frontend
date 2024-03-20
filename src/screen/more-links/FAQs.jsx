@@ -1,5 +1,5 @@
 import React from "react";
-import HomeNav from "../homepage/HomeNav";
+import HomeNav from "../homepage/Header";
 
 const FAQs = () => {
   return (

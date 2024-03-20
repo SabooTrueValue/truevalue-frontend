@@ -52,7 +52,7 @@ const columns = [
   }),
   columnHelper.accessor("country", {
     header: "Country",
-    size: 220,
+    size: 120,
   }),
 ];
 

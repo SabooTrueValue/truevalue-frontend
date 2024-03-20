@@ -1,323 +1,198 @@
 import React from "react";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-// import { FirebaseStore } from "../../components/context/Firebase";
 
-const options = [
-  { value: "option-1", label: "Option 1" },
-  { value: "option-2", label: "Option 2" },
-  { value: "option-3", label: "Option 3" },
-];
-
-function VehicleFormData({ setCurrentTab }) {
+const VehicleFormData = () => {
+  // Validation schema using Yup
   const validationSchema = Yup.object().shape({
-    trueValueLocation: Yup.string().required("Truevalue Location is required"),
-    vehicleStatus: Yup.string().required("Vehicle Status is required"),
-    vehicleTitle: Yup.string().required("Vehicle Title is required"),
-    vehicleBrand: Yup.string().required("Vehicle Brand is required"),
-    vehicleOverview: Yup.string()
-      .required("Vehicle Overview is required")
-      .max(500),
-    userType: Yup.string().required("User Type is required"),
-    vehicleCategory: Yup.string().required("Vehicle Category is required"),
-    transmission: Yup.string().required("Transmission is required"),
-    bodyType: Yup.string().required("Body Type is required"),
-    price: Yup.number()
-      .required("Price is required")
-      .positive("Price must be positive"),
-    fuelType: Yup.string().required("Fuel Type is required"),
-    modelYear: Yup.number()
-      .required("Model Year is required")
-      .positive("Model Year must be positive"),
-    engineCapacity: Yup.string().required("Engine Capacity is required"),
-    registeredCity: Yup.string().required("Registered City is required"),
-    color: Yup.string().required("Color is required"),
-    registrationNo: Yup.string().required("Registration No is required"),
-    kmDriven: Yup.number()
-      .required("KM Driven is required")
-      .positive("KM Driven must be positive"),
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    mobile: Yup.string()
+      .matches(/^[0-9]+$/, "Must be only digits")
+      .required("Mobile number is required"),
+    brandName: Yup.string().required("Brand name is required"),
+    makeOfYear: Yup.number().required("Make of year is required"),
+    carModel: Yup.string().required("Car model is required"),
+    fuelType: Yup.string().required("Fuel type is required"),
+    carVariant: Yup.string().required("Car variant is required"),
+    ownership: Yup.string().required("Ownership details are required"),
+    kmDriven: Yup.number().required("Kilometers driven is required"),
+    registeredCity: Yup.string().required("Registered city is required"),
+    transmission: Yup.string().required("Transmission type is required"),
+    // Add more validation rules for other fields
   });
 
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    try {
-      // Store the form data in Firestore
-      console.log("Submitting form:", values);
-      //   console.log("Submitting form:", db)
-      //   await FirebaseStore.collection("form-data").add(values);
-      //   await db.collection("form-data").add(values);
+  // Initial form values
+  const initialValues = {
+    name: "",
+    email: "",
+    mobile: "",
+    brandName: "",
+    makeOfYear: "",
+    carModel: "",
+    fuelType: "",
+    carVariant: "",
+    ownership: "",
+    kmDriven: "",
+    registeredCity: "",
+    transmission: "",
+  };
 
-      // Reset the form after successful submission
-      resetForm();
-      alert("Form submitted successfully!");
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("An error occurred while submitting the form.");
-    } finally {
-      setSubmitting(false);
-    }
+  // Submit function
+  const handleSubmit = (values, { setSubmitting }) => {
+    console.log(values);
+    setSubmitting(false); // Set submitting to false to enable button after form submission
   };
 
   return (
     <div className="container px-4 py-10 mx-auto">
       <Formik
-        initialValues={{
-          trueValueLocation: "",
-          vehicleStatus: "",
-          vehicleTitle: "",
-          vehicleBrand: "",
-          vehicleOverview: "",
-          userType: "",
-          vehicleCategory: "",
-          transmission: "",
-          bodyType: "",
-          price: "",
-          fuelType: "",
-          modelYear: "",
-          engineCapacity: "",
-          registeredCity: "",
-          color: "",
-          registrationNo: "",
-          kmDriven: "",
-        }}
+        initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleSubmit, handleChange, values, errors, touched }) => (
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-wrap mb-6 -mx-3 gap-y-4">
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
+        {(formik) => (
+          <Form>
+            {/* Contact Details */}
+            <h4 className="text-xl text-primary lg:text-4xl">
+              Contact Details
+            </h4>
+            <div className="flex flex-wrap mb-6 -mx-3 lg:mb-10">
+              {/* Name Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                 <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="trueValueLocation"
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" name"
                 >
-                  Truevalue Location*
+                  Name*
                 </label>
                 <Field
-                  id="trueValueLocation"
-                  name="trueValueLocation"
-                  as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </Field>
-                <ErrorMessage
-                  name="trueValueLocation"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="vehicleStatus"
-                >
-                  Vehicle Status*
-                </label>
-                <Field
-                  id="vehicleStatus"
-                  name="vehicleStatus"
-                  as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </Field>
-                <ErrorMessage
-                  name="vehicleStatus"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Add other form fields similarly */}
-              {/* Vehicle Title */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="vehicleTitle"
-                >
-                  Vehicle Title*
-                </label>
-                <Field
-                  id="vehicleTitle"
-                  name="vehicleTitle"
+                  id="name"
+                  name="name"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter your name here"
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
                 />
                 <ErrorMessage
-                  name="vehicleTitle"
+                  name="name"
                   component="div"
                   className="text-red-500"
                 />
               </div>
-              {/* Vehicle Brand */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
+              {/* Email Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                 <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="vehicleBrand"
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" email"
                 >
-                  Vehicle Brand*
+                  Email*
                 </label>
                 <Field
-                  id="vehicleBrand"
-                  name="vehicleBrand"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email here " 
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              {/* Mobile Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                <label
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" mobile"
+                >
+                  Mobile*
+                </label>
+                <Field
+                  id="mobile"
+                  name="mobile"
+                  type="tel"
+                  placeholder="Enter your mobile number"
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
+                />
+                <ErrorMessage
+                  name="mobile"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+            </div>
+            <h4 className="text-xl text-primary lg:text-4xl">Car Details</h4>
+            <div className="flex flex-wrap mb-6 -mx-3">
+              {/* Rest of the form fields */}
+              {/* Brand Name Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                <label
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" brandName"
+                >
+                  Brand Name*
+                </label>
+                <Field
+                  id="brandName"
+                  name="brandName"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter brand name eg. Maruti, Hyundai, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
                 />
                 <ErrorMessage
-                  name="vehicleBrand"
+                  name="brandName"
                   component="div"
                   className="text-red-500"
                 />
               </div>
-              {/* Vehicle Overview */}
-              <div className="w-full px-3 mb-6 md:mb-0 lg:w-1/2 min-h-16">
+              {/* Make of Year Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                 <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="vehicleOverview"
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" makeOfYear"
                 >
-                  Vehicle Overview*
+                  Make of Year*
                 </label>
                 <Field
-                  id="vehicleOverview"
-                  name="vehicleOverview"
-                  as="textarea"
-                  rows="2"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 max-h-20"
-                />
-                <ErrorMessage
-                  name="vehicleOverview"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* User Type */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="userType"
-                >
-                  User Type*
-                </label>
-                <Field
-                  id="userType"
-                  name="userType"
-                  as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </Field>
-                <ErrorMessage
-                  name="userType"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Vehicle Category */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="vehicleCategory"
-                >
-                  Vehicle Category*
-                </label>
-                <Field
-                  id="vehicleCategory"
-                  name="vehicleCategory"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-                <ErrorMessage
-                  name="vehicleCategory"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Transmission */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="transmission"
-                >
-                  Transmission*
-                </label>
-                <Field
-                  id="transmission"
-                  name="transmission"
-                  as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </Field>
-                <ErrorMessage
-                  name="transmission"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Body Type */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="bodyType"
-                >
-                  Body Type*
-                </label>
-                <Field
-                  id="bodyType"
-                  name="bodyType"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-                <ErrorMessage
-                  name="bodyType"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Price */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="price"
-                >
-                  Price*
-                </label>
-                <Field
-                  id="price"
-                  name="price"
+                  id="makeOfYear"
+                  name="makeOfYear"
                   type="number"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter make of year eg. 2015, 2016, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
                 />
                 <ErrorMessage
-                  name="price"
+                  name="makeOfYear"
                   component="div"
                   className="text-red-500"
                 />
               </div>
-              {/* Fuel Type */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
+              {/* Car Model Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                 <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="fuelType"
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" carModel"
+                >
+                  Car Model*
+                </label>
+                <Field
+                  id="carModel"
+                  name="carModel"
+                  type="text"
+                  placeholder="Enter car model eg. Swift, i20, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
+                />
+                <ErrorMessage
+                  name="carModel"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              {/* Fuel Type Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                <label
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" fuelType"
                 >
                   Fuel Type*
                 </label>
@@ -325,7 +200,8 @@ function VehicleFormData({ setCurrentTab }) {
                   id="fuelType"
                   name="fuelType"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter fuel type eg. Petrol, Diesel, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
                 />
                 <ErrorMessage
                   name="fuelType"
@@ -333,111 +209,53 @@ function VehicleFormData({ setCurrentTab }) {
                   className="text-red-500"
                 />
               </div>
-              {/* Model Year */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
+              {/* Car Variant Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                 <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="modelYear"
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" carVariant"
                 >
-                  Model Year*
+                  Car Variant*
                 </label>
                 <Field
-                  id="modelYear"
-                  name="modelYear"
-                  type="number"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-                <ErrorMessage
-                  name="modelYear"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Engine Capacity */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="engineCapacity"
-                >
-                  Engine Capacity*
-                </label>
-                <Field
-                  id="engineCapacity"
-                  name="engineCapacity"
+                  id="carVariant"
+                  name="carVariant"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter car variant eg. VDI, VXi, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
                 />
                 <ErrorMessage
-                  name="engineCapacity"
+                  name="carVariant"
                   component="div"
                   className="text-red-500"
                 />
               </div>
-              {/* Registered City */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
+              {/* Ownership Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                 <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="registeredCity"
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" ownership"
                 >
-                  Registered City*
+                  Ownership*
                 </label>
                 <Field
-                  id="registeredCity"
-                  name="registeredCity"
+                  id="ownership"
+                  name="ownership"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter ownership details eg. First, Second, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
                 />
                 <ErrorMessage
-                  name="registeredCity"
+                  name="ownership"
                   component="div"
                   className="text-red-500"
                 />
               </div>
-              {/* Color */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
+              {/* KM Driven Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                 <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="color"
-                >
-                  Color*
-                </label>
-                <Field
-                  id="color"
-                  name="color"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-                <ErrorMessage
-                  name="color"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Registration No */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="registrationNo"
-                >
-                  Registration No*
-                </label>
-                <Field
-                  id="registrationNo"
-                  name="registrationNo"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-                <ErrorMessage
-                  name="registrationNo"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* KM Driven */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="kmDriven"
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" kmDriven"
                 >
                   KM Driven*
                 </label>
@@ -445,7 +263,8 @@ function VehicleFormData({ setCurrentTab }) {
                   id="kmDriven"
                   name="kmDriven"
                   type="number"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter kilometers driven eg. 10000, 20000, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
                 />
                 <ErrorMessage
                   name="kmDriven"
@@ -453,20 +272,65 @@ function VehicleFormData({ setCurrentTab }) {
                   className="text-red-500"
                 />
               </div>
+              {/* Registered City Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                <label
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" registeredCity"
+                >
+                  Registered City*
+                </label>
+                <Field
+                  id="registeredCity"
+                  name="registeredCity"
+                  type="text"
+                  placeholder="Enter registered city eg. Delhi, Mumbai, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
+                />
+                <ErrorMessage
+                  name="registeredCity"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              {/* Transmission Field */}
+              <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                <label
+                  className="block px-2 mt-4 mb-1 font-semibold uppercase lg:mt-6 text-primary"
+                  htmlFor=" transmission"
+                >
+                  Transmission*
+                </label>
+                <Field
+                  id="transmission"
+                  name="transmission"
+                  type="text"
+                  placeholder="Enter transmission type eg. Manual, Automatic, etc."
+                  className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-b-primary"
+                />
+                <ErrorMessage
+                  name="transmission"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
             </div>
-            <div className="flex justify-center">
+
+            {/* Submit Button */}
+            <div className="flex justify-center mt-8">
               <button
                 type="submit"
-                className="text-white bg-primary  focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 text-center mr-2 mb-2  "
+                disabled={formik.isSubmitting || !formik.isValid}
+                className="text-white bg-primary focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg  px-5 lg:px-10 py-2.5 text-center mr-2 mb-2 lg:w-1/3 md:w-1/2 text-lg"
               >
-                Next
+                {formik.isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
-          </form>
+          </Form>
         )}
       </Formik>
     </div>
   );
-}
+};
 
 export default VehicleFormData;

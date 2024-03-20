@@ -7,10 +7,10 @@ export const DashboardHomepag = () => {
   const [selected, setSelected] = useState(1);
   const [open, setOpen] = useState(true);
   return (
-    <div className="bg-blue-100">
-      <div className="flex min-h-screen gap-2 p-2 overflow-hidden duration-200 ">
+    <div className="">
+      <div className="flex min-h-[99.5vh] gap-2 p-2 duration-200 ">
         <div className={`${!open ? "hidden " : "block"} w-[300px]`}>
-          <DashboardSidePanel setSelected={setSelected} open={open} />
+          <DashboardSidePanel setSelected={setSelected} setOpen={setOpen} />
         </div>
         <div className="flex flex-col w-full h-full gap-2">
           <DashboardHeader open={open} setOpen={setOpen} selected={selected} />

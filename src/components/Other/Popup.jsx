@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlinePhone, AiOutlineWhatsApp } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 export default function Popup() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [mobileNumber, setMobileNumber] = useState("");
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [open]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOpen(true);
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleMobileNumberChange = (event) => {
     setMobileNumber(event.target.value);
@@ -23,7 +38,7 @@ export default function Popup() {
               className="fixed inset-0 transition-opacity"
               aria-hidden="true"
             >
-              <div className="absolute inset-0 opacity-40 bg-primary"></div>
+              <div className="absolute inset-0 bg-black opacity-50"></div>
             </div>
 
             <span
@@ -48,10 +63,10 @@ export default function Popup() {
                   <div className="w-full sm:flex sm:items-start">
                     <div className="w-full mt-3 text-center sm:mt-0 sm:text-left">
                       <h3
-                        className="mb-6 text-lg font-bold leading-6 text-center md:text-xl text-primary "
+                        className="mb-6 text-lg font-extrabold leading-6 text-center uppercase lg:text-xl text-primary"
                         id="modal-title"
                       >
-                        Get A Quote/Offer
+                        Get A Quote & New Offer
                       </h3>
                       <div className="mt-2">
                         <input

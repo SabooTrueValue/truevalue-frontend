@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const DashboardSidePanel = ({ setSelected }) => {
+const DashboardSidePanel = ({ setSelected, setOpen }) => {
   const tabs1 = ["Dashboard", "Post A Vehicle", "Manage Vehicles"];
   const tabs2 = [
     "Buy Vehicle",
@@ -13,9 +13,9 @@ const DashboardSidePanel = ({ setSelected }) => {
 
   return (
     <div
-      className={`w-[300px] bg-primary h-full  px-4 text-white py-4 md:block hidden  rounded-xl font-sans text-lg `}
+      className={`w-[300px] bg-primary h-full  px-4 text-white py-4 md:block hidden  rounded-xl font-sans text-lg absolute z-10 border-r lg:static`}
     >
-      <div className="pb-8 ">
+      <div className="flex items-end justify-between pb-8">
         <Link to="/">
           <img
             src={require("../../assets/logo/logo-white.png")}
@@ -23,6 +23,7 @@ const DashboardSidePanel = ({ setSelected }) => {
             className="h-10 "
           />
         </Link>
+        <p onClick={() => setOpen(false)} className="cursor-pointer lg:hidden">Close</p>
       </div>
       <p className="px-2 pb-4 text-xl text-gray-300 ">Main </p>
       {tabs1.map((x, i) => {

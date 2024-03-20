@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import HeroImage from "../../assets/other/loan-banner.webp";
 import EMISlider from "./EMISlider";
-import HomeNav from "../homepage/HomeNav";
+import HomeNav from "../homepage/Header";
 
 const Finance = () => {
   const [selected, setSelected] = useState(1);
