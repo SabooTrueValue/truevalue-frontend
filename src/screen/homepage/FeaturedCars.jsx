@@ -162,9 +162,9 @@ function LimitedEditonCarSlider() {
           className="container pt-10 pl-10 pr-2 mx-auto overflow-hidden bg-transparent mySwiper "
         >
           {/* <div className="h-10"></div> */}
-          <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
+          <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%]   ">
             <div
-              className="flex items-center justify-center w-10 h-10 ml-2 text-white border-2 border-white border-dashed rounded-full cursor-pointer xl:w-12 xl:h-12 hover:bg-primary group hover:border-primary "
+              className="flex items-center justify-center w-10 h-10 ml-2 text-white border-2 border-dashed rounded-full cursor-pointer xl:w-12 xl:h-12 hover:bg-primary group border-primary "
               // onClick={() => setIsTrue(!isTrue)}
               ref={navigationPrevRef}
             >
@@ -172,7 +172,7 @@ function LimitedEditonCarSlider() {
             </div>
 
             <div
-              className="flex items-center justify-center w-10 h-10 mr-2 text-white border-2 border-white border-dashed rounded-full cursor-pointer xl:w-12 xl:h-12 hover:bg-primary group hover:border-primary"
+              className="flex items-center justify-center w-10 h-10 mr-2 text-white border-2 border-dashed rounded-full cursor-pointer xl:w-12 xl:h-12 hover:bg-primary group border-primary"
               ref={navigationNextRef}
             >
               <BsArrowLeft className="text-2xl text-white duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 xl:text-3xl" />

@@ -9,6 +9,7 @@ import HomepageFAQ from "./HomepageFAQ";
 import HeroSection from "./HeroSection";
 import Outlets from "./Outlets";
 import HomepageContactUs from "./HomepageContactUs";
+import ReviewAndRecommendation from "./ReviewAndRecommendation";
 
 const Homepage = () => {
   return (
@@ -23,8 +24,9 @@ const Homepage = () => {
       <HowWorks />
       <Benefits />
       <HomepageBlogs />
-      <Outlets />
+      <ReviewAndRecommendation />
       <HomepageFAQ />
+      <Outlets />
     </div>
   );
 };

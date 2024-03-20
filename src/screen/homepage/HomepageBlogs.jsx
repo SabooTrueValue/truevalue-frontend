@@ -104,7 +104,7 @@ const HomepageBlogs = () => {
           {" "}
           <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full ml-2 cursor-pointer hover:bg-primary group border-2 border-primary border-dashed hover:border-primary "
+              className="flex items-center justify-center w-10 h-10 ml-2 text-white border-2 border-dashed rounded-full cursor-pointer xl:w-12 xl:h-12 hover:bg-primary group border-primary hover:border-primary "
               // onClick={() => setIsTrue(!isTrue)}
               ref={navigationPrevRef}
             >
@@ -117,7 +117,7 @@ const HomepageBlogs = () => {
           <AiOutlineArrowLeft />
         </div> */}
             <div
-              className="flex items-center justify-center w-10 xl:w-12 h-10 xl:h-12 text-white rounded-full mr-2 cursor-pointer hover:bg-primary group border-2 border-primary border-dashed hover:border-primary"
+              className="flex items-center justify-center w-10 h-10 mr-2 text-white border-2 border-dashed rounded-full cursor-pointer xl:w-12 xl:h-12 hover:bg-primary group border-primary hover:border-primary"
               ref={navigationNextRef}
             >
               <BsArrowLeft className="text-2xl duration-500 rotate-180 -translate-x-4 group-hover:translate-x-0 text-primary xl:text-3xl hover:text-white" />

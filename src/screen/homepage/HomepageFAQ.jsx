@@ -57,7 +57,7 @@ const HomepageFAQ = () => {
   };
 
   return (
-    <div className="container pb-20 mx-auto">
+    <div className="container pb-10 mx-auto">
       <HeadingComponent title="Frequently Asked Questions" />
 
       {data.map((x, i) => {
