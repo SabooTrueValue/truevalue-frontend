@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import HeadingComponent from "../../components/Other/HeadingComponent";
 
-export const blogData = [
+ const blogData = [
   {
     img: "https://sabootruevalue.in/assets/img/Buy-and-Sell-Maruti-Suzuki-Preowned-Cars.png",
     title:
@@ -149,7 +148,7 @@ export const Blogs = () => {
   const [selected, setSelected] = useState(0);
   return (
     <div>
-      <img src={require("../../assets/other/blogs_banners.jpg")} alt="" />
+      <img src={require("../../assets/other/blogs_banners.jpg")} alt="Blogs banner" />
       {/* <div className="container py-3 mx-auto">
         <Link to="HOME" className="font-medium ">
           Home{" "}
@@ -162,7 +161,10 @@ export const Blogs = () => {
             NEWS & Social Media Articles
           </div> */}
 
-          <HeadingComponent title=" NEWS & Social Media Articles" />
+      
+          <h1 className="mt-4 mb-8 text-3xl font-bold text-center lg:text-4xl text-primary lg:whitespace-nowrap">
+            NEWS & Social Media Articles
+          </h1>
           <div className="mb-3 text-xl lg:mb-8 md:text-center">
             Stay up to date with the latest activity from your favorite Saboo
             True Value!
