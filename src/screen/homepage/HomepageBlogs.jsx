@@ -15,6 +15,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const HomepageBlogs = () => {
   const blogsData = [
@@ -136,9 +137,11 @@ const HomepageBlogs = () => {
                       {x.title}
                     </div>
                     <div className="pb-6 text-justify lg:h-28 ">{x.body}</div>
-                    <button className="w-full px-8 py-2 text-sm duration-200 border rounded-full group-hover:bg-primary group-hover:text-white border-primary hover:border-white group-hover:shadow-lg">
-                      Explore
-                    </button>
+                    <Link to="/used-car-blog">
+                      <button className="w-full px-8 py-2 text-sm duration-200 border rounded-full group-hover:bg-primary group-hover:text-white border-primary hover:border-white group-hover:shadow-lg">
+                        Explore
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </SwiperSlide>
