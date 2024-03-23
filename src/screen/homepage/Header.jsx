@@ -11,7 +11,7 @@ const Header = ({ option }) => {
   return (
     <div className={`sticky top-0 z-30`}>
       <div className={`bg-primary  text-white ${!option && "shadow-lg"}`}>
-        <div className="flex items-center justify-between px-1 py-3 lg:mx-auto lg:container">
+        <div className="flex items-center justify-between px-1 py-3 lg:py-4 lg:mx-auto lg:container">
           <div className="flex items-center w-full gap-4 xl:gap-10 xl:w-1/2 ">
             <Link to="/" className="px-4 py-2 rounded lg:px-2">
               <img

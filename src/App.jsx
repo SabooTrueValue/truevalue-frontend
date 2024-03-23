@@ -4,7 +4,6 @@ import Homepage from "./screen/homepage/Homepage";
 import { AboutUs } from "./screen/about-us/AboutUs";
 import FAQs from "./screen/more-links/FAQs";
 import { Blogs } from "./screen/more-links/Blogs";
-import { Outlets } from "./screen/more-links/Outlets";
 import { ContactUs } from "./screen/more-links/ContactUs";
 import { TermsAndConditions } from "./screen/more-links/TermsAndConditions";
 import { PageNotFound } from "./screen/page-not-found/PageNotFound";
@@ -16,6 +15,7 @@ import SellYourCar from "./screen/sell-your-car/SellYourCar";
 import { DashboardHomepag } from "./screen/dashboard/DashboardHomepag";
 import Popup from "./components/Other/Popup";
 import Header from "./screen/homepage/Header";
+import Outlets from "./screen/more-links/Outlets";
 
 function App() {
   const { pathname } = useLocation();
