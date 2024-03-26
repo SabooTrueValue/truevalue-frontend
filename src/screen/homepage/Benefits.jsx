@@ -128,7 +128,7 @@ const Benefits = () => {
             },
           }}
           modules={[Autoplay]}
-          className="relative overflow-visible mySwiper"
+          className="relative overflow-visible mySwiper swiper-container-free-mode"
         >
           {/* <div className="absolute z-10 justify-between  w-full gap-4 flex top-[43%] ">
             <div
@@ -194,7 +194,7 @@ const Benefits = () => {
             },
           }}
           modules={[Autoplay]}
-          className="relative overflow-visible mySwiper"
+          className="relative overflow-visible mySwiper swiper-container-free-mode"
         >
           {benefitsData[1].map((x, i) => {
             return (

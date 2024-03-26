@@ -5,7 +5,6 @@ import CarsSection from "./CarsSection";
 const FindACar = () => {
   return (
     <>
-
       <div className="mx-auto xl:container">
         <SearchPanel />
         <div className="flex gap-4 mb-10">
