@@ -16,7 +16,7 @@ export const ContactUs = () => {
         <h3 className="mb-2 text-2xl text-center md:text-3xl text-primary">
           Contact Us
         </h3>
-        <h5 className="mb-3 lg:mb-8 md:text-center ">
+        <h5 className="mb-3 lg:mb-4 md:text-center ">
           Have any questions? Take a look & maybe we can answer them right now.
           If not, write to us at{" "}
           <a
@@ -29,8 +29,8 @@ export const ContactUs = () => {
           </a>
         </h5>
       </div>
-      <div className="container grid gap-4 mx-auto my-10 lg:grid-cols-2">
-        <div>
+      <div className="container grid gap-4 mx-auto mb-10 lg:grid-cols-2">
+        <div className="max-w-xl mx-auto">
           <ContactUsForm />
         </div>
 
