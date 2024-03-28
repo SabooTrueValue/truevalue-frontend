@@ -4,6 +4,9 @@ import * as Yup from "yup";
 import { CgSpinner } from "react-icons/cg";
 import { Toaster, toast } from 'react-hot-toast';
 
+import { collection, addDoc } from "firebase/firestore";
+import { FirebaseStore } from "../../components/context/Firebase";
+
 const ContactUsForm = () => {
   const formik = useFormik({
     initialValues: {
@@ -25,7 +28,16 @@ const ContactUsForm = () => {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         // Simulate form submission delay
-        await new Promise(resolve => setTimeout(resolve, 400));
+       setLoading(true);
+       console.log("Form data", values);
+       const docRef = await addDoc(
+         collection(FirebaseStore, "contact-us"),
+         values
+       );
+     
+       // setCurrentStep(5);
+       console.log("Document written with ID: ", docRef.id);
+       setLoading(false);
         
         // Your actual form submission logic goes here
         // For demonstration purposes, let's display a success message using toast
@@ -50,6 +62,8 @@ const ContactUsForm = () => {
     },
   });
 
+  const [loading, setLoading] = React.useState(false);
+  
   return (
     <div className="">
      
