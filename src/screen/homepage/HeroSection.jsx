@@ -25,7 +25,7 @@ const HeroSection = () => {
           /> */}
           <Link to="/buy-used-cars">
             <div className="container absolute p-10 mx-auto bottom-3 left-6 ">
-              <p className="mb-8 text-2xl font-extrabold text-white lg:text-5xl font-anton md:text-3xl">
+              <p className="mb-8 text-2xl font-bold text-white lg:text-5xl font-anton md:text-3xl">
                 New Beginnings in a car of your own
               </p>
 
@@ -59,7 +59,7 @@ const HeroSection = () => {
               className={`container absolute p-10 mx-auto bottom-3 left-6  `}
             >
               {/* <div className={`container absolute p-10 mx-auto bottom-3 left-6 ${isHoverd===1 && "blur-2xl" } `}> */}
-              <p className="mb-8 text-2xl font-extrabold text-white lg:text-5xl font-anton md:text-3xl">
+              <p className="mb-8 text-2xl font-bold text-white lg:text-5xl font-anton md:text-3xl">
                 Sell your car for the best price
               </p>
 

@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        oswald: ["Oswald", "sans-serif"],
-        "protest-riot": ["Protest Riot", "sans-serif"],
-        anton: ["Anton", "sans-serif"],
+        // oswald: ["Oswald", "sans-serif"],
+        // "protest-riot": ["Protest Riot", "sans-serif"],
+        // anton: ["Anton", "sans-serif"],
       },
       textColor: {
        
@@ -20,7 +20,7 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/typography"),
+    // require("@tailwindcss/typography"),
     // other plugins...
   ],
 };

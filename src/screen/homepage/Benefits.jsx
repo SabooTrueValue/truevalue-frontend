@@ -77,7 +77,7 @@ const Benefits = () => {
   // const navigationNextRef3 = useRef(null);
 
   return (
-    <div className="pt-10 lg:pt-20">
+    <div className="pt-10 overflow-hidden lg:pt-20">
       <HeadingComponent title="Saboo True Value Assured® Benefits" />
       <p className="mb-10 text-center">
         Stay up to date with all of the latest vehicles and offers with Saboo

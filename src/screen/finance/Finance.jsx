@@ -12,7 +12,8 @@ const Finance = () => {
       <section className="overflow-hidden">
         <div className="relative">
           <img src={HeroImage} alt="" className="w-full" />
-          <div className="container mx-auto md:text-white md:absolute top-1/3 md;left-32 px-1 pt-4">
+          <div className="top-0 left-0 w-full px-1 pt-4 md:text-white md:absolute md:h-full">
+          <div className="container flex flex-col justify-center h-full mx-auto my-auto">
             <div className="mb-4 text-5xl">
               Financing <br /> made easy
             </div>
@@ -25,7 +26,7 @@ const Finance = () => {
               without stepping into a dealership.
             </div>
             <div className="font-semibold">Here's how.</div>
-          </div>
+          </div></div>
         </div>
       </section>
       <section className="container flex flex-col gap-6 py-10 mx-auto select-none md:my-16 lg:flex-row">

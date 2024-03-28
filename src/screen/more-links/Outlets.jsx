@@ -46,7 +46,7 @@ const Outlets = () => {
                   style={{
                     //   backgroundImage: `url(${require("../../assets/HomePageImages/SABOO_NEXA_LUMBINI_SHOWROOM_HYDERABAD.webp.webp")})`,
                     backgroundImage:
-                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/nexa/thumbnails/lumbini_outlet.webp")',
+                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/saboo_truevalue_outlet.webp")',
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -74,7 +74,7 @@ const Outlets = () => {
                   style={{
                     //   backgroundImage: `url(${require("../../assets/HomePageImages/SABOO_NEXA_JUBILEE_HILLS_SHOWROOM_HYDERABAD.webp")})`,
                     backgroundImage:
-                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/nexa/thumbnails/jubilee-outlet.webp")',
+                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/saboo_truevalue_outlet.webp")',
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -102,7 +102,7 @@ const Outlets = () => {
                   style={{
                     //   backgroundImage: `url(${require("../../assets/HomePageImages/SABOO_NEXA_HAFEEZPET_SHOWROOM_HYDERABAD.webp")})`,
                     backgroundImage:
-                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/nexa/thumbnails/hafeezpet-outlet.webp")',
+                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/saboo_truevalue_outlet.webp")',
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -130,7 +130,7 @@ const Outlets = () => {
                   style={{
                     //   backgroundImage: `url(${require("../../assets/HomePageImages/SABOO_NEXA_HAFEEZPET_SHOWROOM_HYDERABAD.webp")})`,
                     backgroundImage:
-                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/nexa/thumbnails/hafeezpet-outlet.webp")',
+                      'url("https://images-saboomaruti-in.s3.ap-south-1.amazonaws.com/truevalue/saboo_truevalue_outlet.webp")',
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}

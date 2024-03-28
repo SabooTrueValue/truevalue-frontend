@@ -131,7 +131,7 @@ const VehicleOwnerForm2 = () => {
               : "Thank you for filling out your information!"}
           </div>{" "}
           <div
-            className={`text-gray-600 ${
+            className={` ${
               currentStep > 4 ? "hidden" : "block"
             }`}
           >
@@ -325,7 +325,7 @@ const Step1 = ({
                   id="carModel"
                   name="carModel"
                   type="text"
-                  placeholder="Enter car model eg. Swift, i20, etc."
+                  placeholder="Enter car model eg. Swift, i20, Nexon, Compass etc. or Don't know"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <ErrorMessage
