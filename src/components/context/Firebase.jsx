@@ -25,4 +25,4 @@ const FirebaseStore = getFirestore(FirebaseApp);
 // Obtain the Firebase Storage instance
 const FirebaseStorage = getStorage(FirebaseApp);
 
-export { FirebaseApp, FirebaseAuth, FirebaseStore, FirebaseStorage };
+export { FirebaseApp, FirebaseAuth, FirebaseStore, FirebaseStorage,getFirestore };

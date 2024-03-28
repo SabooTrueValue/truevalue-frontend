@@ -1,10 +1,26 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { collection, addDoc } from "firebase/firestore";
+import { FirebaseStore } from "../../components/context/Firebase";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+
+const notifySuccess = () => toast.success("Successfully submitted!");
+// const notifyError = () =>
+//   toast.error("This didn't submitted.", {
+//     style: {
+//       borderRadius: "10px",
+//       background: "red",
+//       color: "#fff",
+//     },
+//   });
 
 const VehicleOwnerForm2 = () => {
   // Current step state
   const [currentStep, setCurrentStep] = useState(1);
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     brandName: "",
     makeOfYear: "",
@@ -70,6 +86,19 @@ const VehicleOwnerForm2 = () => {
     mobile: formData.mobile,
   };
 
+  const saveData = async () => {
+    setLoading(true);
+    console.log("Form data", formData);
+    const docRef = await addDoc(
+      collection(FirebaseStore, "sellEnquiry"),
+      formData
+    );
+    notifySuccess();
+    // setCurrentStep(5);
+    console.log("Document written with ID: ", docRef.id);
+    setLoading(false);
+  };
+
   // // Function to handle next step
   // const handleNextStep = () => {
   //   setCurrentStep((prevStep) => prevStep + 1);
@@ -84,108 +113,10 @@ const VehicleOwnerForm2 = () => {
   // Render form based on current step
 
   return (
-    <div className="w-full">
-      <div className="container flex flex-wrap w-full max-w-2xl gap-2 mb-2 text-sm lg:mx-auto whitespace-nowrap">
-        {formData.brandName && (
-          <div
-            onClick={() => setCurrentStep(1)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary "
-          >
-            {formData.brandName}
-          </div>
-        )}
-        {formData.makeOfYear && (
-          <div
-            onClick={() => setCurrentStep(1)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary "
-          >
-            {formData.makeOfYear}
-          </div>
-        )}
-        {formData.carModel && (
-          <div
-            onClick={() => setCurrentStep(1)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary "
-          >
-            {formData.carModel}
-          </div>
-        )}
-        {formData.fuelType && (
-          <div
-            onClick={() => setCurrentStep(2)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.fuelType}
-          </div>
-        )}
-        {formData.ownership && (
-          <div
-            onClick={() => setCurrentStep(2)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.ownership}
-          </div>
-        )}
-        {formData.carVariant && (
-          <div
-            onClick={() => setCurrentStep(2)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.carVariant}
-          </div>
-        )}
-        {formData.kmDriven && (
-          <div
-            onClick={() => setCurrentStep(3)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.kmDriven}
-          </div>
-        )}
-        {formData.registeredCity && (
-          <div
-            onClick={() => setCurrentStep(3)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.registeredCity}
-          </div>
-        )}
-        {formData.transmission && (
-          <div
-            onClick={() => setCurrentStep(3)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.transmission}
-          </div>
-        )}
-        {formData.name && (
-          <div
-            onClick={() => setCurrentStep(4)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.name}
-          </div>
-        )}
-        {formData.mobile && (
-          <div
-            onClick={() => setCurrentStep(4)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.mobile}
-          </div>
-        )}
-        {formData.email && (
-          <div
-            onClick={() => setCurrentStep(4)}
-            className="px-4 py-1 text-white border rounded-lg cursor-pointer bg-primary"
-          >
-            {formData.email}
-          </div>
-        )}
-      </div>
-      <div className="container w-full max-w-2xl px-4 py-10 mx-2 bg-white border shadow-xl lg:mx-auto rounded-3xl">
+    <div className="w-full mx-2">
+      <div className="container w-full max-w-2xl px-4 py-10 mx-auto bg-white border shadow-xl rounded-3xl">
         <div className="flex items-center justify-between px-2 pb-2 mb-1 border-b lg:px-5">
-          <div className="text-2xl text-gray-600 ">
+          <div className="text-2xl text-primary ">
             {/* {currentStep === 4 ? "Last step" : `Step ${currentStep} of 4`} */}
             {currentStep === 1
               ? "Car Information"
@@ -193,9 +124,19 @@ const VehicleOwnerForm2 = () => {
               ? "Additional Information"
               : currentStep === 3
               ? "Additional Information"
-              : "Contact Details"}
+              : currentStep === 4
+              ? "Contact Details"
+              : currentStep === 5
+              ? "Preview and Submit"
+              : "Thank you for filling out your information!"}
           </div>{" "}
-          <div className="text-gray-600 ">Step {currentStep} of 4</div>
+          <div
+            className={`text-gray-600 ${
+              currentStep > 4 ? "hidden" : "block"
+            }`}
+          >
+            Step {currentStep} of 4
+          </div>
         </div>
 
         <div>
@@ -223,7 +164,7 @@ const VehicleOwnerForm2 = () => {
               setFormData={setFormData}
               formData={formData}
             />
-          ) : (
+          ) : currentStep === 4 ? (
             <Step4
               setCurrentStep={setCurrentStep}
               initialValuesStep4={initialValuesStep4}
@@ -231,6 +172,28 @@ const VehicleOwnerForm2 = () => {
               setFormData={setFormData}
               formData={formData}
             />
+          ) : currentStep === 5 ? (
+            <Step5
+              setCurrentStep={setCurrentStep}
+              formData={formData}
+              saveData={saveData}
+              loading={loading}
+            />
+          ) : (
+            <div className="px-2 mt-4 lg:lg:px-5">
+              <h1 className="pb-6">
+                We appreciate you contacting us. One of our colleagues will get
+                back in touch with you soon! Have a great day!
+              </h1>
+              {/* <div className="flex justify-center"> */}
+              <Link
+                to="/"
+                className="px-4 py-2 text-white rounded-lg bg-primary lg:px-6"
+              >
+                Back to Homepage
+              </Link>
+              {/* </div> */}
+            </div>
           )}
         </div>
       </div>
@@ -556,17 +519,35 @@ const Step3 = ({
                   <option value="" disabled selected>
                     Select kilometers driven
                   </option>
-                  <option value="0-10000">0 Km - 10,000 Km</option>
-                  <option value="10000-20000">10,000 Km - 20,000 Km</option>
-                  <option value="20000-30000">20,000 Km - 30,000 Km</option>
-                  <option value="30000-40000">30,000 Km - 40,000 Km</option>
-                  <option value="40000-50000">40,000 Km - 50,000 Km</option>
-                  <option value="50000-60000">50,000 Km - 60,000 Km</option>
-                  <option value="60000-70000">60,000 Km - 70,000 Km</option>
-                  <option value="70000-80000">70,000 Km - 80,000 Km</option>
-                  <option value="80000-90000">80,000 Km - 90,000 Km</option>
-                  <option value="90000-100000">90,000 Km - 1,00,000 Km</option>
-                  <option value="100000-125000">
+                  <option value="0 km -10000 km">0 Km - 10,000 Km</option>
+                  <option value="10000 km -20000 km">
+                    10,000 Km - 20,000 Km
+                  </option>
+                  <option value="20000 km -30000 km">
+                    20,000 Km - 30,000 Km
+                  </option>
+                  <option value="30000 km -40000 km">
+                    30,000 Km - 40,000 Km
+                  </option>
+                  <option value="40000 km -50000 km">
+                    40,000 Km - 50,000 Km
+                  </option>
+                  <option value="50000 km -60000 km">
+                    50,000 Km - 60,000 Km
+                  </option>
+                  <option value="60000 km -70000 km">
+                    60,000 Km - 70,000 Km
+                  </option>
+                  <option value="70000 km -80000 km">
+                    70,000 Km - 80,000 Km
+                  </option>
+                  <option value="80000 km -90000 km">
+                    80,000 Km - 90,000 Km
+                  </option>
+                  <option value="90000 km -100000 km">
+                    90,000 Km - 1,00,000 Km
+                  </option>
+                  <option value="100000 km -125000 km">
                     1,00,000 Km - 1,25,000 Km
                   </option>
                   <option value="125000-150000">
@@ -723,9 +704,7 @@ const Step4 = ({
 }) => {
   const handleSubmit1 = (values) => {
     setFormData({ ...formData, ...values });
-    console.log("Step 1 data", values);
-    console.log("final data", formData);
-    // setCurrentStep(2);
+    setCurrentStep(5);
   };
   return (
     <div>
@@ -773,6 +752,7 @@ const Step4 = ({
                   id="mobile"
                   name="mobile"
                   type="tel"
+                  maxLength="10"
                   placeholder="Enter your mobile number"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
@@ -816,15 +796,98 @@ const Step4 = ({
             >
               Previous
             </button>
+
             <button
               type="submit"
               className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3"
             >
-              Submit
+              Preview
             </button>
           </div>
         </Form>
       </Formik>
+    </div>
+  );
+};
+
+const Step5 = ({ setCurrentStep, formData, saveData ,loading}) => {
+  const handleSubmit1 = (values) => {
+    saveData();
+    setCurrentStep(6);
+  };
+  return (
+    <div>
+      <div className="px-2 mt-4 lg:lg:px-5">
+        <div className="w-full ">
+          <table className="">
+            <tr className="mb-2">
+              <td className="pb-2 text-gray-500">Brand Name: </td>
+
+              <td className="px-4 text-primary">{formData.brandName}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Make of Year: </td>
+              <td className="px-4 text-primary">{formData.makeOfYear}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Car Model: </td>
+              <td className="px-4 text-primary">{formData.carModel}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Fuel Type: </td>
+              <td className="px-4 text-primary">{formData.fuelType}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Ownership: </td>
+              <td className="px-4 text-primary">{formData.ownership}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Car Variant: </td>
+              <td className="px-4 text-primary">{formData.carVariant}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">KM Driven: </td>
+              <td className="px-4 text-primary">{formData.kmDriven}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Registered City: </td>
+              <td className="px-4 text-primary">{formData.registeredCity}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Transmission: </td>
+              <td className="px-4 text-primary">{formData.transmission}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Name: </td>
+              <td className="px-4 text-primary">{formData.name}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Mobile: </td>
+              <td className="px-4 text-primary">{formData.mobile}</td>
+            </tr>
+            <tr>
+              <td className="pb-2 text-gray-500">Email: </td>
+              <td className="px-4 text-primary">{formData.email}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div className="flex mt-8 justify-evenly ">
+       {!loading && <button
+          type="button"
+          onClick={() => setCurrentStep(4)}
+          className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3 text-primary border border-primary"
+        >
+          Previous
+        </button>}
+        <button
+          type="submit"
+          onClick={handleSubmit1}
+          className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3"
+        >
+         {loading ? "Submitting..." : "Submit"}
+        </button>
+      </div>
     </div>
   );
 };

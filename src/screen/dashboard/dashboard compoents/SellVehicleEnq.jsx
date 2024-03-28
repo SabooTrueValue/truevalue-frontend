@@ -7,6 +7,9 @@ import { Box, Button } from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { mkConfig, generateCsv, download } from "export-to-csv"; //or use your library of choice here
 // import { data } from "./makeData";
+import { FirebaseStore } from "../../../components/context/Firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect } from "react";
 
 const columnHelper = createMRTColumnHelper();
 
@@ -63,6 +66,18 @@ const csvConfig = mkConfig({
 });
 
 const SellVehicleEnq = () => {
+  useEffect(() => {
+    const getValues = async () => {
+      const querySnapshot = await getDocs(
+        collection(FirebaseStore, "sellEnquiry")
+      );
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+      });
+    };
+    getValues();
+  }, []);
+
   const handleExportRows = (rows) => {
     const rowData = rows.map((row) => row.original);
     const csv = generateCsv(csvConfig)(rowData);
