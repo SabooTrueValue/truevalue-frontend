@@ -6,7 +6,7 @@ export const AboutUs = () => {
         src={require("../../assets/about-us/Maruti-Suzuki-TrueValue-Showrrom.jpg")}
         alt=""
       />
-      <div className="container pb-10 mx-auto space-y-4">
+      <div className="container px-1 pb-10 mx-auto space-y-4">
         {" "}
         <img
           src={require("../../assets/about-us/Truevalue-About-us-Banner.jpg")}
