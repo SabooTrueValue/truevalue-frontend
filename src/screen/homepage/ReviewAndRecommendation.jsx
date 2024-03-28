@@ -60,7 +60,7 @@ const ReviewAndRecommendation = () => {
   const navigationNextRef = useRef(null);
 
   return (
-    <div className="container py-10 mx-auto ">
+    <div className="container py-10 mx-auto overflow-hidden">
       <HeadingComponent title="Review & Recommendation" />
       <p className="mb-10 text-center">
         Stay up to date with all of the latest vehicles and offers with Saboo

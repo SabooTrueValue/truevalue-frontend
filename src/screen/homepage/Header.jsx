@@ -176,7 +176,7 @@ const Header = ({ option }) => {
                 <div className="absolute z-40 hidden  rounded-xl -left-8 top-[38px] group-hover:block group-hover:text-white">
                   <div className="flex flex-col gap-4 p-8 bg-primary h-min rounded-xl whitespace-nowrap ">
                     <div className="">Petrol</div>
-                    <div className=""> Diesel R</div>
+                    <div className=""> Diesel</div>
                     <div className=""> CNG</div>
                   </div>
                 </div>

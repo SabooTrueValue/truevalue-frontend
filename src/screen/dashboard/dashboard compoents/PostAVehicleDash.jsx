@@ -8,6 +8,12 @@ const options = [
   { value: "option-2", label: "Option 2" },
   { value: "option-3", label: "Option 3" },
 ];
+const outletsOptions = [
+  { value: "Kompally", label: "Kompally" },
+  { value: "Somajiguda", label: "Somajiguda" },
+  { value: "Komajiguda", label: "Komajiguda" },
+  { value: "Malakpet", label: "Malakpet" },
+];
 
 function PostAVehicleDash({ setCurrentTab }) {
   const validationSchema = Yup.object().shape({
@@ -87,7 +93,7 @@ function PostAVehicleDash({ setCurrentTab }) {
             <div className="flex flex-wrap mb-6 -mx-3 gap-y-4">
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="trueValueLocation"
                 >
                   Truevalue Location*
@@ -96,10 +102,10 @@ function PostAVehicleDash({ setCurrentTab }) {
                   id="trueValueLocation"
                   name="trueValueLocation"
                   as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
+                  <option value=""></option>
+                  {outletsOptions.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
@@ -113,7 +119,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               </div>
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="vehicleStatus"
                 >
                   Vehicle Status*
@@ -122,17 +128,64 @@ function PostAVehicleDash({ setCurrentTab }) {
                   id="vehicleStatus"
                   name="vehicleStatus"
                   as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
+                  <option value=""></option>
+                  <option value="Sale">Sale</option>
+                  <option value="Booked">Booked</option>
+                  <option value="Sold">Sold</option>
                 </Field>
                 <ErrorMessage
                   name="vehicleStatus"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>{" "}
+              {/* Vehicle Brand */}
+              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
+                <label
+                  className="block mb-2 font-semibold uppercase"
+                  htmlFor="vehicleBrand"
+                >
+                  Vehicle Brand*
+                </label>
+                <Field
+                  id="vehicleBrand"
+                  name="vehicleBrand"
+                  as="select"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value=""></option>
+                  <option value="Audi">Audi</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Chevrolet">Chevrolet</option>
+                  <option value="Citroen">Citroen</option>
+                  <option value="Datsun">Datsun</option>
+                  <option value="Fiat">Fiat</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Hyundai">Hyundai</option>
+                  <option value="Isuzu">Isuzu</option>
+                  <option value="Jaguar">Jaguar</option>
+                  <option value="Jeep">Jeep</option>
+                  <option value="Kia">Kia</option>
+                  <option value="Land Rover">Land Rover</option>
+                  <option value="Mahindra">Mahindra</option>
+                  <option value="Maruti Suzuki">Maruti Suzuki</option>
+                  <option value="Mercedes-Benz">Mercedes-Benz</option>
+                  <option value="MG Motors">MG Motors</option>
+                  <option value="Mini">Mini</option>
+                  <option value="Mitsubishi">Mitsubishi</option>
+                  <option value="Nissan">Nissan</option>
+                  <option value="Renault">Renault</option>
+                  <option value="Skoda">Skoda</option>
+                  <option value="Tata">Tata</option>
+                  <option value="Toyota">Toyota</option>
+                  <option value="Volkswagen">Volkswagen</option>
+                  <option value="Volvo">Volvo</option>
+                </Field>
+                <ErrorMessage
+                  name="vehicleBrand"
                   component="div"
                   className="text-red-500"
                 />
@@ -141,39 +194,20 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Vehicle Title */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="vehicleTitle"
                 >
-                  Vehicle Title*
+                  Vehicle MODEL*
                 </label>
                 <Field
                   id="vehicleTitle"
                   name="vehicleTitle"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="e.g. Swift, City, Compass, Jimny, etc."
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <ErrorMessage
                   name="vehicleTitle"
-                  component="div"
-                  className="text-red-500"
-                />
-              </div>
-              {/* Vehicle Brand */}
-              <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
-                <label
-                  className="block mb-2 font-bold uppercase"
-                  htmlFor="vehicleBrand"
-                >
-                  Vehicle Brand*
-                </label>
-                <Field
-                  id="vehicleBrand"
-                  name="vehicleBrand"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-                <ErrorMessage
-                  name="vehicleBrand"
                   component="div"
                   className="text-red-500"
                 />
@@ -181,7 +215,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Vehicle Overview */}
               <div className="w-full px-3 mb-6 md:mb-0 lg:w-1/2 min-h-16">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="vehicleOverview"
                 >
                   Vehicle Overview*
@@ -191,7 +225,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                   name="vehicleOverview"
                   as="textarea"
                   rows="2"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 max-h-20"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 max-h-20"
                 />
                 <ErrorMessage
                   name="vehicleOverview"
@@ -202,23 +236,23 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* User Type */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="userType"
                 >
-                  User Type*
+                  Ownership Type*
                 </label>
                 <Field
                   id="userType"
                   name="userType"
                   as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
+                  <option value=""></option>
+                  <option value="1st owner">1st owner</option>
+                  <option value="2nd owner">2nd owner</option>
+                  <option value="3rd owner">3rd owner</option>
+                  <option value="4th owner">4th owner</option>
+                  {/* <option value="Car dealer">I am a car dealer</option> */}
                 </Field>
                 <ErrorMessage
                   name="userType"
@@ -229,7 +263,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Vehicle Category */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="vehicleCategory"
                 >
                   Vehicle Category*
@@ -237,9 +271,13 @@ function PostAVehicleDash({ setCurrentTab }) {
                 <Field
                   id="vehicleCategory"
                   name="vehicleCategory"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
+                  as="select"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value="" disabled></option>
+                  <option value="Certified">Certified</option>
+                  <option value="Non Certified">Non Certified</option>
+                </Field>
                 <ErrorMessage
                   name="vehicleCategory"
                   component="div"
@@ -249,7 +287,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Transmission */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="transmission"
                 >
                   Transmission*
@@ -258,14 +296,11 @@ function PostAVehicleDash({ setCurrentTab }) {
                   id="transmission"
                   name="transmission"
                   as="select"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="">Select an option</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
+                  <option value=""></option>
+                  <option value="Automatic">Automatic</option>
+                  <option value="Manual">Manual</option>
                 </Field>
                 <ErrorMessage
                   name="transmission"
@@ -276,7 +311,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Body Type */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="bodyType"
                 >
                   Body Type*
@@ -284,9 +319,20 @@ function PostAVehicleDash({ setCurrentTab }) {
                 <Field
                   id="bodyType"
                   name="bodyType"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
+                  as="select"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value=""></option>
+                  <option value="Minivan">Minivan</option>
+                  <option value="Hatchback">Hatchback</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SUV">SUV</option>
+                  <option value="MUV">MUV</option>
+                  <option value="Coupe">Coupe</option>
+                  <option value="Convertible">Convertible</option>
+                  <option value="Jeep">Jeep</option>
+                  <option value="Wagon">Wagon</option>
+                </Field>
                 <ErrorMessage
                   name="bodyType"
                   component="div"
@@ -296,16 +342,16 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Price */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="price"
                 >
-                  Price*
+                  Price - ₹*
                 </label>
                 <Field
                   id="price"
                   name="price"
                   type="number"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <ErrorMessage
                   name="price"
@@ -316,7 +362,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Fuel Type */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="fuelType"
                 >
                   Fuel Type*
@@ -324,9 +370,15 @@ function PostAVehicleDash({ setCurrentTab }) {
                 <Field
                   id="fuelType"
                   name="fuelType"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
+                  as="select"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value=""></option>
+                  <option value="Petrol">Petrol</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="CNG">CNG</option>
+                  <option value="Electric">Electric</option>
+                </Field>
                 <ErrorMessage
                   name="fuelType"
                   component="div"
@@ -336,7 +388,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Model Year */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="modelYear"
                 >
                   Model Year*
@@ -344,9 +396,19 @@ function PostAVehicleDash({ setCurrentTab }) {
                 <Field
                   id="modelYear"
                   name="modelYear"
-                  type="number"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
+                  as="select"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value=""></option>
+                  {Array.from({ length: 22 }, (_, i) => 2024 - i).map(
+                    (year) => (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    )
+                  )}
+                  <option value="2003 or older">2003 or older</option>
+                </Field>
                 <ErrorMessage
                   name="modelYear"
                   component="div"
@@ -356,7 +418,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Engine Capacity */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="engineCapacity"
                 >
                   Engine Capacity*
@@ -365,7 +427,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                   id="engineCapacity"
                   name="engineCapacity"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <ErrorMessage
                   name="engineCapacity"
@@ -376,7 +438,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Registered City */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="registeredCity"
                 >
                   Registered City*
@@ -384,9 +446,60 @@ function PostAVehicleDash({ setCurrentTab }) {
                 <Field
                   id="registeredCity"
                   name="registeredCity"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
+                  as="select"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value="" disabled className="text-sm"></option>
+                  <option value="" disabled className="text-sm">
+                    Popular Cities
+                  </option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Gurgaon">Gurgaon</option>
+                  <option value="Noida">Noida</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Lucknow">Lucknow</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="" disabled className="pt-4 "></option>
+                  <option value="" disabled className="pt-4 ">
+                    Other Cities
+                  </option>
+                  <option value="Agra">Agra</option>
+                  <option value="Allahabad">Allahabad</option>
+                  <option value="Aurangabad">Aurangabad</option>
+                  <option value="Belgaum">Belgaum</option>
+                  <option value="Bhopal">Bhopal</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Coimbatore">Coimbatore</option>
+                  <option value="Faridabad">Faridabad</option>
+                  <option value="Ghaziabad">Ghaziabad</option>
+                  <option value="Hubli">Hubli</option>
+                  <option value="Indore">Indore</option>
+                  <option value="Jodhpur">Jodhpur</option>
+                  <option value="Kanpur">Kanpur</option>
+                  <option value="Kochi">Kochi</option>
+                  <option value="Kottayam">Kottayam</option>
+                  <option value="Ludhiana">Ludhiana</option>
+                  <option value="Madurai">Madurai</option>
+                  <option value="Mangalore">Mangalore</option>
+                  <option value="Meerut">Meerut</option>
+                  <option value="Mysore">Mysore</option>
+                  <option value="Nagpur">Nagpur</option>
+                  <option value="Nashik">Nashik</option>
+                  <option value="Rajkot">Rajkot</option>
+                  <option value="Salem">Salem</option>
+                  <option value="Sonipat">Sonipat</option>
+                  <option value="Surat">Surat</option>
+                  <option value="Trichy">Trichy</option>
+                  <option value="Tumkur">Tumkur</option>
+                  <option value="Vadodara">Vadodara</option>
+                  <option value="Warangal">Warangal</option>
+                </Field>
                 <ErrorMessage
                   name="registeredCity"
                   component="div"
@@ -396,7 +509,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Color */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="color"
                 >
                   Color*
@@ -404,9 +517,28 @@ function PostAVehicleDash({ setCurrentTab }) {
                 <Field
                   id="color"
                   name="color"
-                  type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
+                  as="select"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value=""></option>
+                  <option value="Beige, Brown, Bronze">
+                    Beige, Brown, Bronze
+                  </option>
+                  <option value="Black">Black</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Green">Green</option>
+                  <option value="Grey">Grey</option>
+                  <option value="Red, Maroon">Red, Maroon</option>
+                  <option value="Orange">Orange</option>
+                  <option value="Purple, Voilet, Wine">
+                    Purple, Voilet, Wine
+                  </option>
+                  <option value="Silver">Silver</option>
+                  <option value="White">White</option>
+                  <option value="Yellow">Yellow</option>
+                  <option value="Other">Other</option>
+                </Field>
+
                 <ErrorMessage
                   name="color"
                   component="div"
@@ -416,7 +548,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Registration No */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="registrationNo"
                 >
                   Registration No*
@@ -425,7 +557,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                   id="registrationNo"
                   name="registrationNo"
                   type="text"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <ErrorMessage
                   name="registrationNo"
@@ -436,7 +568,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* KM Driven */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-bold uppercase"
+                  className="block mb-2 font-semibold uppercase"
                   htmlFor="kmDriven"
                 >
                   KM Driven*
@@ -445,7 +577,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                   id="kmDriven"
                   name="kmDriven"
                   type="number"
-                  className="w-full py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <ErrorMessage
                   name="kmDriven"

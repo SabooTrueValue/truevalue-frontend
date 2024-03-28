@@ -240,7 +240,7 @@ const Step1 = ({
                   name="brandName"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:border-indigo-500"
                 >
-                  <option value="" selected disabled>
+                  <option value="">
                     Select brand name
                   </option>
                   <option value="Audi">Audi</option>
@@ -294,7 +294,7 @@ const Step1 = ({
                   name="makeOfYear"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled selected>
+                 <option value="">
                     Select year
                   </option>
                   {Array.from({ length: 22 }, (_, i) => 2024 - i).map(
@@ -388,13 +388,13 @@ const Step2 = ({
                   name="fuelType"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled selected>
+                 <option value="">
                     Select fuel type
                   </option>
                   <option value="Petrol">Petrol</option>
                   <option value="Diesel">Diesel</option>
                   <option value="CNG">CNG</option>
-                  <option value="CNG">Electric</option>
+                  <option value="Electric">Electric</option>
                   {/* Add more fuel types as needed */}
                 </Field>
                 <ErrorMessage
@@ -418,7 +418,7 @@ const Step2 = ({
                   name="ownership"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled selected>
+                 <option value="">
                     Select ownership details
                   </option>
                   <option value="1st owner">1st owner</option>
@@ -516,7 +516,7 @@ const Step3 = ({
                   name="kmDriven"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled selected>
+                 <option value="">
                     Select kilometers driven
                   </option>
                   <option value="0 km -10000 km">0 Km - 10,000 Km</option>
@@ -587,7 +587,7 @@ const Step3 = ({
                   name="registeredCity"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled selected className="text-sm">
+                  <option value="" disabled  className="text-sm">
                     Select registered city
                   </option>
                   <option value="" disabled className="text-sm">
@@ -660,7 +660,7 @@ const Step3 = ({
                   name="transmission"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled selected>
+                 <option value="">
                     Select transmission type
                   </option>
                   <option value="Automatic">Automatic</option>
