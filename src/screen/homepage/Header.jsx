@@ -76,6 +76,9 @@ const Header = ({ option }) => {
                   <Link to="/used-car-faqs">
                     <div className="">FAQs</div>
                   </Link>
+                  <Link to="/dashboard">
+                    <div className="">Dashboard</div>
+                  </Link>
                   <Link to="/contact-preowned-car-dealer">
                     <div className="">Contact Us</div>
                   </Link>

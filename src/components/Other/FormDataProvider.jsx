@@ -8,25 +8,28 @@ export const useFormData = () => {
 
 export const FormDataProvider = ({ children }) => {
   const [localData, setLocalData] = useState({});
+  const [postVehicleData, setPostVehicleData] = useState({});
   const [currentTab, setCurrentTab] = useState(1);
 
   useEffect(() => {
     const storedFormData = localStorage.getItem("formData");
     const currentTab = localStorage.getItem("currentTab");
+    const storedPostVehicleData = localStorage.getItem("postVehicleData");
     if (storedFormData) {
       setLocalData(JSON.parse(storedFormData));
     }
     if (currentTab) {
       setCurrentTab(parseInt(currentTab));
     }
-    console.log("Local data", localData);
+    if (storedPostVehicleData) {
+      setPostVehicleData(JSON.parse(storedPostVehicleData));
+    }
+
   }, []);
-  useEffect(() => {
-    console.log("Local data", localData);
-  }, [localData, currentTab]);
+ 
 
   return (
-    <FormDataContext.Provider value={{ localData, setLocalData, currentTab, setCurrentTab }}>
+    <FormDataContext.Provider value={{ localData, setLocalData, currentTab, setCurrentTab,postVehicleData, setPostVehicleData }}>
       {children}
     </FormDataContext.Provider>
   );

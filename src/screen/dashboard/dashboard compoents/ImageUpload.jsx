@@ -1,10 +1,18 @@
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FirebaseStorage } from "../../../components/context/Firebase";
+import {
+  FirebaseStorage,
+  FirebaseStore,
+} from "../../../components/context/Firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import ref, uploadBytes, and getDownloadURL from firebase storage
 import { useState } from "react";
+import { useFormData } from "../../../components/Other/FormDataProvider";
+import { collection, addDoc } from "firebase/firestore";
+import { toast } from "react-hot-toast";
+
 const ImageUpload = ({ setCurrentTab }) => {
-  const [fieldValue, setFieldValue] = useState("");
+  const { postVehicleData, setPostVehicleData } = useFormData();
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     images: [],
     imageUrls: [], // Initialize imageUrls array
@@ -33,7 +41,7 @@ const ImageUpload = ({ setCurrentTab }) => {
         //     return true;
         //   })
       )
-      .test("unique", "Each image should be unique", function (value) {
+      .test("unique", "Duplicate image uploading", function (value) {
         let isUnique = true;
         if (this.parent.images) {
           const imageNames = this.parent.images.map((img) => img && img.name);
@@ -41,32 +49,48 @@ const ImageUpload = ({ setCurrentTab }) => {
         }
         return isUnique;
       })
-      .min(1, "Please upload at least 6 images"),
+      .min(6, "Please upload at least 6 images"),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const imageUrls = [];
-
+      setLoading(true);
       // Upload each image to Firebase storage and get the download URL
-      for (const image of values.images) {
-        const storageRef = ref(FirebaseStorage, `images/${image.name}`);
-        await uploadBytes(storageRef, image);
-        const downloadURL = await getDownloadURL(storageRef);
-        imageUrls.push(downloadURL); // Store the download URL
-      }
+     for (const image of values.images) {
+       const storageRef = ref(
+         FirebaseStorage,
+         `images/${postVehicleData.registrationNo}/${image.name}`
+       );
+       await uploadBytes(storageRef, image);
+       const downloadURL = await getDownloadURL(storageRef);
+      console.log("Download URL:", downloadURL);
+       imageUrls.push(downloadURL); // Store the download URL
+     }
 
+      toast.success("Images uploaded successfully!");
+      console.log("Values:", imageUrls);
+      setPostVehicleData({ ...postVehicleData, images: imageUrls});
+      console.log("Post Vehicle Data:", postVehicleData);
+
+      const docRef = await addDoc(
+        collection(FirebaseStore, "postVehicleData"),
+        { ...postVehicleData, images: imageUrls }
+      );
       // Update form values with image URLs
-      setFieldValue("imageUrls", imageUrls);
-      // console.log("Image URLs:", imageUrls);
-      console.log("Image URLs:", fieldValue);
 
+      toast.success("Vehicle posted with ID: ", docRef.id);
+      setPostVehicleData({});
+      setCurrentTab(0);
+      localStorage.removeItem("postVehicleData");
       // Handle success or navigate to the next step
-      console.log("Images uploaded successfully!");
     } catch (error) {
       console.error("Error uploading images:", error);
+      toast.error("Error uploading images");
+      setLoading(false);
     } finally {
       setSubmitting(false);
+      setLoading(false);
     }
   };
 
@@ -79,8 +103,8 @@ const ImageUpload = ({ setCurrentTab }) => {
       >
         {({ values, setFieldValue, isSubmitting }) => (
           <Form>
-            <div className="grid gap-4 px-4 mb-6 md:grid-cols-2 lg:grid-cols-3">
-              {[...Array(6)].map((_, index) => (
+            <div className="grid gap-4 px-4 mb-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+              {[...Array(8)].map((_, index) => (
                 <div key={index} className="mb-4">
                   <label
                     htmlFor={`image-${index}`}
@@ -110,34 +134,34 @@ const ImageUpload = ({ setCurrentTab }) => {
                     />
                   )}
                   <ErrorMessage
-                    name={`images.${index}`}
-                    component="div"
-                    className="mt-6 text-red-500 bg-gray-800"
+                    name={`images`}
+                    component={({ children }) => (
+                      <div className="mt-2 text-sm text-red-500">
+                        {children}
+                      </div>
+                    )}
                   />
                 </div>
               ))}
             </div>
-            <div className="flex justify-center gap-4 px-4">
-              <button
-                onClick={() => setCurrentTab(0)}
-                className="px-4 py-2 text-white rounded-md bg-primary hover:bg-indigo-700"
-              >
-                Previous
-              </button>
+
+            <div className="flex gap-4 px-4 lg:pt-2">
+              {!loading && (
+                <button
+                  onClick={() => setCurrentTab(1)}
+                  className="hover:text-white hover:bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-20 py-2.5 select-none border border-primary "
+                >
+                  Back
+                </button>
+              )}
               <button
                 // onClick={() => setCurrentTab(2)}
-                type="submit"
-                className="px-4 py-2 text-white rounded-md bg-tr hover:bg-indigo-700 bg-primary "
-              >
-                Next
-              </button>
-              {/* <button
-                type="submit"
                 disabled={isSubmitting}
-                className="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
+                type="submit"
+                className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-20 py-2.5 select-none "
               >
-                {isSubmitting ? "Uploading..." : "Upload Images"}
-              </button> */}
+                {loading ? "Posting.." : "Post Vehicle"}
+              </button>
             </div>
           </Form>
         )}

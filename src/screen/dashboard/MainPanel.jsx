@@ -6,6 +6,8 @@ import FinanceEnq from "./dashboard compoents/FinanceEnq";
 import PopupEnq from "./dashboard compoents/PopupEnq";
 import SellVehicleEnq from "./dashboard compoents/SellVehicleEnq";
 import BuyVehicleEnq from "./dashboard compoents/BuyVehicleEnq";
+import AccessoriesOpions from "./dashboard compoents/AccessoriesOpions";
+import { Toaster} from "react-hot-toast";
 
 const MainPanel = ({ selected }) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -24,9 +26,20 @@ const MainPanel = ({ selected }) => {
                 <PostAVehicleDash setCurrentTab={setCurrentTab} />
               </div>
             )}
-            {currentTab === 1 && (
+            {currentTab > 0 && (
               <div>
                 <h4 className="px-4 mt-3 mb-4 text-xl font-bold uppercase text-primary">
+                  Accessories
+                </h4>
+                <AccessoriesOpions
+                  setCurrentTab={setCurrentTab}
+                  currentTab={currentTab}
+                />
+              </div>
+            )}
+            {currentTab === 2 && (
+              <div>
+                <h4 className="px-4 mt-3 mb-4 text-xl font-bold uppercase text-primary md:mt-10 lg:mt-12">
                   Upload Images
                 </h4>
                 <ImageUpload setCurrentTab={setCurrentTab} />
@@ -41,6 +54,7 @@ const MainPanel = ({ selected }) => {
       {selected === 5 && <PopupEnq />}
       {selected === 6 && <ContactUs />}
       {selected === 7 && <FinanceEnq />}
+      <Toaster />
     </div>
   );
 };
@@ -63,7 +77,7 @@ const manageVehicles = () => {
   return (
     <div>
       <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-primary">
+        <h4 className="pb-4 text-xl font-bold uppercase text-primary ">
           Manage Vehicles
         </h4>
       </div>

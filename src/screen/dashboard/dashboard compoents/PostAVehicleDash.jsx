@@ -1,8 +1,7 @@
 import React from "react";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
-import { FirebaseStore } from "../../../components/context/Firebase";
-
+import { useFormData } from "../../../components/Other/FormDataProvider";
 
 const outletsOptions = [
   { value: "Kompally", label: "Kompally" },
@@ -12,6 +11,8 @@ const outletsOptions = [
 ];
 
 function PostAVehicleDash({ setCurrentTab }) {
+  const { postVehicleData, setPostVehicleData } = useFormData();
+
   const validationSchema = Yup.object().shape({
     trueValueLocation: Yup.string().required("Truevalue Location is required"),
     vehicleStatus: Yup.string().required("Vehicle Status is required"),
@@ -20,6 +21,9 @@ function PostAVehicleDash({ setCurrentTab }) {
     vehicleOverview: Yup.string()
       .required("Vehicle Overview is required")
       .max(500),
+    seatingCapacity: Yup.number()
+      .required("Seating Capacity is required")
+      .positive("Seating Capacity must be positive"),
     userType: Yup.string().required("User Type is required"),
     vehicleCategory: Yup.string().required("Vehicle Category is required"),
     transmission: Yup.string().required("Transmission is required"),
@@ -44,13 +48,15 @@ function PostAVehicleDash({ setCurrentTab }) {
     try {
       // Store the form data in Firestore
       console.log("Submitting form:", values);
+      localStorage.setItem("postVehicleData", JSON.stringify(values));
       //   console.log("Submitting form:", db)
-      await FirebaseStore.collection("form-data").add(values);
+      setPostVehicleData((prev) => ({ ...prev, ...values }));
+
       //   await db.collection("form-data").add(values);
 
       // Reset the form after successful submission
-      resetForm();
-      alert("Form submitted successfully!");
+
+      setCurrentTab(1);
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("An error occurred while submitting the form.");
@@ -63,29 +69,30 @@ function PostAVehicleDash({ setCurrentTab }) {
     <div className="container px-4 py-10 mx-auto">
       <Formik
         initialValues={{
-          trueValueLocation: "",
-          vehicleStatus: "",
-          vehicleTitle: "",
-          vehicleBrand: "",
-          vehicleOverview: "",
-          userType: "",
-          vehicleCategory: "",
-          transmission: "",
-          bodyType: "",
-          price: "",
-          fuelType: "",
-          modelYear: "",
-          engineCapacity: "",
-          registeredCity: "",
-          color: "",
-          registrationNo: "",
-          kmDriven: "",
+          trueValueLocation: postVehicleData.trueValueLocation || "",
+          vehicleStatus: postVehicleData.vehicleStatus || "",
+          vehicleTitle: postVehicleData.vehicleTitle || "",
+          vehicleBrand: postVehicleData.vehicleBrand || "",
+          vehicleOverview: postVehicleData.vehicleOverview || "",
+          seatingCapacity: postVehicleData.seatingCapacity || "",
+          userType: postVehicleData.userType || "",
+          vehicleCategory: postVehicleData.vehicleCategory || "",
+          transmission: postVehicleData.transmission || "",
+          bodyType: postVehicleData.bodyType || "",
+          price: postVehicleData.price || "",
+          fuelType: postVehicleData.fuelType || "",
+          modelYear: postVehicleData.modelYear || "",
+          engineCapacity: postVehicleData.engineCapacity || "",
+          registeredCity: postVehicleData.registeredCity || "",
+          color: postVehicleData.color || "",
+          registrationNo: postVehicleData.registrationNo || "",
+          kmDriven: postVehicleData.kmDriven || "",
         }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {({ handleSubmit, handleChange, values, errors, touched }) => (
-          <form onSubmit={handleSubmit}>
+          <Form>
             <div className="flex flex-wrap mb-6 -mx-3 gap-y-4">
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
@@ -209,7 +216,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                 />
               </div>
               {/* Vehicle Overview */}
-              <div className="w-full px-3 mb-6 md:mb-0 lg:w-1/2 min-h-16">
+              <div className="w-full px-3 mb-6 md:mb-0 lg:w-1/3 min-h-16 md:w-1/2 ">
                 <label
                   className="block mb-2 font-semibold uppercase"
                   htmlFor="vehicleOverview"
@@ -225,6 +232,26 @@ function PostAVehicleDash({ setCurrentTab }) {
                 />
                 <ErrorMessage
                   name="vehicleOverview"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              {/* Seating Capacity */}
+              <div className="w-full px-3 mb-6 md:mb-0 lg:w-1/3 md:w-1/2 ">
+                <label
+                  className="block mb-2 font-semibold uppercase"
+                  htmlFor="seatingCapacity"
+                >
+                  Seating Capacity*
+                </label>
+                <Field
+                  id="seatingCapacity"
+                  name="seatingCapacity"
+                  type="number"
+                  className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+                <ErrorMessage
+                  name="seatingCapacity"
                   component="div"
                   className="text-red-500"
                 />
@@ -582,16 +609,16 @@ function PostAVehicleDash({ setCurrentTab }) {
                 />
               </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center" >
               <button
-                onClick={() => setCurrentTab(1)}
+                // onClick={() => setCurrentTab(2)}
                 type="submit"
-                className="text-white bg-primary  focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 text-center mr-2 mb-2  "
+                className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-20 py-2.5 select-none "
               >
                 Next
               </button>
             </div>
-          </form>
+          </Form>
         )}
       </Formik>
     </div>

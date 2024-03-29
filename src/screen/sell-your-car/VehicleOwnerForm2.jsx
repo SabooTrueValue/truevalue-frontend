@@ -46,10 +46,6 @@ const VehicleOwnerForm2 = () => {
   const [currentStep, setCurrentStep] = useState(currentTab || 1);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   console.log("Form data", formData);
-  // }, [formData]);
-
   // Validation schema using Yup for each step
   const validationSchemaStep4 = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -110,24 +106,13 @@ const VehicleOwnerForm2 = () => {
     notifySuccess();
     // setCurrentStep(5);
     console.log("Document written with ID: ", docRef.id);
-    localStorage.clear();
+
+    localStorage.removeItem("formData");
+    localStorage.removeItem("currentTab");
     setCurrentTab(1);
     setLocalData({});
     setLoading(false);
   };
-
-  // // Function to handle next step
-  // const handleNextStep = () => {
-  //   setCurrentStep((prevStep) => prevStep + 1);
-  // };
-
-  // // Function to handle previous step
-  // const handlePrevStep = () => {
-  //   console.log("Previous step", currentStep);
-  //   setCurrentStep((prevStep) => prevStep - 1);
-  // };
-
-  // Render form based on current step
 
   return (
     <div className="w-full mx-2">
