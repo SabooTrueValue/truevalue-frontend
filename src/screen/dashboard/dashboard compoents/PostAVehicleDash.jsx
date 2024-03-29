@@ -3,11 +3,7 @@ import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FirebaseStore } from "../../../components/context/Firebase";
 
-const options = [
-  { value: "option-1", label: "Option 1" },
-  { value: "option-2", label: "Option 2" },
-  { value: "option-3", label: "Option 3" },
-];
+
 const outletsOptions = [
   { value: "Kompally", label: "Kompally" },
   { value: "Somajiguda", label: "Somajiguda" },

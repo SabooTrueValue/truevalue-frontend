@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { collection, addDoc } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useFormData } from "../../components/Other/FormDataProvider";
 
 const notifySuccess = () => toast.success("Successfully submitted!");
+
 // const notifyError = () =>
 //   toast.error("This didn't submitted.", {
 //     style: {
@@ -17,24 +19,36 @@ const notifySuccess = () => toast.success("Successfully submitted!");
 //   });
 
 const VehicleOwnerForm2 = () => {
+  const { localData, setCurrentTab, setLocalData, currentTab } = useFormData();
+  // Form data state
+  const [formData, setFormData] = useState({
+    brandName: localData.brandName || "",
+    makeOfYear: localData.makeOfYear || "",
+    carModel: localData.carModel || "",
+    fuelType: localData.fuelType || "",
+    carVariant: localData.carVariant || "",
+    ownership: localData.ownership || "",
+    kmDriven: localData.kmDriven || "",
+    registeredCity: localData.registeredCity || "",
+    transmission: localData.transmission || "",
+    name: localData.name || "",
+    email: localData.email || "",
+    mobile: localData.mobile || "",
+  });
+
+  useEffect(() => {
+    if (localData) {
+      setFormData(localData);
+    }
+  }, [localData]);
+
   // Current step state
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(currentTab || 1);
   const [loading, setLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
-    brandName: "",
-    makeOfYear: "",
-    carModel: "",
-    fuelType: "",
-    carVariant: "",
-    ownership: "",
-    kmDriven: "",
-    registeredCity: "",
-    transmission: "",
-    name: "",
-    email: "",
-    mobile: "",
-  });
+  // useEffect(() => {
+  //   console.log("Form data", formData);
+  // }, [formData]);
 
   // Validation schema using Yup for each step
   const validationSchemaStep4 = Yup.object().shape({
@@ -96,6 +110,9 @@ const VehicleOwnerForm2 = () => {
     notifySuccess();
     // setCurrentStep(5);
     console.log("Document written with ID: ", docRef.id);
+    localStorage.clear();
+    setCurrentTab(1);
+    setLocalData({});
     setLoading(false);
   };
 
@@ -130,11 +147,7 @@ const VehicleOwnerForm2 = () => {
               ? "Preview and Submit"
               : "Thank you for filling out your information!"}
           </div>{" "}
-          <div
-            className={` ${
-              currentStep > 4 ? "hidden" : "block"
-            }`}
-          >
+          <div className={` ${currentStep > 4 ? "hidden" : "block"}`}>
             Step {currentStep} of 4
           </div>
         </div>
@@ -147,6 +160,8 @@ const VehicleOwnerForm2 = () => {
               validationSchemaStep1={validationSchemaStep1}
               setFormData={setFormData}
               formData={formData}
+              setCurrentTab={setCurrentTab}
+              setLocalData={setLocalData}
             />
           ) : currentStep === 2 ? (
             <Step2
@@ -155,6 +170,8 @@ const VehicleOwnerForm2 = () => {
               validationSchemaStep2={validationSchemaStep2}
               setFormData={setFormData}
               formData={formData}
+              setCurrentTab={setCurrentTab}
+              setLocalData={setLocalData}
             />
           ) : currentStep === 3 ? (
             <Step3
@@ -163,6 +180,8 @@ const VehicleOwnerForm2 = () => {
               validationSchemaStep3={validationSchemaStep3}
               setFormData={setFormData}
               formData={formData}
+              setCurrentTab={setCurrentTab}
+              setLocalData={setLocalData}
             />
           ) : currentStep === 4 ? (
             <Step4
@@ -171,6 +190,8 @@ const VehicleOwnerForm2 = () => {
               validationSchemaStep4={validationSchemaStep4}
               setFormData={setFormData}
               formData={formData}
+              setCurrentTab={setCurrentTab}
+              setLocalData={setLocalData}
             />
           ) : currentStep === 5 ? (
             <Step5
@@ -209,9 +230,19 @@ const Step1 = ({
   setCurrentStep,
   setFormData,
   formData,
+  setCurrentTab,
+  setLocalData,
 }) => {
   const handleSubmit1 = (values) => {
     setFormData({ ...formData, ...values });
+    const newFormData = { ...formData, ...values };
+    localStorage.setItem("formData", JSON.stringify(newFormData));
+    setCurrentTab(2);
+    setLocalData((prevLocalData) => ({
+      ...prevLocalData,
+      ...values,
+    }));
+    localStorage.setItem("currentTab", 2);
     setCurrentStep(2);
   };
   return (
@@ -240,9 +271,7 @@ const Step1 = ({
                   name="brandName"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:border-indigo-500"
                 >
-                  <option value="">
-                    Select brand name
-                  </option>
+                  <option value="">Select brand name</option>
                   <option value="Audi">Audi</option>
                   <option value="BMW">BMW</option>
                   <option value="Chevrolet">Chevrolet</option>
@@ -294,9 +323,7 @@ const Step1 = ({
                   name="makeOfYear"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                 <option value="">
-                    Select year
-                  </option>
+                  <option value="">Select year</option>
                   {Array.from({ length: 22 }, (_, i) => 2024 - i).map(
                     (year) => (
                       <option key={year} value={year}>
@@ -356,10 +383,19 @@ const Step2 = ({
   setCurrentStep,
   setFormData,
   formData,
+  setCurrentTab,
+  setLocalData,
 }) => {
   const handleSubmit1 = (values) => {
     setFormData({ ...formData, ...values });
-
+    const newFormData = { ...formData, ...values };
+    localStorage.setItem("formData", JSON.stringify(newFormData));
+    localStorage.setItem("currentTab", 3);
+    setCurrentTab(3);
+    setLocalData((prevLocalData) => ({
+      ...prevLocalData,
+      ...values,
+    }));
     setCurrentStep(3);
   };
   return (
@@ -388,9 +424,7 @@ const Step2 = ({
                   name="fuelType"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                 <option value="">
-                    Select fuel type
-                  </option>
+                  <option value="">Select fuel type</option>
                   <option value="Petrol">Petrol</option>
                   <option value="Diesel">Diesel</option>
                   <option value="CNG">CNG</option>
@@ -418,9 +452,7 @@ const Step2 = ({
                   name="ownership"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                 <option value="">
-                    Select ownership details
-                  </option>
+                  <option value="">Select ownership details</option>
                   <option value="1st owner">1st owner</option>
                   <option value="2nd owner">2nd owner</option>
                   <option value="3rd owner">3rd owner</option>
@@ -485,9 +517,20 @@ const Step3 = ({
   setCurrentStep,
   setFormData,
   formData,
+  setCurrentTab,
+  setLocalData,
 }) => {
   const handleSubmit1 = (values) => {
     setFormData({ ...formData, ...values });
+    const newFormData = { ...formData, ...values };
+    localStorage.setItem("formData", JSON.stringify(newFormData));
+    localStorage.setItem("currentTab", 4);
+    setCurrentTab(4);
+    setLocalData((prevLocalData) => ({
+      ...prevLocalData,
+      ...values,
+    }));
+
     setCurrentStep(4);
   };
   return (
@@ -516,9 +559,7 @@ const Step3 = ({
                   name="kmDriven"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                 <option value="">
-                    Select kilometers driven
-                  </option>
+                  <option value="">Select kilometers driven</option>
                   <option value="0 km -10000 km">0 Km - 10,000 Km</option>
                   <option value="10000 km -20000 km">
                     10,000 Km - 20,000 Km
@@ -587,7 +628,7 @@ const Step3 = ({
                   name="registeredCity"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled  className="text-sm">
+                  <option value="" disabled className="text-sm">
                     Select registered city
                   </option>
                   <option value="" disabled className="text-sm">
@@ -660,9 +701,7 @@ const Step3 = ({
                   name="transmission"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                 <option value="">
-                    Select transmission type
-                  </option>
+                  <option value="">Select transmission type</option>
                   <option value="Automatic">Automatic</option>
                   <option value="Manual">Manual</option>
                 </Field>
@@ -701,9 +740,19 @@ const Step4 = ({
   setFormData,
   setCurrentStep,
   formData,
+  setCurrentTab,
+  setLocalData,
 }) => {
   const handleSubmit1 = (values) => {
     setFormData({ ...formData, ...values });
+    const newFormData = { ...formData, ...values };
+    localStorage.setItem("formData", JSON.stringify(newFormData));
+    localStorage.setItem("currentTab", 5);
+    setCurrentTab(5);
+    setLocalData((prevLocalData) => ({
+      ...prevLocalData,
+      ...values,
+    }));
     setCurrentStep(5);
   };
   return (
@@ -810,7 +859,7 @@ const Step4 = ({
   );
 };
 
-const Step5 = ({ setCurrentStep, formData, saveData ,loading}) => {
+const Step5 = ({ setCurrentStep, formData, saveData, loading }) => {
   const handleSubmit1 = (values) => {
     saveData();
     setCurrentStep(6);
@@ -820,72 +869,76 @@ const Step5 = ({ setCurrentStep, formData, saveData ,loading}) => {
       <div className="px-2 mt-4 lg:lg:px-5">
         <div className="w-full ">
           <table className="">
-            <tr className="mb-2">
-              <td className="pb-2 text-gray-500">Brand Name: </td>
+            <tbody>
+              <tr className="mb-2">
+                <td className="pb-2 text-gray-500">Brand Name: </td>
 
-              <td className="px-4 text-primary">{formData.brandName}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Make of Year: </td>
-              <td className="px-4 text-primary">{formData.makeOfYear}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Car Model: </td>
-              <td className="px-4 text-primary">{formData.carModel}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Fuel Type: </td>
-              <td className="px-4 text-primary">{formData.fuelType}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Ownership: </td>
-              <td className="px-4 text-primary">{formData.ownership}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Car Variant: </td>
-              <td className="px-4 text-primary">{formData.carVariant}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">KM Driven: </td>
-              <td className="px-4 text-primary">{formData.kmDriven}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Registered City: </td>
-              <td className="px-4 text-primary">{formData.registeredCity}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Transmission: </td>
-              <td className="px-4 text-primary">{formData.transmission}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Name: </td>
-              <td className="px-4 text-primary">{formData.name}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Mobile: </td>
-              <td className="px-4 text-primary">{formData.mobile}</td>
-            </tr>
-            <tr>
-              <td className="pb-2 text-gray-500">Email: </td>
-              <td className="px-4 text-primary">{formData.email}</td>
-            </tr>
+                <td className="px-4 text-primary">{formData.brandName}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Make of Year: </td>
+                <td className="px-4 text-primary">{formData.makeOfYear}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Car Model: </td>
+                <td className="px-4 text-primary">{formData.carModel}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Fuel Type: </td>
+                <td className="px-4 text-primary">{formData.fuelType}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Ownership: </td>
+                <td className="px-4 text-primary">{formData.ownership}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Car Variant: </td>
+                <td className="px-4 text-primary">{formData.carVariant}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">KM Driven: </td>
+                <td className="px-4 text-primary">{formData.kmDriven}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Registered City: </td>
+                <td className="px-4 text-primary">{formData.registeredCity}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Transmission: </td>
+                <td className="px-4 text-primary">{formData.transmission}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Name: </td>
+                <td className="px-4 text-primary">{formData.name}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Mobile: </td>
+                <td className="px-4 text-primary">{formData.mobile}</td>
+              </tr>
+              <tr>
+                <td className="pb-2 text-gray-500">Email: </td>
+                <td className="px-4 text-primary">{formData.email}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
       <div className="flex mt-8 justify-evenly ">
-       {!loading && <button
-          type="button"
-          onClick={() => setCurrentStep(4)}
-          className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3 text-primary border border-primary"
-        >
-          Previous
-        </button>}
+        {!loading && (
+          <button
+            type="button"
+            onClick={() => setCurrentStep(4)}
+            className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3 text-primary border border-primary"
+          >
+            Previous
+          </button>
+        )}
         <button
           type="submit"
           onClick={handleSubmit1}
           className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3"
         >
-         {loading ? "Submitting..." : "Submit"}
+          {loading ? "Submitting..." : "Submit"}
         </button>
       </div>
     </div>

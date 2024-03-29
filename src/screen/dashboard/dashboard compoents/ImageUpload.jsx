@@ -106,7 +106,7 @@ const ImageUpload = ({ setCurrentTab }) => {
                     <img
                       src={URL.createObjectURL(values.images[index])}
                       alt={`Preview ${index + 1}`}
-                      className="max-w-xs my-2 max-h-xs"
+                      className="h-40 max-w-xs mx-auto my-2 max-h-xs"
                     />
                   )}
                   <ErrorMessage
@@ -125,7 +125,8 @@ const ImageUpload = ({ setCurrentTab }) => {
                 Previous
               </button>
               <button
-                onClick={() => setCurrentTab(2)}
+                // onClick={() => setCurrentTab(2)}
+                type="submit"
                 className="px-4 py-2 text-white rounded-md bg-tr hover:bg-indigo-700 bg-primary "
               >
                 Next

@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CgSpinner } from "react-icons/cg";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 
 import { collection, addDoc } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
@@ -22,27 +22,28 @@ const ContactUsForm = () => {
       phone: Yup.string()
         .matches(/^[6-9][0-9]{6,9}$/, "Invalid phone number")
         .required("Phone is required"),
-      message: Yup.string().required("Message is required").max(300, "Message must be at most 300 characters"),
+      message: Yup.string()
+        .required("Message is required")
+        .max(300, "Message must be at most 300 characters"),
       disclaimer: Yup.boolean().oneOf([true], "Must accept disclaimer"),
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         // Simulate form submission delay
-       setLoading(true);
-       console.log("Form data", values);
-       const docRef = await addDoc(
-         collection(FirebaseStore, "contact-us"),
-         values
-       );
-     
-       // setCurrentStep(5);
-       console.log("Document written with ID: ", docRef.id);
-       setLoading(false);
-        
+
+        console.log("Form data", values);
+        const docRef = await addDoc(
+          collection(FirebaseStore, "contact-us"),
+          values
+        );
+
+        // setCurrentStep(5);
+        console.log("Document written with ID: ", docRef.id);
+
         // Your actual form submission logic goes here
         // For demonstration purposes, let's display a success message using toast
-        toast.success('Form submitted successfully');
-        
+        toast.success("Form submitted successfully");
+
         // Reset form values after successful submission
         resetForm({
           name: "",
@@ -54,7 +55,7 @@ const ContactUsForm = () => {
       } catch (error) {
         // Handle form submission errors here
         console.error("Form submission error:", error);
-        toast.error('Form submission failed');
+        toast.error("Form submission failed");
       } finally {
         // Always set submitting state to false after form submission
         setSubmitting(false);
@@ -62,11 +63,8 @@ const ContactUsForm = () => {
     },
   });
 
-  const [loading, setLoading] = React.useState(false);
-  
   return (
     <div className="">
-     
       <form onSubmit={formik.handleSubmit}>
         <div className="mt-3">
           <label htmlFor="name">
@@ -140,7 +138,6 @@ const ContactUsForm = () => {
             type="checkbox"
             checked={formik.values.disclaimer} // Use checked instead of value
             onChange={formik.handleChange} // Handle onChange to update formik state
-            
             required
             {...formik.getFieldProps("disclaimer")}
           />

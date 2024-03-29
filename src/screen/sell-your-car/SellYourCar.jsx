@@ -1,8 +1,6 @@
 import React from "react";
 import VehicleOwnerForm2 from "./VehicleOwnerForm2";
-import  { Toaster } from "react-hot-toast";
-
-
+import { Toaster } from "react-hot-toast";
 
 const SellYourCar = () => {
   const backgroundStyle = {
@@ -11,10 +9,8 @@ const SellYourCar = () => {
 
   return (
     <div style={backgroundStyle} className="min-h-[90vh] overflow-hidden">
-      {/* {currentTab === 1 && <VehicleFormData setCurrentTab={setCurrentTab} />} */}
       <div className="flex items-start justify-center h-screen pt-12 lg:pt-20 lg:pb-20">
         <VehicleOwnerForm2 />
-        {/* <VehicleFormData /> */}
       </div>
       <Toaster />
     </div>
