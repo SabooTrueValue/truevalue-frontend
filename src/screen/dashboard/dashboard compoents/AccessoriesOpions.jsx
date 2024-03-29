@@ -61,62 +61,6 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
       >
         {() => (
           <Form>
-            {/* <div className="grid gap-4 px-4 mb-6 md:grid-cols-3 lg:grid-cols-6">
-              {[
-                "Sunroof",
-                "Leather Seats",
-                "Alloy Wheels",
-                "Fog Lights",
-                "Navigation",
-                "Bluetooth",
-                "Reverse Camera",
-                "Cruise Control",
-                "Parking Sensors",
-                "Air Conditioning",
-                "Climate Control",
-                "Power Steering",
-                "Power Windows",
-                "Power Mirrors",
-                "Power Seats",
-                "Heated Seats",
-                "Cooled Seats",
-                "Memory Seats",
-                "Seating Capacity",
-              ].map((x, i) => (
-                <div key={i}>
-                  <label
-                    htmlFor={x}
-                     className={`${ currentTab === 1 &&"text-lg" } block font-medium text-gray-700`}
-                  >
-                    {x}
-                  </label>
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={`${x}-checkbox`}
-                      name={x}
-                      value="Yes"
-                      checked={values[x] === "Yes"}
-                      onChange={(e) =>
-                        setFieldValue(x, e.target.checked ? "Yes" : "No")
-                      }
-                      className="mr-2"
-                    />
-                    <label htmlFor={`${x}-checkbox`} className={`${ currentTab === 1 && "text-lg" } text-slate-500`}>
-                      Yes
-                    </label>
-                  </div>
-                  <ErrorMessage
-                    name={x}
-                    component={({ children }) => (
-                      <div className="mt-2 text-sm text-red-500">
-                        {children}
-                      </div>
-                    )}
-                  />
-                </div>
-              ))}
-            </div> */}
             <div className="grid gap-4 px-4 mb-6 md:grid-cols-3 lg:grid-cols-6">
               <div>
                 <label

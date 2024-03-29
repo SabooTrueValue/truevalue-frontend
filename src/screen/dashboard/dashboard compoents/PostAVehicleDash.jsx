@@ -23,14 +23,16 @@ function PostAVehicleDash({ setCurrentTab }) {
       .max(500),
     seatingCapacity: Yup.number()
       .required("Seating Capacity is required")
-      .positive("Seating Capacity must be positive"),
+      .positive("Seating Capacity must be positive")
+      .max(12),
     userType: Yup.string().required("User Type is required"),
     vehicleCategory: Yup.string().required("Vehicle Category is required"),
     transmission: Yup.string().required("Transmission is required"),
     bodyType: Yup.string().required("Body Type is required"),
     price: Yup.number()
       .required("Price is required")
-      .positive("Price must be positive"),
+      .positive("Price must be positive")
+      .max(10000000),
     fuelType: Yup.string().required("Fuel Type is required"),
     modelYear: Yup.number()
       .required("Model Year is required")
@@ -41,20 +43,16 @@ function PostAVehicleDash({ setCurrentTab }) {
     registrationNo: Yup.string().required("Registration No is required"),
     kmDriven: Yup.number()
       .required("KM Driven is required")
-      .positive("KM Driven must be positive"),
+      .positive("KM Driven must be positive")
+      .max(100000),
   });
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      // Store the form data in Firestore
       console.log("Submitting form:", values);
       localStorage.setItem("postVehicleData", JSON.stringify(values));
-      //   console.log("Submitting form:", db)
+
       setPostVehicleData((prev) => ({ ...prev, ...values }));
-
-      //   await db.collection("form-data").add(values);
-
-      // Reset the form after successful submission
 
       setCurrentTab(1);
     } catch (error) {
@@ -248,6 +246,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                   id="seatingCapacity"
                   name="seatingCapacity"
                   type="number"
+                  maxLength="2"
                   className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <ErrorMessage
@@ -609,7 +608,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                 />
               </div>
             </div>
-            <div className="flex justify-center" >
+            <div className="flex justify-center">
               <button
                 // onClick={() => setCurrentTab(2)}
                 type="submit"

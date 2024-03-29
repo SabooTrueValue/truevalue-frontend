@@ -2,13 +2,24 @@ import React, { useEffect, useState } from "react";
 import { AiOutlinePhone, AiOutlineWhatsApp } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { addDoc, collection } from "firebase/firestore";
+import { FirebaseStore } from "../context/Firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Popup() {
   const [open, setOpen] = useState(false);
-  const [mobileNumber, setMobileNumber] = useState("");
+  const [loading, setLoading] = useState(false);
+  
+
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    localStorage.setItem("popup", JSON.stringify(open));
+  }, [open]);
 
   useEffect(() => {
     if (open) {
@@ -20,14 +31,13 @@ export default function Popup() {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setOpen(false);
+     if (sessionStorage.getItem("popup") !== "true") {
+       setOpen(true);
+       // sessionStorage.setItem("popup", "true");
+     }
     }, 5000);
     return () => clearTimeout(timeout);
   }, []);
-
-  const handleMobileNumberChange = (event) => {
-    setMobileNumber(event.target.value);
-  };
 
   return (
     <>
@@ -58,67 +68,98 @@ export default function Popup() {
                   <RiCloseLine className="inline-block mr-1" />
                 </button>
               </div>{" "}
-              <form action="">
-                <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
-                  <div className="w-full sm:flex sm:items-start">
-                    <div className="w-full mt-3 text-center sm:mt-0 sm:text-left">
-                      <h3
-                        className="mb-6 text-lg font-extrabold leading-6 text-center uppercase lg:text-xl text-primary"
-                        id="modal-title"
-                      >
-                        Get A Quote & New Offer
-                      </h3>
-                      <div className="mt-2">
-                        <input
-                          autoFocus
-                          className="w-full px-3 py-2 text-lg leading-tight text-center text-gray-700 border rounded appearance-none border-primary focus:outline-none focus:border-primary"
-                          id="mobile-number"
-                          type="tel"
-                          placeholder="Provide your mobile number"
-                          required
-                          value={mobileNumber}
-                          onChange={handleMobileNumberChange}
-                        />
-                      </div>
-                      <div className="flex justify-center gap-8 mt-6">
-                        <a
-                          href="tel:+1234567890"
-                          className="flex justify-center w-1/2 gap-3 py-1.5 border rounded-lg text-primary"
-                        >
-                          <AiOutlinePhone className="w-5 h-5 " /> Call Us
-                        </a>
-                        <a
-                          href="https://wa.me/1234567890"
-                          className="flex justify-center w-1/2 gap-3 py-1.5 text-green-500 border rounded-lg"
-                        >
-                          <AiOutlineWhatsApp className="w-5 h-5 " /> Whatsapp
-                        </a>
+              <Formik
+                initialValues={{ mobileNumber: "" }}
+                validationSchema={Yup.object({
+                  mobileNumber: Yup.string()
+                    .required("Mobile number is required")
+                    .matches(/^[0-9]{10}$/, "Invalid mobile number"),
+                })}
+                onSubmit={async (values, { setSubmitting }) => {
+                  setLoading(true);
+                  // Your Firebase submission logic here
+                  console.log("Form submitted", values);
+                  const docRef = await addDoc(
+                    collection(FirebaseStore, "popupEnquiries"),
+                    values
+                  );
+                  console.log("Document written with ID: ", docRef.id);
+                  toast.success("Your enquiry has been submitted successfully");
+                  setSubmitting(false);
+                  sessionStorage.setItem("popup", "true");
+                  handleClose();
+                }}
+              >
+                {({ isSubmitting }) => (
+                  <Form>
+                    <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                      <div className="w-full sm:flex sm:items-start">
+                        <div className="w-full mt-3 text-center sm:mt-0 sm:text-left">
+                          <h3
+                            className="mb-6 text-lg font-extrabold leading-6 text-center uppercase lg:text-xl text-primary"
+                            id="modal-title"
+                          >
+                            Get A Quote & New Offer
+                          </h3>
+                          <div className="mt-2">
+                            <Field
+                              name="mobileNumber"
+                              type="tel"
+                              autoComplete="off"
+                              maxLength="10"
+                              className="w-full px-3 py-2 text-lg leading-tight text-center text-gray-700 border rounded appearance-none border-primary focus:outline-none focus:border-primary"
+                              placeholder="Provide your mobile number"
+                            />
+                            <ErrorMessage
+                              name="mobileNumber"
+                              component="div"
+                              className="text-sm text-center text-red-500"
+                            />
+                          </div>
+                          <div className="flex justify-center gap-8 mt-6">
+                            <a
+                              href="tel:+1234567890"
+                              className="flex justify-center w-1/2 gap-3 py-1.5 border rounded-lg text-primary"
+                            >
+                              <AiOutlinePhone className="w-5 h-5 " /> Call Us
+                            </a>
+                            <a
+                              href="https://wa.me/1234567890"
+                              className="flex justify-center w-1/2 gap-3 py-1.5 text-green-500 border rounded-lg"
+                            >
+                              <AiOutlineWhatsApp className="w-5 h-5 " />{" "}
+                              Whatsapp
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex justify-center px-4 pt-2">
-                  <button
-                    // onClick={handleClose}
-                    // disabled={!mobileNumber}
-                    type="submit"
-                    className={`   py-2 rounded-lg   sm:text-sm  mx-auto bg-primary w-full text-white cursor-pointer`}
-                  >
-                    Submit
-                  </button>
-                </div>
-                <p className="pt-3 text-sm text-center">
-                  I agree to the{" "}
-                  <Link
-                    to="/used-cars-terms-conditions"
-                    className="text-blue-500"
-                  >
-                    terms and conditions.
-                  </Link>
-                </p>
-              </form>
+                    <div className="flex justify-center px-4 pt-2">
+                      <button
+                        // onClick={handleClose}
+                        // disabled={!mobileNumber}
+                        disabled={isSubmitting}
+                        type="submit"
+                        className={`   py-2 rounded-lg   sm:text-sm  mx-auto bg-primary w-full text-white cursor-pointer`}
+                      >
+                        {loading ? "Submitting..." : "Submit"}
+                      </button>
+                    </div>
+                    <p className="pt-3 text-sm text-center">
+                      I agree to the{" "}
+                      <Link
+                        to="/used-cars-terms-conditions"
+                        className="text-blue-500"
+                      >
+                        terms and conditions.
+                      </Link>
+                    </p>
+                  </Form>
+                )}
+              </Formik>
             </div>
           </div>
+          <Toaster />
         </div>
       )}
     </>
