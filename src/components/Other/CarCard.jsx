@@ -5,8 +5,8 @@ import { FaLocationDot } from "react-icons/fa6";
 const CarCard = ({ carData }) => {
   // Function to calculate EMI
   const calculateEMI = () => {
-    // Assuming interest rate of 8% per annum and tenure of 5 years (60 months)
-    const interestRatePerMonth = 8 / (12 * 100);
+    // Assuming interest rate of 8.5% per annum and tenure of 5 years (60 months)
+    const interestRatePerMonth = 8.5 / (12 * 100);
     const tenureInMonths = 60; // 5 years
     const principal = carData.price * 100000; // Assuming carData.price is in lakhs
 

@@ -5,14 +5,14 @@ import RangeSlider from "./RangeSlider";
 
 const FilteringPanel = () => {
   const [Budget, setBudget] = useState(true);
-  const [BrandModel, setBrandModel] = useState(true);
-  const [ModalYear, setModalYear] = useState(true);
-  const [Kilometers, setKilometers] = useState(true);
-  const [GearBox, setGearBox] = useState(true);
-  const [FuelType, setFuelType] = useState(true);
-  // const [BodyType, setBodyType] = useState(true);
-  const [colors, setColors] = useState(true);
-  const [OtherFeatures, setOtherFeatures] = useState(true);
+  const [BrandModel, setBrandModel] = useState(false);
+  const [ModalYear, setModalYear] = useState(false);
+  const [Kilometers, setKilometers] = useState(false);
+  const [GearBox, setGearBox] = useState(false);
+  const [FuelType, setFuelType] = useState(false);
+  // const [BodyType, setBodyType] = useState(false);
+  const [colors, setColors] = useState(false);
+  const [OtherFeatures, setOtherFeatures] = useState(false);
 
   return (
     <div className="px-2 ">
@@ -182,11 +182,11 @@ const BudgetFilter = () => {
     <div className="mb-6 text-xs">
       <div className="flex justify-between mb-4">
         <div className="px-3 py-2 rounded bg-[#F4F4F4] w-min flex gap-1 items-center">
-          <div className="text-base font-bold">{values[0]}</div>{" "}
+          <div className="text-base font-bold">{values[0]}</div>
           <div> Lakhs</div>
         </div>
         <div className="px-3 py-2 rounded bg-[#F4F4F4] w-min flex gap-1 items-center">
-          <div className="text-base font-bold">{values[1]}</div>{" "}
+          <div className="text-base font-bold">{values[1]}</div>
           <div> Lakhs</div>
         </div>
       </div>

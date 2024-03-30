@@ -1,54 +1,77 @@
 import React, { useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const CarCart = () => {
-  const [selectedCars, setSelectedCars] = useState([]);
+  const [filters, setFilters] = useState({
+    minPrice: "",
+    maxPrice: "",
+    minYear: "",
+    maxYear: "",
+    minKilometer: "",
+    maxKilometer: "",
+    fuel: "",
+    color: "",
+    bodyType: "",
+  });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("");
+
+  // const bodyTypeOptions = [
+  //   "Minivan",
+  //   "Hatchback",
+  //   "Sedan",
+  //   "SUV",
+  //   "MUV",
+  //   "Coupe",
+  //   "Convertible",
+  //   "Jeep",
+  //   "Wagon",
+  // ];
 
   const data = [
     {
       carName: "BMW X7",
       EMI: "1,20,000",
       detail: "XDrive 401 M Sport",
-      year: "2019",
+      year: "2018",
       fuel: "Petrol",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/BMW1.png"),
       // img: require("../../assets/pre-owned-car/BMW1.png"),
-      price: "80,00,000",
+      price: "8000000",
       isFavorite: false,
     },
     {
       carName: "AUDDI 7",
       EMI: "1,20,000",
       detail: "XDrive 401 M Sport",
-      year: "2019",
+      year: "2017",
       fuel: "Diesel",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/AUDDI1.png"),
-      price: "40,00,000",
+      price: "4000000",
       isFavorite: false,
     },
     {
       carName: "JEEP",
       EMI: "1,20,000",
       detail: "XDrive 401 M Sport",
-      year: "2019",
+      year: "2016",
       fuel: "CNG",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/JEEP1.png"),
-      price: "30,00,000",
+      price: "3000000",
       isFavorite: false,
     },
     {
       carName: "BMW X5",
       EMI: "1,20,000",
       detail: "XDrive 401 M Sport",
-      year: "2019",
+      year: "2020",
       fuel: "Electric",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/BMW2.png"),
-      price: "10,00,000",
+      price: "1000000",
       isFavorite: false,
     },
     {
@@ -59,7 +82,7 @@ const CarCart = () => {
       fuel: "Hybrid",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/BMW1.png"),
-      price: "68,00,000",
+      price: "6800000",
       isFavorite: false,
     },
     {
@@ -70,7 +93,7 @@ const CarCart = () => {
       fuel: "Petrol",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/AUDDI1.png"),
-      price: "50,00,000",
+      price: "5000000",
       isFavorite: false,
     },
     {
@@ -81,7 +104,7 @@ const CarCart = () => {
       fuel: "Diesel",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/JEEP1.png"),
-      price: "35,00,000",
+      price: "3500000",
       isFavorite: false,
     },
     {
@@ -92,7 +115,7 @@ const CarCart = () => {
       fuel: "CNG",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/BMW2.png"),
-      price: "85,00,000",
+      price: "8500000",
       isFavorite: false,
     },
     {
@@ -103,7 +126,7 @@ const CarCart = () => {
       fuel: "Electric",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/BMW1.png"),
-      price: "22,00,000",
+      price: "2200000",
       isFavorite: false,
     },
     {
@@ -114,7 +137,7 @@ const CarCart = () => {
       fuel: "Hybrid",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/AUDDI1.png"),
-      price: "43,00,000",
+      price: "4300000",
       isFavorite: false,
     },
     {
@@ -125,7 +148,7 @@ const CarCart = () => {
       fuel: "Petrol",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/JEEP1.png"),
-      price: "35,00,000",
+      price: "3500000",
       isFavorite: false,
     },
     {
@@ -136,77 +159,125 @@ const CarCart = () => {
       fuel: "Diesel",
       kilometer: "23000",
       img: require("../../assets/pre-owned-car/BMW2.png"),
-      price: "28,00,000",
+      price: "2800000",
       isFavorite: false,
     },
   ];
 
-  const handleToggleFavorite = (index) => {
-    setSelectedCars((prevSelectedCars) => {
-      if (prevSelectedCars.includes(index)) {
-        return prevSelectedCars.filter((selectedCar) => selectedCar !== index);
-      } else {
-        return [...prevSelectedCars, index];
-      }
-    });
-  };
+  const filteredData = data.filter((car) => {
+    return (
+      (parseInt(car.price) >= parseInt(filters.minPrice) ||
+        !filters.minPrice) &&
+      (parseInt(car.price) <= parseInt(filters.maxPrice) ||
+        !filters.maxPrice) &&
+      (parseInt(car.year) >= parseInt(filters.minYear) || !filters.minYear) &&
+      (parseInt(car.year) <= parseInt(filters.maxYear) || !filters.maxYear) &&
+      (parseInt(car.kilometer) >= parseInt(filters.minKilometer) ||
+        !filters.minKilometer) &&
+      (parseInt(car.kilometer) <= parseInt(filters.maxKilometer) ||
+        !filters.maxKilometer) &&
+      (filters.fuel === "" ||
+        filters.fuel === "All" ||
+        filters.fuel.includes(car.fuel)) &&
+      (filters.color === "" ||
+        filters.color === "All" ||
+        filters.color.includes(car.color)) &&
+      (filters.bodyType === "" ||
+        filters.bodyType === "All" ||
+        filters.bodyType === car.bodyType) &&
+      car.carName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
 
-  // const handleToggleFavorite = (index) => {
-  //   setSelectedCars((prevSelectedCars) => {
-  //     if (prevSelectedCars.includes(index)) {
-  //       return prevSelectedCars.filter((selectedCar) => selectedCar !== index);
-  //     } else {
-  //       return [...prevSelectedCars, index];
-  //     }
-  //   });
-  // };
+  const sortedData = [...filteredData].sort((a, b) => {
+    switch (sortBy) {
+      case "priceLowToHigh":
+        return parseInt(a.price) - parseInt(b.price);
+      case "priceHighToLow":
+        return parseInt(b.price) - parseInt(a.price);
+      case "yearLowToHigh":
+        return parseInt(a.year) - parseInt(b.year);
+      case "yearHighToLow":
+        return parseInt(b.year) - parseInt(a.year);
+      case "kilometerLowToHigh":
+        return parseInt(a.kilometer) - parseInt(b.kilometer);
+      case "kilometerHighToLow":
+        return parseInt(b.kilometer) - parseInt(a.kilometer);
+      default:
+        return 0;
+    }
+  });
 
   return (
     <div className="container flex flex-wrap gap-5 mx-auto 2xl:gap-4">
-      {data.map((x, i) => {
-        const isFavorite = selectedCars.includes(i);
-        return (
-          <div
-            key={i}
-            className="w-[280px] bg-white shadow-lg shadow-gray-300 hover:shadow-2xl hover:shadow-gray-500"
+      <div className="flex flex-wrap justify-center w-full gap-2 my-4 duration-500 md:justify-between">
+        <input
+          type="text"
+          placeholder="Search by car name..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="px-4 py-2 transition-all duration-500 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:md:w-1/2 focus:lg:w-1/3 w-[300px] focus:w-full"
+        />{" "}
+        <div className="flex items-center ">
+          <label htmlFor="sortBy">Sort By:</label>
+          <select
+            id="sortBy"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="px-4 py-2 ml-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
           >
-            <Link to="/car-details">
-              <div className="relative">
-                <img src={x.img} alt={x.carName} className="w-full" />
-                <div className="bg-primary px-4 py-2.5 bg-opacity-50 text-white rounded-tl-xl absolute bottom-0 right-0">
-                  ₹ {x.price}
+            <option value="">Select</option>
+            <option value="priceLowToHigh">Price: Low to High</option>
+            <option value="priceHighToLow">Price: High to Low</option>
+            <option value="yearLowToHigh">Year: Low to High</option>
+            <option value="yearHighToLow">Year: High to Low</option>
+            <option value="kilometerLowToHigh">Kilometer: Low to High</option>
+            <option value="kilometerHighToLow">Kilometer: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      {sortedData.length === 0 ? (
+        <div>No cars found</div>
+      ) : (
+        sortedData.map((x, i) => {
+          return (
+            <div
+              key={i}
+              className="w-[280px] bg-white border   hover:shadow-2xl hover:shadow-gray-500 mx-auto duration-500"
+            >
+              <Link to="/car-details">
+                <div className="relative">
+                  <img src={x.img} alt={x.carName} className="w-full" />
+                  <div className="bg-primary px-4 py-2.5 bg-opacity-50 text-white rounded-tl-xl absolute bottom-0 right-0">
+                    ₹ {x.price}
+                  </div>
                 </div>
-                <AiFillHeart
-                  className={`absolute text-2xl top-2 right-2 cursor-pointer ${
-                    isFavorite ? "text-red-500" : "text-white"
-                  }`}
-                  onClick={() => handleToggleFavorite(i)}
-                />
-              </div>
-              <div className="p-4">
-                <div className="flex items-end justify-between pb-2 ">
-                  <div className="text-xl ">{x.carName}</div>
-                  <div className="text-sm">EMI : {x.EMI}</div>
+                <div className="p-4">
+                  <div className="flex items-end justify-between pb-2 ">
+                    <div className="text-xl ">{x.carName}</div>
+                    <div className="text-sm">EMI : {x.EMI}</div>
+                  </div>
+                  <div className=" mb-2 text-[#8A8A8A]">{x.detail} </div>
+                  <div className=" mb-4 text-[#8A8A8A] font-light text-xs tracking-wider  flex  gap-2">
+                    <div className="">{x.year}</div> |
+                    <div className="">{x.fuel}</div>| <div>{x.kilometer}km</div>
+                  </div>
+                  <div className="flex gap-4  text-[#8A8A8A]">
+                    <input
+                      type="checkbox"
+                      name="compareCheckbox"
+                      id=""
+                      className="transform scale-125 cursor-pointer"
+                    />
+                    <label htmlFor="compareCheckbox ">COMPARE</label>
+                  </div>
                 </div>
-                <div className=" mb-2 text-[#8A8A8A]">{x.detail} </div>
-                <div className=" mb-4 text-[#8A8A8A] font-light text-xs tracking-wider  flex  gap-2">
-                  <div className="">{x.year}</div> |
-                  <div className="">{x.fuel}</div>| <div>{x.kilometer}km</div>
-                </div>
-                <div className="flex gap-4  text-[#8A8A8A]">
-                  <input
-                    type="checkbox"
-                    name="compareCheckbox"
-                    id=""
-                    className="transform scale-125 cursor-pointer"
-                  />
-                  <label htmlFor="compareCheckbox ">COMPARE</label>
-                </div>
-              </div>
-            </Link>
-          </div>
-        );
-      })}
+              </Link>
+            </div>
+          );
+        })
+      )}
     </div>
   );
 };

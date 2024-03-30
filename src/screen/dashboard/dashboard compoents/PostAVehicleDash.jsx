@@ -6,7 +6,7 @@ import { useFormData } from "../../../components/Other/FormDataProvider";
 const outletsOptions = [
   { value: "Kompally", label: "Kompally" },
   { value: "Somajiguda", label: "Somajiguda" },
-  { value: "Komajiguda", label: "Komajiguda" },
+  { value: "Kushaiguda,", label: "Kushaiguda," },
   { value: "Malakpet", label: "Malakpet" },
 ];
 
@@ -44,7 +44,7 @@ function PostAVehicleDash({ setCurrentTab }) {
     kmDriven: Yup.number()
       .required("KM Driven is required")
       .positive("KM Driven must be positive")
-      .max(100000),
+      .max(10000000),
   });
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -422,7 +422,7 @@ function PostAVehicleDash({ setCurrentTab }) {
                   className="w-full px-1 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
                   <option value=""></option>
-                  {Array.from({ length: 22 }, (_, i) => 2024 - i).map(
+                  {Array.from({ length: 21 }, (_, i) => 2024 - i).map(
                     (year) => (
                       <option key={year} value={year}>
                         {year}
