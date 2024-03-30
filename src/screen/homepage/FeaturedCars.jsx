@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import HeadingComponent from "../../components/Other/HeadingComponent";
+import { useFormData } from "../../components/Other/FormDataProvider";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,6 +18,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { BsArrowLeft } from "react-icons/bs";
 import CarCard from "../../components/Other/CarCard";
+import CarCard2 from "../../components/Other/CarCard2";
 // import "./HomeSlider.css";
 
 const FeaturedCars = () => {
@@ -41,80 +43,7 @@ function LimitedEditonCarSlider() {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
-  const data = [
-    {
-      img: "https://sabootruevalue.in/admin/img/vehicleimages/TS08/1.jpg",
-      title: "Jeep Wrangler",
-      detail: "Automatic ",
-      power: "1998 cc",
-      killometerDriven: "71K",
-      type: "Petrol",
-      year: "2018",
-      price: "7.52",
-      emiPrice: "7,562",
-      location: "Malakpet",
-    },
-    {
-      img: "https://sabootruevalue.in/admin/img/vehicleimages/TS36/1.jpg",
-      title: "BMW i3",
-      detail: "RWD & AWD",
-      power: "1995 to 2998 cc",
-      killometerDriven: "90K",
-      type: "CNG & Diesel",
-      year: "2021",
-      price: "8.44",
-      emiPrice: "8,464",
-      location: "Kompally",
-    },
-    {
-      img: "https://sabootruevalue.in/admin/img/vehicleimages/TS09/1.jpg",
-      title: "Audi Q5",
-      detail: "4WD / AWD",
-      power: "1968 to 1984 cc",
-      killometerDriven: "65K",
-      type: "CNG & Diesel",
-      year: "2020",
-      price: "10.50",
-      emiPrice: "10,560",
-      location: "Kushaiguda",
-    },
-    {
-      img: "https://sabootruevalue.in/admin/img/vehicleimages/Ts09/1.jpg",
-      title: "Jeep Wrangler",
-      detail: "Automatic ",
-      power: "1998 cc",
-      killometerDriven: "70K",
-      type: "Electric",
-      year: "2022",
-      price: "6.52",
-      emiPrice: "6,562",
-      location: "Kompally",
-    },
-    {
-      img: "https://sabootruevalue.in/admin/img/vehicleimages/TS07/1.jpg",
-      title: "BMW i3",
-      detail: "RWD & AWD",
-      power: "1995 to 2998 cc",
-      type: "Petrol ",
-      killometerDriven: "80K",
-      year: "2019",
-      price: "7.52",
-      emiPrice: "7,562",
-      location: "Malakpet",
-    },
-    {
-      img: "https://sabootruevalue.in/admin/img/vehicleimages/TS34/1.jpg",
-      title: "Audi Q5",
-      detail: "4WD / AWD",
-      power: "1968 to 1984 cc",
-      type: " Diesel",
-      killometerDriven: "90K",
-      year: "2020",
-      price: "5.52",
-      emiPrice: "5,562",
-      location: "Somajiguda",
-    },
-  ];
+  const { vehicleData } = useFormData();
 
   return (
     <>
@@ -179,10 +108,10 @@ function LimitedEditonCarSlider() {
             </div>
           </div>
           <div className="px-2 overflow-hidden">
-            {data.map((x, i) => {
+            {vehicleData.map((x, i) => {
               return (
                 <SwiperSlide key={i} className="relative pb-4 group">
-                  <CarCard carData={x} />
+                  <CarCard2 carData={x} />
                 </SwiperSlide>
               );
             })}

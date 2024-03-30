@@ -12,9 +12,7 @@ export const DashboardHomepag = () => {
         <div
           className={`${open ? "block lg:w-1/6" : " hidden"} h-full   relative`}
         >
-       
-            <DashboardSidePanel setSelected={setSelected} setOpen={setOpen} />
-         
+          <DashboardSidePanel setSelected={setSelected} setOpen={setOpen} />
         </div>
         <div
           className={`flex flex-col  gap-2 ${
