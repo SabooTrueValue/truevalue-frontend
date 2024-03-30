@@ -8,11 +8,19 @@ export const DashboardHomepag = () => {
   const [open, setOpen] = useState(true);
   return (
     <div className="">
-      <div className="flex min-h-[99.5vh] gap-2 p-2 duration-200 ">
-        <div className={`${!open ? "hidden " : "block "}`}>
-          <DashboardSidePanel setSelected={setSelected} setOpen={setOpen} />
+      <div className="flex h-[99.5vh] gap-2 p-2 duration-200 ">
+        <div
+          className={`${open ? "block lg:w-1/6" : " hidden"} h-full   relative`}
+        >
+       
+            <DashboardSidePanel setSelected={setSelected} setOpen={setOpen} />
+         
         </div>
-        <div className="flex flex-col w-full h-full gap-2">
+        <div
+          className={`flex flex-col  gap-2 ${
+            open ? "lg:w-5/6" : "w-full h-full"
+          }`}
+        >
           <DashboardHeader open={open} setOpen={setOpen} selected={selected} />
           <MainPanel selected={selected} />
         </div>

@@ -16,6 +16,7 @@ import { DashboardHomepag } from "./screen/dashboard/DashboardHomepag";
 import Popup from "./components/Other/Popup";
 import Header from "./screen/homepage/Header";
 import Outlets from "./screen/more-links/Outlets";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { pathname } = useLocation();
@@ -55,6 +56,7 @@ function App() {
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Toaster />
 
       {!isAdminRoute && <Footer />}
     </>

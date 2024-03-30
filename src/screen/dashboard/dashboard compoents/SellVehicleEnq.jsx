@@ -7,55 +7,75 @@ import { Box, Button } from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { mkConfig, generateCsv, download } from "export-to-csv"; //or use your library of choice here
 // import { data } from "./makeData";
-import { FirebaseStore } from "../../../components/context/Firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { useEffect } from "react";
 
 const columnHelper = createMRTColumnHelper();
 
-const data = [
-  {
-    id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    company: "True Value",
-    city: "New York",
-    country: "USA",
-  },
-  {
-    id: 2,
-
-    firstName: "Jane",
-    lastName: "Doe",
-    company: "True Value",
-    city: "New York",
-    country: "USA",
-  },
-];
-
 const columns = [
-  columnHelper.accessor("id", {
-    header: "ID",
+  columnHelper.accessor("index", {
+    header: "No",
+    size: 10,
+  }),
+  columnHelper.accessor("name", {
+    header: "Name",
+    size: 200,
+  }),
+  columnHelper.accessor("mobile", {
+    header: "Phone Number",
+    size: 120,
+  }),
+  columnHelper.accessor("email", {
+    header: "email",
+    size: 200,
+  }),
+  columnHelper.accessor("brandName", {
+    header: "Brand Name",
+  }),
+  columnHelper.accessor("carModel", {
+    header: "Model",
+    // size: 220,
+  }),
+  columnHelper.accessor("makeOfYear", {
+    header: "Make Of Year",
+    // size: 220,
+    size: 10,
+  }),
+  columnHelper.accessor("fuelType", {
+    header: "Fuel Type",
+    // size: 220,
+    size: 10,
+  }),
+  columnHelper.accessor("carVariant", {
+    header: "Car Variant",
+    // size: 220,
+    size: 10,
+  }),
+  columnHelper.accessor("ownership", {
+    header: "Ownership",
+    // size: 220,
+    size: 10,
+  }),
+  columnHelper.accessor("kmDriven", {
+    header: "km Driven",
+    // size: 220,
     size: 40,
   }),
-  columnHelper.accessor("firstName", {
-    header: "First Name",
-    size: 120,
+  columnHelper.accessor("registeredCity", {
+    header: "Registered City",
+    // size: 220,
+    size: 10,
   }),
-  columnHelper.accessor("lastName", {
-    header: "Last Name",
-    size: 120,
+  columnHelper.accessor("transmission", {
+    header: "Transmission",
+    // size: 220,
+    size: 40,
   }),
-  columnHelper.accessor("company", {
-    header: "Company",
-    size: 300,
+  columnHelper.accessor("date", {
+    header: "Date",
+    // size: 120,
   }),
-  columnHelper.accessor("city", {
-    header: "City",
-  }),
-  columnHelper.accessor("country", {
-    header: "Country",
-    size: 220,
+  columnHelper.accessor("time", {
+    header: "Time",
+    // size: 120,
   }),
 ];
 
@@ -65,19 +85,7 @@ const csvConfig = mkConfig({
   useKeysAsHeaders: true,
 });
 
-const SellVehicleEnq = () => {
-  useEffect(() => {
-    const getValues = async () => {
-      const querySnapshot = await getDocs(
-        collection(FirebaseStore, "sellEnquiry")
-      );
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
-    };
-    getValues();
-  }, []);
-
+const SellVehicleEnq = ({ data }) => {
   const handleExportRows = (rows) => {
     const rowData = rows.map((row) => row.original);
     const csv = generateCsv(csvConfig)(rowData);
@@ -92,6 +100,7 @@ const SellVehicleEnq = () => {
   const table = useMaterialReactTable({
     columns,
     data,
+    initialState: { density: "compact" },
     enableRowSelection: true,
     columnFilterDisplayMode: "popover",
     paginationDisplayMode: "pages",
@@ -112,7 +121,7 @@ const SellVehicleEnq = () => {
         >
           Export All Data
         </Button>
-        <Button
+        {/* <Button
           disabled={table.getPrePaginationRowModel().rows.length === 0}
           //export all rows, including from the next page, (still respects filtering and sorting)
           onClick={() =>
@@ -121,7 +130,7 @@ const SellVehicleEnq = () => {
           startIcon={<FileDownloadIcon />}
         >
           Export All Rows
-        </Button>
+        </Button> */}
         <Button
           disabled={table.getRowModel().rows.length === 0}
           //export all rows as seen on the screen (respects pagination, sorting, filtering, etc.)

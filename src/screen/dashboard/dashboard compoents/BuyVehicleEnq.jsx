@@ -77,6 +77,7 @@ const BuyVehicleEnq = () => {
   const table = useMaterialReactTable({
     columns,
     data,
+    initialState: { density: "compact" },
     enableRowSelection: true,
     columnFilterDisplayMode: "popover",
     paginationDisplayMode: "pages",

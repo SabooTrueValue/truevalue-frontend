@@ -64,7 +64,7 @@ function PostAVehicleDash({ setCurrentTab }) {
   };
 
   return (
-    <div className="container px-4 py-10 mx-auto">
+    <div className="container px-4 py-10 mx-auto font-sans ">
       <Formik
         initialValues={{
           trueValueLocation: postVehicleData.trueValueLocation || "",
@@ -94,7 +94,7 @@ function PostAVehicleDash({ setCurrentTab }) {
             <div className="flex flex-wrap mb-6 -mx-3 gap-y-4">
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="trueValueLocation"
                 >
                   Truevalue Location*
@@ -120,7 +120,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               </div>
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="vehicleStatus"
                 >
                   Vehicle Status*
@@ -145,7 +145,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Vehicle Brand */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="vehicleBrand"
                 >
                   Vehicle Brand*
@@ -195,7 +195,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Vehicle Title */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="vehicleTitle"
                 >
                   Vehicle MODEL*
@@ -216,7 +216,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Vehicle Overview */}
               <div className="w-full px-3 mb-6 md:mb-0 lg:w-1/3 min-h-16 md:w-1/2 ">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="vehicleOverview"
                 >
                   Vehicle Overview*
@@ -237,7 +237,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Seating Capacity */}
               <div className="w-full px-3 mb-6 md:mb-0 lg:w-1/3 md:w-1/2 ">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="seatingCapacity"
                 >
                   Seating Capacity*
@@ -258,7 +258,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* User Type */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="userType"
                 >
                   Ownership Type*
@@ -285,7 +285,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Vehicle Category */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="vehicleCategory"
                 >
                   Vehicle Category*
@@ -309,7 +309,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Transmission */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="transmission"
                 >
                   Transmission*
@@ -333,7 +333,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Body Type */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="bodyType"
                 >
                   Body Type*
@@ -364,7 +364,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Price */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="price"
                 >
                   Price - ₹*
@@ -384,7 +384,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Fuel Type */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="fuelType"
                 >
                   Fuel Type*
@@ -410,7 +410,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Model Year */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="modelYear"
                 >
                   Model Year*
@@ -440,7 +440,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Engine Capacity */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="engineCapacity"
                 >
                   Engine Capacity*
@@ -460,7 +460,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Registered City */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="registeredCity"
                 >
                   Registered City*
@@ -531,7 +531,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Color */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="color"
                 >
                   Color*
@@ -570,7 +570,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* Registration No */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="registrationNo"
                 >
                   Registration No*
@@ -590,7 +590,7 @@ function PostAVehicleDash({ setCurrentTab }) {
               {/* KM Driven */}
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0 lg:w-1/3">
                 <label
-                  className="block mb-2 font-semibold uppercase"
+                  className="block mb-2 font-semibold uppercase text-primary"
                   htmlFor="kmDriven"
                 >
                   KM Driven*

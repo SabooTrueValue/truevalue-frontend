@@ -1,6 +1,5 @@
 import React from "react";
 import VehicleOwnerForm2 from "./VehicleOwnerForm2";
-import { Toaster } from "react-hot-toast";
 
 const SellYourCar = () => {
   const backgroundStyle = {
@@ -12,7 +11,6 @@ const SellYourCar = () => {
       <div className="flex items-start justify-center h-screen pt-12 lg:pt-20 lg:pb-20">
         <VehicleOwnerForm2 />
       </div>
-      <Toaster />
     </div>
   );
 };

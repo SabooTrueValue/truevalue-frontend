@@ -7,12 +7,93 @@ import PopupEnq from "./dashboard compoents/PopupEnq";
 import SellVehicleEnq from "./dashboard compoents/SellVehicleEnq";
 import BuyVehicleEnq from "./dashboard compoents/BuyVehicleEnq";
 import AccessoriesOpions from "./dashboard compoents/AccessoriesOpions";
-import { Toaster} from "react-hot-toast";
+import { useEffect } from "react";
+import { FirebaseStore } from "../../components/context/Firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const MainPanel = ({ selected }) => {
   const [currentTab, setCurrentTab] = useState(0);
+  const [popupData, setPopupData] = useState([]);
+  const [sellData, setSellData] = useState([]);
+  // const [buyData, setBuyData] = useState([]);
+  const [financeData, setFinanceData] = useState([]);
+  const [contactData, setContactData] = useState([]);
+  // const [vehicleData, setVehicleData] = useState([]);
+
+  useEffect(() => {
+    const getPopupData = async () => {
+      const querySnapshot = await getDocs(
+        collection(FirebaseStore, "popupEnquiries")
+      );
+
+      let index = 0;
+      querySnapshot.forEach((doc) => {
+        // let id = doc.id;
+        setPopupData((prev) => [
+          ...prev,
+          { ...doc.data(), index: 1 + index++ },
+        ]);
+      });
+      // console.log(popupData);
+      // console.log("popup data", popupData);
+    };
+
+    const getFinanceData = async () => {
+      const querySnapshot = await getDocs(
+        collection(FirebaseStore, "financeEnq")
+      );
+
+      let index = 0;
+      querySnapshot.forEach((doc) => {
+        // let id = doc.id;
+        setFinanceData((prev) => [
+          ...prev,
+          { ...doc.data(), index: 1 + index++ },
+        ]);
+      });
+      // console.log(financeData);
+      // console.log("finance data", financeData);
+    };
+    const getContactUsData = async () => {
+      const querySnapshot = await getDocs(
+        collection(FirebaseStore, "contact-us")
+      );
+
+      let index = 0;
+      querySnapshot.forEach((doc) => {
+        // let id = doc.id;
+        setContactData((prev) => [
+          ...prev,
+          { ...doc.data(), index: 1 + index++ },
+        ]);
+      });
+      // console.log(contactData);
+      // console.log("contact data", contactData);
+    }
+    const getSellVehicleData = async () => {
+      const querySnapshot = await getDocs(
+        collection(FirebaseStore, "sellEnquiry")
+      );
+
+      let index = 0;
+      querySnapshot.forEach((doc) => {
+        // let id = doc.id;
+        setSellData((prev) => [
+          ...prev,
+          { ...doc.data(), index: 1 + index++ },
+        ]);
+      });
+      // console.log(sellData);
+      // console.log("sell data", sellData);
+    }
+    getPopupData();
+    getFinanceData();
+    getContactUsData();
+    getSellVehicleData();
+  }, []);
+
   return (
-    <div className="w-full h-full p-2 bg-white lg:p-4 rounded-xl">
+    <div className="w-full p-2 bg-white h- lg:p-4 rounded-xl">
       {/* {selected} */}
       {selected === 0 && dashboard()}
       {selected === 1 && (
@@ -50,11 +131,10 @@ const MainPanel = ({ selected }) => {
       )}
       {selected === 2 && manageVehicles()}
       {selected === 3 && <BuyVehicleEnq />}
-      {selected === 4 && <SellVehicleEnq />}
-      {selected === 5 && <PopupEnq />}
-      {selected === 6 && <ContactUs />}
-      {selected === 7 && <FinanceEnq />}
-      <Toaster />
+      {selected === 4 && <SellVehicleEnq data={sellData} />}
+      {selected === 5 && <PopupEnq data={popupData} />}
+      {selected === 6 && <ContactUs data={contactData} />}
+      {selected === 7 && <FinanceEnq data={financeData} />}
     </div>
   );
 };

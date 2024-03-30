@@ -61,13 +61,13 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
       >
         {() => (
           <Form>
-            <div className="grid gap-4 px-4 mb-6 md:grid-cols-3 lg:grid-cols-6">
+            <div className="grid gap-4 px-4 mb-6 font-sans md:grid-cols-3 lg:grid-cols-6">
               <div>
                 <label
                   htmlFor="Sunroof"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Sunroof
                 </label>
@@ -83,7 +83,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="sunroof-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -98,7 +98,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="sunroof-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -116,7 +116,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="LeatherSeats"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Leather Seats
                 </label>
@@ -132,7 +132,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="LeatherSeats-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -147,7 +147,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="LeatherSeats-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -163,7 +163,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="AlloyWheels"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Alloy Wheels
                 </label>
@@ -179,7 +179,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="AlloyWheels-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -194,7 +194,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="AlloyWheels-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -210,7 +210,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="FogLights"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Fog Lights
                 </label>
@@ -226,7 +226,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="FogLights-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -241,7 +241,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="FogLights-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -257,7 +257,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="Navigation"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Navigation
                 </label>
@@ -273,7 +273,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="Navigation-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -288,7 +288,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="Navigation-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -304,7 +304,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="Bluetooth"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Bluetooth
                 </label>
@@ -320,7 +320,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="Bluetooth-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -335,7 +335,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="Bluetooth-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -351,7 +351,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="ReverseCamera"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Reverse Camera
                 </label>
@@ -367,7 +367,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="ReverseCamera-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -382,7 +382,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="ReverseCamera-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -398,7 +398,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="CruiseControl"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Cruise Control
                 </label>
@@ -414,7 +414,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="CruiseControl-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -429,7 +429,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="CruiseControl-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -445,7 +445,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="ParkingSensors"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Parking Sensors
                 </label>
@@ -461,7 +461,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="ParkingSensors-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -476,7 +476,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="ParkingSensors-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -492,7 +492,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="AirConditioning"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Air Conditioning
                 </label>
@@ -508,7 +508,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="AirConditioning-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -523,7 +523,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="AirConditioning-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -539,7 +539,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="ClimateControl"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Climate Control
                 </label>
@@ -555,7 +555,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="ClimateControl-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -570,7 +570,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="ClimateControl-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -586,7 +586,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="PowerSteering"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Power Steering
                 </label>
@@ -602,7 +602,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerSteering-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -617,7 +617,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerSteering-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -633,7 +633,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="PowerWindows"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Power Windows
                 </label>
@@ -649,7 +649,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerWindows-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -664,7 +664,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerWindows-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -680,7 +680,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="PowerMirrors"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Power Mirrors
                 </label>
@@ -696,7 +696,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerMirrors-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -711,7 +711,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerMirrors-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -727,7 +727,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="PowerSeats"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Power Seats
                 </label>
@@ -743,7 +743,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerSeats-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -758,7 +758,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="PowerSeats-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -774,7 +774,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="HeatedSeats"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Heated Seats
                 </label>
@@ -790,7 +790,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="HeatedSeats-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -805,7 +805,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="HeatedSeats-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -821,7 +821,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="CooledSeats"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Cooled Seats
                 </label>
@@ -837,7 +837,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="CooledSeats-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -852,7 +852,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="CooledSeats-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>
@@ -868,7 +868,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                   htmlFor="MemorySeats"
                   className={`${
                     currentTab === 1 && "text-lg"
-                  } block font-medium text-gray-700`}
+                  } block text-primary`}
                 >
                   Memory Seats
                 </label>
@@ -884,7 +884,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="MemorySeats-yes"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     Yes
                   </label>{" "}
@@ -899,7 +899,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
                     htmlFor="MemorySeats-no"
                     className={`${
                       currentTab === 1 && "text-lg"
-                    } text-slate-500`}
+                    } cursor-pointer text-primary hover:scale-105 hover:font-bold select-none`}
                   >
                     No
                   </label>

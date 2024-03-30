@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import HeroImage from "../../assets/other/loan-banner.webp";
 import EMISlider from "./EMISlider";
-import { Toaster, toast } from "react-hot-toast";
-import { collection, addDoc } from "firebase/firestore";
+import { toast } from "react-hot-toast";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
 
 const Finance = () => {
@@ -13,20 +13,21 @@ const Finance = () => {
         <div className="relative">
           <img src={HeroImage} alt="" className="w-full" />
           <div className="top-0 left-0 w-full px-1 pt-4 md:text-white md:absolute md:h-full">
-          <div className="container flex flex-col justify-center h-full mx-auto my-auto">
-            <div className="mb-4 text-5xl">
-              Financing <br /> made easy
+            <div className="container flex flex-col justify-center h-full mx-auto my-auto">
+              <div className="mb-4 text-5xl">
+                Financing <br /> made easy
+              </div>
+              <div className="mb-2">
+                Achieve your automotive aspirations with our hassle-free
+                financing solutions.
+                <br /> Whether you're eyeing a new ride or considering selling
+                your existing one,
+                <br /> our seamless process ensures a stress-free experience
+                without stepping into a dealership.
+              </div>
+              <div className="font-semibold">Here's how.</div>
             </div>
-            <div className="mb-2">
-              Achieve your automotive aspirations with our hassle-free financing
-              solutions.
-              <br /> Whether you're eyeing a new ride or considering selling
-              your existing one,
-              <br /> our seamless process ensures a stress-free experience
-              without stepping into a dealership.
-            </div>
-            <div className="font-semibold">Here's how.</div>
-          </div></div>
+          </div>
         </div>
       </section>
       <section className="container flex flex-col gap-6 py-10 mx-auto select-none md:my-16 lg:flex-row">
@@ -80,7 +81,6 @@ const Finance = () => {
           )}
         </div>
       </section>
-      <Toaster />
     </div>
   );
 };
@@ -396,7 +396,7 @@ const TabThree = () => {
   });
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -408,49 +408,53 @@ const TabThree = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevents the default form submission behavior
     // Add validation logic for email, etc.
-     try {
-        // Simulate form submission delay
-        setSubmitting(true);
-       setLoading(true);
-       console.log("Form data", formData);
-       const docRef = await addDoc(
-         collection(FirebaseStore, "finance"),
-         formData
-       );
-     
-       // setCurrentStep(5);
-       console.log("Document written with ID: ", docRef.id);
-       setLoading(false);
+    try {
+      // Simulate form submission delay
+      setSubmitting(true);
+      setLoading(true);
+      console.log("Form data", formData);
+      let date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+      const docRef = await addDoc(collection(FirebaseStore, "financeEnq"), {
+        ...formData,
+        date: date.toDateString(),
+        time: `${hours}:${minutes}:${seconds}`,
+        timestamp: serverTimestamp(),
+      });
 
-       
-        
-        // Your actual form submission logic goes here
-        // For demonstration purposes, let's display a success message using toast
-        toast.success('Form submitted successfully');
+      // setCurrentStep(5);
+      console.log("Document written with ID: ", docRef.id);
+      setLoading(false);
 
-        setFormData({
-          fullName: "",
-          email: "",
-          phone: "",
-          loanAmount: "",
-        });
-        
-        // Reset form values after successful submission
-        // resetForm({
-        //   name: "",
-        //   email: "",
-        //   phone: "",
-        //   message: "",
-        //   disclaimer: false,
-        // });
-      } catch (error) {
-        // Handle form submission errors here
-        console.error("Form submission error:", error);
-        toast.error('Form submission failed');
-      } finally {
-        // Always set submitting state to false after form submission
-        setSubmitting(false);
-      }
+      // Your actual form submission logic goes here
+      // For demonstration purposes, let's display a success message using toast
+      toast.success("Form submitted successfully");
+
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        loanAmount: "",
+      });
+
+      // Reset form values after successful submission
+      // resetForm({
+      //   name: "",
+      //   email: "",
+      //   phone: "",
+      //   message: "",
+      //   disclaimer: false,
+      // });
+    } catch (error) {
+      // Handle form submission errors here
+      console.error("Form submission error:", error);
+      toast.error("Form submission failed");
+    } finally {
+      // Always set submitting state to false after form submission
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -472,14 +476,16 @@ const TabThree = () => {
         <div>
           <div className="mb-1 text-xl font-semibold">Mobile Number</div>
           <div className="flex px-2 py-2 overflow-hidden bg-white">
-            <div className="px-2 my-auto border-r border-black lg:px-4">+91</div>
+            <div className="px-2 my-auto border-r border-black lg:px-4">
+              +91
+            </div>
             <div>
               <input
                 type="tel"
                 name="phone"
                 id=""
                 required
-               autoComplete="off"
+                autoComplete="off"
                 // pattern="[0-9]{10}"
                 className="bg-[#ffffff] ml-4 px-2 py-1 outline-none"
                 // className="bg-[#F4F4F4] ml-4 px-2 py-1 outline-none invalid:border border-0 border-gray-300  invalid:border-red-500"
@@ -523,7 +529,7 @@ const TabThree = () => {
             disabled={submitting}
             className="w-full px-3 py-3 mt-2 text-xl font-semibold text-center text-white rounded-r-full rounded-bl-full cursor-pointer bg-primary"
           >
-           {loading ? "Submiting..." : "Submit"}
+            {loading ? "Submiting..." : "Submit"}
           </button>
         </div>
       </div>

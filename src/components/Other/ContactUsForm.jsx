@@ -2,9 +2,9 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CgSpinner } from "react-icons/cg";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
 
 const ContactUsForm = () => {
@@ -24,18 +24,24 @@ const ContactUsForm = () => {
         .required("Phone is required"),
       message: Yup.string()
         .required("Message is required")
-        .max(300, "Message must be at most 300 characters"),
+        .max(120, "Message must be at most 120 characters"),
       disclaimer: Yup.boolean().oneOf([true], "Must accept disclaimer"),
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         // Simulate form submission delay
 
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
         console.log("Form data", values);
-        const docRef = await addDoc(
-          collection(FirebaseStore, "contact-us"),
-          values
-        );
+        const docRef = await addDoc(collection(FirebaseStore, "contact-us"), {
+          ...values,
+          date: date.toDateString(),
+          time: `${hours}:${minutes}:${seconds}`,
+          timestamp: serverTimestamp(),
+        });
 
         // setCurrentStep(5);
         console.log("Document written with ID: ", docRef.id);
@@ -167,7 +173,6 @@ const ContactUsForm = () => {
           )}
         </button>
       </form>
-      <Toaster />
     </div>
   );
 };

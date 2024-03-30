@@ -7,7 +7,7 @@ import {
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import ref, uploadBytes, and getDownloadURL from firebase storage
 import { useState } from "react";
 import { useFormData } from "../../../components/Other/FormDataProvider";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 
 const ImageUpload = ({ setCurrentTab }) => {
@@ -57,20 +57,29 @@ const ImageUpload = ({ setCurrentTab }) => {
       const imageUrls = [];
       setLoading(true);
       // Upload each image to Firebase storage and get the download URL
-     for (const image of values.images) {
-       const storageRef = ref(
-         FirebaseStorage,
-         `images/${postVehicleData.registrationNo}/${image.name}`
-       );
-       await uploadBytes(storageRef, image);
-       const downloadURL = await getDownloadURL(storageRef);
-      console.log("Download URL:", downloadURL);
-       imageUrls.push(downloadURL); // Store the download URL
-     }
+      for (const image of values.images) {
+        const storageRef = ref(
+          FirebaseStorage,
+          `images/${postVehicleData.registrationNo}/${image.name}`
+        );
+        await uploadBytes(storageRef, image);
+        const downloadURL = await getDownloadURL(storageRef);
+        console.log("Download URL:", downloadURL);
+        imageUrls.push(downloadURL); // Store the download URL
+      }
 
       toast.success("Images uploaded successfully!");
-      console.log("Values:", imageUrls);
-      setPostVehicleData({ ...postVehicleData, images: imageUrls});
+      let date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+      setPostVehicleData({
+        ...postVehicleData,
+        images: imageUrls,
+        date: date.toDateString(),
+        time: `${hours}:${minutes}:${seconds}`,
+        timestamp: serverTimestamp(),
+      });
       console.log("Post Vehicle Data:", postVehicleData);
 
       const docRef = await addDoc(
@@ -103,7 +112,7 @@ const ImageUpload = ({ setCurrentTab }) => {
       >
         {({ values, setFieldValue, isSubmitting }) => (
           <Form>
-            <div className="grid gap-4 px-4 mb-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+            <div className="grid gap-4 px-4 mb-6 font-sans md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
               {[...Array(8)].map((_, index) => (
                 <div key={index} className="mb-4">
                   <label

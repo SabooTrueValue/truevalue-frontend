@@ -4,14 +4,13 @@ import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../context/Firebase";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function Popup() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  
 
   const handleClose = () => {
     setOpen(false);
@@ -31,10 +30,10 @@ export default function Popup() {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-     if (sessionStorage.getItem("popup") !== "true") {
-       setOpen(true);
-       // sessionStorage.setItem("popup", "true");
-     }
+      if (sessionStorage.getItem("popup") !== "true") {
+        setOpen(true);
+        // sessionStorage.setItem("popup", "true");
+      }
     }, 5000);
     return () => clearTimeout(timeout);
   }, []);
@@ -77,11 +76,21 @@ export default function Popup() {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                   setLoading(true);
+
+                  let date = new Date();
+                  let hours = date.getHours();
+                  let minutes = date.getMinutes();
+                  let seconds = date.getSeconds();
                   // Your Firebase submission logic here
                   console.log("Form submitted", values);
                   const docRef = await addDoc(
                     collection(FirebaseStore, "popupEnquiries"),
-                    values
+                    {
+                      ...values,
+                      date: date.toDateString(),
+                      time: `${hours}:${minutes}:${seconds}`,
+                      timestamp: serverTimestamp(),
+                    }
                   );
                   console.log("Document written with ID: ", docRef.id);
                   toast.success("Your enquiry has been submitted successfully");
@@ -159,7 +168,6 @@ export default function Popup() {
               </Formik>
             </div>
           </div>
-          <Toaster />
         </div>
       )}
     </>

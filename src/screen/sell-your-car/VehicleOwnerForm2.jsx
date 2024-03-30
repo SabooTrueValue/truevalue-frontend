@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -99,10 +99,16 @@ const VehicleOwnerForm2 = () => {
   const saveData = async () => {
     setLoading(true);
     console.log("Form data", formData);
-    const docRef = await addDoc(
-      collection(FirebaseStore, "sellEnquiry"),
-      formData
-    );
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    const docRef = await addDoc(collection(FirebaseStore, "sellEnquiry"), {
+      ...formData,
+      date: date.toDateString(),
+      time: `${hours}:${minutes}:${seconds}`,
+      timestamp: serverTimestamp(),
+    });
     notifySuccess();
     // setCurrentStep(5);
     console.log("Document written with ID: ", docRef.id);
@@ -132,8 +138,10 @@ const VehicleOwnerForm2 = () => {
               ? "Preview and Submit"
               : "Thank you for filling out your information!"}
           </div>{" "}
-          <div className={` ${currentStep > 4 ? "hidden" : "block"}`}>
-            Step {currentStep} of 4
+          <div
+            className={` ${currentStep > 4 ? "hidden" : "block"} lg:text-lg`}
+          >
+            Step <span className="text-primary">{currentStep}</span> of 4
           </div>
         </div>
 
@@ -613,7 +621,7 @@ const Step3 = ({
                   name="registeredCity"
                   className="w-full px-2 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                  <option value="" disabled className="text-sm">
+                  <option value="" className="text-sm">
                     Select registered city
                   </option>
                   <option value="" disabled className="text-sm">

@@ -10,49 +10,35 @@ import { mkConfig, generateCsv, download } from "export-to-csv"; //or use your l
 
 const columnHelper = createMRTColumnHelper();
 
-const data = [
-  {
-    id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    company: "True Value",
-    city: "New York",
-    country: "USA",
-  },
-  {
-    id: 2,
 
-    firstName: "Jane",
-    lastName: "Doe",
-    company: "True Value",
-    city: "New York",
-    country: "USA",
-  },
-];
 
 const columns = [
-  columnHelper.accessor("id", {
-    header: "ID",
+  columnHelper.accessor("index", {
+    header: "No",
     size: 40,
   }),
-  columnHelper.accessor("firstName", {
-    header: "First Name",
+  columnHelper.accessor("name", {
+    header: "Name",
+    size: 150,
+  }),
+  columnHelper.accessor("phone", {
+    header: "Phone Number",
     size: 120,
   }),
-  columnHelper.accessor("lastName", {
-    header: "Last Name",
-    size: 120,
+  columnHelper.accessor("email", {
+    header: "email",
+    size: 200,
   }),
-  columnHelper.accessor("company", {
-    header: "Company",
-    size: 300,
+  columnHelper.accessor("message", {
+    header: "Message",
   }),
-  columnHelper.accessor("city", {
-    header: "City",
+  columnHelper.accessor("date", {
+    header: "Date",
+    // size: 120,
   }),
-  columnHelper.accessor("country", {
-    header: "Country",
-    size: 220,
+  columnHelper.accessor("time", {
+    header: "Time",
+    // size: 120,
   }),
 ];
 
@@ -62,7 +48,7 @@ const csvConfig = mkConfig({
   useKeysAsHeaders: true,
 });
 
-const ContactUs = () => {
+const ContactUs = ({data}) => {
   const handleExportRows = (rows) => {
     const rowData = rows.map((row) => row.original);
     const csv = generateCsv(csvConfig)(rowData);
@@ -77,6 +63,7 @@ const ContactUs = () => {
   const table = useMaterialReactTable({
     columns,
     data,
+    initialState: { density: "compact" },
     enableRowSelection: true,
     columnFilterDisplayMode: "popover",
     paginationDisplayMode: "pages",
@@ -97,7 +84,7 @@ const ContactUs = () => {
         >
           Export All Data
         </Button>
-        <Button
+        {/* <Button
           disabled={table.getPrePaginationRowModel().rows.length === 0}
           //export all rows, including from the next page, (still respects filtering and sorting)
           onClick={() =>
@@ -106,7 +93,7 @@ const ContactUs = () => {
           startIcon={<FileDownloadIcon />}
         >
           Export All Rows
-        </Button>
+        </Button> */}
         <Button
           disabled={table.getRowModel().rows.length === 0}
           //export all rows as seen on the screen (respects pagination, sorting, filtering, etc.)

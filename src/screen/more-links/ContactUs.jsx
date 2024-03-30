@@ -4,7 +4,6 @@ import { AiOutlinePhone } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoTime } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
-import { Toaster } from "react-hot-toast";
 
 export const ContactUs = () => {
   return (
@@ -80,7 +79,7 @@ export const ContactUs = () => {
           </div>
         </div>
       </div>
-      <Toaster />
+
       
     </div>
   );
