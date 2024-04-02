@@ -43,19 +43,23 @@ export const Footer = () => {
           <div className="flex flex-col gap-2.5 ">
             <div className="pb-2 text-lg font-semibold">Useful Links</div>
             <Link to="/">&#12297; Home</Link>
-            <Link to="/">&#12297; About Us</Link>
-            <Link to="/">&#12297; Buy Car</Link>
-            <Link to="/">&#12297; Sell Car</Link>
-            <Link to="/">&#12297; Finance</Link>
-            <Link to="/">&#12297; Contact Us</Link>
+            <Link to="/about-us">&#12297; About Us</Link>
+            <Link to="/buy-used-cars">&#12297; Buy Car</Link>
+            <Link to="/sell-your-car">&#12297; Sell Car</Link>
+            <Link to="/finance">&#12297; Finance</Link>
+            <Link to="/contact-preowned-car-dealer">&#12297; Contact Us</Link>
           </div>
           <div className="flex flex-col gap-2.5">
             <div className="pb-2 text-lg font-semibold">Other Links</div>
             <Link to="/">&#12297; FAQs</Link>
-            <Link to="/">&#12297; Blogs</Link>
-            <Link to="/">&#12297; Outlests</Link>
-            <Link to="/">&#12297; Terms & Conditions</Link>
-            <Link to="/">&#12297; Privacy Policy</Link>
+            <Link to="/used-car-blog">&#12297; Blogs</Link>
+            <Link to="/used-car-outlets">&#12297; Outlests</Link>
+            <Link to="/used-cars-terms-conditions">
+              &#12297; Terms & Conditions
+            </Link>
+            <Link to="/used-cars-terms-conditions">
+              &#12297; Privacy Policy
+            </Link>
           </div>
           <div className="flex flex-col gap-1">
             <div className="pb-2 text-lg font-semibold">Social Media </div>

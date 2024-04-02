@@ -179,7 +179,14 @@ const CarDetails = () => {
               id="vehicleForm"
               className="p-8 bg-white border border-gray-200 rounded-lg"
             >
-              <BookForm />
+              <BookForm
+                carId={carData.id}
+                carBrand={carData.vehicleBrand}
+                carModel={carData.vehicleTitle}
+                fuelType={carData.fuelType}
+                ownership={carData.userType}
+                kmDriven={carData.kmDriven}
+              />
             </div>
             <div className="p-8 bg-white border border-gray-200 rounded-lg">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">

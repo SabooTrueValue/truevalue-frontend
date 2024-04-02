@@ -5,6 +5,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoTime } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 
+
 export const ContactUs = () => {
   return (
     <div>

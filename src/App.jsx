@@ -9,7 +9,7 @@ import { TermsAndConditions } from "./screen/more-links/TermsAndConditions";
 import { PageNotFound } from "./screen/page-not-found/PageNotFound";
 import { Footer } from "./components/Footer/Footer";
 import Finance from "./screen/finance/Finance";
-import FindACar from "./screen/pre-owned-cars/FindACar";
+// import FindACar from "./screen/pre-owned-cars/FindACar";
 import CarDetails from "./screen/details/CarDetails";
 import SellYourCar from "./screen/sell-your-car/SellYourCar";
 import { DashboardHomepag } from "./screen/dashboard/DashboardHomepag";
@@ -18,6 +18,7 @@ import Header from "./screen/homepage/Header";
 import Outlets from "./screen/more-links/Outlets";
 import { Toaster } from "react-hot-toast";
 import Signin from "./screen/login/Signin";
+import CarCart from "./screen/pre-owned-cars/CarCart";
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/about-us" element={<AboutUs />} />
         <Route exact path="/finance" element={<Finance />} />
-        <Route exact path="/buy-used-cars" element={<FindACar />} />
+        <Route exact path="/buy-used-cars" element={<CarCart />} />
         <Route exact path="/sell-your-car" element={<SellYourCar />} />
         <Route exact path="/used-car-blog" element={<Blogs />} />
         <Route exact path="/car-details/:id" element={<CarDetails />} />

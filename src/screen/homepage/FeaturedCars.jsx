@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import HeadingComponent from "../../components/Other/HeadingComponent";
 import { useFormData } from "../../components/Other/FormDataProvider";
 
@@ -17,7 +17,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { BsArrowLeft } from "react-icons/bs";
-import CarCard from "../../components/Other/CarCard";
+// import CarCard from "../../components/Other/CarCard";
 import CarCard2 from "../../components/Other/CarCard2";
 // import "./HomeSlider.css";
 
@@ -44,6 +44,8 @@ function LimitedEditonCarSlider() {
   const navigationNextRef = useRef(null);
 
   const { vehicleData } = useFormData();
+
+  // console.log(vehicleData);
 
   return (
     <>

@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import FilteringPanel from "./FilteringPanel";
 // import CarsSection from "./CarsSection";
 import CarCart from "./CarCart";
 
 const FindACar = () => {
+  const [filters, setFilters] = useState({
+    minPrice: "100000",
+    maxPrice: "10000000",
+    minYear: "",
+    maxYear: "",
+    minKilometer: "",
+    maxKilometer: "",
+    fuel: "",
+    color: "",
+    bodyType: "",
+  });
+  
+
   return (
     <>
       <div className="mx-auto xl:container">
@@ -11,12 +24,12 @@ const FindACar = () => {
         <div className="flex gap-4 my-10">
           <div className="md:w-[350px] relative hidden md:block">
             <div className="sticky p-2 border top-24 left-4 ">
-              <FilteringPanel />
+              <FilteringPanel filters={filters} setFilters={setFilters} />
             </div>
           </div>
           <div className="container mx-auto rounded-3xl">
             <div className="px-1 pb-10 overflow-y-scroll">
-              <CarCart />
+              <CarCart filters={filters} setFilters={setFilters} />
             </div>
           </div>
         </div>

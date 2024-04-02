@@ -3,7 +3,7 @@ import { PiSlidersLight } from "react-icons/pi";
 import { BsChevronDown } from "react-icons/bs";
 import RangeSlider from "./RangeSlider";
 
-const FilteringPanel = () => {
+const FilteringPanel = ({ filters, setFilters }) => {
   const [Budget, setBudget] = useState(true);
   const [BrandModel, setBrandModel] = useState(false);
   const [ModalYear, setModalYear] = useState(false);
@@ -40,7 +40,7 @@ const FilteringPanel = () => {
             <BsChevronDown />
           </div>
         </div>
-        {Budget && <BudgetFilter />}
+        {Budget && <BudgetFilter filters={filters} setFilters={setFilters} />}
       </div>
 
       {/* Brand and Model */}
@@ -165,7 +165,7 @@ const FilteringPanel = () => {
   );
 };
 
-const BudgetFilter = () => {
+const BudgetFilter = ({ filters, setFilters }) => {
   const MIN = 1;
   const MAX = 100;
   const steps = 1;

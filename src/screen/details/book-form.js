@@ -5,7 +5,10 @@ import { CgSpinner } from "react-icons/cg";
 
 import { Toaster, toast } from "react-hot-toast";
 
-const BookForm = () => {
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { FirebaseStore } from "../../components/context/Firebase";
+
+const BookForm = ({carId , carBrand, carModel, fuelType, ownership, kmDriven}) => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -25,11 +28,28 @@ const BookForm = () => {
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
-        // Simulate form submission delay
-        await new Promise((resolve) => setTimeout(resolve, 400));
+       let date = new Date();
+       let hours = date.getHours();
+       let minutes = date.getMinutes();
+       let seconds = date.getSeconds();
+       //console.log("Form data", values);
+       const docRef = await addDoc(collection(FirebaseStore, "buy-vehicle"), {
+         ...values,
+         date: date.toDateString(),
+         time: `${hours}:${minutes}:${seconds}`,
+         timestamp: serverTimestamp(),
+          carId: carId,
+          carBrand: carBrand,
+          carModel: carModel,
+          fuelType: fuelType,
+          ownership: ownership,
+          kmDriven: kmDriven,
+          
+       });
 
-        // Your actual form submission logic goes here
-        // For demonstration purposes, let's display a success message using toast
+       // setCurrentStep(5);
+       console.log("Document written with ID: ", docRef.id);
+
         toast.success("Form submitted successfully");
 
         // Reset form values after successful submission
