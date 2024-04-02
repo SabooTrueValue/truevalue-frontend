@@ -45,7 +45,7 @@ const HomepageContactUs = () => {
     <div className="py-10 lg:py-16 bg-[#ebedff]">
       <HeadingComponent title="Find Your Right Car" />
       <div className="container flex flex-col gap-4 pt-6 mx-auto lg:flex-row lg:gap-8">
-        <div className="p-5 m-2 bg-white lg:p-8 lg:w-1/2 rounded-xl">
+        <div className="py-5 m-2 bg-white md:p-5 lg:p-8 lg:w-1/2 rounded-xl">
           <HomePageEnq />
         </div>
         <div className="grid gap-4 p-2 sm:grid-cols-2 lg:w-1/2">

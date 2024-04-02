@@ -7,7 +7,7 @@ import { IoLogoYoutube, IoMdArrowDropdown, IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 
-const Header = ({ option }) => {
+const Header = ({ option,open, setOpen }) => {
   return (
     <div className={`sticky top-0 z-30`}>
       <div className={`bg-primary  text-white ${!option && "shadow-lg"}`}>
@@ -93,7 +93,7 @@ const Header = ({ option }) => {
               <div>98488 98488</div>
             </button>
           </div>
-          <div className="flex items-center gap-2 pr-6 text-lg cursor-pointer md:hidden">
+          <div onClick={()=>setOpen(true)} className="flex items-center gap-2 pr-6 text-lg cursor-pointer md:hidden">
             Menu <HiOutlineMenuAlt1 className="text-xl" />
           </div>
         </div>

@@ -123,8 +123,8 @@ const VehicleOwnerForm2 = () => {
   return (
     <div className="w-full mx-2">
       <div className="container w-full max-w-2xl px-4 py-10 mx-auto bg-white border shadow-xl rounded-3xl">
-        <div className="flex items-center justify-between px-2 pb-2 mb-1 border-b lg:px-5">
-          <div className="text-2xl text-primary ">
+        <div className="flex flex-col-reverse items-center justify-between px-2 pb-2 mb-3 border-b lg:px-5 md:flex-row">
+          <div className="text-2xl  text-primary">
             {/* {currentStep === 4 ? "Last step" : `Step ${currentStep} of 4`} */}
             {currentStep === 1
               ? "Car Information"

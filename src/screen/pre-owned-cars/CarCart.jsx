@@ -1,10 +1,11 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { PiSlidersLight } from "react-icons/pi";
 import { BsChevronDown } from "react-icons/bs";
 import RangeSlider from "./RangeSlider";
 import { useFormData } from "../../components/Other/FormDataProvider";
 import { FaLocationDot } from "react-icons/fa6";
+import { Helmet } from "react-helmet";
 
 const CarCart = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,7 +23,6 @@ const CarCart = () => {
   });
 
   const { vehicleData } = useFormData();
-
 
   // const bodyTypeOptions = [
   //   "Minivan",
@@ -218,25 +218,41 @@ const CarCart = () => {
     }
   });
 
-    const calculateEMI = (price) => {
-      // Assuming interest rate of 8.5% per annum and tenure of 5 years (60 months)
-      const interestRatePerMonth = 8.5 / (12 * 100);
-      const tenureInMonths = 60; // 5 years
-      const principal = price; // Assuming carData.price is in lakhs
+  const calculateEMI = (price) => {
+    // Assuming interest rate of 8.5% per annum and tenure of 5 years (60 months)
+    const interestRatePerMonth = 8.5 / (12 * 100);
+    const tenureInMonths = 60; // 5 years
+    const principal = price; // Assuming carData.price is in lakhs
 
-      // Calculating EMI using the formula
-      const emi =
-        (principal *
-          interestRatePerMonth *
-          Math.pow(1 + interestRatePerMonth, tenureInMonths)) /
-        (Math.pow(1 + interestRatePerMonth, tenureInMonths) - 1);
+    // Calculating EMI using the formula
+    const emi =
+      (principal *
+        interestRatePerMonth *
+        Math.pow(1 + interestRatePerMonth, tenureInMonths)) /
+      (Math.pow(1 + interestRatePerMonth, tenureInMonths) - 1);
 
-      // Rounding off to 2 decimal places and converting to string
-      return emi.toFixed(0);
-    };
+    // Rounding off to 2 decimal places and converting to string
+    return emi.toFixed(0);
+  };
 
   return (
     <>
+      <Helmet>
+        <title>Your Destination to Buy Cars with Confidence</title>
+        <meta
+          name="title"
+          content="Your Destination to Buy Cars with Confidence "
+        />
+        <meta
+          name="description"
+          content="Explore a wide range of pre-owned cars with TrueValue. Trust, reliability, and quality guaranteed. Buy with confidence and peace of mind. Visit us today!"
+        />
+        <meta
+          name="keywords"
+          content="Saboo TrueValue, buy cars, pre-owned cars, trust, reliability, quality, confidence, peace of mind, car dealership.
+"
+        />
+      </Helmet>
       <div className="mx-auto xl:container">
         {/* <SearchPanel /> */}
         <div className="flex gap-4 my-10">

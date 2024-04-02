@@ -245,7 +245,7 @@ export const HomePageEnq = ({ title }) => {
                     name="email"
                     autoComplete="off"
                     placeholder="Email"
-                    className="w-full text-lg h-10 font-sans border-b-2 border-primary outline-none placeholder:text-lg px-0.5 "
+                    className="w-full text-lg text-center h-10 font-sans border-b-2 border-primary outline-none placeholder:text-lg   px-0.5 lg:text-left"
                   />
                 </div>
 

@@ -4,11 +4,30 @@ import EMISlider from "./EMISlider";
 import { toast } from "react-hot-toast";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
+import { Helmet } from "react-helmet";
 
 const Finance = () => {
   const [selected, setSelected] = useState(1);
   return (
     <div>
+      <Helmet>
+        <title>
+          Unlock Your Dreams with TrueValue Finance: Your Trusted Partner in Car
+          Financing
+        </title>
+        <meta
+          name="title"
+          content="Unlock Your Dreams with TrueValue Finance: Your Trusted Partner in Car Financing"
+        />
+        <meta
+          name="description"
+          content="Experience hassle-free car financing solutions with TrueValue Finance. Whether you're buying a new or pre-owned car, we offer competitive rates, flexible terms, and personalized service to help you drive home your dream car. Discover peace of mind and convenience with TrueValue Finance today!"
+        />
+        <meta
+          name="keywords"
+          content="Saboo TrueValue Finance, car financing, hassle-free, competitive rates, flexible terms, personalized service, peace of mind, convenience"
+        />
+      </Helmet>
       <section className="overflow-hidden">
         <div className="relative">
           <img src={HeroImage} alt="" className="w-full" />

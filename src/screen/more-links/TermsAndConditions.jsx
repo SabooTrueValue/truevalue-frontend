@@ -1,8 +1,28 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 export const TermsAndConditions = () => {
   return (
     <>
+      <Helmet>
+        <title>
+          Saboo True Value Terms and Conditions: Your Guide to a Hassle-Free
+          Experience
+        </title>
+        <meta
+          name="title"
+          content="Saboo True Value Terms and Conditions: Your Guide to a Hassle-Free Experience"
+        />
+        <meta
+          name="description"
+          content="Before purchasing a pre-owned car from True Value, it's essential to understand the terms and conditions to ensure a smooth and transparent transaction. From warranty details to return policies, this guide provides clarity on what to expect when buying a used car from True Value."
+        />
+        <meta
+          name="keywords"
+          content="Saboo True Value, terms and conditions, pre-owned cars, warranty, return policy, used car dealership, transparent transaction, hassle-free experience
+"
+        />
+      </Helmet>
       <img
         src={require("../../assets/other/Cars-range.webp")}
         alt="Privacy Policy"

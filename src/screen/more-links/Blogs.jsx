@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 
  const blogData = [
   {
@@ -148,7 +149,26 @@ export const Blogs = () => {
   const [selected, setSelected] = useState(0);
   return (
     <div>
-      <img src={require("../../assets/other/blogs_banners.jpg")} alt="Blogs banner" />
+      <Helmet>
+        <title>Your Guide to TrueValue Car Buying</title>
+        <meta
+          name="title"
+          content="Your Guide to TrueValue Car Buying"
+        />
+        <meta
+          name="description"
+          content="Discover the ultimate car buying experience with TrueValue. From trusted inspections to unbeatable deals, explore our blog for expert tips, customer stories, and everything you need to know before buying your next car."
+        />
+        <meta
+          name="keywords"
+          content="Saboo TrueValue, car buying, used cars, pre-owned vehicles, car inspections, unbeatable deals, expert tips, customer stories, car shopping guide
+"
+        />
+      </Helmet>
+      <img
+        src={require("../../assets/other/blogs_banners.jpg")}
+        alt="Blogs banner"
+      />
       {/* <div className="container py-3 mx-auto">
         <Link to="HOME" className="font-medium ">
           Home{" "}
@@ -161,7 +181,6 @@ export const Blogs = () => {
             NEWS & Social Media Articles
           </div> */}
 
-      
           <h1 className="mt-4 mb-8 text-3xl font-bold text-center lg:text-4xl text-primary lg:whitespace-nowrap">
             NEWS & Social Media Articles
           </h1>

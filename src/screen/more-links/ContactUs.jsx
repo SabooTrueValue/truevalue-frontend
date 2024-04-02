@@ -4,11 +4,28 @@ import { AiOutlinePhone } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoTime } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
+import { Helmet } from "react-helmet";
 
 
 export const ContactUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>True Value - Contact Us</title>
+        <meta
+          name="title"
+          content="True Value - Contact Us"
+        />
+        <meta
+          name="description"
+          content="Have questions or inquiries about our True Value services? Contact us today for all your queries, feedback, and assistance. Our dedicated team is here to provide you with personalized support and help you find the perfect certified pre-owned car"
+        />
+        <meta
+          name="keywords"
+          content="Saboo True Value, Contact, Queries, Feedback, Assistance, Certified Pre-Owned Cars, Customer Support, Inquiries, Contact Information.
+"
+        />
+      </Helmet>
       <img
         src={require("../../assets/other/Truevalue-Finance-Banner.jpg")}
         alt="Contact Us"
@@ -80,8 +97,6 @@ export const ContactUs = () => {
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 };

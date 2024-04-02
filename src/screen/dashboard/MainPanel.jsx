@@ -15,7 +15,7 @@ const MainPanel = ({ selected }) => {
   const [currentTab, setCurrentTab] = useState(0);
   const [popupData, setPopupData] = useState([]);
   const [sellData, setSellData] = useState([]);
-  // const [buyData, setBuyData] = useState([]);
+  const [buyData, setBuyData] = useState([]);
   const [financeData, setFinanceData] = useState([]);
   const [contactData, setContactData] = useState([]);
   // const [vehicleData, setVehicleData] = useState([]);
@@ -86,10 +86,27 @@ const MainPanel = ({ selected }) => {
       // console.log(sellData);
       // console.log("sell data", sellData);
     }
+    const getBuyVehicleData = async () => {
+      const querySnapshot = await getDocs(
+        collection(FirebaseStore, "buy-vehicle")
+      );
+
+      let index = 0;
+      querySnapshot.forEach((doc) => {
+        // let id = doc.id;
+        setBuyData((prev) => [
+          ...prev,
+          { ...doc.data(), index: 1 + index++ },
+        ]);
+      });
+      // console.log(buyData);
+      // console.log("buy data", buyData);
+    }
     getPopupData();
     getFinanceData();
     getContactUsData();
     getSellVehicleData();
+    getBuyVehicleData();
   }, []);
 
   return (
@@ -130,7 +147,7 @@ const MainPanel = ({ selected }) => {
         </div>
       )}
       {selected === 2 && manageVehicles()}
-      {selected === 3 && <BuyVehicleEnq />}
+      {selected === 3 && <BuyVehicleEnq data={buyData} />}
       {selected === 4 && <SellVehicleEnq data={sellData} />}
       {selected === 5 && <PopupEnq data={popupData} />}
       {selected === 6 && <ContactUs data={contactData} />}

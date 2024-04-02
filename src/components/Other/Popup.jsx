@@ -42,7 +42,7 @@ export default function Popup() {
     <>
       {open && (
         <div className="fixed inset-0 z-40 overflow-y-auto">
-          <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+          <div className="flex items-center justify-center h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <div
               className="fixed inset-0 transition-opacity"
               aria-hidden="true"
@@ -125,7 +125,7 @@ export default function Popup() {
                               className="text-sm text-center text-red-500"
                             />
                           </div>
-                          <div className="flex justify-center gap-8 mt-6">
+                          <div className="flex justify-center gap-4 mt-6 md:gap-8">
                             <a
                               href="tel:+1234567890"
                               className="flex justify-center w-1/2 gap-3 py-1.5 border rounded-lg text-primary"

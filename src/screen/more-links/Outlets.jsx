@@ -1,8 +1,24 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Outlets = () => {
   return (
     <>
+      <Helmet>
+        <title>Discover Quality Used Cars at TrueValue Outlets</title>
+        <meta
+          name="title"
+          content="Discover Quality Used Cars at TrueValue Outlets"
+        />
+        <meta
+          name="description"
+          content="Explore our TrueValue outlets for a wide selection of reliable and certified pre-owned cars. With our rigorous inspection process and transparent pricing, you can find your dream car with confidence. Visit us today!"
+        />
+        <meta
+          name="keywords"
+          content="Saboo TrueValue, outlets, pre-owned cars, certified, reliable, inspection, transparent pricing"
+        />
+      </Helmet>
       <img
         src={require("../../assets/other/Truevalue-Finance-Banner.jpg")}
         alt="Privacy Policy"

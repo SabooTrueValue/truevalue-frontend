@@ -10,49 +10,78 @@ import { mkConfig, generateCsv, download } from "export-to-csv"; //or use your l
 
 const columnHelper = createMRTColumnHelper();
 
-const data = [
-  {
-    id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    company: "True Value",
-    city: "New York",
-    country: "USA",
-  },
-  {
-    id: 2,
+// const data = [
+//   {
+//     id: 1,
+//     firstName: "John",
+//     lastName: "Doe",
+//     company: "True Value",
+//     city: "New York",
+//     country: "USA",
+//   },
+//   {
+//     id: 2,
 
-    firstName: "Jane",
-    lastName: "Doe",
-    company: "True Value",
-    city: "New York",
-    country: "USA",
-  },
-];
+//     firstName: "Jane",
+//     lastName: "Doe",
+//     company: "True Value",
+//     city: "New York",
+//     country: "USA",
+//   },
+// ];
 
 const columns = [
-  columnHelper.accessor("id", {
-    header: "ID",
+  columnHelper.accessor("index", {
+    header: "No",
+    size: 10,
+  }),
+  columnHelper.accessor("name", {
+    header: "Name",
+    size: 200,
+  }),
+  columnHelper.accessor("phone", {
+    header: "Phone Number",
+    size: 120,
+  }),
+  columnHelper.accessor("email", {
+    header: "email",
+    size: 200,
+  }),
+  columnHelper.accessor("carBrand", {
+    header: "Brand Name",
+  }),
+  columnHelper.accessor("carModel", {
+    header: "Model",
+    // size: 220,
+  }),
+ 
+  columnHelper.accessor("fuelType", {
+    header: "Fuel Type",
+    // size: 220,
+    size: 10,
+  }),
+  columnHelper.accessor("carId", {
+    header: "Car Id",
+    // size: 220,
+    size: 10,
+  }),
+  columnHelper.accessor("ownership", {
+    header: "Ownership",
+    // size: 220,
+    size: 10,
+  }),
+  columnHelper.accessor("kmDriven", {
+    header: "km Driven",
+    // size: 220,
     size: 40,
   }),
-  columnHelper.accessor("firstName", {
-    header: "First Name",
-    size: 120,
+  columnHelper.accessor("date", {
+    header: "Date",
+    // size: 120,
   }),
-  columnHelper.accessor("lastName", {
-    header: "Last Name",
-    size: 120,
-  }),
-  columnHelper.accessor("company", {
-    header: "Company",
-    size: 300,
-  }),
-  columnHelper.accessor("city", {
-    header: "City",
-  }),
-  columnHelper.accessor("country", {
-    header: "Country",
-    size: 120,
+  columnHelper.accessor("time", {
+    header: "Time",
+    // size: 120,
   }),
 ];
 
@@ -62,7 +91,7 @@ const csvConfig = mkConfig({
   useKeysAsHeaders: true,
 });
 
-const BuyVehicleEnq = () => {
+const BuyVehicleEnq = ({ data }) => {
   const handleExportRows = (rows) => {
     const rowData = rows.map((row) => row.original);
     const csv = generateCsv(csvConfig)(rowData);
@@ -98,7 +127,7 @@ const BuyVehicleEnq = () => {
         >
           Export All Data
         </Button>
-        <Button
+        {/* <Button
           disabled={table.getPrePaginationRowModel().rows.length === 0}
           //export all rows, including from the next page, (still respects filtering and sorting)
           onClick={() =>
@@ -107,7 +136,7 @@ const BuyVehicleEnq = () => {
           startIcon={<FileDownloadIcon />}
         >
           Export All Rows
-        </Button>
+        </Button> */}
         <Button
           disabled={table.getRowModel().rows.length === 0}
           //export all rows as seen on the screen (respects pagination, sorting, filtering, etc.)

@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Homepage from "./screen/homepage/Homepage";
 import { AboutUs } from "./screen/about-us/AboutUs";
 import FAQs from "./screen/more-links/FAQs";
@@ -19,10 +19,13 @@ import Outlets from "./screen/more-links/Outlets";
 import { Toaster } from "react-hot-toast";
 import Signin from "./screen/login/Signin";
 import CarCart from "./screen/pre-owned-cars/CarCart";
+import ModalSidePanel from "./components/Headers/ModalSidePanel";
 
 
 function App() {
   const { pathname } = useLocation();
+
+  const [open, setOpen] = useState(false);
 
   const isAdminRoute = pathname === "/dashboard"   || pathname === "/login";
 
@@ -32,7 +35,13 @@ function App() {
 
   return (
     <>
-      {!isAdminRoute && <Header option={pathname === "/" && true} />}
+      {!isAdminRoute && (
+        <Header
+          option={pathname === "/" && true}
+          open={open}
+          setOpen={setOpen}
+        />
+      )}
       {!isAdminRoute && <Popup />}
 
       <Routes>
@@ -60,6 +69,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Toaster />
+      <ModalSidePanel show={open} setShow={setOpen} />
 
       {!isAdminRoute && <Footer />}
     </>

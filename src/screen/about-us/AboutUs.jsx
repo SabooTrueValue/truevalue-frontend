@@ -1,7 +1,28 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 export const AboutUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>
+          Welcome to Saboo RKS True Value - Your Trusted Destination for Quality
+          Pre-Owned Cars
+        </title>
+        <meta
+          name="title"
+          content="Welcome to Saboo RKS True Value - Your Trusted Destination for Quality Pre-Owned Cars
+"
+        />
+        <meta
+          name="description"
+          content="At Saboo RKS True Value, we redefine the pre-owned car buying experience with our commitment to quality, transparency, and customer satisfaction. Discover a wide selection of certified used cars, meticulously inspected and refurbished to ensure reliability and peace of mind. With our hassle-free buying process and comprehensive after-sales support, we strive to make your journey to owning a pre-owned car a delightful one."
+        />
+        <meta
+          name="keywords"
+          content="SabooTrue Value, Pre-Owned Cars, Certified Used Cars, Quality Assurance, Transparency, Customer Satisfaction, Hassle-Free Buying Process, After-Sales Support, Reliability
+"
+        />
+      </Helmet>
       <img
         src={require("../../assets/about-us/Maruti-Suzuki-TrueValue-Showrrom.jpg")}
         alt=""
