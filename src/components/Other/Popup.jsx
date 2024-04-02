@@ -82,7 +82,7 @@ export default function Popup() {
                   let minutes = date.getMinutes();
                   let seconds = date.getSeconds();
                   // Your Firebase submission logic here
-                  console.log("Form submitted", values);
+                  //console.log("Form submitted", values);
                   const docRef = await addDoc(
                     collection(FirebaseStore, "popupEnquiries"),
                     {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 
 const CarCard2 = ({ carData }) => {
-  console.log(carData.id);
+  //console.log(carData.id);
   // Function to calculate EMI
   const calculateEMI = () => {
     // Assuming interest rate of 8.5% per annum and tenure of 5 years (60 months)

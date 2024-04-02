@@ -114,7 +114,7 @@ export const HomePageEnq = ({ title }) => {
                 .then((res) => {})
                 .catch((err) => {
                   toast.error("Something went wrong!");
-                  console.log(err);
+                  //console.log(err);
                 });
             } catch (error) {
               // setSubmitting(false);
@@ -135,7 +135,7 @@ export const HomePageEnq = ({ title }) => {
                 .then((res) => {})
                 .catch((err) => {
                   toast.error("Something went wrong!");
-                  console.log(err);
+                  //console.log(err);
                 });
               // Handle response for the second API call
             } catch (error) {

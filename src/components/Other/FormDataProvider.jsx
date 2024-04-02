@@ -44,10 +44,10 @@ export const FormDataProvider = ({ children }) => {
       });
     };
     getVehicleData();
-    console.log(vehicleData);
+    //console.log(vehicleData);
   }, []);
   useEffect(() => {
-    console.log(vehicleData);
+    //console.log(vehicleData);
   }, [vehicleData]);
 
   return (

@@ -22,7 +22,7 @@ function CarSlider2({ sliders }) {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
-  console.log(sliders)
+  //console.log(sliders)
 
   return (
     <>
@@ -32,7 +32,7 @@ function CarSlider2({ sliders }) {
           dynamicBullets: true,
         }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
-        // loop={true}
+        loop={true}
         grabCursor={true}
         navigation={{
           nextEl: navigationNextRef.current,
@@ -55,17 +55,15 @@ function CarSlider2({ sliders }) {
           </SwiperSlide>
         ))}
 
-        
-
         <div
           ref={navigationPrevRef}
-          className="absolute z-10 p-1 rounded-full shadow-xl cursor-pointer left-3 sm:left-10 top-1/2 sm:top-1/2 bg-white/60 hover:bg-primary sm:p-3 hover:text-white"
+          className="absolute z-10 p-1 rounded-full shadow-xl cursor-pointer select-none left-3 sm:left-10 top-1/2 sm:top-1/2 bg-white/60 hover:bg-primary sm:p-3 hover:text-white"
         >
           <GrFormNext className="rotate-180 " />
         </div>
         <div
           ref={navigationNextRef}
-          className="absolute z-10 p-1 rounded-full shadow-xl cursor-pointer right-3 sm:right-10 top-1/2 sm:top-1/2 bg-white/60 hover:bg-primary sm:p-3 hover:text-white"
+          className="absolute z-10 p-1 rounded-full shadow-xl cursor-pointer select-none right-3 sm:right-10 top-1/2 sm:top-1/2 bg-white/60 hover:bg-primary sm:p-3 hover:text-white"
         >
           <GrFormNext />
         </div>

@@ -64,7 +64,7 @@ const ImageUpload = ({ setCurrentTab }) => {
         );
         await uploadBytes(storageRef, image);
         const downloadURL = await getDownloadURL(storageRef);
-        console.log("Download URL:", downloadURL);
+        //console.log("Download URL:", downloadURL);
         imageUrls.push(downloadURL); // Store the download URL
       }
 
@@ -80,7 +80,7 @@ const ImageUpload = ({ setCurrentTab }) => {
         time: `${hours}:${minutes}:${seconds}`,
         timestamp: serverTimestamp(),
       });
-      console.log("Post Vehicle Data:", postVehicleData);
+      //console.log("Post Vehicle Data:", postVehicleData);
 
       const docRef = await addDoc(
         collection(FirebaseStore, "postVehicleData"),

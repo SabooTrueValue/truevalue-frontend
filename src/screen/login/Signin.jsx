@@ -34,7 +34,7 @@ const Signin = () => {
                     values.email,
                     values.password
                   );
-                  console.log(user);
+                  //console.log(user);
                   setLoading(false);
                   // Store token in local storage upon successful login
                   //   localStorage.setItem("userToken", user.accessToken);
@@ -45,7 +45,7 @@ const Signin = () => {
 
                   navigate("/dashboard");
                 } catch (error) {
-                  console.log(error);
+                  //console.log(error);
                   alert("Invalid email or password");
                   setLoading(false);
                 }

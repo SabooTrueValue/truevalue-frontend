@@ -32,10 +32,10 @@ const DashboardHeader = ({ open, setOpen, selected }) => {
         <div className="text-2xl text-center">{tabs1[selected]}</div>
         <div className="flex justify-end gap-8 text-lg">
           <div className="flex items-center gap-3 ">
-            Admin <FaRegUser className="" />
+            <span className="hidden md:block">Admin</span> <FaRegUser className="" />
           </div>
           <button aria-label="logout" onClick={handleLogout}  className="flex items-center gap-3 cursor-pointer">
-            Logount <LuLogOut className="" />
+            <span className="hidden md:block">Logount</span> <LuLogOut className="" />
           </button>
         </div>
       </div>

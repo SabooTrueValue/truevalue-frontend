@@ -24,27 +24,27 @@ const HowWorks = () => {
     },
   ];
 
-  const sellingSteps = [
-    {
-      src: require("../../assets/homepage/form.jpg"),
-      alt: "Instant online application",
-      text: "Instant online application",
-      description: "Fill in a few details about your car",
-    },
-    {
-      src: require("../../assets/homepage/inspection.jpg"),
-      alt: "Free doorstep evaluation",
-      text: "Free doorstep evaluation",
-      description:
-        "Schedule the evaluation at your convenience, from the comfort of your home or workplace",
-    },
-    {
-      src: require("../../assets/homepage/finalpayment.jpg"),
-      alt: "Same day payment",
-      text: "Same day payment",
-      description: "Complete payment and paperwork on the spot",
-    },
-  ];
+  // const sellingSteps = [
+  //   {
+  //     src: require("../../assets/homepage/form.jpg"),
+  //     alt: "Instant online application",
+  //     text: "Instant online application",
+  //     description: "Fill in a few details about your car",
+  //   },
+  //   {
+  //     src: require("../../assets/homepage/inspection.jpg"),
+  //     alt: "Free doorstep evaluation",
+  //     text: "Free doorstep evaluation",
+  //     description:
+  //       "Schedule the evaluation at your convenience, from the comfort of your home or workplace",
+  //   },
+  //   {
+  //     src: require("../../assets/homepage/finalpayment.jpg"),
+  //     alt: "Same day payment",
+  //     text: "Same day payment",
+  //     description: "Complete payment and paperwork on the spot",
+  //   },
+  // ];
 
   return (
     <div className="container px-1 pt-10 mx-auto lg:pt-16">
@@ -74,12 +74,12 @@ const HowWorks = () => {
           ))}
         </div>
       </div>
-      <div>
+      {/* <div>
         <h4 className="pb-4 text-xl font-bold text-center uppercase text-primary">
           Selling your car made simple
         </h4>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {/* Loop through the sellingSteps array and render each step */}
+          {/* Loop through the sellingSteps array and render each step 
           {sellingSteps.map((step, index) => (
             <div
               key={index}
@@ -95,7 +95,7 @@ const HowWorks = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

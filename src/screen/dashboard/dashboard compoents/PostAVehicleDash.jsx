@@ -49,7 +49,7 @@ function PostAVehicleDash({ setCurrentTab }) {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      console.log("Submitting form:", values);
+      //console.log("Submitting form:", values);
       localStorage.setItem("postVehicleData", JSON.stringify(values));
 
       setPostVehicleData((prev) => ({ ...prev, ...values }));

@@ -35,7 +35,7 @@ const ContactUsForm = () => {
         let hours = date.getHours();
         let minutes = date.getMinutes();
         let seconds = date.getSeconds();
-        console.log("Form data", values);
+        //console.log("Form data", values);
         const docRef = await addDoc(collection(FirebaseStore, "contact-us"), {
           ...values,
           date: date.toDateString(),
