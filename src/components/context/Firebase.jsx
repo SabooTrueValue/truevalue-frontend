@@ -1,7 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from 'firebase/auth';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage } from 'firebase/storage';
+import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -10,7 +13,7 @@ const firebaseConfig = {
   projectId: "sabootruevalue-12",
   storageBucket: "sabootruevalue-12.appspot.com",
   messagingSenderId: "428377692266",
-  appId: "1:428377692266:web:323d90ee41282466035213"
+  appId: "1:428377692266:web:323d90ee41282466035213",
 };
 
 // Initialize Firebase
@@ -25,4 +28,17 @@ const FirebaseStore = getFirestore(FirebaseApp);
 // Obtain the Firebase Storage instance
 const FirebaseStorage = getStorage(FirebaseApp);
 
-export { FirebaseApp, FirebaseAuth, FirebaseStore, FirebaseStorage,getFirestore };
+const signgInUserWithEmailAndPassword = async (email, password) => {
+ const login =   signInWithEmailAndPassword(FirebaseAuth, email, password);
+ console.log(login);
+ return login;
+};
+
+export {
+  FirebaseApp,
+  FirebaseAuth,
+  FirebaseStore,
+  FirebaseStorage,
+  getFirestore,
+  signgInUserWithEmailAndPassword,
+};

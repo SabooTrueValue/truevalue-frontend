@@ -15,6 +15,11 @@ const DashboardHeader = ({ open, setOpen, selected }) => {
     "Finance",
   ];
 
+  const handleLogout = () => {
+    localStorage.removeItem("userToken");
+    window.location.replace("/login");
+  };
+
   return (
     <div className="">
       <div className="grid grid-cols-3 p-4 text-white bg-primary rounded-xl">
@@ -26,12 +31,12 @@ const DashboardHeader = ({ open, setOpen, selected }) => {
         </div>
         <div className="text-2xl text-center">{tabs1[selected]}</div>
         <div className="flex justify-end gap-8 text-lg">
-          <div className="flex items-center gap-3 cursor-pointer ">
+          <div className="flex items-center gap-3 ">
             Admin <FaRegUser className="" />
           </div>
-          <div className="flex items-center gap-3 cursor-pointer">
+          <button aria-label="logout" onClick={handleLogout}  className="flex items-center gap-3 cursor-pointer">
             Logount <LuLogOut className="" />
-          </div>
+          </button>
         </div>
       </div>
     </div>

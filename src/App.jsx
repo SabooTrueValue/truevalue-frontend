@@ -17,12 +17,13 @@ import Popup from "./components/Other/Popup";
 import Header from "./screen/homepage/Header";
 import Outlets from "./screen/more-links/Outlets";
 import { Toaster } from "react-hot-toast";
+import Signin from "./screen/login/Signin";
+
 
 function App() {
   const { pathname } = useLocation();
 
-  const isAdminRoute = pathname === "/dashboard";
-  // || pathname === "/dashboard";
+  const isAdminRoute = pathname === "/dashboard"   || pathname === "/login";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,10 +41,11 @@ function App() {
         <Route exact path="/buy-used-cars" element={<FindACar />} />
         <Route exact path="/sell-your-car" element={<SellYourCar />} />
         <Route exact path="/used-car-blog" element={<Blogs />} />
-        <Route exact path="/car-details" element={<CarDetails />} />
+        <Route exact path="/car-details/:id" element={<CarDetails />} />
         <Route exact path="/used-car-outlets" element={<Outlets />} />
         <Route exact path="/used-car-faqs" element={<FAQs />} />
         <Route exact path="/dashboard" element={<DashboardHomepag />} />
+        <Route exact path="/login" element={<Signin />} />
         <Route
           exact
           path="/contact-preowned-car-dealer"

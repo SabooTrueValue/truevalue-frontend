@@ -36,20 +36,19 @@ export const FormDataProvider = ({ children }) => {
       );
       let index = 0;
       querySnapshot.forEach((doc) => {
+        let id = doc.id;
         setVehicleData((prev) => [
           ...prev,
-          { ...doc.data(), index: 1 + index++ },
+          { ...doc.data(), index: 1 + index++, id },
         ]);
       });
-      
     };
     getVehicleData();
     console.log(vehicleData);
   }, []);
   useEffect(() => {
     console.log(vehicleData);
-  }
-  , [vehicleData]);
+  }, [vehicleData]);
 
   return (
     <FormDataContext.Provider
@@ -60,7 +59,7 @@ export const FormDataProvider = ({ children }) => {
         setCurrentTab,
         postVehicleData,
         setPostVehicleData,
-        vehicleData
+        vehicleData,
       }}
     >
       {children}

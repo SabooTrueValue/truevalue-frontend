@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 
 const CarCard2 = ({ carData }) => {
+  console.log(carData.id);
   // Function to calculate EMI
   const calculateEMI = () => {
     // Assuming interest rate of 8.5% per annum and tenure of 5 years (60 months)
@@ -25,7 +26,7 @@ const CarCard2 = ({ carData }) => {
     <div className="group">
       <div className="flex flex-col justify-center w-full duration-200 border group rounded-xl text-primary border-primary ">
         <div className="relative overflow-hidden rounded-t-xl">
-          <Link to="/car-details" className="overflow-hidden">
+          <Link to={`/car-details/${carData.id}`} className="overflow-hidden">
             <img
               src={carData.images[0]}
               alt="Saboo True Value Car"
@@ -41,7 +42,7 @@ const CarCard2 = ({ carData }) => {
           </div>
 
           <div className="mb-2 text-sm">
-            <span>{carData.kmDriven} Km</span> | {" "}
+            <span>{carData.kmDriven} Km</span> |{" "}
             <span>
               {carData.fuelType} | {carData.transmission} | {carData.bodyType}
             </span>
@@ -55,7 +56,7 @@ const CarCard2 = ({ carData }) => {
 
           <div className="flex justify-between border-t border-[#797979] py-2 ">
             <Link
-              to="/car-details"
+              to={`/car-details/${carData.id}`}
               className="flex items-center gap-2 text-lg group"
             >
               Buy Now{" "}

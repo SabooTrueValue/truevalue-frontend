@@ -13,7 +13,7 @@ const DashboardSidePanel = ({ setSelected, setOpen }) => {
 
   return (
     <div
-      className={`w-[250px] bg-primary h-full  px-4 text-white py-4 md:block hidden  rounded-xl font-sans text-lg absolute z-10 border-r lg:static  xl:w-full `}
+      className={`w-[250px] bg-primary h-full  px-4 text-white py-4   rounded-xl font-sans text-lg absolute z-10 border-r lg:static  xl:w-full `}
     >
       <div className="flex items-end justify-between pb-8">
         <Link to="/">
@@ -23,7 +23,7 @@ const DashboardSidePanel = ({ setSelected, setOpen }) => {
             className="h-10 "
           />
         </Link>
-        <p onClick={() => setOpen(false)} className="cursor-pointer lg:hidden">Close</p>
+        <p onClick={() => setOpen(false)} className="cursor-pointer xl:hidden">Close</p>
       </div>
       <p className="px-2 pb-4 text-xl text-gray-300 ">Main </p>
       {tabs1.map((x, i) => {

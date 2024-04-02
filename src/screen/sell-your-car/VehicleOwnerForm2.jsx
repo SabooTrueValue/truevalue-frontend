@@ -95,7 +95,7 @@ const VehicleOwnerForm2 = () => {
     email: formData.email,
     mobile: formData.mobile,
   };
-
+  
   const saveData = async () => {
     setLoading(true);
     console.log("Form data", formData);

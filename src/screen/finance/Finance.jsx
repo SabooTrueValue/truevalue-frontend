@@ -389,7 +389,7 @@ const TabTwo = () => {
 
 const TabThree = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     phone: "",
     loanAmount: "",
@@ -433,7 +433,7 @@ const TabThree = () => {
       toast.success("Form submitted successfully");
 
       setFormData({
-        fullName: "",
+        name: "",
         email: "",
         phone: "",
         loanAmount: "",
@@ -464,12 +464,12 @@ const TabThree = () => {
           <div className="mb-1 text-xl font-semibold">Full Name</div>
           <input
             type="text"
-            name="fullName"
+            name="name"
             id=""
             required
             className="w-full px-6 py-3 bg-white outline-none"
             placeholder="Enter Full Name"
-            value={formData.fullName}
+            value={formData.name}
             onChange={handleChange}
           />
         </div>

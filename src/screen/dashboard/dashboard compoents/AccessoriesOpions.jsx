@@ -61,7 +61,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
       >
         {() => (
           <Form>
-            <div className="grid gap-4 px-4 mb-6 font-sans md:grid-cols-3 lg:grid-cols-6">
+            <div className="grid grid-cols-2 gap-4 px-4 mb-6 font-sans sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
               <div>
                 <label
                   htmlFor="Sunroof"
