@@ -27,7 +27,7 @@ export const TermsAndConditions = () => {
         src={require("../../assets/other/Cars-range.webp")}
         alt="Privacy Policy"
       />
-      <div className="pt-5 pb-10">
+      <div className="px-1 pt-5 pb-10">
         <h1 className="mt-4 mb-8 text-3xl font-bold text-center lg:text-4xl text-primary lg:whitespace-nowrap">
           Privacy Policy
         </h1>

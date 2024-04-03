@@ -1,9 +1,14 @@
-import { IoClose, IoLogoInstagram } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { FaFacebookSquare,  FaWhatsapp } from "react-icons/fa";
+import { FaFacebookSquare } from "react-icons/fa";
 import { IoIosCall, IoLogoYoutube, IoMdMail } from "react-icons/io";
 import { useEffect } from "react";
-import { FaLocationDot } from "react-icons/fa6";
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaLocationDot,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 const ModalSidePanel = ({ show, setShow, pathname }) => {
   useEffect(() => {
@@ -59,7 +64,9 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 key={index}
                 to={tab.path}
                 onClick={() => setShow(false)}
-                className={`w-full py-2 pl-6 border-b cursor-pointer hover:bg-primary hover:text-white rounded-lg ${pathname === tab.path && "bg-primary text-white"}`}
+                className={`w-full py-2 pl-6 border-b cursor-pointer hover:bg-primary hover:text-white rounded-lg ${
+                  pathname === tab.path && "bg-primary text-white"
+                }`}
               >
                 {tab.name}
               </Link>
@@ -67,51 +74,66 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-4 px-4 py-1 text-sm text-white rounded-lg bg-primary">
-              <div className="flex items-center gap-2 ">
-                <IoIosCall className="" /> 81878 81878
-              </div>{" "}
-              <div className="flex items-center gap-2 ">
-                <FaLocationDot /> Hyderabad
-              </div>
-            </div>
-            <div className="flex gap-4 pt-4 text-2xl text-primary justify-evenly">
               <a
-                href="https://www.instagram.com/nuform__/"
+                href="tel: 98488 98488 "
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-primary"
+                className="flex items-center gap-2 "
               >
-                <IoLogoInstagram />
+                <IoIosCall className="" /> 98488 98488
+              </a>{" "}
+              <a
+                href="https://maps.app.goo.gl/yJGRNRNJJxA5X88e6"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 "
+              >
+                <FaLocationDot /> Hyderabad
+              </a>
+            </div>
+            <div className="flex gap-4 pt-4 text-primary justify-evenly">
+              <a
+                href="https://www.instagram.com/saboorkstruevalue/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaInstagram />
               </a>
               <a
-                href="https://www.facebook.com/your-facebook-page"
+                href="https://www.facebook.com/saboorkstruevalue"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-primary"
               >
                 <FaFacebookSquare />
               </a>
+
+              {/* <FaXTwitter /> */}
               <a
-                href="https://www.youtube.com/your-channel"
+                href="https://www.youtube.com/channel/UC102tHun3nmc6rVT4lBbofA/"
                 target="_blank"
-                rel="noreferrer"
-                className="hover:text-primary"
+                rel="noopener noreferrer"
               >
                 <IoLogoYoutube />
               </a>
+
               <a
-                href="https://wa.me/your-whatsapp-number"
+                href="https://www.linkedin.com/company/saboo-rks-truevalue/?viewAsMember=true"
                 target="_blank"
-                rel="noreferrer"
-                className="hover:text-primary"
+                rel="noopener noreferrer"
               >
-                <FaWhatsapp />
+                <FaLinkedin />
               </a>
               <a
-                href="mailto:your-email@example.com"
+                href="https://twitter.com/saboorkstrueva1"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-primary"
+              >
+                <FaXTwitter />
+              </a>
+              <a
+                href="mailto:info@saboomaruti.in"
+                target="_blank"
+                rel="noreferrer"
               >
                 <IoMdMail />
               </a>

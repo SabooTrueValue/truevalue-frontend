@@ -1,7 +1,7 @@
 import React from "react";
 // import { FiSearch } from "react-icons/fi";
 import { FaInstagram, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 // import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { IoLogoYoutube, IoMdArrowDropdown, IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -114,10 +114,10 @@ const Header = ({ option, setOpen, pathname }) => {
                 </div>
               </div>
             </div>
-            <button>
-              <div className="text-sm">Call us at</div>
-              <div>98488 98488</div>
-            </button>
+            <a href="tel:9848898488" target="_blank" rel="noreferrer">
+              <div className="text-sm text-center">Call us at</div>
+              <p>98488 98488</p>
+            </a>
           </div>
           <div
             onClick={() => setOpen(true)}
@@ -258,13 +258,51 @@ const Header = ({ option, setOpen, pathname }) => {
               </div>
             </div>
             <div className="flex justify-end gap-2 text-primary lg:gap-3">
-              <FaInstagram />
-              <FaFacebookSquare />
+              <a
+                href="https://www.instagram.com/saboorkstruevalue/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://www.facebook.com/saboorkstruevalue"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaFacebookSquare />
+              </a>
+
               {/* <FaXTwitter /> */}
-              <IoLogoYoutube />
-              <FaLinkedin />
-              <FaWhatsapp />
-              <IoMdMail />
+              <a
+                href="https://www.youtube.com/channel/UC102tHun3nmc6rVT4lBbofA/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IoLogoYoutube />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/company/saboo-rks-truevalue/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="https://twitter.com/saboorkstrueva1"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaXTwitter />
+              </a>
+              <a
+                href="mailto:info@saboomaruti.in"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IoMdMail />
+              </a>
             </div>
           </div>
         </div>

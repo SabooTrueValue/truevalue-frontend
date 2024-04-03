@@ -3,7 +3,7 @@ import { useFormData } from "../../components/Other/FormDataProvider";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import CarSlider2 from "./CarSlider2";
 import { MdAirlineSeatReclineExtra, MdVerified } from "react-icons/md";
-import { FaCalendarDays, FaCar, FaLocationDot } from "react-icons/fa6";
+import { FaCalendarDays, FaCar, FaLocationDot, FaUser } from "react-icons/fa6";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { TbManualGearbox } from "react-icons/tb";
 import { IoIosColorPalette, IoMdSpeedometer } from "react-icons/io";
@@ -53,44 +53,48 @@ const CarDetails = () => {
               </h3>
               <div className="grid grid-cols-2 gap-x-4 xl:grid-cols-4 lg:grid-cols-3 gap-y-6">
                 <div className="">
-                  <FaLocationDot className="text-xl text-primary" />
+                  <FaLocationDot className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.trueValueLocation}</p>
                 </div>
                 <div className="">
-                  <IoIosColorPalette className="text-xl text-primary" />
+                  <IoIosColorPalette className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.color}</p>
                 </div>
                 <div className="">
-                  <BsFillFuelPumpFill className="text-xl text-primary" />
+                  <BsFillFuelPumpFill className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.fuelType}</p>
                 </div>
                 <div className="">
-                  <TbManualGearbox className="text-xl text-primary" />
+                  <TbManualGearbox className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.transmission}</p>
                 </div>
                 <div className="">
-                  <FaCar className="text-xl text-primary" />
+                  <FaCar className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.bodyType}</p>
                 </div>
                 <div className="">
-                  <FaCalendarDays className="text-xl text-primary" />
+                  <FaCalendarDays className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.modelYear}</p>
                 </div>
                 <div className="">
-                  <PiEngineFill className="text-xl text-primary" />
-                  <p className="mt-2">{carData?.engineCapacity}</p>
+                  <PiEngineFill className="text-2xl text-primary" />
+                  <p className="mt-2">{carData?.engineCapacity} cc</p>
                 </div>
                 <div className="">
-                  <IoMdSpeedometer className="text-xl text-primary" />
+                  <IoMdSpeedometer className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.kmDriven} Km</p>
                 </div>
                 <div className="">
-                  <MdVerified className="text-xl text-primary" />
+                  <MdVerified className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.vehicleCategory}</p>
                 </div>
                 <div className="">
-                  <MdAirlineSeatReclineExtra className="text-2xl text-primary" />
-                  <p className="mt-2">{carData?.seatingCapacity}</p>
+                  <MdAirlineSeatReclineExtra className="text-3xl text-primary" />
+                  <p className="mt-0.5">{carData?.seatingCapacity}</p>
+                </div>
+                <div className="">
+                  <FaUser className="text-xl text-primary" />
+                  <p className="mt-2">{carData?.userType}</p>
                 </div>
               </div>
             </div>
@@ -169,7 +173,9 @@ const CarDetails = () => {
                 <span className="text-red-600">*</span>
               </h1>
               <a
-                href="#vehicleForm"
+                href="tel:9848898488"
+                target="_blank"
+                rel="noreferrer"
                 className="flex items-center justify-center w-full py-3 font-medium text-white rounded-lg shadow cursor-pointer bg-primary"
               >
                 Book Now

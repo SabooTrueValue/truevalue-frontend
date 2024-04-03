@@ -264,7 +264,7 @@ const CarCart = () => {
           <div className="container mx-auto rounded-3xl">
             <div className="px-1 pb-10 overflow-y-scroll">
               {/* <CarCart filters={filters} setFilters={setFilters} /> */}
-              <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 2xl:gap-4 xl:grid-cols-4 md:grid-cols-2">
+              <div className="flex flex-wrap justify-start gap-y-4 gap-x-2">
                 <div className="flex flex-wrap justify-center w-full gap-2 my-4 duration-500 md:justify-between md:col-span-2 lg:col-span-3 xl:col-span-4">
                   <input
                     type="text"
@@ -303,7 +303,7 @@ const CarCart = () => {
                     return (
                       <div
                         key={i}
-                        className="w-[280px] bg-white  hover:shadow-2xl hover:shadow-gray-500 mx-auto duration-500 border group rounded-xl text-primary border-primary  "
+                        className="w-[280px] bg-white  hover:shadow-2xl hover:shadow-gray-500 mx-auto duration-500 border group rounded-xl text-primary border-primary   "
                       >
                         <Link
                           to={`/car-details/${x.id}`}
@@ -386,6 +386,13 @@ const CarCart = () => {
                     );
                   })
                 )}
+                <div className="w-[280px] m-5 h-10 "></div>
+
+                {/* <div className="w-[280px] m-2 "></div>
+                <div className="w-[280px] m-2 "></div>
+                <div className="w-[280px] m-2 "></div>
+                <div className="w-[280px] m-2 "></div>
+                <div className="w-[280px] m-2 "></div> */}
               </div>{" "}
             </div>
           </div>

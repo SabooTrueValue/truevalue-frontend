@@ -6,16 +6,12 @@ import { IoTime } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 import { Helmet } from "react-helmet";
 
-
 export const ContactUs = () => {
   return (
     <div>
       <Helmet>
         <title>True Value - Contact Us</title>
-        <meta
-          name="title"
-          content="True Value - Contact Us"
-        />
+        <meta name="title" content="True Value - Contact Us" />
         <meta
           name="description"
           content="Have questions or inquiries about our True Value services? Contact us today for all your queries, feedback, and assistance. Our dedicated team is here to provide you with personalized support and help you find the perfect certified pre-owned car"
@@ -30,7 +26,7 @@ export const ContactUs = () => {
         src={require("../../assets/other/Truevalue-Finance-Banner.jpg")}
         alt="Contact Us"
       />
-      <div className="py-10 lg:pb-20 lg:pt-14">
+      <div className="px-1 py-10 lg:pb-20 lg:pt-14">
         <h3 className="mb-2 text-2xl text-center md:text-3xl text-primary">
           Contact Us
         </h3>
