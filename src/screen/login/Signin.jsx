@@ -110,15 +110,15 @@ const Signin = () => {
                     type="submit"
                     className="w-full px-3 py-3 mt-4 text-white rounded-lg bg-primary"
                   >
-                    {loading ? "Loading..." : "Sign In"}
+                    {loading ? "Signing in..." : "Sign In"}
                   </button>
 
                   <p className="mt-2 text-center text-gray-500">OR</p>
-                  <div className="text-center">
+                 {!loading && <div className="text-center">
                     <Link to="/" className="text-center text-primary">
                       Back to home
                     </Link>
-                  </div>
+                  </div>}
                 </Form>
               )}
             </Formik>

@@ -5,20 +5,20 @@ import { IoIosCall, IoLogoYoutube, IoMdMail } from "react-icons/io";
 import { useEffect } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 
-const ModalSidePanel = ({ show, setShow }) => {
+const ModalSidePanel = ({ show, setShow, pathname }) => {
   useEffect(() => {
     const body = document.body;
     if (show) {
       // Disable scrolling
-      body.style.overflow = 'hidden';
+      body.style.overflow = "hidden";
     } else {
       // Enable scrolling
-      body.style.overflow = 'visible';
+      body.style.overflow = "visible";
     }
 
     // Clean up the effect
     return () => {
-      body.style.overflow = 'visible';
+      body.style.overflow = "visible";
     };
   }, [show]);
 
@@ -36,11 +36,11 @@ const ModalSidePanel = ({ show, setShow }) => {
     { name: "Finance", path: "/finance" },
     { name: "Contact Us", path: "/contact-preowned-car-dealer" },
     { name: "Blog", path: "/used-car-blog" },
+    { name: "FAQs", path: "/used-car-faqs" },
     { name: "Outlets", path: "/used-car-outlets" },
     { name: "Privacy Policy", path: "/used-cars-terms-conditions" },
-
   ];
-  
+
   return (
     <div
       id="container"
@@ -51,22 +51,22 @@ const ModalSidePanel = ({ show, setShow }) => {
           : "duration-500 md:duration-700"
       }   flex justify-end  top-0 right-0 h-full  w-full z-40 `}
     >
-      <div className="overflow-hidden bg-white shadow-2xl w-80">
+      <div className="overflow-hidden bg-white shadow-2xl w-80 rounded-l-xl">
         <div className="flex flex-col justify-between h-full gap-6 px-6 pt-20 pb-10 rounded-2xl">
           <div className="flex flex-col gap-2">
             {tabs.map((tab, index) => (
-               <Link
-               key={index}
-               to={tab.path}
-               onClick={() => setShow(false)}
-               className="w-full py-2 pl-6 border-b cursor-pointer hover:bg-primary hover:text-white"
-             >
-               {tab.name}
-             </Link>
+              <Link
+                key={index}
+                to={tab.path}
+                onClick={() => setShow(false)}
+                className={`w-full py-2 pl-6 border-b cursor-pointer hover:bg-primary hover:text-white rounded-lg ${pathname === tab.path && "bg-primary text-white"}`}
+              >
+                {tab.name}
+              </Link>
             ))}
           </div>
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-4 px-4 py-1 text-sm text-white bg-primary">
+            <div className="flex items-center gap-4 px-4 py-1 text-sm text-white rounded-lg bg-primary">
               <div className="flex items-center gap-2 ">
                 <IoIosCall className="" /> 81878 81878
               </div>{" "}

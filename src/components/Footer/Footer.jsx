@@ -51,7 +51,7 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-2.5">
             <div className="pb-2 text-lg font-semibold">Other Links</div>
-            <Link to="/">&#12297; FAQs</Link>
+            <Link to="/used-car-faqs">&#12297; FAQs</Link>
             <Link to="/used-car-blog">&#12297; Blogs</Link>
             <Link to="/used-car-outlets">&#12297; Outlests</Link>
             <Link to="/used-cars-terms-conditions">

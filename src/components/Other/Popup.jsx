@@ -57,7 +57,7 @@ export default function Popup() {
               &#8203;
             </span>
 
-            <div className="inline-block p-5 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div className="inline-block p-5 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full w-[400px]">
               <div className="flex justify-end">
                 <button
                   onClick={handleClose}
@@ -101,7 +101,7 @@ export default function Popup() {
               >
                 {({ isSubmitting }) => (
                   <Form>
-                    <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                    <div className="pt-5 pb-4 bg-white  sm:p-6 sm:pb-4">
                       <div className="w-full sm:flex sm:items-start">
                         <div className="w-full mt-3 text-center sm:mt-0 sm:text-left">
                           <h3

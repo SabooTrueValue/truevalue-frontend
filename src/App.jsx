@@ -21,13 +21,12 @@ import Signin from "./screen/login/Signin";
 import CarCart from "./screen/pre-owned-cars/CarCart";
 import ModalSidePanel from "./components/Headers/ModalSidePanel";
 
-
 function App() {
   const { pathname } = useLocation();
 
   const [open, setOpen] = useState(false);
 
-  const isAdminRoute = pathname === "/dashboard"   || pathname === "/login";
+  const isAdminRoute = pathname === "/dashboard" || pathname === "/login";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,6 +39,7 @@ function App() {
           option={pathname === "/" && true}
           open={open}
           setOpen={setOpen}
+          pathname={pathname}
         />
       )}
       {!isAdminRoute && <Popup />}
@@ -69,7 +69,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Toaster />
-      <ModalSidePanel show={open} setShow={setOpen} />
+      <ModalSidePanel show={open} setShow={setOpen} pathname={pathname} />
 
       {!isAdminRoute && <Footer />}
     </>

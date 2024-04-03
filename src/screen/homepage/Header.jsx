@@ -7,7 +7,7 @@ import { IoLogoYoutube, IoMdArrowDropdown, IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 
-const Header = ({ option,open, setOpen }) => {
+const Header = ({ option, setOpen, pathname }) => {
   return (
     <div className={`sticky top-0 z-30`}>
       <div className={`bg-primary  text-white ${!option && "shadow-lg"}`}>
@@ -40,31 +40,57 @@ const Header = ({ option,open, setOpen }) => {
             </div> */}
           </div>
           <div className="items-center justify-end hidden gap-10 md:flex whitespace-nowrap">
-            <Link
-              to="/buy-used-cars"
-              className="flex flex-col items-center group"
-            >
+            <Link to="/buy-used-cars" className=" group">
               <button>Buy Car</button>
-              <div className="h-0.5 bg-primary w-0 group-hover:w-full duration-500 "></div>
+              <div
+                className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
+                  pathname === "/buy-used-cars" && "w-full"
+                }`}
+              ></div>
             </Link>
             <Link to="/sell-your-car" className="group">
               <button>Sell Car</button>
-              <div className="h-0.5 bg-primary w-0 group-hover:w-full duration-500 "></div>
+              <div
+                className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
+                  pathname === "/sell-your-car" && "w-full"
+                }`}
+              ></div>
             </Link>
             <Link to="/finance" className="group">
               <button>Finance</button>
-              <div className="h-0.5 bg-primary w-0 group-hover:w-full duration-500 "></div>
+              <div
+                className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
+                  pathname === "/finance" && "w-full"
+                }`}
+              ></div>
             </Link>
             <Link to="/about-us" className="group">
               <button>About Us</button>
-              <div className="h-0.5 bg-primary w-0 group-hover:w-full duration-500 "></div>
+              <div
+                className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
+                  pathname === "/about-us" && "w-full"
+                }`}
+              ></div>
             </Link>
 
             <div className="relative py-2 cursor-pointer group ">
-              <div className="flex items-center ">
-                More
-                <IoMdArrowDropdown className="text-lg duration-200 group-hover:rotate-180" />
+              <div>
+                <div className="flex items-center ">
+                  More
+                  <IoMdArrowDropdown className="text-lg duration-200 group-hover:rotate-180" />
+                </div>
+                <div
+                  className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
+                    (pathname === "/used-car-blog" ||
+                      pathname === "/used-car-outlets" ||
+                      pathname === "/contact-preowned-car-dealer" ||
+                      pathname === "/used-cars-terms-conditions" ||
+                      pathname === "/used-car-faqs") &&
+                    "w-full"
+                  }`}
+                ></div>
               </div>
+
               <div className="absolute z-40 hidden  rounded-xl -left-8 top-[34px] group-hover:block text-white">
                 <div className="flex flex-col gap-4 p-8 bg-primary h-min rounded-b-xl whitespace-nowrap ">
                   <Link to="/used-car-blog">
@@ -76,9 +102,9 @@ const Header = ({ option,open, setOpen }) => {
                   <Link to="/used-car-faqs">
                     <div className="">FAQs</div>
                   </Link>
-                  <Link to="/login">
+                  {/* <Link to="/login">
                     <div className="">Login</div>
-                  </Link>
+                  </Link> */}
                   <Link to="/contact-preowned-car-dealer">
                     <div className="">Contact Us</div>
                   </Link>
@@ -93,7 +119,10 @@ const Header = ({ option,open, setOpen }) => {
               <div>98488 98488</div>
             </button>
           </div>
-          <div onClick={()=>setOpen(true)} className="flex items-center gap-2 pr-6 text-lg cursor-pointer md:hidden">
+          <div
+            onClick={() => setOpen(true)}
+            className="flex items-center gap-2 pr-6 text-lg cursor-pointer md:hidden"
+          >
             Menu <HiOutlineMenuAlt1 className="text-xl" />
           </div>
         </div>

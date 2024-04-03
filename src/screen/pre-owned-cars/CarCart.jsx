@@ -264,8 +264,8 @@ const CarCart = () => {
           <div className="container mx-auto rounded-3xl">
             <div className="px-1 pb-10 overflow-y-scroll">
               {/* <CarCart filters={filters} setFilters={setFilters} /> */}
-              <div className="container flex flex-wrap gap-5 mx-auto 2xl:gap-4">
-                <div className="flex flex-wrap justify-center w-full gap-2 my-4 duration-500 md:justify-between">
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 2xl:gap-4 xl:grid-cols-4 md:grid-cols-2">
+                <div className="flex flex-wrap justify-center w-full gap-2 my-4 duration-500 md:justify-between md:col-span-2 lg:col-span-3 xl:col-span-4">
                   <input
                     type="text"
                     placeholder="Search by car name..."
