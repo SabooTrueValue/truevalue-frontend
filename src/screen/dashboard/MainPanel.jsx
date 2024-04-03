@@ -10,6 +10,7 @@ import AccessoriesOpions from "./dashboard compoents/AccessoriesOpions";
 import { useEffect } from "react";
 import { FirebaseStore } from "../../components/context/Firebase";
 import { collection, getDocs } from "firebase/firestore";
+import ManageVehicle from "./dashboard compoents/ManageVehicle";
 
 const MainPanel = ({ selected }) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -18,7 +19,7 @@ const MainPanel = ({ selected }) => {
   const [buyData, setBuyData] = useState([]);
   const [financeData, setFinanceData] = useState([]);
   const [contactData, setContactData] = useState([]);
-  // const [vehicleData, setVehicleData] = useState([]);
+  const [vehicleData, setVehicleData] = useState([]);
 
   useEffect(() => {
     const getPopupData = async () => {
@@ -102,11 +103,28 @@ const MainPanel = ({ selected }) => {
       // console.log(buyData);
       // console.log("buy data", buyData);
     }
+    const getManageVehicleData = async () => {
+      const querySnapshot = await getDocs(
+        collection(FirebaseStore, "postVehicleData")
+      );
+
+      let index = 0;
+      querySnapshot.forEach((doc) => {
+        // let id = doc.id;
+        setVehicleData((prev) => [
+          ...prev,
+          { ...doc.data(), index: 1 + index++ },
+        ]);
+      });
+      console.log(vehicleData);
+      // console.log("vehicle data", vehicleData);
+    }
     getPopupData();
     getFinanceData();
     getContactUsData();
     getSellVehicleData();
     getBuyVehicleData();
+    getManageVehicleData();
   }, []);
 
   return (
@@ -146,7 +164,7 @@ const MainPanel = ({ selected }) => {
           </div>
         </div>
       )}
-      {selected === 2 && manageVehicles()}
+      {selected === 2 && <ManageVehicle data2={vehicleData} />}
       {selected === 3 && <BuyVehicleEnq data={buyData} />}
       {selected === 4 && <SellVehicleEnq data={sellData} />}
       {selected === 5 && <PopupEnq data={popupData} />}
@@ -170,14 +188,4 @@ const dashboard = () => {
   );
 };
 
-const manageVehicles = () => {
-  return (
-    <div>
-      <div>
-        <h4 className="pb-4 text-xl font-bold uppercase text-primary ">
-          Manage Vehicles
-        </h4>
-      </div>
-    </div>
-  );
-};
+

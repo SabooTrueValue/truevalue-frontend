@@ -32,7 +32,7 @@ const DashboardSidePanel = ({ setSelected, setOpen }) => {
         return (
           <div>
             <button
-              key={i}
+              key={i+20}
               onClick={() => {
                 setSelected(i);
                 setOpen(false);
@@ -61,7 +61,7 @@ const DashboardSidePanel = ({ setSelected, setOpen }) => {
         return (
           <div>
             <button
-              key={i}
+              key={i+10}
               aria-label={x}
               onClick={() => {
                 setSelected(i + 3);
@@ -72,7 +72,7 @@ const DashboardSidePanel = ({ setSelected, setOpen }) => {
               {x}
             </button>{" "}
             <button
-              key={i}
+              key={i+3}
               aria-label={x}
               onClick={() => {
                 setSelected(i + 3);
