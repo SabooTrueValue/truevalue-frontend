@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../context/Firebase";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function Popup() {
   const [open, setOpen] = useState(false);
@@ -77,23 +78,79 @@ export default function Popup() {
                 onSubmit={async (values, { setSubmitting }) => {
                   setLoading(true);
 
-                  let date = new Date();
-                  let hours = date.getHours();
-                  let minutes = date.getMinutes();
-                  let seconds = date.getSeconds();
-                  // Your Firebase submission logic here
-                  //console.log("Form submitted", values);
-                  const docRef = await addDoc(
-                    collection(FirebaseStore, "popupEnquiries"),
-                    {
-                      ...values,
-                      date: date.toDateString(),
-                      time: `${hours}:${minutes}:${seconds}`,
-                      timestamp: serverTimestamp(),
-                    }
-                  );
-                  console.log("Document written with ID: ", docRef.id);
-                  toast.success("Your enquiry has been submitted successfully");
+                  try {
+                    let date = new Date();
+                    let hours = date.getHours();
+                    let minutes = date.getMinutes();
+                    let seconds = date.getSeconds();
+                    // Your Firebase submission logic here
+                    //console.log("Form submitted", values);
+                    const docRef = await addDoc(
+                      collection(FirebaseStore, "popupEnquiries"),
+                      {
+                        ...values,
+                        date: date.toDateString(),
+                        time: `${hours}:${minutes}:${seconds}`,
+                        timestamp: serverTimestamp(),
+                      }
+                    );
+                    console.log("Document written with ID: ", docRef.id);
+                  } catch (error) {
+                    console.error("Error adding document: ", error);
+                    toast.error("Error submitting enquiry");
+                  }
+
+                  try {
+                    await axios
+                      .post("https://true-value.onrender.com/popup", {
+                        mobileNumber: values.mobileNumber,
+                      })
+                      .then((res) => {
+                        // toast.success("Enquiry sent successfully");
+                        toast.success(
+                          "Your enquiry has been submitted successfully"
+                        );
+                      })
+                      .catch((err) => {
+                        // setLoader(false);
+                        toast.error("Error submitting enquiry");
+                      });
+                  } catch (error) {
+                    console.error("Error submitting enquiry: ", error);
+                    toast.error("Error submitting enquiry");
+                  }
+
+                  // Third API call - SMS Strikker
+                  try {
+                    await axios
+                      .get(
+                        `https://www.smsstriker.com/API/sms.php?username=saboorks&password=LqHk1wBeI&from=RKSMOT&to=${values.mobileNumber}&msg=Thank you for showing interest in Maruti Suzuki.
+                       Our Sales consultant will contact you shortly.
+                       Regards
+                       RKS Motor Pvt. Ltd.
+                       98488 98488
+                       www.saboomaruti.in
+                       www.saboonexa.in&type=1&template_id=1407168967467983613`
+                      )
+                      .then((res) => {
+                        // console.log("SMS API Response:", res.data);
+                        //   setSubmitted(true);
+                        // setOpen2(false);
+                        // allQuery.push("Sms, ");
+                      })
+                      .catch((err) => {
+                        console.error("Error sending SMS:", err);
+                        // setSubmitted(true);
+                        // allQuery.push("Sms - Error, ");
+                        // allErrors.push(`sms - ${err}`);
+
+                        // setOpen2(false);
+                      });
+                    // Handle response for the third API call
+                  } catch (error) {
+                    // Handle error for the third API call
+                  }
+
                   setSubmitting(false);
                   sessionStorage.setItem("popup", "true");
                   handleClose();
@@ -101,7 +158,7 @@ export default function Popup() {
               >
                 {({ isSubmitting }) => (
                   <Form>
-                    <div className="pt-5 pb-4 bg-white  sm:p-6 sm:pb-4">
+                    <div className="pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
                       <div className="w-full sm:flex sm:items-start">
                         <div className="w-full mt-3 text-center sm:mt-0 sm:text-left">
                           <h3
