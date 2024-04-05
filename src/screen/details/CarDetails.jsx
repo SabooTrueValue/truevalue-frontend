@@ -38,10 +38,16 @@ const CarDetails = () => {
               <h2 className="text-2xl font-semibold uppercase xl:text-4xl ">
                 {carData?.vehicleTitle}
               </h2>
-              {/* <h2 className="text-xl font-semibold xl:text-2xl ">
-                <span className="text-lg text-primary"> ₹</span>{" "}
-                {carData?.price / 100000} Lakh
-              </h2> */}
+              <div>
+                <h1 className="text-2xl font-semibold ">
+                  {CurrencyFormatter.format(carData?.price)}
+                  <sup className="text-red-600">*</sup>
+                </h1>
+                <p className="text-right  text-gray-900/90">
+                  Our Best Price {/* {<small>starts at</small>} */}
+                </p>
+              </div>
+
               {/* <p>{car?.tag}</p> */}
             </div>
             <div className="overflow-hidden rounded-lg">
@@ -165,12 +171,8 @@ const CarDetails = () => {
           </div>
           <div className="space-y-6">
             <div className="p-8 bg-white border border-gray-200 rounded-lg">
-              <p className="mb-2 text-gray-900/90">
-                Our Best Price {/* {<small>starts at</small>} */}
-              </p>
-              <h1 className="mb-5 text-3xl font-semibold">
-                {CurrencyFormatter.format(carData?.price)}
-                <span className="text-red-600">*</span>
+              <h1 className="mb-5 text-3xl font-semibold text-center">
+                98488 98488
               </h1>
               <a
                 href="tel:9848898488"

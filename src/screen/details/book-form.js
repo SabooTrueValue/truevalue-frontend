@@ -38,7 +38,7 @@ const BookForm = ({
           .post("https://true-value.onrender.com/buyVehicle", {
             ...values,
             carId: carId,
-            brandName: carBrand,
+            carBrand: carBrand,
             carModel: carModel,
             fuelType: fuelType,
             ownership: ownership,
