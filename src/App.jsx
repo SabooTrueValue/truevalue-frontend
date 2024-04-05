@@ -12,12 +12,11 @@ import Finance from "./screen/finance/Finance";
 // import FindACar from "./screen/pre-owned-cars/FindACar";
 import CarDetails from "./screen/details/CarDetails";
 import SellYourCar from "./screen/sell-your-car/SellYourCar";
-import { DashboardHomepag } from "./screen/dashboard/DashboardHomepag";
 import Popup from "./components/Other/Popup";
 import Header from "./screen/homepage/Header";
 import Outlets from "./screen/more-links/Outlets";
 import { Toaster } from "react-hot-toast";
-import Signin from "./screen/login/Signin";
+
 import CarCart from "./screen/pre-owned-cars/CarCart";
 import ModalSidePanel from "./components/Headers/ModalSidePanel";
 
@@ -54,8 +53,7 @@ function App() {
         <Route exact path="/car-details/:id" element={<CarDetails />} />
         <Route exact path="/used-car-outlets" element={<Outlets />} />
         <Route exact path="/used-car-faqs" element={<FAQs />} />
-        <Route exact path="/dashboard" element={<DashboardHomepag />} />
-        <Route exact path="/login" element={<Signin />} />
+       
         <Route
           exact
           path="/contact-preowned-car-dealer"

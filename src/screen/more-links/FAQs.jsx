@@ -57,7 +57,12 @@ const FAQS = () => {
         <h5 className="mb-3 lg:mb-8 md:text-center ">
           Have any questions? Take a look & maybe we can answer them right now.
           If not, write to us at{" "}
-          <a href="mailto:info@saboomaruti.in" target="_blank" rel="noreferrer" className="text-blue-500">
+          <a
+            href="mailto:info@saboomaruti.in"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-500"
+          >
             info@saboomaruti.in
           </a>
         </h5>
@@ -93,7 +98,6 @@ const FAQS = () => {
             );
           })}
         </div>
-       
       </div>
     </section>
   );

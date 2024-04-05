@@ -110,7 +110,7 @@ const VehicleOwnerForm2 = () => {
       timestamp: serverTimestamp(),
     });
    
-
+console.log("Document written with ID: ", docRef.id);
     localStorage.removeItem("formData");
     localStorage.removeItem("currentTab");
     setCurrentTab(1);
