@@ -120,36 +120,7 @@ export default function Popup() {
                     toast.error("Error submitting enquiry");
                   }
 
-                  // Third API call - SMS Strikker
-                  try {
-                    await axios
-                      .get(
-                        `https://www.smsstriker.com/API/sms.php?username=saboorks&password=LqHk1wBeI&from=RKSMOT&to=${values.mobileNumber}&msg=Thank you for showing interest in Maruti Suzuki.
-                       Our Sales consultant will contact you shortly.
-                       Regards
-                       RKS Motor Pvt. Ltd.
-                       98488 98488
-                       www.saboomaruti.in
-                       www.saboonexa.in&type=1&template_id=1407168967467983613`
-                      )
-                      .then((res) => {
-                        // console.log("SMS API Response:", res.data);
-                        //   setSubmitted(true);
-                        // setOpen2(false);
-                        // allQuery.push("Sms, ");
-                      })
-                      .catch((err) => {
-                        console.error("Error sending SMS:", err);
-                        // setSubmitted(true);
-                        // allQuery.push("Sms - Error, ");
-                        // allErrors.push(`sms - ${err}`);
-
-                        // setOpen2(false);
-                      });
-                    // Handle response for the third API call
-                  } catch (error) {
-                    // Handle error for the third API call
-                  }
+             
 
                   setSubmitting(false);
                   sessionStorage.setItem("popup", "true");

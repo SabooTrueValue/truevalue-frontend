@@ -36,7 +36,7 @@ function App() {
     <>
       {!isAdminRoute && (
         <Header
-          option={pathname === "/" && true}
+          // option={pathname === "/" && true}
           open={open}
           setOpen={setOpen}
           pathname={pathname}

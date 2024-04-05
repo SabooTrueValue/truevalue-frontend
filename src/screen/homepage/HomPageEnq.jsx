@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { CgSpinner } from "react-icons/cg";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { FirebaseStore } from "../../components/context/Firebase";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
@@ -21,13 +23,13 @@ const proposelSchema = object().shape({
     .matches(phoneRegExp, "Invalid phone number")
     .min(10, "Required 10 digit phone number")
     .required("This field is required*"),
-  model: string().required("This field is required*"),
+  type: string().required("This field is required*"),
 });
 
 export const HomePageEnq = ({ title }) => {
   const [loading, setLoading] = useState(false);
 
-  let history = useNavigate();
+  // let history = useNavigate();
 
   return (
     <div className="py-2">
@@ -46,133 +48,52 @@ export const HomePageEnq = ({ title }) => {
             name: "",
             email: "",
             phone: "",
-            model: "",
+            type: "",
           }}
           validationSchema={proposelSchema}
-          onSubmit={async (values, { setSubmitting }) => {
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
             setLoading(true);
             setSubmitting(true);
             // First API call - Zoho Web Form - name="WebToLeads54158000007156717"
             try {
-              const response = await fetch(
-                "https://crm.zoho.in/crm/WebToLeadForm",
+              await axios
+                .post("https://true-value.onrender.com/homequery", {
+                  ...values,
+                })
+                .then((res) => {
+                  toast.success("Form submitted successfully");
+                })
+                .catch((err) => {
+                  toast.error("Error submitting enquiry");
+                });
+            } catch (error) {
+              console.error("Error submitting enquiry: ", error);
+              toast.error("Error submitting enquiry");
+            }
+
+            // Second API call - Firebase Firestore
+            try {
+              let date = new Date();
+              let hours = date.getHours();
+              let minutes = date.getMinutes();
+              let seconds = date.getSeconds();
+              const docRef = await addDoc(
+                collection(FirebaseStore, "homepageEnquiries"),
                 {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                  },
-                  body: new URLSearchParams({
-                    xnQsjsdp:
-                      "5b07d0b8ffc394794f6ba099ffd2ccc4accb79c8063e25060b4c64de95d0347b",
-                    zc_gad: "",
-                    xmIwtLD:
-                      "3e4c511e1bfac462fb9ac158b261b0d3e54ddbaf41eb8a08b30b4fc061369283",
-                    actionType: "TGVhZHM=",
-                    returnURL: "https://www.saboonexa.in/",
-                    "Last Name": values.name,
-                    Email:
-                      values.email.length > 0
-                        ? values.email
-                        : values.phone + "@gmail.com",
-                    Phone: values.phone,
-                    LEADCF6: values.model,
-                    // LEADCF23: outlet,
-                  }),
+                  ...values,
+                  date: date.toDateString(),
+                  time: `${hours}:${minutes}:${seconds}`,
+                  timestamp: serverTimestamp(),
                 }
               );
-              if (response.ok) {
-                toast("Enquiry sent successfully", {
-                  position: "top-right",
-                  autoClose: 5000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "light",
-                  // transition: Bounce,
-                });
-              } else {
-                // Handle error, e.g., show an error message
-              }
+              console.log("Document written with ID: ", docRef.id);
             } catch (error) {
-              // Handle network or other errors
+              console.error("Error adding document: ", error);
+              toast.error("Error submitting enquiry");
             }
-
-            // Second API call - Old SQL Backend
-            try {
-              await axios
-                .post("https://saboogroups.com/admin/api/enquiry", {
-                  name: values.name,
-                  email:
-                    values.email.length > 0
-                      ? values.email
-                      : values.phone + "@gmail.com",
-                  phone: values.phone,
-                  model: values.model,
-                })
-                .then((res) => {})
-                .catch((err) => {
-                  toast.error("Something went wrong!");
-                  //console.log(err);
-                });
-            } catch (error) {
-              // setSubmitting(false);
-            }
-
-            // Third API call - New MongoDB backend
-            try {
-              await axios
-                .post("https://saboo-nexa.onrender.com/onRoadPrice", {
-                  name: values.name,
-                  email:
-                    values.email.length > 0
-                      ? values.email
-                      : values.phone + "@gmail.com",
-                  phone: values.phone,
-                  model: values.model,
-                })
-                .then((res) => {})
-                .catch((err) => {
-                  toast.error("Something went wrong!");
-                  //console.log(err);
-                });
-              // Handle response for the second API call
-            } catch (error) {
-              // Handle error for the second API call
-            }
-
-            // Fourt API call - SMS Strikker
-            try {
-              await axios
-                .get(
-                  `https://www.smsstriker.com/API/sms.php?username=saboorks&password=LqHk1wBeI&from=RKSMOT&to=${values.phone}&msg=Thank you for showing interest in Maruti Suzuki.
-             Our Sales consultant will contact you shortly.
-             
-             Regards
-             RKS Motor Pvt. Ltd.
-             98488 98488
-             www.saboomaruti.in
-             www.saboonexa.in&type=1&template_id=1407168967467983613`
-                )
-                .then((res) => {
-                  // console.log("SMS API Response:", res.data);
-
-                  setLoading(false);
-                  history(`/thank-you`);
-                  setSubmitting(false);
-                })
-                .catch((err) => {
-                  console.error("Error sending SMS:", err);
-
-                  setLoading(false);
-                  history(`/thank-you`);
-                  setSubmitting(false);
-                });
-              // Handle response for the third API call
-            } catch (error) {
-              // Handle error for the third API call
-            }
+            setSubmitting(false);
+            setLoading(false);
+            resetForm();
           }}
         >
           {({ isSubmitting }) => (
@@ -257,44 +178,26 @@ export const HomePageEnq = ({ title }) => {
                      Product Name
                    </label> */}
                   <ErrorMessage
-                    name="model"
+                    name="type"
                     component="div"
                     className="bg-[#FF0000] text-white text-sm px-1 py-0.5 w-min whitespace-nowrap "
                   />
                   <Field
                     as="select"
                     className="w-full h-10 px-0.5 font-sans text-center border-b-2 border-primary outline-none placeholder:text-lg placeholder:text-gray-400 lg:text-left"
-                    name="model"
-                    id="model"
+                    name="type"
+                    id="type"
                     required
-                    placeholder="Select Model"
+                    placeholder="Interested in"
                   >
                     <option value="" disabled className="bg-gray-100 ">
-                      Select Model
+                      Interested in
                     </option>
-                    <option value="Invicto" className="bg-gray-100 ">
-                      Invicto
+                    <option value="I Want To Buy" className="bg-gray-100 ">
+                      I Want To Buy
                     </option>
-                    <option className="bg-gray-100 " value="Fronx">
-                      Fronx
-                    </option>
-                    <option className="bg-gray-100 " value="Jimny">
-                      Jimny
-                    </option>
-                    <option className="bg-gray-100 " value="Grand Vitara">
-                      Grand Vitara
-                    </option>
-                    <option className="bg-gray-100 " value="Ciaz">
-                      Ciaz
-                    </option>
-                    <option className="bg-gray-100 " value="Baleno">
-                      Baleno
-                    </option>
-                    <option className="bg-gray-100 " value="Ignis">
-                      Ignis
-                    </option>
-                    <option className="bg-gray-100 " value="XL6">
-                      XL6
+                    <option className="bg-gray-100 " value="I Want To Sell">
+                      I Want To Sell
                     </option>
                   </Field>
                 </div>

@@ -6,8 +6,8 @@ import { FirebaseStore } from "../../components/context/Firebase";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useFormData } from "../../components/Other/FormDataProvider";
+import axios from "axios";
 
-const notifySuccess = () => toast.success("Successfully submitted!");
 
 // const notifyError = () =>
 //   toast.error("This didn't submitted.", {
@@ -109,9 +109,7 @@ const VehicleOwnerForm2 = () => {
       time: `${hours}:${minutes}:${seconds}`,
       timestamp: serverTimestamp(),
     });
-    notifySuccess();
-    // setCurrentStep(5);
-    console.log("Document written with ID: ", docRef.id);
+   
 
     localStorage.removeItem("formData");
     localStorage.removeItem("currentTab");
@@ -124,7 +122,7 @@ const VehicleOwnerForm2 = () => {
     <div className="w-full mx-2">
       <div className="container w-full max-w-2xl px-4 py-10 mx-auto bg-white border shadow-xl rounded-3xl">
         <div className="flex flex-col-reverse items-center justify-between px-2 pb-2 mb-3 border-b lg:px-5 md:flex-row">
-          <div className="text-2xl  text-primary">
+          <div className="text-2xl text-primary">
             {/* {currentStep === 4 ? "Last step" : `Step ${currentStep} of 4`} */}
             {currentStep === 1
               ? "Car Information"
@@ -853,9 +851,42 @@ const Step4 = ({
 };
 
 const Step5 = ({ setCurrentStep, formData, saveData, loading }) => {
-  const handleSubmit1 = (values) => {
-    saveData();
-    setCurrentStep(6);
+  const handleSubmit1 = async (values) => {
+    try {
+      await axios
+        .post("https://true-value.onrender.com/buyVehicle", {
+          ...formData,
+        })
+        .then((res) => {
+          // toast.success("Enquiry sent successfully");
+          toast.success("Form submitted successfully");
+        })
+        .catch((err) => {
+          // setLoader(false);
+          toast.error("Error submitting enquiry");
+        });
+    } catch (error) {
+      console.error("Error submitting enquiry: ", error);
+      toast.error("Error submitting enquiry");
+    }
+
+
+
+    try {
+      let res = saveData();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+      toast.error("This didn't submitted.", {
+        style: {
+          borderRadius: "10px",
+          background: "red",
+          color: "#fff",
+        },
+      });
+    } finally {
+      setCurrentStep(6);
+    }
   };
   return (
     <div>

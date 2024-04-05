@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CgSpinner } from "react-icons/cg";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
@@ -29,6 +30,24 @@ const ContactUsForm = () => {
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
+        await axios
+          .post("https://true-value.onrender.com/contactus", {
+            ...values,
+          })
+          .then((res) => {
+            // toast.success("Enquiry sent successfully");
+            toast.success("Form submitted successfully");
+          })
+          .catch((err) => {
+            // setLoader(false);
+            toast.error("Error submitting enquiry");
+          });
+      } catch (error) {
+        console.error("Error submitting enquiry: ", error);
+        toast.error("Error submitting enquiry");
+      }
+
+      try {
         // Simulate form submission delay
 
         let date = new Date();
@@ -48,8 +67,6 @@ const ContactUsForm = () => {
 
         // Your actual form submission logic goes here
         // For demonstration purposes, let's display a success message using toast
-        toast.success("Form submitted successfully");
-
         // Reset form values after successful submission
         resetForm({
           name: "",
@@ -62,7 +79,9 @@ const ContactUsForm = () => {
         // Handle form submission errors here
         console.error("Form submission error:", error);
         toast.error("Form submission failed");
-      } finally {
+      }
+
+    finally {
         // Always set submitting state to false after form submission
         setSubmitting(false);
       }

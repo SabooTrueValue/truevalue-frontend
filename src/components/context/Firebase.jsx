@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
@@ -25,11 +25,11 @@ const FirebaseStore = getFirestore(FirebaseApp);
 // Obtain the Firebase Storage instance
 const FirebaseStorage = getStorage(FirebaseApp);
 
-const signgInUserWithEmailAndPassword = async (email, password) => {
-  const login = signInWithEmailAndPassword(FirebaseAuth, email, password);
-  //console.log(login);
-  return login;
-};
+// const signgInUserWithEmailAndPassword = async (email, password) => {
+//   const login = signInWithEmailAndPassword(FirebaseAuth, email, password);
+//   //console.log(login);
+//   return login;
+// };
 
 export {
   FirebaseApp,
@@ -37,5 +37,5 @@ export {
   FirebaseStore,
   FirebaseStorage,
   getFirestore,
-  signgInUserWithEmailAndPassword,
+  // signgInUserWithEmailAndPassword,
 };

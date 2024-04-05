@@ -25,11 +25,14 @@ export const DashboardHomepag = () => {
         </div>
         <div
           className={`flex flex-col  gap-2 ${
-            open ? "xl:w-5/6" : "w-full h-full"
+            open ? "lg:w-5/6" : "w-full h-full"
           }`}
         >
           <DashboardHeader open={open} setOpen={setOpen} selected={selected} />
+          <div className="overflow-y-scroll">
+
           <MainPanel selected={selected} />
+          </div>
         </div>
       </div>
     </div>

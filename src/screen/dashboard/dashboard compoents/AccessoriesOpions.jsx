@@ -52,7 +52,7 @@ const AccessoriesOpions = ({ setCurrentTab, currentTab }) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          setPostVehicleData({ ...postVehicleData, ...values });
+          setPostVehicleData({ ...postVehicleData, accessories :{...values }});
           setCurrentTab(2);
           const newPostVehicleData = { ...postVehicleData, ...values };
           const localData = JSON.stringify(newPostVehicleData);

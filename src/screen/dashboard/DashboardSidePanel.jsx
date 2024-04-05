@@ -13,7 +13,7 @@ const DashboardSidePanel = ({ setSelected, setOpen }) => {
 
   return (
     <div
-      className={`w-[250px] bg-primary h-full  px-4 text-white py-4   rounded-xl font-sans text-lg absolute z-10 border-r lg:static  xl:w-full  `}
+      className={`w-[250px] bg-primary h-full  px-4 text-white py-4   rounded-xl font-sans text-lg absolute z-10 border-r sm:static  xl:w-full  `}
     >
       <div className="flex items-end justify-between pb-8">
         <Link to="/">

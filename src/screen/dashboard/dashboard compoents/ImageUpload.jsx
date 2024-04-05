@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useFormData } from "../../../components/Other/FormDataProvider";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 const ImageUpload = ({ setCurrentTab }) => {
   const { postVehicleData, setPostVehicleData } = useFormData();
@@ -49,14 +50,38 @@ const ImageUpload = ({ setCurrentTab }) => {
         }
         return isUnique;
       })
-      .min(6, "Please upload at least 6 images"),
+      .min(4, "Please upload at least 4 images"),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
+      const formData = new FormData();
       const imageUrls = [];
+      // Append each file to the FormData object
+      values.images.forEach((file, index) => {
+        formData.append(`image${index + 1}`, file);
+      });
+
       setLoading(true);
-      // Upload each image to Firebase storage and get the download URL
+
+      // Send the FormData object containing the files
+      const res = await axios.post(
+        "http://localhost:3001/vehicle",
+        // "https://true-value.onrender.com/vehicle",
+        // formData,
+        { ...postVehicleData, formData }
+        // {
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        //   params: {
+        //     ...postVehicleData,
+        //   },
+        // }
+      );
+
+      console.log("Response:", res.data);
+
       for (const image of values.images) {
         const storageRef = ref(
           FirebaseStorage,
@@ -67,29 +92,36 @@ const ImageUpload = ({ setCurrentTab }) => {
         //console.log("Download URL:", downloadURL);
         imageUrls.push(downloadURL); // Store the download URL
       }
+      console.log("Image URLs:", values.images);
 
       toast.success("Images uploaded successfully!");
       let date = new Date();
       let hours = date.getHours();
       let minutes = date.getMinutes();
       let seconds = date.getSeconds();
-      setPostVehicleData({
-        ...postVehicleData,
-        images: imageUrls,
-        date: date.toDateString(),
-        time: `${hours}:${minutes}:${seconds}`,
-        timestamp: serverTimestamp(),
-      });
+      // setPostVehicleData({
+      //   ...postVehicleData,
+      //   images: imageUrls,
+      //   date: date.toDateString(),
+      //   time: `${hours}:${minutes}:${seconds}`,
+      //   timestamp: serverTimestamp(),
+      // });
       //console.log("Post Vehicle Data:", postVehicleData);
 
       const docRef = await addDoc(
         collection(FirebaseStore, "postVehicleData"),
-        { ...postVehicleData, images: imageUrls }
+        {
+          ...postVehicleData,
+          images: imageUrls,
+          date: date.toDateString(),
+          time: `${hours}:${minutes}:${seconds}`,
+          timestamp: serverTimestamp(),
+        }
       );
       // Update form values with image URLs
 
       toast.success("Vehicle posted with ID: ", docRef.id);
-      setPostVehicleData({});
+      // setPostVehicleData({});
       setCurrentTab(0);
       localStorage.removeItem("postVehicleData");
       // Handle success or navigate to the next step
@@ -113,7 +145,7 @@ const ImageUpload = ({ setCurrentTab }) => {
         {({ values, setFieldValue, isSubmitting }) => (
           <Form>
             <div className="grid gap-4 px-4 mb-6 font-sans md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-              {[...Array(8)].map((_, index) => (
+              {[...Array(6)].map((_, index) => (
                 <div key={index} className="mb-4">
                   <label
                     htmlFor={`image-${index}`}

@@ -10,7 +10,8 @@ import AccessoriesOpions from "./dashboard compoents/AccessoriesOpions";
 import { useEffect } from "react";
 import { FirebaseStore } from "../../components/context/Firebase";
 import { collection, getDocs } from "firebase/firestore";
-import ManageVehicle from "./dashboard compoents/ManageVehicle";
+// import ManageVehicle from "./dashboard compoents/ManageVehicle";
+import MangVeh from "./dashboard compoents/MangVeh";
 
 const MainPanel = ({ selected }) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -113,10 +114,10 @@ const MainPanel = ({ selected }) => {
         // let id = doc.id;
         setVehicleData((prev) => [
           ...prev,
-          { ...doc.data(), index: 1 + index++ },
+          { ...doc.data(), index: 1 + index++, images1: doc.data().images[0]},
         ]);
       });
-      console.log(vehicleData);
+      // console.log(vehicleData);
       // console.log("vehicle data", vehicleData);
     }
     getPopupData();
@@ -155,16 +156,17 @@ const MainPanel = ({ selected }) => {
             )}
             {currentTab === 2 && (
               <div>
-                <h4 className="px-4 mt-3 mb-4 text-xl font-bold uppercase text-primary md:mt-10 lg:mt-12">
+                <h4 className="px-4 mt-3 text-xl font-bold uppercase text-primary md:mt-10 lg:mt-12">
                   Upload Images
                 </h4>
+                <div className="px-4 pb-4 text-sm"> Note: Image size should be less than 2 mb <span className="text-red-500 ">*</span></div>
                 <ImageUpload setCurrentTab={setCurrentTab} />
               </div>
             )}
           </div>
         </div>
       )}
-      {selected === 2 && <ManageVehicle data2={vehicleData} />}
+      {selected === 2 && <MangVeh data={vehicleData} />}
       {selected === 3 && <BuyVehicleEnq data={buyData} />}
       {selected === 4 && <SellVehicleEnq data={sellData} />}
       {selected === 5 && <PopupEnq data={popupData} />}

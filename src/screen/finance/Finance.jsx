@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Finance = () => {
   const [selected, setSelected] = useState(1);
@@ -428,6 +429,27 @@ const TabThree = () => {
     event.preventDefault(); // Prevents the default form submission behavior
     // Add validation logic for email, etc.
     try {
+      await axios
+        .post("https://true-value.onrender.com/finance", {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          loanAmount: formData.loanAmount,
+        })
+        .then((res) => {
+          // toast.success("Enquiry sent successfully");
+          toast.success("Form submitted successfully");
+        })
+        .catch((err) => {
+          // setLoader(false);
+          toast.error("Error submitting enquiry");
+        });
+    } catch (error) {
+      console.error("Error submitting enquiry: ", error);
+      toast.error("Error submitting enquiry");
+    }
+
+    try {
       // Simulate form submission delay
       setSubmitting(true);
       setLoading(true);
@@ -449,7 +471,6 @@ const TabThree = () => {
 
       // Your actual form submission logic goes here
       // For demonstration purposes, let's display a success message using toast
-      toast.success("Form submitted successfully");
 
       setFormData({
         name: "",
@@ -457,15 +478,6 @@ const TabThree = () => {
         phone: "",
         loanAmount: "",
       });
-
-      // Reset form values after successful submission
-      // resetForm({
-      //   name: "",
-      //   email: "",
-      //   phone: "",
-      //   message: "",
-      //   disclaimer: false,
-      // });
     } catch (error) {
       // Handle form submission errors here
       console.error("Form submission error:", error);

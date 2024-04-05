@@ -2,13 +2,19 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CgSpinner } from "react-icons/cg";
-
 import { Toaster, toast } from "react-hot-toast";
-
+import axios from "axios";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { FirebaseStore } from "../../components/context/Firebase";
 
-const BookForm = ({carId , carBrand, carModel, fuelType, ownership, kmDriven}) => {
+const BookForm = ({
+  carId,
+  carBrand,
+  carModel,
+  fuelType,
+  ownership,
+  kmDriven,
+}) => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -28,29 +34,49 @@ const BookForm = ({carId , carBrand, carModel, fuelType, ownership, kmDriven}) =
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
-       let date = new Date();
-       let hours = date.getHours();
-       let minutes = date.getMinutes();
-       let seconds = date.getSeconds();
-       //console.log("Form data", values);
-       const docRef = await addDoc(collection(FirebaseStore, "buy-vehicle"), {
-         ...values,
-         date: date.toDateString(),
-         time: `${hours}:${minutes}:${seconds}`,
-         timestamp: serverTimestamp(),
+        await axios
+          .post("https://true-value.onrender.com/sell", {
+            ...values,
+            carId: carId,
+            brandName: carBrand,
+            carModel: carModel,
+            fuelType: fuelType,
+            ownership: ownership,
+            kmDriven: kmDriven,
+          })
+          .then((res) => {
+            // toast.success("Enquiry sent successfully");
+            toast.success("Form submitted successfully");
+          })
+          .catch((err) => {
+            // setLoader(false);
+            toast.error("Error submitting enquiry");
+          });
+      } catch (error) {
+        console.error("Error submitting enquiry: ", error);
+        toast.error("Error submitting enquiry");
+      }
+
+      try {
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        //console.log("Form data", values);
+        const docRef = await addDoc(collection(FirebaseStore, "buy-vehicle"), {
+          ...values,
+          date: date.toDateString(),
+          time: `${hours}:${minutes}:${seconds}`,
+          timestamp: serverTimestamp(),
           carId: carId,
           carBrand: carBrand,
           carModel: carModel,
           fuelType: fuelType,
           ownership: ownership,
           kmDriven: kmDriven,
-          
-       });
+        });
 
-       // setCurrentStep(5);
-       console.log("Document written with ID: ", docRef.id);
-
-        toast.success("Form submitted successfully");
+        console.log("Document written with ID: ", docRef.id);
 
         // Reset form values after successful submission
         resetForm({
@@ -167,15 +193,14 @@ const BookForm = ({carId , carBrand, carModel, fuelType, ownership, kmDriven}) =
           />
           <div>
             <div className="ml-2 text-sm ">
-            <label htmlFor="disclaimer" className="font-medium text-gray-700">
-              Please agree with the following Disclaimer
-            </label>
+              <label htmlFor="disclaimer" className="font-medium text-gray-700">
+                Please agree with the following Disclaimer
+              </label>
+            </div>
+            {formik.touched.disclaimer && formik.errors.disclaimer ? (
+              <div className="text-red-500">{formik.errors.disclaimer}</div>
+            ) : null}
           </div>
-          {formik.touched.disclaimer && formik.errors.disclaimer ? (
-            <div className="text-red-500">{formik.errors.disclaimer}</div>
-          ) : null}
-          </div>
-          
         </div>
 
         <button
