@@ -35,7 +35,7 @@ const BookForm = ({
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         await axios
-          .post("https://true-value.onrender.com/sell", {
+          .post("https://true-value.onrender.com/buyVehicle", {
             ...values,
             carId: carId,
             brandName: carBrand,

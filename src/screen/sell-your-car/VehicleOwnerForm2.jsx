@@ -854,7 +854,7 @@ const Step5 = ({ setCurrentStep, formData, saveData, loading }) => {
   const handleSubmit1 = async (values) => {
     try {
       await axios
-        .post("https://true-value.onrender.com/buyVehicle", {
+        .post("https://true-value.onrender.com/sell", {
           ...formData,
         })
         .then((res) => {
