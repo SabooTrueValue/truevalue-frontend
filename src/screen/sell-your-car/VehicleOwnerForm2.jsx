@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { FirebaseStore } from "../../components/context/Firebase";
+
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useFormData } from "../../components/Other/FormDataProvider";
@@ -96,27 +95,6 @@ const VehicleOwnerForm2 = () => {
     mobile: formData.mobile,
   };
 
-  const saveData = async () => {
-    setLoading(true);
-    //console.log("Form data", formData);
-    let date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    const docRef = await addDoc(collection(FirebaseStore, "sellEnquiry"), {
-      ...formData,
-      date: date.toDateString(),
-      time: `${hours}:${minutes}:${seconds}`,
-      timestamp: serverTimestamp(),
-    });
-   
-console.log("Document written with ID: ", docRef.id);
-    localStorage.removeItem("formData");
-    localStorage.removeItem("currentTab");
-    setCurrentTab(1);
-    setLocalData({});
-    setLoading(false);
-  };
 
   return (
     <div className="w-full mx-2">
@@ -188,8 +166,10 @@ console.log("Document written with ID: ", docRef.id);
             <Step5
               setCurrentStep={setCurrentStep}
               formData={formData}
-              saveData={saveData}
+              setCurrentTab={setCurrentTab}
+              setLocalData={setLocalData}
               loading={loading}
+              setLoading={setLoading}
             />
           ) : (
             <div className="px-2 mt-4 lg:lg:px-5">
@@ -358,6 +338,7 @@ const Step1 = ({
           <div className="flex mt-8 justify-evenly ">
             <button
               type="submit"
+              aria-label="Submit form"
               className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none"
             >
               Next
@@ -485,14 +466,16 @@ const Step2 = ({
           <div className="flex mt-8 justify-evenly ">
             <button
               type="button"
+              aria-label="Previous step"
               onClick={() => setCurrentStep(1)}
-              className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3 text-primary border border-primary"
+              className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3 text-primary border border-primary"
             >
               Previous
             </button>
             <button
               type="submit"
-              className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3"
+              aria-label="Submit form"
+              className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3"
             >
               Next
             </button>
@@ -708,14 +691,16 @@ const Step3 = ({
           <div className="flex mt-8 justify-evenly ">
             <button
               type="button"
+              aria-label="Previous step"
               onClick={() => setCurrentStep(2)}
-              className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3 text-primary border border-primary"
+              className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3 text-primary border border-primary"
             >
               Previous
             </button>
             <button
               type="submit"
-              className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3"
+              aria-label="Submit form"
+              className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3"
             >
               Next
             </button>
@@ -831,15 +816,17 @@ const Step4 = ({
           <div className="flex mt-8 justify-evenly ">
             <button
               type="button"
+              aria-label="Previous step"
               onClick={() => setCurrentStep(3)}
-              className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3 text-primary border border-primary"
+              className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3 text-primary border border-primary"
             >
               Previous
             </button>
 
             <button
               type="submit"
-              className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3"
+              aria-label="Submit form"
+              className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3"
             >
               Preview
             </button>
@@ -850,9 +837,10 @@ const Step4 = ({
   );
 };
 
-const Step5 = ({ setCurrentStep, formData, saveData, loading }) => {
+const Step5 = ({ setCurrentStep, formData, loading,setCurrentTab,setLoading,setLocalData }) => {
   const handleSubmit1 = async (values) => {
     try {
+      setLoading(true); 
       await axios
         .post("https://true-value.onrender.com/sell", {
           ...formData,
@@ -865,6 +853,11 @@ const Step5 = ({ setCurrentStep, formData, saveData, loading }) => {
           // setLoader(false);
           toast.error("Error submitting enquiry");
         });
+        localStorage.removeItem("formData");
+        localStorage.removeItem("currentTab");
+        setCurrentTab(1);
+        setLocalData({});
+        setLoading(false);
     } catch (error) {
       console.error("Error submitting enquiry: ", error);
       toast.error("Error submitting enquiry");
@@ -872,19 +865,8 @@ const Step5 = ({ setCurrentStep, formData, saveData, loading }) => {
 
 
 
-    try {
-      let res = saveData();
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-      toast.error("This didn't submitted.", {
-        style: {
-          borderRadius: "10px",
-          background: "red",
-          color: "#fff",
-        },
-      });
-    } finally {
+   
+     finally {
       setCurrentStep(6);
     }
   };
@@ -951,16 +933,18 @@ const Step5 = ({ setCurrentStep, formData, saveData, loading }) => {
         {!loading && (
           <button
             type="button"
+            aria-label="Previous step"
             onClick={() => setCurrentStep(4)}
-            className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3 text-primary border border-primary"
+            className="hover:text-white hover:bg-primary  font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3 text-primary border border-primary"
           >
             Previous
           </button>
         )}
         <button
           type="submit"
+          aria-label="Submit form"
           onClick={handleSubmit1}
-          className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none lg:w-1/3"
+          className="text-white bg-primary focus:ring focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 lg:px-10 py-2.5 select-none md:w-1/3"
         >
           {loading ? "Submitting..." : "Submit"}
         </button>

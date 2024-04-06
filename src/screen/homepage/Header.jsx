@@ -13,7 +13,7 @@ const Header = ({ option, setOpen, pathname }) => {
       <div className={`bg-primary  text-white ${!option && "shadow-lg"}`}>
         <div className="flex items-center justify-between px-1 py-3 lg:py-4 lg:mx-auto lg:container">
           <div className="flex items-center w-full gap-4 xl:gap-10 xl:w-1/2 ">
-            <Link to="/" className="px-4 py-2 rounded lg:px-2">
+            <Link to="/" className="px-4 py-2 rounded lg:px-2" aria-label="home page">
               <img
                 src={require("../../assets/logo/logo-white.png")}
                 // src={require("../../assets/logo/saboo rks truevalue.png")}
@@ -30,8 +30,10 @@ const Header = ({ option, setOpen, pathname }) => {
                   required
                   placeholder="Search by model"
                 />
-                <button
+                <button aria-label="Submit"
                   type="submit"
+                  
+                  aria-label="Search"
                   className="absolute top-[12px] right-0  mr-3"
                 >
                   <FiSearch className="text-lg font-bold text-primary" />
@@ -40,32 +42,32 @@ const Header = ({ option, setOpen, pathname }) => {
             </div> */}
           </div>
           <div className="items-center justify-end hidden gap-10 md:flex whitespace-nowrap">
-            <Link to="/buy-used-cars" className=" group">
-              <button>Buy Car</button>
+            <Link to="/buy-used-cars" className=" group" aria-label="Buy Car">
+              <button aria-label="Buy Car" >Buy Car</button>
               <div
                 className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
                   pathname === "/buy-used-cars" && "w-full"
                 }`}
               ></div>
             </Link>
-            <Link to="/sell-your-car" className="group">
-              <button>Sell Car</button>
+            <Link to="/sell-your-car" className="group" aria-label="Sell Car">
+              <button aria-label="Sell Car">Sell Car</button>
               <div
                 className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
                   pathname === "/sell-your-car" && "w-full"
                 }`}
               ></div>
             </Link>
-            <Link to="/finance" className="group">
-              <button>Finance</button>
+            <Link to="/finance" className="group" aria-label="Finance">
+              <button aria-label="Finance">Finance</button>
               <div
                 className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
                   pathname === "/finance" && "w-full"
                 }`}
               ></div>
             </Link>
-            <Link to="/about-us" className="group">
-              <button>About Us</button>
+            <Link to="/about-us" className="group" aria-label="About us">
+              <button aria-label="About Us">About Us</button>
               <div
                 className={`h-0.5 bg-white w-0 group-hover:w-full duration-500 ${
                   pathname === "/about-us" && "w-full"
@@ -114,7 +116,7 @@ const Header = ({ option, setOpen, pathname }) => {
                 </div>
               </div>
             </div>
-            <a href="tel:9848898488" target="_blank" rel="noreferrer">
+            <a href="tel:9848898488" target="_blank" rel="noreferrer" aria-label="Call us">
               <div className="text-sm text-center">Call us at</div>
               <p>98488 98488</p>
             </a>
@@ -259,9 +261,11 @@ const Header = ({ option, setOpen, pathname }) => {
             </div>
             <div className="flex justify-end gap-2 text-primary lg:gap-3">
               <a
+              
                 href="https://www.instagram.com/saboorkstruevalue/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Instagram"
               >
                 <FaInstagram />
               </a>
@@ -269,6 +273,7 @@ const Header = ({ option, setOpen, pathname }) => {
                 href="https://www.facebook.com/saboorkstruevalue"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Facebook"
               >
                 <FaFacebookSquare />
               </a>
@@ -278,6 +283,7 @@ const Header = ({ option, setOpen, pathname }) => {
                 href="https://www.youtube.com/channel/UC102tHun3nmc6rVT4lBbofA/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Youtube"
               >
                 <IoLogoYoutube />
               </a>
@@ -286,6 +292,7 @@ const Header = ({ option, setOpen, pathname }) => {
                 href="https://www.linkedin.com/company/saboo-rks-truevalue/?viewAsMember=true"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
                 <FaLinkedin />
               </a>
@@ -293,6 +300,7 @@ const Header = ({ option, setOpen, pathname }) => {
                 href="https://twitter.com/saboorkstrueva1"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Twitter"
               >
                 <FaXTwitter />
               </a>
@@ -300,6 +308,7 @@ const Header = ({ option, setOpen, pathname }) => {
                 href="mailto:info@saboomaruti.in"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Mail"
               >
                 <IoMdMail />
               </a>

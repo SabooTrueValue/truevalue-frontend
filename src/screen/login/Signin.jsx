@@ -133,6 +133,7 @@ const Signin = () => {
                   </div>
                   <button
                     type="submit"
+                    aria-label="Submit form"
                     disabled={loading}
                     className="w-full px-3 py-3 mt-4 text-white rounded-lg bg-primary"
                   >

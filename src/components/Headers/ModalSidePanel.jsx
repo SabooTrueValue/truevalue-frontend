@@ -78,6 +78,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="tel: 98488 98488 "
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Call Us"
                 className="flex items-center gap-2 "
               >
                 <IoIosCall className="" /> 98488 98488
@@ -86,6 +87,8 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="https://maps.app.goo.gl/yJGRNRNJJxA5X88e6"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Location"
+                
                 className="flex items-center gap-2 "
               >
                 <FaLocationDot /> Hyderabad
@@ -96,6 +99,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="https://www.instagram.com/saboorkstruevalue/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Instagram"
               >
                 <FaInstagram />
               </a>
@@ -103,6 +107,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="https://www.facebook.com/saboorkstruevalue"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Facebook"
               >
                 <FaFacebookSquare />
               </a>
@@ -112,6 +117,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="https://www.youtube.com/channel/UC102tHun3nmc6rVT4lBbofA/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Youtube"
               >
                 <IoLogoYoutube />
               </a>
@@ -120,6 +126,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="https://www.linkedin.com/company/saboo-rks-truevalue/?viewAsMember=true"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
                 <FaLinkedin />
               </a>
@@ -127,6 +134,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="https://twitter.com/saboorkstrueva1"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Twitter"
               >
                 <FaXTwitter />
               </a>
@@ -134,6 +142,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
                 href="mailto:info@saboomaruti.in"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Mail"
               >
                 <IoMdMail />
               </a>
@@ -143,6 +152,7 @@ const ModalSidePanel = ({ show, setShow, pathname }) => {
         <div className="absolute top-5 right-5">
           <button
             onClick={() => setShow(false)}
+            aria-label="Close Modal"
             className="p-1 duration-200 rounded-full select-none w-min bg-primary hover:bg-primary hover:scale-105"
           >
             <IoClose className="text-2xl text-white" />

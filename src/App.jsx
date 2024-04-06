@@ -25,23 +25,20 @@ function App() {
 
   const [open, setOpen] = useState(false);
 
-  const isAdminRoute = pathname === "/dashboard" || pathname === "/login";
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   return (
     <>
-      {!isAdminRoute && (
-        <Header
-          // option={pathname === "/" && true}
-          open={open}
-          setOpen={setOpen}
-          pathname={pathname}
-        />
-      )}
-      {!isAdminRoute && <Popup />}
+      <Header
+        // option={pathname === "/" && true}
+        open={open}
+        setOpen={setOpen}
+        pathname={pathname}
+      />
+
+      <Popup />
 
       <Routes>
         <Route exact path="/" element={<Homepage />} />
@@ -53,7 +50,7 @@ function App() {
         <Route exact path="/car-details/:id" element={<CarDetails />} />
         <Route exact path="/used-car-outlets" element={<Outlets />} />
         <Route exact path="/used-car-faqs" element={<FAQs />} />
-       
+
         <Route
           exact
           path="/contact-preowned-car-dealer"
@@ -69,7 +66,7 @@ function App() {
       <Toaster />
       <ModalSidePanel show={open} setShow={setOpen} pathname={pathname} />
 
-      {!isAdminRoute && <Footer />}
+      <Footer />
     </>
   );
 }

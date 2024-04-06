@@ -29,7 +29,7 @@ const HeroSection = () => {
                 New Beginnings in a car of your own
               </p>
 
-              <button className="px-10 py-2.5 text-primary font-bold rounded bg-white  hover:bg-primary hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
+              <button aria-label="buy car" className="px-10 py-2.5 text-primary font-bold rounded bg-white  hover:bg-primary hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
                 BUY CAR
               </button>
             </div>{" "}
@@ -63,7 +63,7 @@ const HeroSection = () => {
                 Sell your car for the best price
               </p>
 
-              <button className="px-10 py-2.5 text-primary font-bold rounded bg-white hover:bg-primary hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
+              <button aria-label="sell car" className="px-10 py-2.5 text-primary font-bold rounded bg-white hover:bg-primary hover:text-white hover:scale-105 duration-200 hover:shadow hover:shadow-white font-oswald">
                 SELL CAR
               </button>
             </div>{" "}

@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import HeroImage from "../../assets/other/loan-banner.webp";
 import EMISlider from "./EMISlider";
 import { toast } from "react-hot-toast";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { FirebaseStore } from "../../components/context/Firebase";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 
@@ -428,6 +426,8 @@ const TabThree = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevents the default form submission behavior
     // Add validation logic for email, etc.
+    setSubmitting(true);
+    setLoading(true);
     try {
       await axios
         .post("https://true-value.onrender.com/finance", {
@@ -449,40 +449,7 @@ const TabThree = () => {
       toast.error("Error submitting enquiry");
     }
 
-    try {
-      // Simulate form submission delay
-      setSubmitting(true);
-      setLoading(true);
-      //console.log("Form data", formData);
-      let date = new Date();
-      let hours = date.getHours();
-      let minutes = date.getMinutes();
-      let seconds = date.getSeconds();
-      const docRef = await addDoc(collection(FirebaseStore, "financeEnq"), {
-        ...formData,
-        date: date.toDateString(),
-        time: `${hours}:${minutes}:${seconds}`,
-        timestamp: serverTimestamp(),
-      });
-
-      // setCurrentStep(5);
-      console.log("Document written with ID: ", docRef.id);
-      setLoading(false);
-
-      // Your actual form submission logic goes here
-      // For demonstration purposes, let's display a success message using toast
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        loanAmount: "",
-      });
-    } catch (error) {
-      // Handle form submission errors here
-      console.error("Form submission error:", error);
-      toast.error("Form submission failed");
-    } finally {
+    finally {
       // Always set submitting state to false after form submission
       setSubmitting(false);
     }
@@ -558,6 +525,7 @@ const TabThree = () => {
           <button
             type="submit"
             disabled={submitting}
+            aria-label="Submit form"
             className="w-full px-3 py-3 mt-2 text-xl font-semibold text-center text-white rounded-r-full rounded-bl-full cursor-pointer bg-primary"
           >
             {loading ? "Submiting..." : "Submit"}

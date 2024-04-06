@@ -72,10 +72,10 @@ const HomepageFAQ = () => {
             } my-2 `}
           >
             <div className="flex justify-between ">
-              <h5 className="text-lg ">
+              <div className="text-lg ">
                 <span className="pr-6 text-primary ">{x.no}. </span>{" "}
                 {x.question}
-              </h5>
+              </div>
               <IoIosArrowDown
                 className={`text-xl  ${
                   clickedIndices.includes(i)

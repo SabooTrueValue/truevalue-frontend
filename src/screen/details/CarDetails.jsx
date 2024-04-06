@@ -43,7 +43,7 @@ const CarDetails = () => {
                   {CurrencyFormatter.format(carData?.price)}
                   <sup className="text-red-600">*</sup>
                 </h1>
-                <p className="text-right  text-gray-900/90">
+                <p className="text-right text-gray-900/90">
                   Our Best Price {/* {<small>starts at</small>} */}
                 </p>
               </div>
@@ -178,6 +178,7 @@ const CarDetails = () => {
                 href="tel:9848898488"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Call Now"
                 className="flex items-center justify-center w-full py-3 font-medium text-white rounded-lg shadow cursor-pointer bg-primary"
               >
                 Book Now

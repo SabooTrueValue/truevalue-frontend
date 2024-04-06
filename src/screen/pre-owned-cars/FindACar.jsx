@@ -52,7 +52,7 @@ const FindACar = () => {
 //           name="search"
 //           placeholder="Search"
 //         />
-//         <button type="submit" className="absolute top-0 right-0 mt-5 mr-4">
+//         <button arial-type='submit' type="submit" className="absolute top-0 right-0 mt-5 mr-4">
 //           <svg
 //             className="w-4 h-4 fill-current text-primary"
 //             xmlns="http://www.w3.org/2000/svg"

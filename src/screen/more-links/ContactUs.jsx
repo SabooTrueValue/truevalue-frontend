@@ -27,10 +27,10 @@ export const ContactUs = () => {
         alt="Contact Us"
       />
       <div className="px-1 py-10 lg:pb-20 lg:pt-14">
-        <h3 className="mb-2 text-2xl text-center md:text-3xl text-primary">
+        <div className="mb-2 text-2xl text-center md:text-3xl text-primary">
           Contact Us
-        </h3>
-        <h5 className="mb-3 lg:mb-4 md:text-center ">
+        </div>
+        <div className="mb-3 lg:mb-4 md:text-center ">
           Have any questions? Take a look & maybe we can answer them right now.
           If not, write to us at{" "}
           <a
@@ -38,10 +38,11 @@ export const ContactUs = () => {
             target="_blank"
             rel="noreferrer"
             className="text-blue-500"
+            aria-label="Email Us"
           >
             info@saboomaruti.in
           </a>
-        </h5>
+        </div>
       </div>
       <div className="container grid gap-4 mx-auto mb-10 lg:grid-cols-2">
         <div className="max-w-xl mx-auto">
@@ -62,7 +63,7 @@ export const ContactUs = () => {
             <AiOutlinePhone className="text-4xl text-primary" />{" "}
             <div className="text-center">
               <h4 className="text-lg font-semibold text-primary">Call Us</h4>
-              <a href="tel: +91 9848898488" className="">
+              <a href="tel: +91 9848898488" target="_blank" rel="noreferrer" aria-label="Call us" className="">
                 +91 98488 98488
               </a>
             </div>
@@ -76,6 +77,7 @@ export const ContactUs = () => {
                 target="_blank"
                 rel="noreferrer"
                 className="text-blue-500"
+                aria-label="Email Us"
               >
                 info@saboomaruti.in
               </a>

@@ -4,8 +4,6 @@ import * as Yup from "yup";
 import { CgSpinner } from "react-icons/cg";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { FirebaseStore } from "../../components/context/Firebase";
 
 const BookForm = ({
   carId,
@@ -55,41 +53,6 @@ const BookForm = ({
       } catch (error) {
         console.error("Error submitting enquiry: ", error);
         toast.error("Error submitting enquiry");
-      }
-
-      try {
-        let date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        //console.log("Form data", values);
-        const docRef = await addDoc(collection(FirebaseStore, "buy-vehicle"), {
-          ...values,
-          date: date.toDateString(),
-          time: `${hours}:${minutes}:${seconds}`,
-          timestamp: serverTimestamp(),
-          carId: carId,
-          carBrand: carBrand,
-          carModel: carModel,
-          fuelType: fuelType,
-          ownership: ownership,
-          kmDriven: kmDriven,
-        });
-
-        console.log("Document written with ID: ", docRef.id);
-
-        // Reset form values after successful submission
-        resetForm({
-          name: "",
-          email: "",
-          phone: "",
-          // model: "",
-          disclaimer: false,
-        });
-      } catch (error) {
-        // Handle form submission errors here
-        console.error("Form submission error:", error);
-        toast.error("Form submission failed");
       } finally {
         // Always set submitting state to false after form submission
         setSubmitting(false);
@@ -208,6 +171,7 @@ const BookForm = ({
             formik.isValid ? "bg-secondary bg-primary" : "bg-gray-300"
           } text-white px-5 py-1.5 flex mx-auto mt-5 rounded`}
           type="submit"
+          aria-label="Submit form"
           disabled={formik.isSubmitting || !formik.isValid}
         >
           {formik.isSubmitting ? (

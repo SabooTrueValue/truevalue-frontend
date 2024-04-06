@@ -5,9 +5,6 @@ import { CgSpinner } from "react-icons/cg";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { FirebaseStore } from "../../components/context/Firebase";
-
 const ContactUsForm = () => {
   const formik = useFormik({
     initialValues: {
@@ -45,43 +42,7 @@ const ContactUsForm = () => {
       } catch (error) {
         console.error("Error submitting enquiry: ", error);
         toast.error("Error submitting enquiry");
-      }
-
-      try {
-        // Simulate form submission delay
-
-        let date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        //console.log("Form data", values);
-        const docRef = await addDoc(collection(FirebaseStore, "contact-us"), {
-          ...values,
-          date: date.toDateString(),
-          time: `${hours}:${minutes}:${seconds}`,
-          timestamp: serverTimestamp(),
-        });
-
-        // setCurrentStep(5);
-        console.log("Document written with ID: ", docRef.id);
-
-        // Your actual form submission logic goes here
-        // For demonstration purposes, let's display a success message using toast
-        // Reset form values after successful submission
-        resetForm({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-          disclaimer: false,
-        });
-      } catch (error) {
-        // Handle form submission errors here
-        console.error("Form submission error:", error);
-        toast.error("Form submission failed");
-      }
-
-    finally {
+      } finally {
         // Always set submitting state to false after form submission
         setSubmitting(false);
       }
@@ -180,6 +141,7 @@ const ContactUsForm = () => {
             formik.isValid ? "bg-primary" : "bg-gray-300"
           } text-white px-5 py-1.5 flex mx-auto mt-5 rounded`}
           type="submit"
+          aria-label="Submit form"
           disabled={formik.isSubmitting || !formik.isValid}
         >
           {formik.isSubmitting ? (

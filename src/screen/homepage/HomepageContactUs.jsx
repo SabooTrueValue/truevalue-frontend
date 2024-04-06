@@ -41,6 +41,7 @@ const HomepageContactUs = () => {
         "Supported by 200+ well trained and experienced staff, to assist you each step of the way!",
     },
   ];
+
   return (
     <div className="py-10 lg:py-16 bg-[#ebedff]">
       <HeadingComponent title="Find Your Right Car" />
@@ -51,12 +52,11 @@ const HomepageContactUs = () => {
         <div className="grid gap-4 p-2 sm:grid-cols-2 lg:w-1/2">
           {data.map((x, index) => (
             <div key={index} className="p-4 bg-white rounded-xl lg:p-6">
-              <h5 className="pb-2 text-2xl text-center">{x.subTitle}</h5>
+              <div className="pb-2 text-2xl text-center">{x.subTitle}</div>
               <div className="flex items-center justify-center gap-4 ">
                 <div className="text-3xl text-primary">{x.icon}</div>
 
                 <span className="text-4xl">
-                  {" "}
                   <CountUp start={x.start} end={x.title} duration={10} />
                 </span>
               </div>
@@ -76,10 +76,10 @@ const HomepageContactUs = () => {
         </div>
 
         <div className="py-4 my-auto text-center md:w-1/2 lg:w-2/3 lg:text-left">
-          <h4 className="mb-2 text-xl lg:text-2xl text-primary">
+          <div className="mb-2 text-xl lg:text-2xl text-primary">
             YOUR SEARCH FOR A FAIR AND TRANSPARENT PRICE FOR YOUR USED CAR ENDS
             HERE!
-          </h4>
+          </div>
           <p>
             Get started with our AI-based scientific pricing engine and book a
             home evaluation today!

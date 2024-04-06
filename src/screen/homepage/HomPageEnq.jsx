@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { CgSpinner } from "react-icons/cg";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { FirebaseStore } from "../../components/context/Firebase";
+
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
@@ -72,25 +71,7 @@ export const HomePageEnq = ({ title }) => {
             }
 
             // Second API call - Firebase Firestore
-            try {
-              let date = new Date();
-              let hours = date.getHours();
-              let minutes = date.getMinutes();
-              let seconds = date.getSeconds();
-              const docRef = await addDoc(
-                collection(FirebaseStore, "homepageEnquiries"),
-                {
-                  ...values,
-                  date: date.toDateString(),
-                  time: `${hours}:${minutes}:${seconds}`,
-                  timestamp: serverTimestamp(),
-                }
-              );
-              console.log("Document written with ID: ", docRef.id);
-            } catch (error) {
-              console.error("Error adding document: ", error);
-              toast.error("Error submitting enquiry");
-            }
+           
             setSubmitting(false);
             setLoading(false);
             resetForm();
@@ -171,16 +152,16 @@ export const HomePageEnq = ({ title }) => {
                 </div>
 
                 <div className="relative flex flex-col justify-end ">
-                  {/* <label
-                     className="block font-semibold text-gray-800 text-md"
-                     htmlFor="model"
+                  <label
+                     className="text-[1px] text-white select-none"
+                     htmlFor="type"
                    >
-                     Product Name
-                   </label> */}
+                     Interested in 
+                   </label>
                   <ErrorMessage
                     name="type"
                     component="div"
-                    className="bg-[#FF0000] text-white text-sm px-1 py-0.5 w-min whitespace-nowrap "
+                    className="bg-[#FF0000] text-white text-sm px-1 py-0.5 w-min whitespace-nowrap  "
                   />
                   <Field
                     as="select"
@@ -203,6 +184,7 @@ export const HomePageEnq = ({ title }) => {
                 </div>
                 <button
                   type="submit"
+                  aria-label="Submit form"
                   disabled={isSubmitting}
                   className={` px-6 py-2  hover:scale-95 text-white duration-200 mt-4  text-lg rounded-full bg-primary `}
                 >

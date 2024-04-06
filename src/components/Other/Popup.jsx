@@ -4,8 +4,6 @@ import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { FirebaseStore } from "../context/Firebase";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -63,6 +61,7 @@ export default function Popup() {
                 <button
                   onClick={handleClose}
                   type="button"
+                  aria-label="Close popup"
                   className="text-red-500 hover:text-red-700 sm:ml-3 sm:w-auto sm:text-2xl"
                 >
                   <RiCloseLine className="inline-block mr-1" />
@@ -77,28 +76,6 @@ export default function Popup() {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                   setLoading(true);
-
-                  try {
-                    let date = new Date();
-                    let hours = date.getHours();
-                    let minutes = date.getMinutes();
-                    let seconds = date.getSeconds();
-                    // Your Firebase submission logic here
-                    //console.log("Form submitted", values);
-                    const docRef = await addDoc(
-                      collection(FirebaseStore, "popupEnquiries"),
-                      {
-                        ...values,
-                        date: date.toDateString(),
-                        time: `${hours}:${minutes}:${seconds}`,
-                        timestamp: serverTimestamp(),
-                      }
-                    );
-                    console.log("Document written with ID: ", docRef.id);
-                  } catch (error) {
-                    console.error("Error adding document: ", error);
-                    toast.error("Error submitting enquiry");
-                  }
 
                   try {
                     await axios
@@ -119,8 +96,6 @@ export default function Popup() {
                     console.error("Error submitting enquiry: ", error);
                     toast.error("Error submitting enquiry");
                   }
-
-             
 
                   setSubmitting(false);
                   sessionStorage.setItem("popup", "true");
@@ -155,13 +130,19 @@ export default function Popup() {
                           </div>
                           <div className="flex justify-center gap-4 mt-6 md:gap-8">
                             <a
-                              href="tel:+1234567890"
+                              href="tel: 98488 98488 "
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label="Call Us"
                               className="flex justify-center w-1/2 gap-3 py-1.5 border rounded-lg text-primary"
                             >
                               <AiOutlinePhone className="w-5 h-5 " /> Call Us
                             </a>
                             <a
-                              href="https://wa.me/1234567890"
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label="Whatsapp"
+                              href="https://wa.me/9848898488"
                               className="flex justify-center w-1/2 gap-3 py-1.5 text-green-500 border rounded-lg"
                             >
                               <AiOutlineWhatsApp className="w-5 h-5 " />{" "}
@@ -177,6 +158,7 @@ export default function Popup() {
                         // disabled={!mobileNumber}
                         disabled={isSubmitting}
                         type="submit"
+                        aria-label="Submit form"
                         className={`   py-2 rounded-lg   sm:text-sm  mx-auto bg-primary w-full text-white cursor-pointer`}
                       >
                         {loading ? "Submitting..." : "Submit"}

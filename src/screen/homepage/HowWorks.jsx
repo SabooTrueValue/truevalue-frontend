@@ -53,9 +53,9 @@ const HowWorks = () => {
         <p className="mb-6 text-center">
           You won't just love our cars, you'll love the way you buy them.
         </p>
-        <h4 className="pb-4 text-xl font-bold text-center uppercase text-primary">
+        <div className="pb-4 text-xl font-bold text-center uppercase text-primary">
           Owning your car made simple
-        </h4>
+        </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {/* Loop through the buyingSteps array and render each step */}
           {buyingSteps.map((step, index) => (

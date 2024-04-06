@@ -138,7 +138,7 @@ const HomepageBlogs = () => {
                     </div>
                     <div className="pb-6 text-justify lg:h-28 ">{x.body}</div>
                     <Link to="/used-car-blog">
-                      <button className="w-full px-8 py-2 text-sm duration-200 border rounded-full group-hover:bg-primary group-hover:text-white border-primary hover:border-white group-hover:shadow-lg">
+                      <button aria-label={x.title} className="w-full px-8 py-2 text-sm duration-200 border rounded-full group-hover:bg-primary group-hover:text-white border-primary hover:border-white group-hover:shadow-lg">
                         Explore
                       </button>
                     </Link>

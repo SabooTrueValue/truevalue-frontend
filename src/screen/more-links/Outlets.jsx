@@ -56,6 +56,7 @@ const Outlets = () => {
                 href="https://www.google.com/maps/place/NEXA/@17.407435,78.472675,14z/data=!4m5!3m4!1s0x0:0x167869bcabc7428b!8m2!3d17.407435!4d78.4726753?hl=en"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Somajiguda"
               >
                 <div
                   className="flex justify-center duration-500 bg-center h-52 lg:h-60 group-hover:saturate-200 rounded-3xl grayscale group-hover:grayscale-0"
@@ -84,6 +85,7 @@ const Outlets = () => {
                 href="https://www.google.com/maps/place/NEXA/@17.439431,78.398485,14z/data=!4m5!3m4!1s0x0:0x1cb759ff5f828d3!8m2!3d17.4394309!4d78.398485?hl=en"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Malakpet"
               >
                 <div
                   className="flex justify-center duration-500 bg-center h-52 lg:h-60 group-hover:saturate-200 rounded-3xl grayscale group-hover:grayscale-0"
@@ -112,6 +114,7 @@ const Outlets = () => {
                 href="https://goo.gl/maps/rgoP8TXGQ9b3WvYu8"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Kompally"
               >
                 <div
                   className="flex justify-center duration-500 bg-center h-52 lg:h-60 group-hover:saturate-200 rounded-3xl grayscale group-hover:grayscale-0"
@@ -140,6 +143,7 @@ const Outlets = () => {
                 href="https://goo.gl/maps/rgoP8TXGQ9b3WvYu8"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Kushaiguda"
               >
                 <div
                   className="flex justify-center duration-500 bg-center h-52 lg:h-60 group-hover:saturate-200 rounded-3xl grayscale group-hover:grayscale-0"

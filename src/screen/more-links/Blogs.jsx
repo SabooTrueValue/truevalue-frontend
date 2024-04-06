@@ -184,10 +184,10 @@ export const Blogs = () => {
           <h1 className="mt-4 mb-8 text-3xl font-bold text-center lg:text-4xl text-primary lg:whitespace-nowrap">
             NEWS & Social Media Articles
           </h1>
-          <h5 className="mb-3 text-xl lg:mb-8 md:text-center">
+          <div className="mb-3 text-xl lg:mb-8 md:text-center">
             Stay up to date with the latest activity from your favorite Saboo
             True Value!
-          </h5>
+          </div>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
             <div className="col-span-1 lg:col-span-3">
               <div className="mb-4 text-xl font-medium sm:text-2xl lg:text-3xl lg:mb-6">

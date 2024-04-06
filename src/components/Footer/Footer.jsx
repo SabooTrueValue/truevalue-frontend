@@ -67,6 +67,7 @@ export const Footer = () => {
               href="tel:9848898488"
               target="_blank"
               rel="noreferrer"
+              aria-label="Call Us"
               className="flex items-center gap-2 duration-300 hover:text-base"
             >
               <MdOutlineLocalPhone className="" /> 98488 98488
@@ -76,6 +77,7 @@ export const Footer = () => {
               href="mailto:info@saboomaruti.in"
               target="_blank"
               rel="noreferrer"
+              aria-label="Email Us"
               className="flex items-center gap-2 duration-300 hover:text-base"
             >
               <IoMdMail className="" /> info@saboomaruti.in
@@ -94,6 +96,7 @@ export const Footer = () => {
               href="https://www.facebook.com/saboorkstruevalue"
               target="_blank"
               rel="noreferrer"
+              aria-label="Facebook"
               className="flex items-center gap-2 duration-300 hover:text-base"
             >
               <FaFacebookSquare className="" /> Facebook
@@ -102,6 +105,7 @@ export const Footer = () => {
               href="https://www.youtube.com/channel/UC102tHun3nmc6rVT4lBbofA/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Youtube"
               className="flex items-center gap-2 duration-300 hover:text-base"
             >
               <IoLogoYoutube className="" /> Youtube
@@ -111,6 +115,7 @@ export const Footer = () => {
               href="https://www.instagram.com/saboorkstruevalue/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Instagram"
               className="flex items-center gap-2 duration-300 hover:text-base"
             >
               <FaInstagram className="" /> Instagram
@@ -119,6 +124,8 @@ export const Footer = () => {
               href="https://twitter.com/saboorkstrueva1"
               target="_blank"
               rel="noreferrer"
+              aria-label="Twitter"
+              
               className="flex items-center gap-2 duration-300 hover:text-base"
             >
               <FaXTwitter className="" /> Twitter
@@ -128,6 +135,7 @@ export const Footer = () => {
               href="https://www.linkedin.com/company/saboo-rks-truevalue/?viewAsMember=true"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn"
               className="flex items-center gap-2 duration-300 hover:text-base"
             >
               <FaLinkedin className="" /> LinkedIn

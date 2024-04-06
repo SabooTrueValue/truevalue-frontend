@@ -51,10 +51,10 @@ const FAQS = () => {
         alt="Privacy Policy"
       />
       <div className="container px-1 pt-5 mx-auto ">
-        <h3 className="mb-2 text-2xl text-center md:text-3xl text-primary">
+        <div className="mb-2 text-2xl text-center md:text-3xl text-primary">
           Frequently Asked Questions
-        </h3>
-        <h5 className="mb-3 lg:mb-8 md:text-center ">
+        </div>
+        <div className="mb-3 lg:mb-8 md:text-center ">
           Have any questions? Take a look & maybe we can answer them right now.
           If not, write to us at{" "}
           <a
@@ -62,10 +62,11 @@ const FAQS = () => {
             target="_blank"
             rel="noreferrer"
             className="text-blue-500"
+            aria-label="Email Us"
           >
             info@saboomaruti.in
           </a>
-        </h5>
+        </div>
 
         <div className="pt-10 pb-14 lg:pb-20">
           {data.map((x, i) => {
@@ -84,10 +85,10 @@ const FAQS = () => {
                     id="panel1-header"
                     className=""
                   >
-                    <h5 className="py-2 md:text-lg lg:text-xl ">
+                    <div className="py-2 md:text-lg lg:text-xl ">
                       <span className="pr-3 text-primary">{x.no}. </span>{" "}
                       {x.question}
-                    </h5>
+                    </div>
                   </AccordionSummary>
                   <AccordionDetails className="ml-4 -mt-4 lg:ml-12 ">
                     <p className="pb-2 ">{x.answer}</p>
