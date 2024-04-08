@@ -1,6 +1,6 @@
 import "swiper/css";
 
-import { useRef } from "react";
+import {  useRef } from "react";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -19,6 +19,16 @@ import {
 } from "swiper/modules";
 
 function CarSlider2({ sliders }) {
+  console.log(sliders);
+  const data = [
+    sliders["image1"]["img1"],
+    sliders["image2"]["img2"],
+    sliders["image3"]["img3"],
+    sliders["image4"]["img4"],
+    sliders["image5"]["img5"],
+    sliders["image6"]["img6"],
+  ];
+
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
@@ -45,12 +55,12 @@ function CarSlider2({ sliders }) {
         modules={[Pagination, Autoplay, Navigation]}
         className="mySwiper"
       >
-        {sliders?.map((slider, index) => (
+        {data?.map((slider, index) => (
           <SwiperSlide key={index}>
             <img
               src={slider}
               className="object-cover w-full h-[70vh] overflow-hidden "
-              alt=""
+              alt="Saboo True Value Car"
             />
           </SwiperSlide>
         ))}

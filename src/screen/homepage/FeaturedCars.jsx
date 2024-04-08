@@ -45,7 +45,7 @@ function LimitedEditonCarSlider() {
 
   const { vehicleData } = useFormData();
 
-  // console.log(vehicleData);
+  console.log(vehicleData);
 
   return (
     <>

@@ -14,30 +14,30 @@ const Benefits = () => {
   const benefitsData = [
     [
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suuzki-TrueValue-Documentaion.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suuzki-TrueValue-Documentaion.webp"),
         title: "Hassle Free Documentation To Ensure Peace Of Mind",
       },
 
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Certified-TrueValue-Cars.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Certified-TrueValue-Cars.webp"),
         title: "Enusring A Trusted Buying Experience At Every Step",
       },
 
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Second-Hand-Cars.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Second-Hand-Cars.webp"),
         title: "The Key To An Interesting New Journey",
       },
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Service-Warranty.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Service-Warranty.webp"),
         title: "We Stand Behind Every Car We Sell.",
       },
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Testimonials.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Testimonials.webp"),
         title: "Hassle Free Documentation To Ensure Peace Of Mind",
       },
 
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Warranty-Cars.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Warranty-Cars.webp"),
         title: "Enusring A Trusted Buying Experience At Every Step",
       },
     ],
@@ -48,25 +48,25 @@ const Benefits = () => {
       },
 
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Certified-Cars.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Certified-Cars.webp"),
         title: "Enusring A Trusted Buying Experience At Every Step",
       },
 
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Used-Cars.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Used-Cars.webp"),
         title: "Stay Tuned To Meet The New Face Of Trust",
       },
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Car-Dealer.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Car-Dealer.webp"),
         title:
           "Embrace The Feeling Of Trust By Sharing Your Journey Of Trust With Us",
       },
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Happy-Clients.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-TrueValue-Happy-Clients.webp"),
         title: "Stay Tuned To Meet The New Face Of Trust",
       },
       {
-        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Authorized-TrueValue-Dealer.jpg"),
+        img: require("../../assets/homepage/benefits/Maruti-Suzuki-Authorized-TrueValue-Dealer.webp"),
         title:
           "Embrace The Feeling Of Trust By Sharing Your Journey Of Trust With Us",
       },

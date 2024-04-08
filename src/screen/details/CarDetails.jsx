@@ -15,13 +15,16 @@ const CarDetails = () => {
   const { vehicleData } = useFormData();
   const { id } = useParams();
   const [carData, setCarData] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    const car = vehicleData.find((car) => car.id === id);
-    if (car) setCarData(car);
-    // if (!car) navigate("/");
+    const car = vehicleData.find((car) => car._id === id);
+    if (car) {
+      setCarData(car);
+    }
   }, [id, navigate, vehicleData]);
+
   return (
     <div className="container mx-auto">
       <div className="max-w-screen-xl px-2 py-10 mx-auto">
@@ -40,7 +43,7 @@ const CarDetails = () => {
               </h2>
               <div>
                 <h1 className="text-2xl font-semibold ">
-                  {CurrencyFormatter.format(carData?.price)}
+                 {carData?.price && CurrencyFormatter.format(carData?.price)}
                   <sup className="text-red-600">*</sup>
                 </h1>
                 <p className="text-right text-gray-900/90">
@@ -51,12 +54,13 @@ const CarDetails = () => {
               {/* <p>{car?.tag}</p> */}
             </div>
             <div className="overflow-hidden rounded-lg">
-              <CarSlider2 sliders={carData?.images} />
+             {carData?.images && <CarSlider2 sliders={carData?.images} />}
             </div>
             <div className="p-4 border rounded-xl">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">
                 Car Overview
               </h3>
+
               <div className="grid grid-cols-2 gap-x-4 xl:grid-cols-4 lg:grid-cols-3 gap-y-6">
                 <div className="">
                   <FaLocationDot className="text-2xl text-primary" />
@@ -108,56 +112,57 @@ const CarDetails = () => {
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">
                 Car Features
               </h3>
+              {/* { carData?.accessories.AirConditioning } */}
               <ul className="grid grid-cols-2 list-disc gap-x-4 xl:grid-cols-4 lg:grid-cols-3 gap-y-6">
-                {carData?.AirConditioning === "Yes" && (
+                {carData?.accessories?.["AirConditioning"] === true && (
                   <li className="ml-4">Air Conditioning</li>
                 )}
-                {carData?.AlloyWheels === "Yes" && (
+                {carData?.accessories?.AlloyWheels === true && (
                   <li className="ml-4">Alloy Wheels</li>
                 )}
-                {carData?.Bluetooth === "Yes" && (
+                {carData?.accessories?.Bluetooth === true && (
                   <li className="ml-4">Bluetooth</li>
                 )}
-                {carData?.ClimateControl === "Yes" && (
+                {carData?.accessories?.ClimateControl === true && (
                   <li className="ml-4">Climate Control</li>
                 )}
-                {carData?.CooledSeats === "Yes" && (
+                {carData?.accessories?.CooledSeats === true && (
                   <li className="ml-4">Cooled Seats</li>
                 )}
-                {carData?.CruiseControl === "Yes" && (
+                {carData?.accessories?.CruiseControl === true && (
                   <li className="ml-4">Cruise Control</li>
                 )}
-                {carData?.FogLights === "Yes" && (
+                {carData?.accessories?.FogLights === true && (
                   <li className="ml-4">Fog Lights</li>
                 )}
-                {carData?.HeatedSeats === "Yes" && (
+                {carData?.accessories?.HeatedSeats === true && (
                   <li className="ml-4">Heated Seats</li>
                 )}
-                {carData?.LeatherSeats === "Yes" && (
+                {carData?.accessories?.LeatherSeats === true && (
                   <li className="ml-4">Leather Seats</li>
                 )}
-                {carData?.MemorySeats === "Yes" && (
+                {carData?.accessories?.MemorySeats === true && (
                   <li className="ml-4">Memory Seats</li>
                 )}
-                {carData?.Navigation === "Yes" && (
+                {carData?.accessories?.Navigation === true && (
                   <li className="ml-4">Navigation</li>
                 )}
-                {carData?.ParkingSensors === "Yes" && (
+                {carData?.accessories?.ParkingSensors === true && (
                   <li className="ml-4">Parking Sensors</li>
                 )}
-                {carData?.PowerMirrors === "Yes" && (
+                {carData?.accessories?.PowerMirrors === true && (
                   <li className="ml-4">Power Mirrors</li>
                 )}
-                {carData?.PowerSeats === "Yes" && (
+                {carData?.accessories?.PowerSeats === true && (
                   <li className="ml-4">Power Seats</li>
                 )}
-                {carData?.PowerWindows === "Yes" && (
+                {carData?.accessories?.PowerWindows === true && (
                   <li className="ml-4">Power Windows</li>
                 )}
-                {carData?.ReverseCamera === "Yes" && (
+                {carData?.accessories?.ReverseCamera === true && (
                   <li className="ml-4">Reverse Camera</li>
                 )}
-                {carData?.Sunroof === "Yes" && (
+                {carData?.accessories?.Sunroof === true && (
                   <li className="ml-4">Sunroof</li>
                 )}
               </ul>

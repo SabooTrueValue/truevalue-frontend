@@ -306,7 +306,7 @@ const CarCart = () => {
                         className="w-[280px] bg-white  hover:shadow-2xl hover:shadow-gray-500 mx-auto duration-500 border group rounded-xl text-primary border-primary   "
                       >
                         <Link
-                          to={`/car-details/${x.id}`}
+                          to={`/car-details/${x._id}`}
                           className="overflow-hidden"
                         >
                           <div className="relative overflow-hidden rounded-t-xl">
