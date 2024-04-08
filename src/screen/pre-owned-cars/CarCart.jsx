@@ -311,7 +311,7 @@ const CarCart = () => {
                         >
                           <div className="relative overflow-hidden rounded-t-xl">
                             <img
-                              src={x.images[0]}
+                              src={x?.images["image1"]["img1"]}
                               alt={x.carName}
                               className="w-full"
                             />

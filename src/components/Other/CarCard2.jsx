@@ -28,7 +28,7 @@ const CarCard2 = ({ carData }) => {
         <div className="relative overflow-hidden rounded-t-xl">
           <Link to={`/car-details/${carData._id}`} className="overflow-hidden">
             <img
-              src={carData.images["image1"]["img1"]}
+              src={carData?.images["image1"]["img1"]}
               alt="Saboo True Value Car"
               srcSet=""
               className="w-full mx-auto transition-transform duration-500 rounded-t-xl lg:group-hover:scale-105 transform-gpu"
