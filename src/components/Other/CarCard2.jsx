@@ -44,7 +44,8 @@ const CarCard2 = ({ carData }) => {
           <div className="mb-2 text-sm">
             <span>{carData.kmDriven} Km</span> |{" "}
             <span>
-              {carData.fuelType} | {carData.transmission} | {carData.bodyType}
+              {carData.fuelType} | {carData.transmission} | {carData.bodyType} 
+              {/* | {carData.color} */}
             </span>
           </div>
           <div className="flex items-end justify-between mb-6 ">

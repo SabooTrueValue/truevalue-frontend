@@ -27,12 +27,17 @@ export const FormDataProvider = ({ children }) => {
 
   useEffect(() => {
     const getVehicleData = async () => {
-      const res = await axios.get(
-        `https://true-value.onrender.com/allVehicles`
-      );
+      try {
+        const res = await axios.get(
+          // `http://localhost:3001/allavailableVehicles`
+          `https://true-value.onrender.com/allavailableVehicles`
+        );
 
-      if (res.data.data.length > 0) {
-        setVehicleData(res.data.data);
+        if (res.data.data.length > 0) {
+          setVehicleData(res.data.data);
+        }
+      } catch (error) {
+        console.log(error);
       }
     };
     getVehicleData();

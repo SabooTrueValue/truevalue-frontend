@@ -110,7 +110,7 @@ function LimitedEditonCarSlider() {
             </div>
           </div>
           <div className="px-2 overflow-hidden">
-            {vehicleData.map((x, i) => {
+            {vehicleData.slice(0,11).map((x, i) => {
               return (
                 <SwiperSlide key={i} className="relative pb-4 group">
                   <CarCard2 carData={x} />
