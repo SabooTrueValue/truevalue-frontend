@@ -452,6 +452,13 @@ const TabThree = () => {
     finally {
       // Always set submitting state to false after form submission
       setSubmitting(false);
+      setLoading(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        loanAmount: "",
+      });
     }
   };
 

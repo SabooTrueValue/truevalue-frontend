@@ -56,6 +56,7 @@ const BookForm = ({
       } finally {
         // Always set submitting state to false after form submission
         setSubmitting(false);
+        resetForm();
       }
     },
   });

@@ -22,6 +22,7 @@ const CarDetails = () => {
     const car = vehicleData.find((car) => car._id === id);
     if (car) {
       setCarData(car);
+      console.log(car);
     }
   }, [id, navigate, vehicleData]);
 
@@ -43,7 +44,7 @@ const CarDetails = () => {
               </h2>
               <div>
                 <h1 className="text-2xl font-semibold ">
-                 {carData?.price && CurrencyFormatter.format(carData?.price)}
+                  {carData?.price && CurrencyFormatter.format(carData?.price)}
                   <sup className="text-red-600">*</sup>
                 </h1>
                 <p className="text-right text-gray-900/90">
@@ -54,7 +55,7 @@ const CarDetails = () => {
               {/* <p>{car?.tag}</p> */}
             </div>
             <div className="overflow-hidden rounded-lg">
-             {carData?.images && <CarSlider2 sliders={carData?.images} />}
+              {carData?.images && <CarSlider2 sliders={carData?.images} />}
             </div>
             <div className="p-4 border rounded-xl">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">
@@ -194,7 +195,7 @@ const CarDetails = () => {
               className="p-8 bg-white border border-gray-200 rounded-lg"
             >
               <BookForm
-                carId={carData.id}
+                carId={carData.registrationNo}
                 carBrand={carData.vehicleBrand}
                 carModel={carData.vehicleTitle}
                 fuelType={carData.fuelType}
