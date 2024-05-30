@@ -36,7 +36,7 @@ const CarDetails = () => {
           <span className="text-primary">{carData?.vehicleTitle}</span>
         </p>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
           <div className="col-span-1 space-y-10 lg:col-span-2">
             <div className="flex justify-between pr-2 mb-5 space-y-1">
               <h2 className="text-2xl font-semibold uppercase xl:text-4xl ">
@@ -56,13 +56,22 @@ const CarDetails = () => {
             </div>
             <div className="overflow-hidden rounded-lg">
               {carData?.images && <CarSlider2 sliders={carData?.images} />}
+              {/* <div className="h-[500px] max-h-[80vh] -mt-2 md:h-[600px]">
+                <iframe
+                  src="https://auto.viewer.2.helloramp.io/?id=6597973efd9343c8844f5555"
+                  height="100%"
+                  width="100%"
+                  allow="fullscreen"
+                  title="Car"
+                />
+              </div> */}
             </div>
             <div className="p-4 border rounded-xl">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">
                 Car Overview
               </h3>
 
-              <div className="grid grid-cols-2 gap-x-4 xl:grid-cols-4 lg:grid-cols-3 gap-y-6">
+              <div className="grid grid-cols-2 gap-x-4 xl:grid-cols-4 md:grid-cols-3 gap-y-6">
                 <div className="">
                   <FaLocationDot className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.trueValueLocation}</p>
