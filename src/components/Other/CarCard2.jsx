@@ -22,17 +22,36 @@ const CarCard2 = ({ carData }) => {
     return emi.toFixed(0);
   };
 
+  console.log(carData);
+
   return (
     <div className="group">
       <div className="flex flex-col justify-center w-full duration-200 border group rounded-xl text-primary border-primary ">
         <div className="relative overflow-hidden rounded-t-xl">
-          <Link to={`/car-details/${carData._id}`} className="overflow-hidden">
-            <img
-              src={carData?.images["image1"]["img1"]}
-              alt="Saboo True Value Car"
-              srcSet=""
-              className="w-full mx-auto transition-transform duration-500 rounded-t-xl lg:group-hover:scale-105 transform-gpu"
-            />
+          <Link
+            to={
+              carData?.slot_images
+                ? `/car-details2/${carData._id}`
+                : `/car-details/${carData._id}`
+            }
+            className="overflow-hidden"
+          >
+            {carData?.slot_images ? (
+              <img
+                src={carData?.slot_images?.[0]?.images?.[0]?.image_url}
+                // src={carData?.images["image1"]["img1"]}
+                alt="Saboo True Value Car"
+                srcSet=""
+                className="w-full mx-auto transition-transform duration-500 rounded-t-xl lg:group-hover:scale-105 transform-gpu"
+              />
+            ) : (
+              <img
+                src={carData?.images["image1"]["img1"]}
+                alt="Saboo True Value Car"
+                srcSet=""
+                className="w-full mx-auto transition-transform duration-500 rounded-t-xl lg:group-hover:scale-105 transform-gpu"
+              />
+            )}
           </Link>
         </div>
 
@@ -44,7 +63,7 @@ const CarCard2 = ({ carData }) => {
           <div className="mb-2 text-sm">
             <span>{carData.kmDriven} Km</span> |{" "}
             <span>
-              {carData.fuelType} | {carData.transmission} | {carData.bodyType} 
+              {carData.fuelType} | {carData.transmission} | {carData.bodyType}
               {/* | {carData.color} */}
             </span>
           </div>
@@ -57,7 +76,11 @@ const CarCard2 = ({ carData }) => {
 
           <div className="flex justify-between border-t border-[#797979] py-2 ">
             <Link
-              to={`/car-details/${carData.id}`}
+              to={
+                carData?.slot_images
+                  ? `/car-details2/${carData._id}`
+                  : `/car-details/${carData._id}`
+              }
               className="flex items-center gap-2 text-lg group"
             >
               Buy Now{" "}

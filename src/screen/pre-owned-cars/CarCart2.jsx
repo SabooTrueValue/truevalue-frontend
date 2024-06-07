@@ -7,7 +7,7 @@ import { useFormData } from "../../components/Other/FormDataProvider";
 import { FaLocationDot } from "react-icons/fa6";
 import { Helmet } from "react-helmet";
 
-const CarCart = () => {
+const CarCart2 = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [filters, setFilters] = useState({
@@ -24,11 +24,11 @@ const CarCart = () => {
     accessories: "",
   });
 
-  const { vehicleData } = useFormData();
+  const { finalData } = useFormData();
 
   
 
-  const filteredData = vehicleData.filter((car) => {
+  const filteredData = finalData.filter((car) => {
     return (
       (parseInt(car.price) >= parseInt(filters.minPrice) ||
         !filters.minPrice) &&
@@ -164,13 +164,13 @@ const CarCart = () => {
                         className="mx-auto duration-500 bg-white border hover:shadow-2xl hover:shadow-gray-500 group rounded-xl text-primary border-primary md:col-span-2 lg:col-span-1"
                       >
                         <Link
-                          to={`/car-details/${x._id}`}
+                          to={`/car-details2/${x._id}`}
                           className="overflow-hidden"
                         >
                           <div className="relative overflow-hidden rounded-t-xl">
                             <img
-                              src={x?.images["image1"]["img1"]}
-                              alt={x.carName}
+                              src={x?.slot_images?.[0]?.images?.[0]?.image_url}
+                              alt={x?.vehicleTitle}
                               className="w-full"
                             />
                             {/* <div className="bg-primary px-4 py-2.5 bg-opacity-50 text-white rounded-tl-xl absolute bottom-0 right-0">
@@ -226,7 +226,7 @@ const CarCart = () => {
 
                             <div className="flex justify-between border-t border-[#797979] py-2 ">
                               <Link
-                                to={`/car-details/${x.id}`}
+                                to={`/car-details2/${x.id}`}
                                 className="flex items-center gap-2 text-lg group"
                               >
                                 Buy Now{" "}
@@ -261,7 +261,7 @@ const CarCart = () => {
   );
 };
 
-export default CarCart;
+export default CarCart2;
 
 const FilteringPanel = ({ filters, setFilters }) => {
   const [Budget, setBudget] = useState(true);
@@ -441,7 +441,7 @@ const BudgetFilter = ({ filters, setFilters }) => {
   const [values, setValues] = useState(initialValues);
   useEffect(() => {
     setFilters({ ...filters, minPrice: values[0], maxPrice: values[1] });
-  }, [values]);
+  }, [values, filters, setFilters]);
   // }, [values, filters, setFilters]);
 
   // Function to reset values to initial state
@@ -675,7 +675,7 @@ const ModelYearFilter = ({ filters, setFilters }) => {
   const [values, setValues] = useState(initialValues);
   useEffect(() => {
     setFilters({ ...filters, minYear: values[0], maxYear: values[1] });
-  }, [values]);
+  }, [values, filters, setFilters]);
   // }, [values, filters, setFilters]);
 
   // Function to reset values to initial state
@@ -733,7 +733,7 @@ const KilometersDrivenFilter = ({ filters, setFilters }) => {
       minKilometer: values[0],
       maxKilometer: values[1],
     });
-  }, [values]);
+  }, [values, filters, setFilters]);
   // }, [values, filters, setFilters]);
 
   // Function to reset values to initial state
@@ -786,7 +786,7 @@ const GearBoxFilter = ({ filters, setFilters }) => {
     } else {
       setFilters({ ...filters, transmission: selectedGearBox.join(",") });
     }
-  }, [selectedGearBox]);
+  }, [selectedGearBox, filters, setFilters]);
   // }, [selectedGearBox, filters, setFilters]);
 
   const handleCheckboxChange = (gearBox) => {
@@ -839,7 +839,7 @@ const FuelTypeFilter = ({ filters, setFilters }) => {
     } else {
       setFilters({ ...filters, fuel: selectedBrands.join(",") });
     }
-  }, [selectedBrands]);
+  }, [selectedBrands, filters, setFilters]);
   // }, [selectedBrands, filters, setFilters]);
 
   const handleCheckboxChange = (brandName) => {
@@ -881,7 +881,7 @@ const BodyTypeFiter = ({ filters, setFilters }) => {
     } else {
       setFilters({ ...filters, bodyType: selectedBrands.join(",") });
     }
-  }, [selectedBrands]);
+  }, [selectedBrands, filters , setFilters]);
   // }, [selectedBrands, filters, setFilters]);
 
   const handleCheckboxChange = (brandName) => {

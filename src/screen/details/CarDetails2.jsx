@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useFormData } from "../../components/Other/FormDataProvider";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import CarSlider2 from "./CarSlider2";
-import { MdAirlineSeatReclineExtra, MdVerified } from "react-icons/md";
+// import CarSlider2 from "./CarSlider2";
+import { MdVerified } from "react-icons/md";
+// import { MdAirlineSeatReclineExtra, MdVerified } from "react-icons/md";
 import { FaCalendarDays, FaCar, FaLocationDot, FaUser } from "react-icons/fa6";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { TbManualGearbox } from "react-icons/tb";
 import { IoIosColorPalette, IoMdSpeedometer } from "react-icons/io";
-import { PiEngineFill } from "react-icons/pi";
+// import { PiEngineFill } from "react-icons/pi";
 import CurrencyFormatter from "../../components/Other/currency-formatter";
 import BookForm from "./book-form";
 
-const CarDetails = () => {
-  const { vehicleData } = useFormData();
+const CarDetails2 = () => {
+  const { finalData } = useFormData();
   const { id } = useParams();
   const [carData, setCarData] = useState({});
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const car = vehicleData.find((car) => car._id === id);
+    const car = finalData.find((car) => car._id === id);
+    console.log(car);
+    // let images = [];
     if (car) {
+      // car.slot_images[0].images.map((image) => {
+      //   images.push(image.image_url);
+      // });
       setCarData(car);
     }
-  }, [id, navigate, vehicleData]);
+    // console.log(images);
+  }, [id, navigate, finalData]);
 
   return (
     <div className="container mx-auto">
@@ -54,23 +61,23 @@ const CarDetails = () => {
               {/* <p>{car?.tag}</p> */}
             </div>
             <div className="overflow-hidden rounded-lg">
-              {carData?.images && <CarSlider2 sliders={carData?.images} />}
-              {/* <div className="h-[500px] max-h-[80vh] -mt-2 md:h-[600px]">
+              {/* {carData?.images && <CarSlider2 sliders={carData?.images} />} */}
+              <div className="h-[500px] max-h-[80vh] -mt-2 md:h-[600px]">
                 <iframe
-                  src="https://auto.viewer.2.helloramp.io/?id=6597973efd9343c8844f5555"
+                  src={`https://auto.viewer.2.helloramp.io/?id=${id}`}
                   height="100%"
                   width="100%"
                   allow="fullscreen"
-                  title="Car"
+                  title={carData?.vehicleTitle || "True Value Car"}
                 />
-              </div> */}
+              </div>
             </div>
             <div className="p-4 border rounded-xl">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">
                 Car Overview
               </h3>
 
-              <div className="grid grid-cols-2 gap-x-4 xl:grid-cols-4 md:grid-cols-3 gap-y-6">
+              <div className="grid grid-cols-2 gap-x-4 md:grid-cols-3 gap-y-6">
                 <div className="">
                   <FaLocationDot className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.trueValueLocation}</p>
@@ -95,33 +102,37 @@ const CarDetails = () => {
                   <FaCalendarDays className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.modelYear}</p>
                 </div>
-                <div className="">
+                {/* <div className="">
                   <PiEngineFill className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.engineCapacity} cc</p>
-                </div>
+                </div> */}
                 <div className="">
                   <IoMdSpeedometer className="text-2xl text-primary" />
                   <p className="mt-2">{carData?.kmDriven} Km</p>
                 </div>
                 <div className="">
                   <MdVerified className="text-2xl text-primary" />
-                  <p className="mt-2">{carData?.vehicleCategory}</p>
+                  <p className="mt-2">
+                    {carData?.vehicleCategory === false
+                      ? "Not verified"
+                      : "Verified"}
+                  </p>
                 </div>
-                <div className="">
+                {/* <div className="">
                   <MdAirlineSeatReclineExtra className="text-3xl text-primary" />
                   <p className="mt-0.5">{carData?.seatingCapacity}</p>
-                </div>
+                </div> */}
                 <div className="">
                   <FaUser className="text-xl text-primary" />
-                  <p className="mt-2">{carData?.userType}</p>
+                  <p className="mt-2">{carData?.userType} Owner</p>
                 </div>
               </div>
             </div>
-            <div className="p-4 border rounded-xl">
+            {/* <div className="p-4 border rounded-xl">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">
                 Car Features
               </h3>
-              {/* { carData?.accessories.AirConditioning } */}
+            
               <ul className="grid grid-cols-2 list-disc gap-x-4 xl:grid-cols-4 lg:grid-cols-3 gap-y-6">
                 {carData?.accessories?.["AirConditioning"] === true && (
                   <li className="ml-4">Air Conditioning</li>
@@ -175,12 +186,33 @@ const CarDetails = () => {
                   <li className="ml-4">Sunroof</li>
                 )}
               </ul>
-            </div>
-            <div className="p-4 border rounded-xl">
+            </div> */}
+            {/* <div className="p-4 border rounded-xl">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">
                 Seller Comment
               </h3>
               <p>{carData?.vehicleOverview}</p>
+            </div> */}
+            <div className="p-8 bg-white border border-gray-200 rounded-lg">
+              <h3 className="mb-2 text-xl font-semibold select-none text-primary">
+                Car Inspection Is Important Before Buying A Used Car
+              </h3>
+              <p className="mb-4">
+                A good deal for buying a used car includes:
+              </p>
+              <ul className="ml-4 space-y-2 list-disc">
+                <li>
+                  Step-by-step inspection of vehicles to be assess its running
+                  condition and drivability, this will protect you from any
+                  unwanted repair bills and situations.
+                </li>
+                <li>
+                  Every vehicle at True Value undergoes a thorough a 376 point
+                  check to ensure that there is a comprehensive check done to
+                  each of the preowned vehicles, before it is put up for sale to
+                  our valued customers.
+                </li>
+              </ul>
             </div>
           </div>
           <div className="space-y-6">
@@ -229,27 +261,6 @@ const CarDetails = () => {
                 <li>How to protect yourself?</li>
               </ul>
             </div>
-            <div className="p-8 bg-white border border-gray-200 rounded-lg">
-              <h3 className="text-xl font-semibold select-none text-primary">
-                Car Inspection Is Important Before Buying A Used Car
-              </h3>
-              <p className="mb-4">
-                A good deal for buying a used car includes:
-              </p>
-              <ul className="ml-4 space-y-2 list-disc">
-                <li>
-                  Step-by-step inspection of vehicles to be assess its running
-                  condition and drivability, this will protect you from any
-                  unwanted repair bills and situations.
-                </li>
-                <li>
-                  Every vehicle at True Value undergoes a thorough a 376 point
-                  check to ensure that there is a comprehensive check done to
-                  each of the preowned vehicles, before it is put up for sale to
-                  our valued customers.
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
@@ -257,4 +268,4 @@ const CarDetails = () => {
   );
 };
 
-export default CarDetails;
+export default CarDetails2;

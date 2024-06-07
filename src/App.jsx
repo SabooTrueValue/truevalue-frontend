@@ -17,8 +17,10 @@ import Header from "./screen/homepage/Header";
 import Outlets from "./screen/more-links/Outlets";
 import { Toaster } from "react-hot-toast";
 
-import CarCart from "./screen/pre-owned-cars/CarCart";
+// import CarCart from "./screen/pre-owned-cars/CarCart";
 import ModalSidePanel from "./components/Headers/ModalSidePanel";
+import CarDetails2 from "./screen/details/CarDetails2";
+import CarCart2 from "./screen/pre-owned-cars/CarCart2";
 
 function App() {
   const { pathname } = useLocation();
@@ -44,10 +46,16 @@ function App() {
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/about-us" element={<AboutUs />} />
         <Route exact path="/finance" element={<Finance />} />
-        <Route exact path="/buy-used-cars" element={<CarCart />} />
+        <Route exact path="/buy-used-cars" element={<CarCart2 />} />
+        {/* <Route exact path="/buy-used-cars" element={<CarCart />} /> */}
         <Route exact path="/sell-your-car" element={<SellYourCar />} />
         <Route exact path="/used-car-blog" element={<Blogs />} />
         <Route exact path="/car-details/:id" element={<CarDetails />} />
+        <Route
+          exact
+          path="/car-details2/:id"
+          element={<CarDetails2 />}
+        />
         <Route exact path="/used-car-outlets" element={<Outlets />} />
         <Route exact path="/used-car-faqs" element={<FAQs />} />
 

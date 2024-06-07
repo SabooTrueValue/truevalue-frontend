@@ -1,6 +1,6 @@
 import "swiper/css";
 
-import {  useRef } from "react";
+import { useRef } from "react";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -19,7 +19,7 @@ import {
 } from "swiper/modules";
 
 function CarSlider2({ sliders }) {
-  console.log(sliders);
+  // console.log(sliders);
   const data = [
     sliders["image1"]["img1"],
     sliders["image2"]["img2"],

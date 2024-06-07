@@ -35,7 +35,7 @@ const Signin = () => {
                   await axios
                     .post("https://true-value.onrender.com/login", values)
                     .then((response) => {
-                      console.log(response.data);
+                      // console.log(response.data);
                       localStorage.removeItem("userToken");
                       if (response.data.message === "Login Successful") {
                         localStorage.setItem(
@@ -43,7 +43,7 @@ const Signin = () => {
                           response.data.data.token
                         );
 
-                        console.log(localStorage.getItem("userToken"));
+                        // console.log(localStorage.getItem("userToken"));
                         navigate(`/dashboard`);
                         setLoading(false);
                       }
