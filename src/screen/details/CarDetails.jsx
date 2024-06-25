@@ -5,18 +5,64 @@ import CarSlider2 from "./CarSlider2";
 import { MdAirlineSeatReclineExtra, MdVerified } from "react-icons/md";
 import { FaCalendarDays, FaCar, FaLocationDot, FaUser } from "react-icons/fa6";
 import { BsFillFuelPumpFill } from "react-icons/bs";
-import { TbManualGearbox } from "react-icons/tb";
+import { TbManualGearbox, TbView360Number } from "react-icons/tb";
 import { IoIosColorPalette, IoMdSpeedometer } from "react-icons/io";
 import { PiEngineFill } from "react-icons/pi";
 import CurrencyFormatter from "../../components/Other/currency-formatter";
 import BookForm from "./book-form";
+import React360 from "./React360";
 
 const CarDetails = () => {
   const { vehicleData } = useFormData();
   const { id } = useParams();
   const [carData, setCarData] = useState({});
+  const [threesixty, setThreesixty] = useState(false);
+
 
   const navigate = useNavigate();
+
+  const images = [
+    require("../../assets/Car 360/1.jpg"),
+    require("../../assets/Car 360/2.jpg"),
+    require("../../assets/Car 360/3.jpg"),
+    require("../../assets/Car 360/4.jpg"),
+    require("../../assets/Car 360/5.jpg"),
+    require("../../assets/Car 360/6.jpg"),
+    require("../../assets/Car 360/7.jpg"),
+    require("../../assets/Car 360/8.jpg"),
+    require("../../assets/Car 360/9.jpg"),
+    require("../../assets/Car 360/10.jpg"),
+    require("../../assets/Car 360/11.jpg"),
+    require("../../assets/Car 360/12.jpg"),
+    require("../../assets/Car 360/13.jpg"),
+    require("../../assets/Car 360/14.jpg"),
+    require("../../assets/Car 360/15.jpg"),
+    require("../../assets/Car 360/16.jpg"),
+    require("../../assets/Car 360/17.jpg"),
+    require("../../assets/Car 360/18.jpg"),
+    require("../../assets/Car 360/19.jpg"),
+    require("../../assets/Car 360/20.jpg"),
+    require("../../assets/Car 360/21.jpg"),
+    require("../../assets/Car 360/22.jpg"),
+    require("../../assets/Car 360/23.jpg"),
+    require("../../assets/Car 360/24.jpg"),
+    require("../../assets/Car 360/25.jpg"),
+    require("../../assets/Car 360/26.jpg"),
+    require("../../assets/Car 360/27.jpg"),
+    require("../../assets/Car 360/28.jpg"),
+    require("../../assets/Car 360/29.jpg"),
+    require("../../assets/Car 360/30.jpg"),
+    require("../../assets/Car 360/31.jpg"),
+    require("../../assets/Car 360/32.jpg"),
+    require("../../assets/Car 360/33.jpg"),
+    require("../../assets/Car 360/34.jpg"),
+    require("../../assets/Car 360/35.jpg"),
+    require("../../assets/Car 360/36.jpg"),
+    require("../../assets/Car 360/37.jpg"),
+    require("../../assets/Car 360/38.jpg"),
+    require("../../assets/Car 360/39.jpg"),
+    require("../../assets/Car 360/40.jpg"),
+  ];
 
   useEffect(() => {
     const car = vehicleData.find((car) => car._id === id);
@@ -24,6 +70,8 @@ const CarDetails = () => {
       setCarData(car);
     }
   }, [id, navigate, vehicleData]);
+
+  
 
   return (
     <div className="container mx-auto">
@@ -54,16 +102,33 @@ const CarDetails = () => {
               {/* <p>{car?.tag}</p> */}
             </div>
             <div className="overflow-hidden rounded-lg">
-              {carData?.images && <CarSlider2 sliders={carData?.images} />}
-              {/* <div className="h-[500px] max-h-[80vh] -mt-2 md:h-[600px]">
-                <iframe
-                  src="https://auto.viewer.2.helloramp.io/?id=6597973efd9343c8844f5555"
-                  height="100%"
-                  width="100%"
-                  allow="fullscreen"
-                  title="Car"
-                />
-              </div> */}
+              {threesixty ? (
+                <div className="flex items-center justify-center overflow-hidden rounded-lg ">
+                  <React360 images={images} />
+                </div>
+              ) : (
+                carData?.images && <CarSlider2 sliders={carData?.images} />
+              )}
+
+              <div className="flex justify-center ">
+                <button
+                  onClick={() => setThreesixty(!threesixty)}
+                  className="px-4 py-2 mt-2 text-white rounded-lg bg-primary"
+                >
+                  {!threesixty ? (
+                    <div className="flex">
+                      <TbView360Number className="text-2xl" />° View
+                    </div>
+                  ) : (
+                    "Back to normal view"
+                  )}
+                </button>
+                {/* <img
+                  src="https://www.marutisuzukicommercial.com/images/icons/Icon360.svg"
+                  alt=""
+                  className="w-20 h-20 cursor-pointer"
+                /> */}
+              </div>
             </div>
             <div className="p-4 border rounded-xl">
               <h3 className="mb-4 text-xl font-semibold uppercase select-none text-primary">

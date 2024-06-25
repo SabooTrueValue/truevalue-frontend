@@ -11,25 +11,29 @@ import { IoIosColorPalette, IoMdSpeedometer } from "react-icons/io";
 // import { PiEngineFill } from "react-icons/pi";
 import CurrencyFormatter from "../../components/Other/currency-formatter";
 import BookForm from "./book-form";
+import { ReactImageTurntable } from "react-image-turntable";
+import { TbView360Number } from "react-icons/tb";
 
 const CarDetails2 = () => {
   const { finalData } = useFormData();
   const { id } = useParams();
   const [carData, setCarData] = useState({});
+  const [images, setImages] = useState([]);
+  const [threesixty, setThreesixty] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const car = finalData.find((car) => car._id === id);
     console.log(car);
-    // let images = [];
     if (car) {
-      // car.slot_images[0].images.map((image) => {
-      //   images.push(image.image_url);
-      // });
+      car.slot_images[0].images.forEach((image) => {
+        let url = image.image_url;
+        console.log(url);
+        setImages((prev) => [...prev, image.image_url]);
+      });
       setCarData(car);
     }
-    // console.log(images);
   }, [id, navigate, finalData]);
 
   return (
@@ -62,14 +66,51 @@ const CarDetails2 = () => {
             </div>
             <div className="overflow-hidden rounded-lg">
               {/* {carData?.images && <CarSlider2 sliders={carData?.images} />} */}
-              <div className="h-[500px] max-h-[80vh] -mt-2 md:h-[600px]">
-                <iframe
-                  src={`https://auto.viewer.2.helloramp.io/?id=${id}`}
-                  height="100%"
-                  width="100%"
-                  allow="fullscreen"
-                  title={carData?.vehicleTitle || "True Value Car"}
-                />
+              {!threesixty ? (
+                <div className="h-[500px] max-h-[80vh] -mt-2 md:h-[600px]">
+                  <iframe
+                    src={`https://auto.viewer.2.helloramp.io/?id=${id}`}
+                    height="100%"
+                    width="100%"
+                    allow="fullscreen"
+                    title={carData?.vehicleTitle || "True Value Car"}
+                  />
+                </div>
+              ) : (
+                images.length > 0 && (
+                  <div className="flex items-center justify-center overflow-hidden rounded-lg ">
+                    <ReactImageTurntable
+                      images={images}
+                      autoRotate={{ disabled: true }}
+                      // autoRotate={{ disabled: rotationDisabled, interval: 200 }}
+
+                      // onPointerDown={() => setRotationDisabled(true)}
+                      // onPointerUp={() => setRotationDisabled(false)}
+                      // onKeyDown={handleKeyDown}
+                      // onKeyUp={() => setRotationDisabled(false)}
+                      // {...props}
+                    />
+                  </div>
+                )
+              )}
+              <div className="flex justify-center ">
+                <button
+                  onClick={() => setThreesixty(!threesixty)}
+                  className="px-4 py-2 mt-2 text-white rounded-lg bg-primary"
+                >
+                  {!threesixty ? (
+                    <div className="flex">
+                      <TbView360Number className="text-2xl" />° View
+                    </div>
+                  ) : (
+                    "Back to normal view"
+                  )}
+                </button>
+                {/* <img
+                  src="https://www.marutisuzukicommercial.com/images/icons/Icon360.svg"
+                  alt=""
+                  className="w-20 h-20 cursor-pointer"
+                /> */}
               </div>
             </div>
             <div className="p-4 border rounded-xl">
