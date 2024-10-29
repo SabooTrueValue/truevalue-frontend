@@ -35,7 +35,6 @@ function App() {
     <>
       <Header
         // option={pathname === "/" && true}
-        open={open}
         setOpen={setOpen}
         pathname={pathname}
       />

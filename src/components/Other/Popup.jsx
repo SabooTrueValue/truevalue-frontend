@@ -135,7 +135,7 @@ export default function Popup() {
                               target="_blank"
                               rel="noreferrer"
                               aria-label="Call Us"
-                              className="flex justify-center w-1/2 gap-3 py-1.5 border rounded-lg text-primary"
+                              className="flex justify-center w-1/2 gap-3 py-1.5 border rounded-lg text-primary items-center"
                             >
                               <AiOutlinePhone className="w-5 h-5 " /> Call Us
                             </a>
@@ -144,7 +144,7 @@ export default function Popup() {
                               rel="noreferrer"
                               aria-label="Whatsapp"
                               href="https://wa.me/9848898488"
-                              className="flex justify-center w-1/2 gap-3 py-1.5 text-green-500 border rounded-lg"
+                              className="flex justify-center w-1/2 gap-3 py-1.5 text-green-500 border rounded-lg items-center"
                             >
                               <AiOutlineWhatsApp className="w-5 h-5 " />{" "}
                               Whatsapp
