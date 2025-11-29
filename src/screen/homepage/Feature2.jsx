@@ -25,13 +25,13 @@ const Feature2 = () => {
   return (
     <div className="pt-16 lg:pt-20">
       <div className="container px-1 mx-auto ">
-        <HeadingComponent title=" HelloAR" />
+        {/* <HeadingComponent title=" HelloAR" />
         <p className="mb-10 text-center">
           Stay updated with all the latest vehicles at Saboo RKS – True Value
         </p>
         <div className="mb-6">
           <LimitedEditonCarSlider />
-        </div>
+        </div> */}
         <HeadingComponent title="Featured True Value Car - Old" />
         <p className="mb-10 text-center">
           Stay updated with all the latest vehicles at Saboo RKS – True Value
