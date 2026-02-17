@@ -15,10 +15,10 @@ const Header = ({ option, setOpen, pathname }) => {
           <div className="flex items-center w-full gap-4 xl:gap-10 xl:w-1/2 ">
             <Link to="/" className="px-4 py-2 rounded lg:px-2" aria-label="home page">
               <img
-                src={require("../../assets/logo/logo-white.png")}
+                src={require("../../assets/logo/truevalue_copy.png")}
                 // src={require("../../assets/logo/saboo rks truevalue.png")}
                 alt=""
-                className="lg:h-9 h-9"
+                className="lg:h-14 h-9"
               />
             </Link>
             {/* <div className="relative mr-4 min-w-10 xl:w-full">
